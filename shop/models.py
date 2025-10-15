@@ -30,17 +30,19 @@ class ProductImage(models.Model):
         ordering = ['order']
 
 
+
 class WorkPhoto(models.Model):
-    title = models.CharField('Название работы', max_length=200)
+    title = models.CharField('Название работы', max_length=200, blank=True)
     image = models.ImageField('Фотография', upload_to='works/')
     created_at = models.DateTimeField('Создано', auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+    def str(self):
+        return self.title or f'Фото #{self.pk}'
 
     class Meta:
         verbose_name = 'Фотография работы'
         verbose_name_plural = 'Галерея работ'
+blank=True
 
 
 class OrderRequest(models.Model):
