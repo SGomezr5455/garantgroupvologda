@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Наши работы</h2>
+            <p class="section-subtitle">Реализованные проекты бань</p>
+        </div>
+
+        <div class="gallery-grid">
+            {% for photo in photos %}
+            <div class="work-card">
+                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="work-image">
+                <div class="work-title">{{ photo.title }}</div>
+            </div>
+            {% empty %}
+            <div class="text-center" style="grid-column: 1 / -1; padding: 4rem 2rem;">
+                <i class="fas fa-camera" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                <h3 style="margin-bottom: 1rem; color: var(--text-light);">Фотографии скоро появятся</h3>
+                <p style="color: var(--text-light);">Мы активно пополняем наше портфолио</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="/order/" class="btn">
+                <i class="fas fa-paper-plane"></i>
+                Заказать такой же проект
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

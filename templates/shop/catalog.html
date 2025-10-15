@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Каталог - Гарант Групп{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h1 class="section-title">Каталог товаров</h1>
+            <p class="section-subtitle">Весь ассортимент нашей продукции</p>
+        </div>
+        
+        <div class="catalog-grid">
+            {% for product in products %}
+            <div class="product-card">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image">
+                {% endif %}
+                <div class="product-content">
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <div class="product-price">{{ product.price }} ₽</div>
+                    <p class="product-description">{{ product.description|truncatechars:100 }}</p>
+                    <div class="product-actions">
+                        <a href="{% url 'product_detail' product.pk %}" class="btn">Подробнее</a>
+                        <a href="{% url 'order' %}" class="btn btn-outline">Заказать</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Товары не найдены.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

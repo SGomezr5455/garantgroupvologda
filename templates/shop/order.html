@@ -1,0 +1,230 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Оставить заявку</h2>
+            <p class="section-subtitle">Мы свяжемся с вами в течение 15 минут</p>
+        </div>
+
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div style="background: var(--bg-white); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                <form method="post" class="order-form">
+                    {% csrf_token %}
+                    
+                    <!-- Общие ошибки формы -->
+                    {% if form.errors %}
+                    <div class="form-errors" style="background: #ffebee; color: #c62828; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid #ffcdd2;">
+                        <strong>Пожалуйста, исправьте ошибки ниже:</strong>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="form-group">
+                        <label class="form-label">ФИО *</label>
+                        <input type="text" name="fio" class="form-control" placeholder="Иванов Иван Иванович" required value="{{ form.fio.value|default:'' }}">
+                        {% if form.fio.errors %}
+                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
+                            {% for error in form.fio.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Телефон *</label>
+                        <input type="tel" name="phone" class="form-control" placeholder="+7 (999) 999-99-99" required value="{{ form.phone.value|default:'' }}">
+                        {% if form.phone.errors %}
+                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
+                            {% for error in form.phone.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" name="email" class="form-control" placeholder="example@mail.ru" required value="{{ form.email.value|default:'' }}">
+                        {% if form.email.errors %}
+                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
+                            {% for error in form.email.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Сообщение</label>
+                        <textarea name="message" class="form-control" rows="5" placeholder="Опишите ваши пожелания к бане...">{{ form.message.value|default:'' }}</textarea>
+                        {% if form.message.errors %}
+                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
+                            {% for error in form.message.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Подтвердите, что вы не робот</label>
+                        <div class="captcha-container">
+                            {{ form.captcha }}
+                        </div>
+                        {% if form.captcha.errors %}
+                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
+                            {% for error in form.captcha.errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        Отправить заявку
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if success %}
+<div class="success-notification" id="successNotification">
+    <div class="success-content">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="success-text">
+            <h3>Заявка отправлена!</h3>
+            <p>Мы свяжемся с вами в течение 15 минут для уточнения деталей.</p>
+        </div>
+        <button class="success-close" onclick="closeSuccessNotification()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+function closeSuccessNotification() {
+    const notification = document.getElementById('successNotification');
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 300);
+}
+
+// Auto close after 5 seconds
+setTimeout(closeSuccessNotification, 5000);
+</script>
+
+<style>
+.success-notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    z-index: 2000;
+    animation: slideInRight 0.5s ease-out;
+    border-left: 4px solid var(--primary);
+    max-width: 400px;
+}
+
+.success-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+}
+
+.success-icon {
+    color: var(--primary);
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.success-text h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+}
+
+.success-text p {
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.success-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--text-light);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: background var(--transition-fast);
+}
+
+.success-close:hover {
+    background: var(--primary);
+}
+
+.captcha-container img {
+    transform: scale(1.5);
+    transform-origin: left top;
+    margin-bottom: 20px;
+}
+
+.captcha-container input {
+    padding: 12px;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .success-notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .captcha-container img {
+        transform: scale(1.2);
+    }
+}
+</style>
+{% endif %}
+{% endblock %}

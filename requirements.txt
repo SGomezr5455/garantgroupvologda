@@ -1,0 +1,7 @@
+Django>=5.2.7
+requests>=2.28
+Pillow>=9.0
+gunicorn>=20.1.0
+tzdata
+django-simple-captcha
+whitenoise>=6.6.0

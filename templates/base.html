@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Гарант Групп{% endblock %}</title>
+    <meta name="description" content="Витрина и портфолио компании Гарант Групп">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon-font -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-loader"><span>Гарант Групп</span></div>
+            <div class="loader-wave">
+                <div></div><div></div><div></div><div></div><div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{% url 'index' %}" class="logo">
+                    <i class="fas fa-tree"></i><span>Гарант Групп</span>
+                </a>
+
+                <nav class="nav">
+                    <a href="{% url 'index' %}"     class="nav-link">Главная</a>
+                    <a href="{% url 'about' %}"     class="nav-link">О нас</a>
+                    <a href="{% url 'catalog' %}"   class="nav-link">Каталог</a>
+                    <a href="{% url 'works' %}"     class="nav-link">Наши работы</a>
+                    <a href="{% url 'contact' %}"   class="nav-link">Контакты</a>
+                    <a href="{% url 'order' %}"     class="nav-link nav-cta">
+                        <i class="fas fa-paper-plane"></i>Заказать
+                    </a>
+                </nav>
+
+                <!-- Mobile burger -->
+                <button class="mobile-menu-btn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="{% url 'index' %}"   class="mobile-nav-link"><i class="fas fa-home"></i>Главная</a>
+            <a href="{% url 'about' %}"   class="mobile-nav-link"><i class="fas fa-building"></i>О нас</a>
+            <a href="{% url 'catalog' %}" class="mobile-nav-link"><i class="fas fa-th"></i>Каталог</a>
+            <a href="{% url 'works' %}"   class="mobile-nav-link"><i class="fas fa-images"></i>Работы</a>
+            <a href="{% url 'contact' %}" class="mobile-nav-link"><i class="fas fa-phone"></i>Контакты</a>
+            <a href="{% url 'order' %}"   class="mobile-nav-link mobile-nav-cta">
+                <i class="fas fa-paper-plane"></i>Заказать
+            </a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="{% url 'index' %}" class="footer-logo">
+                        <i class="fas fa-tree"></i><span>Гарант Групп</span>
+                    </a>
+                    <p class="footer-description">
+                        Производим и устанавливаем качественные изделия из камня. Работаем по всему региону.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://vk.com/garant_stroy_karkas" class="social-link"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>example@mail.ru</span></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+7 900 000-00-00</span></div>
+                    <div class="contact-item"><i class="fas fa-clock"></i><span>09:00-21:00</span></div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <a href="{% url 'catalog' %}">Каталог</a>
+                    <a href="{% url 'works' %}">Работы</a>
+                    <a href="{% url 'order' %}">Заказ</a>
+                    <a href="{% url 'about' %}">О нас</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy;&nbsp;2025 Гарант Групп. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back-to-top -->
+    <button class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,186 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ info.title|default:"О компании" }}</h2>
+            <p class="section-subtitle">Наша история и принципы работы</p>
+        </div>
+        
+        <div style="max-width: 800px; margin: 0 auto 3rem;">
+            <div style="background: var(--bg-white); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light); margin-bottom: 2rem;">
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 0;">
+                    {{ info.description|default:"Компания 'Гарант Групп' - ведущий производитель бань в Вологодской области с более чем 10-летним опытом работы. Мы специализируемся на строительстве качественных бань под ключ, сочетая вековые традиции русского зодчества с современными технологиями и материалами."|linebreaks }}
+                </p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <div style="background: var(--bg-white); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Наша миссия</h3>
+                <p>Создавать качественные, долговечные и экологичные бани, которые становятся местом отдыха и восстановления для наших клиентов на долгие годы.</p>
+            </div>
+            
+            <div style="background: var(--bg-white); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-light);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Наше видение</h3>
+                <p>Стать лидером в сфере строительства бань, устанавливая новые стандарты качества и сервиса в отрасли.</p>
+            </div>
+        </div>
+
+        <!-- Красиво оформленные ценности -->
+        <div class="section-header">
+            <h2 class="section-title">Наши ценности</h2>
+            <p class="section-subtitle">Принципы, которые лежат в основе нашей работы</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Качество</h3>
+                <p>Используем только лучшие материалы и контролируем каждый этап строительства</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Честность</h3>
+                <p>Прозрачные условия сотрудничества и фиксированные цены без скрытых платежей</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <h3>Индивидуальный подход</h3>
+                <p>Учитываем все пожелания клиента и создаем проекты под конкретные нужды</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Ответственность</h3>
+                <p>Несем полную ответственность за результат и предоставляем гарантию 5 лет</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Инновации</h3>
+                <p>Внедряем современные технологии и улучшаем процессы для лучшего результата</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Клиентоориентированность</h3>
+                <p>Ставим интересы клиента на первое место и строим долгосрочные отношения</p>
+            </div>
+        </div>
+
+        <div style="background: var(--primary); color: white; padding: 3rem; border-radius: var(--radius-lg); text-align: center; margin: 4rem 0;">
+            <h3 style="margin-bottom: 1rem; font-size: 2rem;">Наши достижения</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem;">
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">10+</div>
+                    <div>лет на рынке</div>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">500+</div>
+                    <div>построенных бань</div>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">5 лет</div>
+                    <div>гарантии</div>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: bold;">98%</div>
+                    <div>довольных клиентов</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <h3 style="margin-bottom: 1rem;">Связаться с нами</h3>
+            <p style="margin-bottom: 2rem;">Готовы построить баню вашей мечты? Свяжитесь с нами для консультации.</p>
+            <a href="/order/" class="btn">
+                <i class="fas fa-paper-plane"></i>
+                Оставить заявку
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.value-card {
+    background: var(--bg-white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.value-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.value-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.value-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .value-card {
+        padding: 2rem 1.5rem;
+    }
+}
+</style>
+{% endblock %}

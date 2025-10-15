@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная - Гарант Групп{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="container">
+            <h1>Добро пожаловать в Гарант Групп</h1>
+            <p>Качественные деревянные бани под ключ с каталогом и ценами</p>
+            <div class="hero-actions">
+                <a href="{% url 'catalog' %}" class="btn">
+                    <i class="fas fa-shopping-cart"></i>Посмотреть каталог
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>Связаться с нами
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Рекомендуемые товары</h2>
+            <p class="section-subtitle">Популярные позиции нашего каталога</p>
+        </div>
+        
+        <div class="catalog-grid">
+            {% for product in products %}
+            <div class="product-card">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image">
+                {% endif %}
+                <div class="product-content">
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <div class="product-price">{{ product.price }} ₽</div>
+                    <p class="product-description">{{ product.description|truncatechars:100 }}</p>
+                    <div class="product-actions">
+                        <a href="{% url 'product_detail' product.pk %}" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
