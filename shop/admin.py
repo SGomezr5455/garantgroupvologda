@@ -42,10 +42,18 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(WorkPhoto)
 class WorkPhotoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at')
+    list_display = ('preview', 'created_at')
     list_filter = ('created_at',)
-    search_fields = ('title',)
-    readonly_fields = ('created_at',)
+    readonly_fields = ('created_at', 'preview')
+    fields = ('image', 'created_at', 'preview')
+
+    def preview(self, obj):
+        if obj.image and obj.pk:
+            return format_html('<img src="{}" width="80" height="60" style="object-fit: cover; border-radius: 4px;" />',
+                               obj.image.url)
+        return "Нет изображения"
+
+    preview.short_description = 'Превью'
 
 
 @admin.register(OrderRequest)
