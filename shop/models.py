@@ -3,7 +3,7 @@ from django.db import models
 
 class Product(models.Model):
     title = models.CharField('Название', max_length=200)
-    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
+    price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     description = models.TextField('Описание')
     image = models.ImageField('Главное изображение', upload_to='products/', blank=True, null=True)
 
@@ -13,6 +13,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+
+class ProductPrice(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prices', verbose_name='Товар')
+    name = models.CharField('Название размера/услуги', max_length=200)
+    price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
+
+    class Meta:
+        verbose_name = 'Цена товара'
+        verbose_name_plural = 'Цены товара'
+        ordering = ['price']
+
+    def __str__(self):
+        return f"{self.product.title} - {self.name}"
 
 
 class ProductImage(models.Model):
@@ -30,7 +44,6 @@ class ProductImage(models.Model):
         ordering = ['order']
 
 
-
 class WorkPhoto(models.Model):
     title = models.CharField('Название работы', max_length=200, blank=True)
     image = models.ImageField('Фотография', upload_to='works/')
@@ -42,7 +55,6 @@ class WorkPhoto(models.Model):
     class Meta:
         verbose_name = 'Фотография работы'
         verbose_name_plural = 'Галерея работ'
-blank=True
 
 
 class OrderRequest(models.Model):

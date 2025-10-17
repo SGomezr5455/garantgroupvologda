@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Product, WorkPhoto, OrderRequest, CompanyInfo
+from .models import Product, WorkPhoto, OrderRequest, CompanyInfo, ProductPrice
 from .forms import OrderForm
 
 
@@ -19,13 +19,28 @@ def about(request):
 def catalog(request):
     """Каталог товаров"""
     products = Product.objects.all()
+    # Форматируем цены для отображения
+    for product in products:
+        product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
     return render(request, 'shop/catalog.html', {'products': products})
 
 
 def product_detail(request, pk):
     """Детальная страница товара"""
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'shop/product_detail.html', {'product': product})
+    prices = product.prices.all()
+
+    # Форматируем цены для отображения
+    product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
+
+    # Форматируем цены в таблице
+    for price in prices:
+        price.formatted_price = f"{price.price:,} ₽".replace(',', ' ')
+
+    return render(request, 'shop/product_detail.html', {
+        'product': product,
+        'prices': prices
+    })
 
 
 def works(request):

@@ -15,13 +15,44 @@
             <span>{{ product.title }}</span>
         </nav>
 
-        <!-- Основной контент -->
-        <div class="product-layout">
+        <!-- Название и цена над фотографией -->
+        <div class="product-header">
+            <h1 class="product-title">{{ product.title }}</h1>
+            <div class="product-price-main">{{ product.formatted_price }}</div>
+        </div>
 
-            <!-- Галерея изображений -->
-            <div class="product-gallery">
+        <!-- Основной контент -->
+        <div class="product-container">
+
+            <!-- Галерея изображений - по центру с стрелками -->
+            <div class="product-gallery-centered">
+                <!-- Главное изображение с стрелками -->
+                <div class="main-image-container-with-arrows">
+                    <button class="gallery-arrow gallery-arrow-prev" onclick="prevImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <div class="main-image-centered" onclick="openLightbox()">
+                        {% if product.image %}
+                            <img id="mainImage" class="main-image" src="{{ product.image.url }}" alt="{{ product.title }}">
+                            <div class="zoom-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        {% else %}
+                            <div class="no-image-placeholder">
+                                <i class="fas fa-camera"></i>
+                                <p>Фото отсутствует</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <button class="gallery-arrow gallery-arrow-next" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
                 <!-- Миниатюры -->
-                <div class="thumbnails-container">
+                <div class="thumbnails-centered">
                     {% if product.image %}
                         <img class="thumbnail active" src="{{ product.image.url }}"
                              alt="{{ product.title }}"
@@ -35,40 +66,264 @@
                              data-index="{{ forloop.counter }}">
                     {% endfor %}
                 </div>
-
-                <!-- Главное изображение -->
-                <div class="main-image-container" onclick="openLightbox()">
-                    {% if product.image %}
-                        <img id="mainImage" class="main-image" src="{{ product.image.url }}" alt="{{ product.title }}">
-                        <div class="zoom-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    {% else %}
-                        <div class="no-image-placeholder">
-                            <i class="fas fa-camera"></i>
-                            <p>Фото отсутствует</p>
-                        </div>
-                    {% endif %}
-                </div>
             </div>
 
-            <!-- Информация о товаре -->
-            <div class="product-info">
-                <h1 class="product-title">{{ product.title }}</h1>
+            <!-- Информация о товаре - под фоткой -->
+            <div class="product-info-below">
+                <!-- Описание товара -->
+                <div class="product-description-simple">
+                    {{ product.description|safe|linebreaks }}
+                </div>
 
-                <div class="product-price">{{ product.price }} ₽</div>
+                <!-- Таблица размеров и цен -->
+                {% if prices %}
+                <div class="prices-section">
+                    <h3>Размеры и цены</h3>
+                    <div class="simple-price-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Длина х ширина</th>
+                                    <th>Цена</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for price in prices %}
+                                <tr>
+                                    <td>{{ price.name }}</td>
+                                    <td class="price-value">{{ price.formatted_price }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
 
-                <div class="product-description">
-                    <h3>Описание</h3>
-                    {{ product.description|linebreaks }}
+                <!-- Блок комплектации и опций -->
+                <div class="equipment-options-section">
+                    <!-- Комплектация Стандарт -->
+                    <div class="equipment-block">
+                        <h3 class="equipment-title">
+                            <i class="fas fa-check-circle"></i>
+                            Комплектация «Стандарт»
+                        </h3>
+                        <div class="equipment-content">
+                            <p>Печь «Астон 12» с камнями, дымоход, бак 50 л, трапики, электрика по ГОСТу, осиновые скамейки, ступенька, защита от нагрева, обручи, деревянные двери, стол, слив, стандартный полог, вентиляция, гибкая черепица, подкладочный ковёр, защитная пропитка, форточка, фундамент, ветровые планки, подголовник.</p>
+                        </div>
+                    </div>
+
+                    <!-- Опции парной -->
+                    <div class="options-block">
+                        <h3 class="options-title">
+                            <i class="fas fa-fire"></i>
+                            Опции парной
+                        </h3>
+                        <div class="options-grid">
+                            <div class="option-item">
+                                <span class="option-name">Вынос топки</span>
+                                <span class="option-price">15 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Защита печи</span>
+                                <span class="option-price">5 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Искрогаситель</span>
+                                <span class="option-price">4 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Подсветка</span>
+                                <span class="option-price">20 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Два уровня полога</span>
+                                <span class="option-price">15 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Выдвижной низ</span>
+                                <span class="option-price">5 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Тонировка</span>
+                                <span class="option-price">3 000 ₽/м²</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Подспинник</span>
+                                <span class="option-price">1 500 ₽/м</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Стеклянная дверь</span>
+                                <span class="option-price">12 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Абажур</span>
+                                <span class="option-price">5 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Замена печи</span>
+                                <span class="option-price">договорная</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Увеличение полка</span>
+                                <span class="option-price">2 000 ₽/10 см</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Опции моечной -->
+                    <div class="options-block">
+                        <h3 class="options-title">
+                            <i class="fas fa-shower"></i>
+                            Опции моечной
+                        </h3>
+                        <div class="options-grid">
+                            <div class="option-item">
+                                <span class="option-name">ПНД-поддоны</span>
+                                <span class="option-price">от 15 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Пол с уклоном</span>
+                                <span class="option-price">10 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Стеклянная дверь</span>
+                                <span class="option-price">12 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Душевая система</span>
+                                <span class="option-price">5 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Вывод воды</span>
+                                <span class="option-price">3 000 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Опции комнаты отдыха -->
+                    <div class="options-block">
+                        <h3 class="options-title">
+                            <i class="fas fa-couch"></i>
+                            Опции комнаты отдыха
+                        </h3>
+                        <div class="options-grid">
+                            <div class="option-item">
+                                <span class="option-name">Двери и окна: стеклянные, металлические, ПВХ</span>
+                                <span class="option-price">от 12 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Тёплый пол</span>
+                                <span class="option-price">3 000 ₽/м²</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Кварц-виниловое покрытие</span>
+                                <span class="option-price">5 000 ₽/м²</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Рундук</span>
+                                <span class="option-price">3 000 ₽/метр</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Откидной стол</span>
+                                <span class="option-price">5 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Лавка передвижная</span>
+                                <span class="option-price">3 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Стол передвижной</span>
+                                <span class="option-price">4 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Спальное место</span>
+                                <span class="option-price">10 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Шкаф 50×50 с дверцей</span>
+                                <span class="option-price">14 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Шкаф двустворчатый</span>
+                                <span class="option-price">20 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Дверь 170×70 см со стеклом</span>
+                                <span class="option-price">38 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Двойная дверь 110×185 см</span>
+                                <span class="option-price">44 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Металлическая дверь 170×70 см</span>
+                                <span class="option-price">25 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Пластиковая дверь 180×80 (без стекла)</span>
+                                <span class="option-price">26 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Пластиковая дверь 180×100 (без стекла)</span>
+                                <span class="option-price">30 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Зеркальная тонировка окон и дверей</span>
+                                <span class="option-price">3 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Скрытая проводка (для бани из бруса)</span>
+                                <span class="option-price">30 000 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Опции бани -->
+                    <div class="options-block">
+                        <h3 class="options-title">
+                            <i class="fas fa-home"></i>
+                            Опции бани
+                        </h3>
+                        <div class="options-grid">
+                            <div class="option-item">
+                                <span class="option-name">Боковой вход</span>
+                                <span class="option-price">10 000 ₽</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Терраса открытая</span>
+                                <span class="option-price">12 000 ₽/м²</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Терраса закрытая</span>
+                                <span class="option-price">20 000 ₽/м²</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Сборка</span>
+                                <span class="option-price">10% от стоимости</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Утепление</span>
+                                <span class="option-price">4 000 ₽/м²</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Сваи</span>
+                                <span class="option-price">4 800 ₽/шт.</span>
+                            </div>
+                            <div class="option-item">
+                                <span class="option-name">Черепица до пола</span>
+                                <span class="option-price">4 000 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="product-actions">
                     <a href="{% url 'order' %}" class="btn btn-primary">
-                        🚀 Заказать проект
+                        Заказать проект
                     </a>
                     <a href="tel:+79000000000" class="btn btn-secondary">
-                        📞 Позвонить нам
+                        Позвонить нам
                     </a>
                 </div>
             </div>
@@ -119,32 +374,151 @@
     text-decoration: underline;
 }
 
-.product-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+/* Заголовок и цена над фотографией */
+.product-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.product-price-main {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.product-container {
     background: white;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* Галерея изображений */
-.product-gallery {
-    display: flex;
-    gap: 1rem;
+/* Центрированная галерея с стрелками */
+.product-gallery-centered {
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-.thumbnails-container {
+.main-image-container-with-arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-arrow {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.gallery-arrow:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.gallery-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gallery-arrow:disabled:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary);
+    transform: none;
+}
+
+.main-image-centered {
+    display: inline-block;
+    position: relative;
+    cursor: zoom-in;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9fa;
+    max-width: 800px;
+    width: 100%;
+    flex: 1;
+}
+
+.main-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.main-image-centered:hover .main-image {
+    transform: scale(1.02);
+}
+
+.zoom-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.main-image-centered:hover .zoom-overlay {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.no-image-placeholder {
+    height: 400px;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    width: 80px;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.no-image-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.thumbnails-centered {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .thumbnail {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 8px;
     cursor: pointer;
@@ -161,112 +535,245 @@
     box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
 }
 
-.main-image-container {
-    flex: 1;
-    position: relative;
-    cursor: zoom-in;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f8f9fa;
+/* Информация о товаре под фоткой */
+.product-info-below {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.main-image {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+.product-description-simple {
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    color: var(--text-dark);
 }
 
-.main-image-container:hover .main-image {
-    transform: scale(1.08);
-}
-
-.zoom-overlay {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    opacity: 0;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.main-image-container:hover .zoom-overlay {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-.no-image-placeholder {
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-}
-
-.no-image-placeholder i {
-    font-size: 4rem;
+.product-description-simple h1,
+.product-description-simple h2,
+.product-description-simple h3 {
+    color: var(--text-dark);
     margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 
-/* Информация о товаре */
-.product-info {
-    display: flex;
-    flex-direction: column;
+.product-description-simple h1 {
+    font-size: 1.8rem;
 }
 
-.product-title {
-    font-size: 2.2rem;
-    font-weight: 700;
+.product-description-simple h2 {
+    font-size: 1.5rem;
+}
+
+.product-description-simple h3 {
+    font-size: 1.3rem;
+}
+
+.product-description-simple ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-description-simple li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+/* Простая таблица цен */
+.prices-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--bg-light);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+}
+
+.prices-section h3 {
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--text-dark);
-    line-height: 1.2;
+    text-align: center;
 }
 
-.product-price {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 2rem;
+.simple-price-table {
+    overflow-x: auto;
 }
 
-.product-description {
-    flex: 1;
-    margin-bottom: 2rem;
+.simple-price-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.product-description h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+.simple-price-table th {
+    background: var(--primary);
+    color: white;
+    padding: 1.2rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.simple-price-table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--border-light);
     color: var(--text-dark);
 }
 
-.product-description p {
-    line-height: 1.6;
-    color: var(--text-light);
+.simple-price-table tr:last-child td {
+    border-bottom: none;
+}
+
+.simple-price-table tr:hover {
+    background: rgba(46, 139, 87, 0.03);
+}
+
+.price-value {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+/* Стили для блока комплектации и опций */
+.equipment-options-section {
+    margin: 3rem 0;
+}
+
+.equipment-block {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary);
+}
+
+.equipment-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.equipment-title i {
+    color: var(--primary);
+    font-size: 1.6rem;
+}
+
+.equipment-content p {
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.options-block {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.options-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.options-title i {
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.option-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.option-item:hover {
+    background: rgba(46, 139, 87, 0.05);
+    transform: translateX(5px);
+}
+
+.option-name {
+    font-weight: 500;
+    color: var(--text-dark);
+    flex: 1;
+}
+
+.option-price {
+    font-weight: 600;
+    color: var(--primary);
+    background: rgba(46, 139, 87, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+
+.options-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.options-category {
+    background: var(--bg-light);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary);
+}
+
+.options-category h4 {
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.options-category p {
+    margin: 0;
+    color: var(--text-dark);
+    line-height: 1.5;
 }
 
 .product-actions {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
+    padding: 14px 32px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
@@ -277,12 +784,13 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: var(--primary);
     color: white;
     box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
 }
 
 .btn-primary:hover {
+    background: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
 }
@@ -385,42 +893,79 @@
     font-weight: 500;
 }
 
-/* Отзывчивый дизайн */
+/* Адаптивность */
 @media (max-width: 768px) {
-    .product-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .product-container {
         padding: 1.5rem;
     }
 
-    .product-gallery {
-        flex-direction: column;
+    .product-header {
+        margin-bottom: 1.5rem;
     }
 
-    .thumbnails-container {
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        overflow-x: auto;
-        padding: 10px 0;
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-price-main {
+        font-size: 2.2rem;
+    }
+
+    .main-image-container-with-arrows {
+        gap: 0.5rem;
+    }
+
+    .gallery-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .main-image {
+        height: 350px;
+    }
+
+    .thumbnails-centered {
+        gap: 0.5rem;
     }
 
     .thumbnail {
-        flex-shrink: 0;
         width: 60px;
         height: 60px;
     }
 
-    .main-image {
-        height: 300px;
+    .prices-section {
+        padding: 1.5rem;
     }
 
-    .product-title {
-        font-size: 1.8rem;
+    .simple-price-table th,
+    .simple-price-table td {
+        padding: 1rem 0.8rem;
     }
 
-    .product-price {
-        font-size: 2rem;
+    .equipment-block,
+    .options-block {
+        padding: 1.5rem;
+    }
+
+    .equipment-title,
+    .options-title {
+        font-size: 1.2rem;
+    }
+
+    .option-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .option-price {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+
+    .options-category {
+        padding: 1rem;
     }
 
     .product-actions {
@@ -443,12 +988,52 @@
 
 @media (max-width: 480px) {
     .main-image {
-        height: 250px;
+        height: 280px;
     }
 
     .breadcrumb {
         font-size: 0.8rem;
         gap: 0.3rem;
+    }
+
+    .product-title {
+        font-size: 1.7rem;
+    }
+
+    .product-price-main {
+        font-size: 2rem;
+    }
+
+    .prices-section {
+        padding: 1rem;
+    }
+
+    .simple-price-table {
+        font-size: 0.9rem;
+    }
+
+    .simple-price-table th,
+    .simple-price-table td {
+        padding: 0.8rem 0.5rem;
+    }
+
+    .gallery-arrow {
+        width: 35px;
+        height: 35px;
+    }
+
+    .equipment-block,
+    .options-block {
+        padding: 1rem;
+    }
+
+    .equipment-title,
+    .options-title {
+        font-size: 1.1rem;
+    }
+
+    .option-item {
+        padding: 0.7rem;
     }
 }
 </style>
@@ -476,6 +1061,7 @@ function setMainImage(src, index) {
 
     currentImageIndex = index;
     updateCounter();
+    updateArrows();
 }
 
 // Открыть лайтбокс
@@ -529,6 +1115,19 @@ function updateImages() {
     });
 
     updateCounter();
+    updateArrows();
+}
+
+// Обновить состояние стрелок
+function updateArrows() {
+    const prevArrow = document.querySelector('.gallery-arrow-prev');
+    const nextArrow = document.querySelector('.gallery-arrow-next');
+
+    if (prevArrow && nextArrow) {
+        // Для галереи всегда показываем стрелки, но можно добавить логику отключения если нужно
+        // prevArrow.disabled = currentImageIndex === 0;
+        // nextArrow.disabled = currentImageIndex === images.length - 1;
+    }
 }
 
 // Обновить счетчик
@@ -560,6 +1159,7 @@ document.addEventListener('keydown', (e) => {
 // Инициализация
 document.addEventListener('DOMContentLoaded', function() {
     updateCounter();
+    updateArrows();
 });
 </script>
 {% endblock %}
