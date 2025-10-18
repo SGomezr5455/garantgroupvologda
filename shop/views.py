@@ -19,21 +19,18 @@ def about(request):
 def catalog(request):
     """Каталог товаров"""
     products = Product.objects.all()
-    # Форматируем цены для отображения
     for product in products:
         product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
     return render(request, 'shop/catalog.html', {'products': products})
 
 
 def product_detail(request, pk):
-    """Детальная страница товара"""
+    """Детальная страница товара с калькулятором"""
     product = get_object_or_404(Product, pk=pk)
     prices = product.prices.all()
 
-    # Форматируем цены для отображения
     product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
 
-    # Форматируем цены в таблице
     for price in prices:
         price.formatted_price = f"{price.price:,} ₽".replace(',', ' ')
 
@@ -55,8 +52,12 @@ def contact(request):
 
 
 def order(request):
-    """Форма заказа"""
+    """Форма заказа с предзаполненными данными из калькулятора"""
     success = False
+
+    # Получаем данные из калькулятора через GET-параметры
+    order_details = request.GET.get('details', '')
+
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -68,7 +69,19 @@ def order(request):
             )
             success = True
             form = OrderForm()
+            order_details = ''  # Очищаем после успешной отправки
     else:
-        form = OrderForm()
+        # Предзаполняем поле сообщения данными из калькулятора
+        initial_data = {'message': order_details} if order_details else {}
+        form = OrderForm(initial=initial_data)
 
-    return render(request, 'shop/order.html', {'form': form, 'success': success})
+    return render(request, 'shop/order.html', {
+        'form': form,
+        'success': success,
+        'order_details': order_details
+    })
+
+
+def additional_services(request):
+    """Страница дополнительных услуг"""
+    return render(request, 'shop/additional_services.html')

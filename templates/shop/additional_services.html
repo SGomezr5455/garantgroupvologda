@@ -1,0 +1,1027 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Дополнительные услуги - Banyana{% endblock %}
+
+{% block content %}
+<section class="section" style="padding: 2rem 0;">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{% url 'index' %}">Главная</a>
+            <span>›</span>
+            <span>Дополнительные услуги</span>
+        </nav>
+
+        <div class="services-container">
+            <div class="services-header">
+                <h1 class="services-title">✨ Дополнительные опции для бани</h1>
+                <p class="services-subtitle">Персонализируйте вашу баню</p>
+            </div>
+
+            <div class="services-table-wrapper">
+                <table class="services-table">
+                    <thead>
+                        <tr>
+                            <th width="80">Фото</th>
+                            <th>Наименование</th>
+                            <th width="120">Цена</th>
+                            <th width="100">Заказать</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ОСНОВНЫЕ ОПЦИИ -->
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/арка.jpg' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Арка</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Выносная топка с самодельным экраном</td>
+                            <td class="price-cell">12 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/козырек.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Козырек</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/ящик.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ящик под бойлер 60×60 см</td>
+                            <td class="price-cell">12 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/ящик.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ящик под бойлер 120×70 см</td>
+                            <td class="price-cell">19 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/душевая.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Душевая кабинка с раздвижными дверцами 110×80 / 120×80</td>
+                            <td class="price-cell">29 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/душеваяв.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Душевой поддон акриловый 120×80/70 или 110×80</td>
+                            <td class="price-cell">17 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/душевойпод.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Душевой поддон металлический 70×70 / 80×80</td>
+                            <td class="price-cell">10 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/ящикп.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ящик под потолком закрывающийся (40 см глубина)</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/полка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Полка</td>
+                            <td class="price-cell">3 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/полог.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ящик для вещей под пологом</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/бойлер.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Бойлер + насосная станция + система кранов и труб + смеситель с лейкой</td>
+                            <td class="price-cell">58 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/чдымоход.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Черный дымоход</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/кран.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Вывод крана от бака через стену</td>
+                            <td class="price-cell">3 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/дверм.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Входная дверь металлическая</td>
+                            <td class="price-cell">20 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/дверс.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Стеклянная дверь</td>
+                            <td class="price-cell">10 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/форточка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Форточка 30×40</td>
+                            <td class="price-cell">4 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/окно.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Окно 60×80</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/лента.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Дополнительная лента</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/ппрцен.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Увеличение диаметра/ширины и высоты на 20 см во всех банях</td>
+                            <td class="price-cell">12% стоимости</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/осина.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Обшивка парной осиновой вагонкой</td>
+                            <td class="price-cell">98 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/крыл.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Крыльцо</td>
+                            <td class="price-cell">16 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/бочка22.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Боковой вход Баня Бочка/Квадробочка</td>
+                            <td class="price-cell">12 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/парус.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Боковой вход Парус</td>
+                            <td class="price-cell">14 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/викинг.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Боковой вход Викинг</td>
+                            <td class="price-cell">46 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/викинг2.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Боковой вход Викинг с козырьком</td>
+                            <td class="price-cell">58 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/бб.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Боковой вход с тамбуром 1.5 м</td>
+                            <td class="price-cell">161 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/под.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;">️</div></td>
+                            <td class="service-name">Подголовник (1 шт.)</td>
+                            <td class="price-cell">600 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/камни.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Камни (20 кг)</td>
+                            <td class="price-cell">600 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/печьогр.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ограждение печи</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/печьограда.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;">️</div></td>
+                            <td class="service-name">Ограждение печи (забор)</td>
+                            <td class="price-cell">10 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/кухня.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Кухня 60×120 (два ящика сверху/снизу + столешница с раковиной + подсветка)</td>
+                            <td class="price-cell">29 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/место.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Спальное место раскладное</td>
+                            <td class="price-cell">9 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/двоп.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Двойной пол с обивкой ПНД всего отделения (стандарт)</td>
+                            <td class="price-cell">12 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/двоп.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Двойной пол (нестандарт Г-образные и размер свыше 260×260)</td>
+                            <td class="price-cell">31 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/откидной.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Откидной столик</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/душ.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Летний душ (бак 50-60 л + лейка + крепление)</td>
+                            <td class="price-cell">20 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/бок.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Перенос окна с торца на боковую часть</td>
+                            <td class="price-cell">1 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/выдполок.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Выдвижной полок в парной</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/скамейкаподводу.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Скамейка под воду</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/крылья.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Крыльцо к бане 120×200</td>
+                            <td class="price-cell">23 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/уник.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Унитаз с установкой</td>
+                            <td class="price-cell">11 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/обшивкапласт.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Обшивка пластиковыми панелями всей душевой кабинки</td>
+                            <td class="price-cell">29 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/обшивкапласт.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Обшивка душевой с двух сторон</td>
+                            <td class="price-cell">21 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/обшивкапласт.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Душевой поддон 90×90 из дерева с трапиком</td>
+                            <td class="price-cell">8 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/стол.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Приставной стол</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/ретрофм.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ретро проводка</td>
+                            <td class="price-cell">40 000 - 63 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/свечение.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Подсветка под полоком</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Светодиодная подсветка в парной</td>
+                            <td class="price-cell">20 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Обработка Тикурила</td>
+                            <td class="price-cell">23 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Люстра в комнате отдыха</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Подсветка парус вместо лент (1 метр погонный)</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Кварцвинил (м² с утеплением пола)</td>
+                            <td class="price-cell">6 500 ₽/м²</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Кварцвинил (м² без утепления пола)</td>
+                            <td class="price-cell">5 500 ₽/м²</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Дровник соты 60×40 (1 шт.)</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Табличка «Банька»</td>
+                            <td class="price-cell">1 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Абажур (на имеющуюся лампу)</td>
+                            <td class="price-cell">1 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Абажур с лампой</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Длинная светодиодная лампа</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Спинка над лавкой</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Притопочный лист</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Душевая шторка (прямая)</td>
+                            <td class="price-cell">3 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Душевая шторка (угловая)</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Бак для холодной воды</td>
+                            <td class="price-cell">10 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Тройная ступенька</td>
+                            <td class="price-cell">2 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Черный бак Везувий</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Искрогаситель</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Замена пропитки на Пинотекс колеруемый</td>
+                            <td class="price-cell">8 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Вентиляционная решетка (1 стена с двух сторон)</td>
+                            <td class="price-cell">600 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Вентиляционная решетка (3 стены с двух сторон)</td>
+                            <td class="price-cell">2 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Вентиляционная решетка (4 стены с двух сторон)</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Вывод кабеля под светильник на улицу (2 шт.)</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Два светильника у входной двери (без вывода кабеля)</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Рундук более 250 см</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Окно для Овала 4.20×180</td>
+                            <td class="price-cell">97 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Обработка бани в три слоя</td>
+                            <td class="price-cell">4 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Обработка квадроовалов в 3 слоя</td>
+                            <td class="price-cell">7 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Поддоконник</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ящики</td>
+                            <td class="price-cell">4 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Угловая помывочная 100×100 (без двери)</td>
+                            <td class="price-cell">17 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">П-образная помывочная 100×100 (без двери)</td>
+                            <td class="price-cell">23 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Большая изогнутая помывочная (без двери)</td>
+                            <td class="price-cell">32 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Скрытая электрика в ПЭШке бани Парус и БКБ</td>
+                            <td class="price-cell">17 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Замена бруса (1 шт.)</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Замена бруса 150×100</td>
+                            <td class="price-cell">3 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Замена бруса 150×150</td>
+                            <td class="price-cell">9 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Кран имени Трушина</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Удлинение дымохода</td>
+                            <td class="price-cell">5 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Второе дыхание</td>
+                            <td class="price-cell">21 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Басту</td>
+                            <td class="price-cell">21 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Сетка каменка стандарт и арабеска</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Сетка каменка грилд</td>
+                            <td class="price-cell">8 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Диф автомат</td>
+                            <td class="price-cell">2 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">РГКМ проводка в парной</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Минерит плита Фаспан кирпичный (стандарт 3 листа, цена за лист)</td>
+                            <td class="price-cell">4 600 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Вынос бака через теплообменник в помывочную</td>
+                            <td class="price-cell">3 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Козырек над выносной топкой</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Козырек над боковым входом</td>
+                            <td class="price-cell">6 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Внутренняя обработка бани защитным составом</td>
+                            <td class="price-cell">10 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Внутренняя обработка Квадроовалов/Викингов/Парус защитным составом</td>
+                            <td class="price-cell">21 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Стеллаж (3 полки)</td>
+                            <td class="price-cell">7 000 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Стеллаж (5 полок)</td>
+                            <td class="price-cell">11 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ровный пол в квадроовалах</td>
+                            <td class="price-cell">34 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Ровный пол в парусах и квадробочках</td>
+                            <td class="price-cell">17 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Черепица до пола в квадроовалах</td>
+                            <td class="price-cell">17 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Черепица до пола в квадробочках и парусах</td>
+                            <td class="price-cell">11 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <!-- ДЕРЕВЯННЫЕ ДВЕРИ -->
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь глухая 170×70</td>
+                            <td class="price-cell">6 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь со стеклянной вставкой 170×70</td>
+                            <td class="price-cell">7 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь глухая 180×70</td>
+                            <td class="price-cell">6 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь со стеклянной вставкой 180×70</td>
+                            <td class="price-cell">7 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь глухая 180×80</td>
+                            <td class="price-cell">7 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь со стеклянной вставкой 180×80</td>
+                            <td class="price-cell">8 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь глухая 190×80</td>
+                            <td class="price-cell">7 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="service-photo"><img src="{% static 'images/services/топка.png' %}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;"></div></td>
+                            <td class="service-name">Деревянная дверь со стеклянной вставкой 190×80</td>
+                            <td class="price-cell">8 500 ₽</td>
+                            <td class="action-cell"><a href="{% url 'order' %}" class="btn-mini">Заказать</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="services-note">
+                <p><strong>💡 Обратите внимание:</strong> Все дополнительные услуги необходимо заказывать заранее при бронировании бани. Цены актуальны.</p>
+            </div>
+
+            <div class="back-link">
+                <a href="{% url 'catalog' %}" class="btn btn-back">
+                    <i class="fas fa-arrow-left"></i> Вернуться в каталог
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.container { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; color: #666; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+.services-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.services-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #2C3E50;
+    background: linear-gradient(135deg, #2E8B57, #3cb371);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.services-subtitle {
+    font-size: 1.2rem;
+    color: #7F8C8D;
+}
+
+.services-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.services-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+}
+
+.services-table thead {
+    background: linear-gradient(135deg, #2E8B57, #3cb371);
+    color: white;
+}
+
+.services-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.services-table th:first-child { border-top-left-radius: 12px; }
+.services-table th:last-child { border-top-right-radius: 12px; }
+
+.services-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.services-table tbody tr:hover {
+    background: #f8f9fa;
+    transform: scale(1.005);
+    box-shadow: 0 4px 15px rgba(46, 139, 87, 0.1);
+}
+
+.services-table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.service-photo {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.service-name {
+    font-weight: 500;
+    color: #2C3E50;
+    font-size: 0.95rem;
+}
+
+.price-cell {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2E8B57;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.action-cell {
+    text-align: center;
+}
+
+.btn-mini {
+    display: inline-block;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #2E8B57, #3cb371);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(46, 139, 87, 0.3);
+}
+
+.btn-mini:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 139, 87, 0.4);
+}
+
+.services-note {
+    background: linear-gradient(135deg, #fff3cd, #fffaeb);
+    border-left: 4px solid #ffc107;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.services-note p {
+    margin: 0;
+    color: #856404;
+    line-height: 1.6;
+}
+
+.back-link {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 2px solid #e8e8e8;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-back {
+    background: transparent;
+    color: #2E8B57;
+    border: 2px solid #2E8B57;
+}
+
+.btn-back:hover {
+    background: #2E8B57;
+    color: white;
+    transform: translateX(-5px);
+}
+
+@media (max-width: 768px) {
+    .services-container { padding: 1.5rem; }
+    .services-title { font-size: 2rem; }
+    .services-table { font-size: 0.85rem; }
+    .services-table th, .services-table td { padding: 0.6rem; }
+    .service-photo { font-size: 1.8rem; }
+    .service-name { font-size: 0.85rem; }
+    .price-cell { font-size: 0.95rem; }
+    .btn-mini { padding: 6px 12px; font-size: 0.75rem; }
+}
+</style>
+{% endblock %}

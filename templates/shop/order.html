@@ -1,230 +1,225 @@
-
 {% extends 'base.html' %}
-{% block content %}
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Оставить заявку</h2>
-            <p class="section-subtitle">Мы свяжемся с вами в течение 15 минут</p>
-        </div>
+{% load static %}
 
-        <div style="max-width: 600px; margin: 0 auto;">
-            <div style="background: var(--bg-white); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
-                <form method="post" class="order-form">
-                    {% csrf_token %}
-                    
-                    <!-- Общие ошибки формы -->
-                    {% if form.errors %}
-                    <div class="form-errors" style="background: #ffebee; color: #c62828; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid #ffcdd2;">
-                        <strong>Пожалуйста, исправьте ошибки ниже:</strong>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                            <div>{{ error }}</div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    
-                    <div class="form-group">
-                        <label class="form-label">ФИО *</label>
-                        <input type="text" name="fio" class="form-control" placeholder="Иванов Иван Иванович" required value="{{ form.fio.value|default:'' }}">
-                        {% if form.fio.errors %}
-                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
-                            {% for error in form.fio.errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Телефон *</label>
-                        <input type="tel" name="phone" class="form-control" placeholder="+7 (999) 999-99-99" required value="{{ form.phone.value|default:'' }}">
-                        {% if form.phone.errors %}
-                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
-                            {% for error in form.phone.errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Email *</label>
-                        <input type="email" name="email" class="form-control" placeholder="example@mail.ru" required value="{{ form.email.value|default:'' }}">
-                        {% if form.email.errors %}
-                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
-                            {% for error in form.email.errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Сообщение</label>
-                        <textarea name="message" class="form-control" rows="5" placeholder="Опишите ваши пожелания к бане...">{{ form.message.value|default:'' }}</textarea>
-                        {% if form.message.errors %}
-                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
-                            {% for error in form.message.errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Подтвердите, что вы не робот</label>
-                        <div class="captcha-container">
-                            {{ form.captcha }}
-                        </div>
-                        {% if form.captcha.errors %}
-                        <div class="field-errors" style="color: #c62828; font-size: 0.9rem; margin-top: 0.5rem;">
-                            {% for error in form.captcha.errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    
-                    <button type="submit" class="btn" style="width: 100%;">
-                        <i class="fas fa-paper-plane"></i>
-                        Отправить заявку
-                    </button>
-                </form>
+{% block title %}Оформление заказа - Banyana{% endblock %}
+
+{% block content %}
+<section class="section" style="padding: 2rem 0;">
+    <div class="container" style="max-width: 800px;">
+        <nav class="breadcrumb">
+            <a href="{% url 'index' %}">Главная</a>
+            <span>›</span>
+            <span>Оформление заказа</span>
+        </nav>
+
+        <div class="order-container">
+            <h1 class="order-title">🚀 Оформление заказа</h1>
+
+            {% if success %}
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>Заказ успешно отправлен!</h3>
+                <p>Мы свяжемся с вами в ближайшее время.</p>
+                <a href="{% url 'catalog' %}" class="btn btn-primary">Вернуться в каталог</a>
             </div>
+            {% else %}
+
+            {% if order_details %}
+            <div class="order-details-preview">
+                <h3>📋 Детали вашего заказа:</h3>
+                <pre class="order-details-text">{{ order_details }}</pre>
+            </div>
+            {% endif %}
+
+            <form method="post" class="order-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="id_fio">ФИО *</label>
+                    {{ form.fio }}
+                    {% if form.fio.errors %}
+                        <div class="error">{{ form.fio.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_phone">Телефон *</label>
+                    {{ form.phone }}
+                    {% if form.phone.errors %}
+                        <div class="error">{{ form.phone.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_email">Email *</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error">{{ form.email.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_message">Комментарий к заказу</label>
+                    {{ form.message }}
+                    {% if form.message.errors %}
+                        <div class="error">{{ form.message.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-submit">
+                    📤 Отправить заказ
+                </button>
+            </form>
+            {% endif %}
         </div>
     </div>
 </section>
 
-{% if success %}
-<div class="success-notification" id="successNotification">
-    <div class="success-content">
-        <div class="success-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <div class="success-text">
-            <h3>Заявка отправлена!</h3>
-            <p>Мы свяжемся с вами в течение 15 минут для уточнения деталей.</p>
-        </div>
-        <button class="success-close" onclick="closeSuccessNotification()">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-</div>
-
-<script>
-function closeSuccessNotification() {
-    const notification = document.getElementById('successNotification');
-    notification.style.transform = 'translateX(100%)';
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 300);
-}
-
-// Auto close after 5 seconds
-setTimeout(closeSuccessNotification, 5000);
-</script>
-
 <style>
-.success-notification {
-    position: fixed;
-    top: 100px;
-    right: 20px;
+.container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; color: #666; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+
+.order-container {
     background: white;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    padding: 1.5rem;
-    z-index: 2000;
-    animation: slideInRight 0.5s ease-out;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.order-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #2C3E50;
+    margin-bottom: 2rem;
+}
+
+.order-details-preview {
+    background: linear-gradient(135deg, #f8f9fa, #fff);
     border-left: 4px solid var(--primary);
-    max-width: 400px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
 }
 
-.success-content {
+.order-details-preview h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2C3E50;
+}
+
+.order-details-text {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #2C3E50;
+}
+
+.order-form {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    position: relative;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.success-icon {
-    color: var(--primary);
-    font-size: 2rem;
-    flex-shrink: 0;
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
-.success-text h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--text-dark);
-    font-size: 1.2rem;
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2C3E50;
 }
 
-.success-text p {
-    margin: 0;
-    color: var(--text-light);
-    line-height: 1.5;
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-.success-close {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: var(--text-light);
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.btn-submit {
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    transition: background var(--transition-fast);
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
 }
 
-.success-close:hover {
-    background: var(--primary);
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
 }
 
-.captcha-container img {
-    transform: scale(1.5);
-    transform-origin: left top;
-    margin-bottom: 20px;
+.success-message {
+    text-align: center;
+    padding: 3rem 2rem;
 }
 
-.captcha-container input {
-    padding: 12px;
+.success-message i {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.success-message h3 {
+    font-size: 1.8rem;
+    color: #2C3E50;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
     font-size: 1.1rem;
-    width: 100%;
+    color: #7F8C8D;
+    margin-bottom: 2rem;
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.btn-primary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .success-notification {
-        right: 10px;
-        left: 10px;
-        max-width: none;
-    }
-
-    .captcha-container img {
-        transform: scale(1.2);
-    }
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
 }
 </style>
-{% endif %}
 {% endblock %}
