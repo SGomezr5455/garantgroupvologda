@@ -55,7 +55,13 @@ INSTALLED_APPS = [
     'shop',  # ваше приложение
     'captcha',  # если нужна капча
 ]
-
+CAPTCHA_FONT_SIZE = 40
+CAPTCHA_LETTER_ROTATION = (-35, 35)
+CAPTCHA_BACKGROUND_COLOR = '#ffffff'
+CAPTCHA_FOREGROUND_COLOR = '#0d6efd'
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_arcs', 'captcha.helpers.noise_dots')
+CAPTCHA_TIMEOUT = 5  # минут
 
 
 MIDDLEWARE = [

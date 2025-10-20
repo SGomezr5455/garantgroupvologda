@@ -1,62 +1,48 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import (Product, ProductImage, ProductPrice, AdditionalService,
-                     ServiceImage, WorkPhoto, OrderRequest, CompanyInfo)
+from .models import (Product, ProductImage, ProductPrice, GlobalOption,
+                     WorkPhoto, OrderRequest, CompanyInfo)
 
 
-class ServiceImageInline(admin.TabularInline):
-    model = ServiceImage
-    extra = 2
-    fields = ('image', 'alt_text', 'order', 'preview')
-    readonly_fields = ('preview',)
-
-    def preview(self, obj):
-        if obj.image and obj.pk:
-            return format_html('<img src="{}" width="60" height="60" style="object-fit: cover; border-radius: 4px;" />',
-                               obj.image.url)
-        return "Нет изображения"
-
-    preview.short_description = 'Превью'
-
-
-@admin.register(AdditionalService)
-class AdditionalServiceAdmin(admin.ModelAdmin):
-    list_display = ('emoji_title', 'formatted_price_display', 'is_active', 'order', 'images_count')
+@admin.register(GlobalOption)
+class GlobalOptionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category_emoji', 'formatted_price', 'preview_image', 'is_active', 'order')
     list_editable = ('is_active', 'order')
-    list_filter = ('is_active',)
-    search_fields = ('title', 'description')
-    inlines = [ServiceImageInline]
-
+    list_filter = ('is_active', 'category')
+    search_fields = ('name', 'description')
     fieldsets = (
         ('Основная информация', {
-            'fields': ('title', 'emoji', 'price', 'is_active')
+            'fields': ('name', 'price', 'category', 'is_active')
         }),
-        ('Описание', {
-            'fields': ('description',),
+        ('Дополнительная информация', {
+            'fields': ('description', 'image', 'order'),
             'classes': ('wide',)
-        }),
-        ('Порядок отображения', {
-            'fields': ('order',)
         }),
     )
 
-    def emoji_title(self, obj):
-        return f'{obj.emoji} {obj.title}'
+    def category_emoji(self, obj):
+        emoji_map = {
+            'architecture': '🏛️',
+            'plumbing': '🚿',
+            'electrical': '💡',
+            'furniture': '🪑',
+            'other': '✨'
+        }
+        return emoji_map.get(obj.category, '✨')
+    category_emoji.short_description = 'Категория'
 
-    emoji_title.short_description = 'Услуга'
-
-    def formatted_price_display(self, obj):
+    def formatted_price(self, obj):
         return obj.formatted_price()
+    formatted_price.short_description = 'Цена'
 
-    formatted_price_display.short_description = 'Цена'
-
-    def images_count(self, obj):
-        count = obj.images.count()
-        if count > 0:
-            return format_html('<span style="color: green;">✓ {} фото</span>', count)
-        return format_html('<span style="color: #999;">Нет фото</span>')
-
-    images_count.short_description = 'Фотографии'
+    def preview_image(self, obj):
+        if obj.image and obj.pk:
+            return format_html(
+                '<img src="{}" width="60" height="60" style="object-fit: cover; border-radius: 4px;" />',
+                obj.image.url
+            )
+        return "—"
+    preview_image.short_description = 'Фото'
 
 
 class ProductPriceInline(admin.TabularInline):
@@ -73,10 +59,11 @@ class ProductImageInline(admin.TabularInline):
 
     def preview(self, obj):
         if obj.image and obj.pk:
-            return format_html('<img src="{}" width="60" height="60" style="object-fit: cover; border-radius: 4px;" />',
-                               obj.image.url)
+            return format_html(
+                '<img src="{}" width="60" height="60" style="object-fit: cover; border-radius: 4px;" />',
+                obj.image.url
+            )
         return "Нет изображения"
-
     preview.short_description = 'Превью'
 
 
@@ -89,27 +76,25 @@ class ProductAdmin(admin.ModelAdmin):
 
     def formatted_price(self, obj):
         return f"{obj.price:,} ₽".replace(',', ' ')
-
     formatted_price.short_description = 'Базовая цена'
 
     def main_image(self, obj):
         if obj.image:
-            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover; border-radius: 4px;" />',
-                               obj.image.url)
+            return format_html(
+                '<img src="{}" width="50" height="50" style="object-fit: cover; border-radius: 4px;" />',
+                obj.image.url
+            )
         return "Нет изображения"
-
     main_image.short_description = 'Главное фото'
 
     def gallery_count(self, obj):
         count = obj.gallery.count()
         return f"+{count} фото" if count > 0 else "—"
-
     gallery_count.short_description = 'Галерея'
 
     def prices_count(self, obj):
         count = obj.prices.count()
         return f"{count} размеров"
-
     prices_count.short_description = 'Размеры'
 
 
@@ -124,9 +109,9 @@ class WorkPhotoAdmin(admin.ModelAdmin):
         if obj.image and obj.pk:
             return format_html(
                 '<img src="{}" width="100" height="100" style="object-fit: cover; border-radius: 4px;" />',
-                obj.image.url)
+                obj.image.url
+            )
         return "Нет изображения"
-
     preview.short_description = 'Превью'
 
 

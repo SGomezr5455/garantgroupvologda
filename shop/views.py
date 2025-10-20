@@ -1,6 +1,7 @@
+# views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Product, WorkPhoto, OrderRequest, CompanyInfo, ProductPrice
+from .models import Product, WorkPhoto, OrderRequest, CompanyInfo, ProductPrice, GlobalOption
 from .forms import OrderForm
 
 
@@ -28,6 +29,8 @@ def product_detail(request, pk):
     """Детальная страница товара с калькулятором"""
     product = get_object_or_404(Product, pk=pk)
     prices = product.prices.all()
+    # Получаем ВСЕ активные глобальные опции
+    global_options = GlobalOption.objects.filter(is_active=True).order_by('category', 'order')
 
     product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
 
@@ -36,7 +39,9 @@ def product_detail(request, pk):
 
     return render(request, 'shop/product_detail.html', {
         'product': product,
-        'prices': prices
+        'prices': prices,
+        'global_options': global_options,
+        'global_options_count': global_options.count()
     })
 
 
@@ -61,19 +66,19 @@ def order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            OrderRequest.objects.create(
+            # Сохраняем заказ с данными из калькулятора
+            order_request = OrderRequest.objects.create(
                 fio=form.cleaned_data['fio'],
                 phone=form.cleaned_data['phone'],
                 email=form.cleaned_data['email'],
-                message=form.cleaned_data['message']
+                message=order_details  # Используем данные из калькулятора
             )
             success = True
-            form = OrderForm()
-            order_details = ''  # Очищаем после успешной отправки
+            messages.success(request, 'Ваш заказ успешно отправлен! Мы свяжемся с вами в ближайшее время.')
+            # Редирект на страницу успеха
+            return redirect('order_success')
     else:
-        # Предзаполняем поле сообщения данными из калькулятора
-        initial_data = {'message': order_details} if order_details else {}
-        form = OrderForm(initial=initial_data)
+        form = OrderForm()
 
     return render(request, 'shop/order.html', {
         'form': form,
@@ -82,6 +87,16 @@ def order(request):
     })
 
 
+def order_success(request):
+    """Страница успешного заказа"""
+    return render(request, 'shop/order_success.html')
+
+
 def additional_services(request):
     """Страница дополнительных услуг"""
-    return render(request, 'shop/additional_services.html')
+    global_options = GlobalOption.objects.filter(is_active=True).order_by('category', 'order')
+
+    return render(request, 'shop/additional_services.html', {
+        'global_options': global_options,
+        'global_options_count': global_options.count()
+    })

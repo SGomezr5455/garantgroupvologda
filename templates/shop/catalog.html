@@ -24,7 +24,6 @@
                     <p class="product-description">{{ product.description|truncatechars:100 }}</p>
                     <div class="product-actions">
                         <a href="{% url 'product_detail' product.pk %}" class="btn">Подробнее</a>
-                        <a href="{% url 'order' %}" class="btn btn-outline">Заказать</a>
                     </div>
                 </div>
             </div>
@@ -34,4 +33,17 @@
         </div>
     </div>
 </section>
+
+<style>
+.product-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.product-actions .btn {
+    width: 100%;
+    justify-content: center;
+}
+</style>
 {% endblock %}
