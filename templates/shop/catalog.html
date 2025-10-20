@@ -20,7 +20,7 @@
                 {% endif %}
                 <div class="product-content">
                     <h3 class="product-title">{{ product.title }}</h3>
-                    <div class="product-price">{{ product.formatted_price }} ₽</div>
+                    <div class="product-price">{{ product.formatted_price }}</div>
                     <p class="product-description">{{ product.description|truncatechars:100 }}</p>
                     <div class="product-actions">
                         <a href="{% url 'product_detail' product.pk %}" class="btn">Подробнее</a>
