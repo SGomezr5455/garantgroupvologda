@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ejjou40dg-%m$k^yap6m^9(paem_l6**7!8n6!62ygopf#!m*x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['garantgroup.onrender.com', 'localhost', '127.0.0.1', '192.168.0.4',
                  'sgomezr5455-banyana-45a5.twc1.net', '188.225.82.47',
@@ -65,7 +65,8 @@ CAPTCHA_TIMEOUT = 5  # минут
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.middleware.gzip.GZipMiddleware',  # ОПТИМИЗАЦИЯ: GZip сжатие
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ← ДОБАВИТЬ ЭТУ СТРОКУ
+    'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,6 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']  # Статика в корне проекта
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'

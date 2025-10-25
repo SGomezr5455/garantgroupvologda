@@ -49,3 +49,17 @@ WARNING 2025-10-25 15:45:54,118 log Not Found: /favicon.ico
 WARNING 2025-10-25 15:45:54,118 basehttp "GET /favicon.ico HTTP/1.1" 404 1250
 WARNING 2025-10-25 18:50:40,723 log Not Found: /favicon.ico
 WARNING 2025-10-25 18:50:40,724 basehttp "GET /favicon.ico HTTP/1.1" 404 1282
+WARNING 2025-10-25 18:56:40,717 log Not Found: /static/css/style.css
+WARNING 2025-10-25 18:56:40,717 log Not Found: /static/js/main.js
+WARNING 2025-10-25 18:56:40,718 basehttp "GET /static/js/main.js HTTP/1.1" 404 179
+WARNING 2025-10-25 18:56:40,718 basehttp "GET /static/css/style.css HTTP/1.1" 404 179
+WARNING 2025-10-25 18:56:40,763 log Not Found: /media/products/photo_6_2025-10-15_18-44-08.jpg
+WARNING 2025-10-25 18:56:40,764 log Not Found: /media/products/photo_4_2025-10-15_18-40-21.jpg
+WARNING 2025-10-25 18:56:40,765 log Not Found: /media/products/NVIDIA_Overlay_lsAUum10Xu.png
+WARNING 2025-10-25 18:56:40,766 basehttp "GET /media/products/photo_6_2025-10-15_18-44-08.jpg HTTP/1.1" 404 179
+WARNING 2025-10-25 18:56:40,767 basehttp "GET /media/products/photo_4_2025-10-15_18-40-21.jpg HTTP/1.1" 404 179
+WARNING 2025-10-25 18:56:40,767 basehttp "GET /media/products/NVIDIA_Overlay_lsAUum10Xu.png HTTP/1.1" 404 179
+WARNING 2025-10-25 18:56:40,795 log Not Found: /favicon.ico
+WARNING 2025-10-25 18:56:40,796 basehttp "GET /favicon.ico HTTP/1.1" 404 179
+WARNING 2025-10-25 18:56:49,987 log Not Found: /favicon.ico
+WARNING 2025-10-25 18:56:49,988 basehttp "GET /favicon.ico HTTP/1.1" 404 1298
