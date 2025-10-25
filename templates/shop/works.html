@@ -1,34 +1,119 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Наши работы - Гарант Групп{% endblock %}
 
 {% block content %}
-<section class="section">
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Наши работы</h2>
-            <p class="section-subtitle">Реализованные проекты бань</p>
-        </div>
+        <div class="hero-content">
 
-        <div class="gallery-grid">
-            {% for photo in photos %}
-            <div class="work-card">
-                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="work-image">
-                <div class="work-title">{{ photo.title }}</div>
-            </div>
-            {% empty %}
-            <div class="text-center" style="grid-column: 1 / -1; padding: 4rem 2rem;">
-                <i class="fas fa-camera" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1rem;"></i>
-                <h3 style="margin-bottom: 1rem; color: var(--text-light);">Фотографии скоро появятся</h3>
-                <p style="color: var(--text-light);">Мы активно пополняем наше портфолио</p>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="text-center mt-3">
-            <a href="/order/" class="btn">
-                <i class="fas fa-paper-plane"></i>
-                Заказать такой же проект
-            </a>
+            <h1 class="hero-title">Наши работы</h1>
+            <p class="hero-subtitle">Примеры выполненных проектов</p>
         </div>
     </div>
 </section>
+
+<!-- Works Gallery -->
+<section class="section">
+    <div class="container">
+        <div class="card-grid">
+            {% for photo in photos %}
+            <article class="work-card fade-in" style="animation-delay: {{ forloop.counter0|add:'0' }}00ms;">
+                <div class="work-image">
+                    {% if photo.image %}
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
+                    <div class="work-overlay">
+                        <h3 class="work-title">{{ photo.title }}</h3>
+                        {% if photo.description %}
+                        <p class="work-description">{{ photo.description }}</p>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </article>
+            {% empty %}
+            <div style="grid-column: 1/-1; text-align:center; padding:4rem; color:#757575;">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin:0 auto 2rem; opacity:0.3;">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <h3 style="font-size:1.5rem; margin-bottom:0.5rem;">Фото еще не добавлены</h3>
+                <p>Скоро здесь появятся примеры наших работ</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+.work-card {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    height: 400px;
+}
+
+.work-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.work-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+}
+
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-card:hover .work-image img {
+    transform: scale(1.1);
+}
+
+.work-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.work-card:hover .work-overlay {
+    opacity: 1;
+}
+
+.work-title {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.work-description {
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+</style>
 {% endblock %}

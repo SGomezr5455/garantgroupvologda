@@ -1,256 +1,346 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ============================================
+// PREMIUM BANYANA JAVASCRIPT 2025
+// Все анимации и интеракции
+// ============================================
 
-// Preloader
-const preloader = document.querySelector('.preloader');
-if (preloader) {
-window.addEventListener('load', () => {
-setTimeout(() => {
-preloader.classList.add('loaded');
-setTimeout(() => {
-preloader.style.display = 'none';
-}, 600);
-}, 1000);
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ========== PRELOADER ==========
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 600);
+            }, 500);
+        });
+    }
+
+    // ========== HEADER SCROLL EFFECTS ==========
+    const header = document.querySelector('.header');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateHeaderOnScroll() {
+        const currentScrollY = window.scrollY;
+
+        // Add scrolled class
+        if (currentScrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        // Hide/show header on scroll direction
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeaderOnScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // ========== MOBILE MENU ==========
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    if (mobileMenuBtn && mainNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu on link click
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target) && mainNav.classList.contains('active')) {
+                mobileMenuBtn.classList.remove('active');
+                mainNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // ========== ACTIVE NAV LINK ==========
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+
+    // ========== SCROLL ANIMATIONS ==========
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .scale-in, .slide-in-left').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        observer.observe(el);
+    });
+
+    // ========== SMOOTH SCROLL ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // ========== IMAGE LAZY LOAD WITH ANIMATION ==========
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.6s ease';
+
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+
+                img.addEventListener('load', () => {
+                    img.style.opacity = '1';
+                });
+
+                imageObserver.unobserve(img);
+            }
+        });
+    }, { rootMargin: '50px' });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+
+    // ========== BUTTON RIPPLE EFFECT ==========
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // ========== PARALLAX EFFECT ON HERO ==========
+    const heroShapes = document.querySelectorAll('.floating-shape');
+    if (heroShapes.length > 0) {
+        let parallaxTicking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!parallaxTicking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    heroShapes.forEach((shape, index) => {
+                        const speed = 0.1 + (index * 0.05);
+                        shape.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    parallaxTicking = false;
+                });
+                parallaxTicking = true;
+            }
+        }, { passive: true });
+    }
+
+    // ========== CARD TILT EFFECT ==========
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+
+    // ========== NUMBER COUNTER ANIMATION ==========
+    const animateValue = (element, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const value = Math.floor(progress * (end - start) + start);
+            element.textContent = value.toLocaleString('ru-RU');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                const target = parseInt(entry.target.dataset.count);
+                animateValue(entry.target, 0, target, 2000);
+                entry.target.classList.add('counted');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => {
+        counterObserver.observe(el);
+    });
+
+    // ========== BACK TO TOP BUTTON ==========
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    `;
+    backToTopBtn.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, #2E7D32, #FF6F00);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+    document.body.appendChild(backToTopBtn);
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 500) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.visibility = 'visible';
+        } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.visibility = 'hidden';
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    backToTopBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.15) translateY(-4px)';
+    });
+
+    backToTopBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+    });
+
+    // ========== CONSOLE MESSAGE ==========
+    console.log('%c🏡 Гарант Групп - Бани под ключ', 'color: #2E7D32; font-size: 20px; font-weight: bold;');
+    console.log('%cРазработано с ❤️ в 2025', 'color: #FF6F00; font-size: 14px;');
+
 });
+// Добавьте этот код в конец функции calculate()
+// Он добавляет анимацию при обновлении цены
+
+// В конце функции calculate():
+const totalPriceElement = document.querySelector('.summary-total-price');
+if (totalPriceElement) {
+    // Убираем класс
+    totalPriceElement.classList.remove('updated');
+
+    // Триггер reflow для перезапуска анимации
+    void totalPriceElement.offsetWidth;
+
+    // Добавляем класс для анимации
+    totalPriceElement.classList.add('updated');
+
+    // Убираем класс после анимации
+    setTimeout(() => {
+        totalPriceElement.classList.remove('updated');
+    }, 300);
 }
 
-// Header scroll effect
-const header = document.querySelector('.header');
-let lastScrollY = window.scrollY;
-window.addEventListener('scroll', () => {
-// Header background on scroll
-if (window.scrollY > 100) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
+// ========== RIPPLE ANIMATION CSS ==========
+const rippleStyles = document.createElement('style');
+rippleStyles.textContent = `
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        pointer-events: none;
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out;
+    }
 
-// Header hide/show on scroll direction
-if (window.scrollY > lastScrollY && window.scrollY > 200) {
-header.style.transform = 'translateY(-100%)';
-} else {
-header.style.transform = 'translateY(0)';
-}
-
-lastScrollY = window.scrollY;
-});
-
-// Mobile menu functionality
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-if (mobileMenuBtn && mobileMenu) {
-mobileMenuBtn.addEventListener('click', () => {
-mobileMenuBtn.classList.toggle('active');
-mobileMenu.classList.toggle('active');
-document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-
-// Close mobile menu when clicking on links
-const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
-mobileLinks.forEach(link => {
-link.addEventListener('click', () => {
-mobileMenuBtn.classList.remove('active');
-mobileMenu.classList.remove('active');
-document.body.style.overflow = '';
-});
-});
-}
-
-// Back to top button
-const backToTop = document.querySelector('.back-to-top');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 500) {
-backToTop.classList.add('visible');
-} else {
-backToTop.classList.remove('visible');
-}
-});
-
-backToTop.addEventListener('click', (e) => {
-e.preventDefault();
-window.scrollTo({
-top: 0,
-behavior: 'smooth'
-});
-});
-
-// Enhanced button hover effects
-const buttons = document.querySelectorAll('.btn, .btn-secondary, .btn-outline');
-buttons.forEach(btn => {
-btn.addEventListener('mouseenter', function() {
-this.style.transform = 'translateY(-3px)';
-this.style.boxShadow = 'var(--shadow-hover)';
-});
-btn.addEventListener('mouseleave', function() {
-this.style.transform = 'translateY(0)';
-this.style.boxShadow = '';
-});
-});
-
-// Form enhancements
-const forms = document.querySelectorAll('form');
-forms.forEach(form => {
-const submitBtn = form.querySelector('button[type="submit"]');
-if (submitBtn) {
-form.addEventListener('submit', function() {
-const originalText = submitBtn.innerHTML;
-submitBtn.innerHTML = `
-<i class="fas fa-spinner fa-spin"></i> Отправка...
+    @keyframes ripple-animation {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
 `;
-submitBtn.disabled = true;
-});
-}
-
-// Add focus effects to form inputs
-const inputs = form.querySelectorAll('input, textarea, select');
-inputs.forEach(input => {
-input.addEventListener('focus', function() {
-this.parentElement.classList.add('focused');
-});
-input.addEventListener('blur', function() {
-if (this.value === '') {
-this.parentElement.classList.remove('focused');
-}
-});
-});
-});
-
-// Image lazy loading with fade-in effect
-const images = document.querySelectorAll('img');
-const imageObserver = new IntersectionObserver((entries, observer) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-const img = entry.target;
-img.style.opacity = '0';
-img.style.transition = 'opacity 0.6s ease';
-
-// Ensure image is loaded
-if (img.complete) {
-img.style.opacity = '1';
-} else {
-img.addEventListener('load', () => {
-img.style.opacity = '1';
-});
-}
-
-observer.unobserve(img);
-}
-});
-}, {
-rootMargin: '50px 0px',
-threshold: 0.1
-});
-
-images.forEach(img => {
-imageObserver.observe(img);
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-const target = document.querySelector(this.getAttribute('href'));
-if (target) {
-const headerHeight = header.offsetHeight;
-const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-window.scrollTo({
-top: targetPosition,
-behavior: 'smooth'
-});
-}
-});
-});
-
-// Add CSS for loading spinner
-const style = document.createElement('style');
-style.textContent = `
-.loading-spinner {
-display: flex;
-align-items: center;
-gap: 8px;
-}
-
-.fa-spin {
-animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
-}
-
-.form-group.focused .form-label {
-transform: translateY(-25px) scale(0.85);
-color: var(--primary);
-}
-`;
-document.head.appendChild(style);
-
-// Initialize animations on scroll
-const animateOnScroll = () => {
-const elements = document.querySelectorAll('.feature-card, .product-card, .work-card, .value-card');
-elements.forEach(element => {
-const elementTop = element.getBoundingClientRect().top;
-const elementVisible = 150;
-if (elementTop < window.innerHeight - elementVisible) {
-element.style.opacity = "1";
-element.style.transform = "translateY(0)";
-}
-});
-};
-
-// Set initial state for animated elements
-const animatedElements = document.querySelectorAll('.feature-card, .product-card, .work-card, .value-card');
-animatedElements.forEach(element => {
-element.style.opacity = "0";
-element.style.transform = "translateY(30px)";
-element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-});
-
-window.addEventListener('scroll', animateOnScroll);
-animateOnScroll(); // Initial check
-
-});
-
-// Product card interactions
-function initProductInteractions() {
-const productCards = document.querySelectorAll('.product-card');
-productCards.forEach(card => {
-card.addEventListener('mouseenter', function() {
-const image = this.querySelector('.product-image');
-if (image) {
-image.style.transform = 'scale(1.05)';
-}
-});
-card.addEventListener('mouseleave', function() {
-const image = this.querySelector('.product-image');
-if (image) {
-image.style.transform = 'scale(1)';
-}
-});
-});
-}
-
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-initProductInteractions();
-});
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-let timeout;
-return function executedFunction(...args) {
-const later = () => {
-clearTimeout(timeout);
-func(...args);
-};
-clearTimeout(timeout);
-timeout = setTimeout(later, wait);
-};
-}
-
-// Optimized scroll handler
-const optimizedScrollHandler = debounce(() => {
-// Scroll-based animations and effects
-}, 10);
-
-window.addEventListener('scroll', optimizedScrollHandler);
+document.head.appendChild(rippleStyles);

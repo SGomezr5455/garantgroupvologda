@@ -1,0 +1,49 @@
+WARNING 2025-10-25 15:11:51,993 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:11:51,994 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-25 15:12:02,587 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:12:02,588 basehttp "GET /favicon.ico HTTP/1.1" 404 1220
+ERROR 2025-10-25 15:12:18,297 log Internal Server Error: /product/4/
+Traceback (most recent call last):
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\Desktop\last\banyana_fresh\banyana_fresh\shop\views.py", line 91, in product_detail
+    Prefetch('images', queryset=ProductImage.objects.order_by('order'))
+                                ^^^^^^^^^^^^
+NameError: name 'ProductImage' is not defined
+ERROR 2025-10-25 15:12:18,301 basehttp "GET /product/4/ HTTP/1.1" 500 11561
+WARNING 2025-10-25 15:13:56,940 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:13:56,941 basehttp "GET /favicon.ico HTTP/1.1" 404 1286
+WARNING 2025-10-25 15:14:43,488 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:14:43,488 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-25 15:15:43,211 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:15:43,212 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+WARNING 2025-10-25 15:15:59,435 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:15:59,436 basehttp "GET /favicon.ico HTTP/1.1" 404 1287
+WARNING 2025-10-25 15:16:40,379 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:16:40,380 basehttp "GET /favicon.ico HTTP/1.1" 404 1295
+WARNING 2025-10-25 15:16:52,244 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:16:52,245 basehttp "GET /favicon.ico HTTP/1.1" 404 1225
+WARNING 2025-10-25 15:16:54,497 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:16:54,498 basehttp "GET /favicon.ico HTTP/1.1" 404 1263
+WARNING 2025-10-25 15:17:13,137 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:17:13,138 basehttp "GET /favicon.ico HTTP/1.1" 404 1249
+WARNING 2025-10-25 15:29:50,613 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:29:50,613 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-10-25 15:30:02,312 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:30:02,313 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+WARNING 2025-10-25 15:31:01,133 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:31:01,134 basehttp "GET /favicon.ico HTTP/1.1" 404 1298
+WARNING 2025-10-25 15:32:09,815 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:32:09,816 basehttp "GET /favicon.ico HTTP/1.1" 404 1211
+WARNING 2025-10-25 15:39:59,077 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:39:59,077 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+WARNING 2025-10-25 15:45:44,099 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:45:44,100 basehttp "GET /favicon.ico HTTP/1.1" 404 1211
+WARNING 2025-10-25 15:45:47,730 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:45:47,730 basehttp "GET /favicon.ico HTTP/1.1" 404 1268
+WARNING 2025-10-25 15:45:54,118 log Not Found: /favicon.ico
+WARNING 2025-10-25 15:45:54,118 basehttp "GET /favicon.ico HTTP/1.1" 404 1250

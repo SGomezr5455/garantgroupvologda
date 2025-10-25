@@ -1,88 +1,156 @@
-# views.py
+# shop/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Product, WorkPhoto, OrderRequest, CompanyInfo, ProductPrice, GlobalOption
+from django.core.cache import cache
+from django.db.models import Prefetch
+from django.views.decorators.cache import cache_page
+from collections import defaultdict
+
+from .models import (
+    Product, ProductImage, ProductPrice, WorkPhoto,
+    OrderRequest, CompanyInfo, GlobalOption
+)
 from .forms import OrderForm
 
 
+def get_grouped_options():
+    """Утилита для группировки опций по категориям с кешированием"""
+    cached_data = cache.get('global_options_grouped')
+    if cached_data:
+        return cached_data
+
+    global_options = GlobalOption.objects.filter(is_active=True).select_related().order_by('category', 'order', 'name')
+
+    options_by_category = defaultdict(lambda: {'name': '', 'options': []})
+
+    for option in global_options:
+        category_key = option.category
+        if not options_by_category[category_key]['name']:
+            options_by_category[category_key]['name'] = option.get_category_display()
+        options_by_category[category_key]['options'].append(option)
+
+    result = dict(options_by_category)
+    cache.set('global_options_grouped', result, 60 * 15)  # 15 минут
+    return result
+
+
+@cache_page(60 * 5)  # Кеш на 5 минут
 def index(request):
     """Главная страница"""
-    featured_products = Product.objects.all()[:3]
+    featured_products = cache.get('products_featured')
+    if not featured_products:
+        featured_products = list(
+            Product.objects.select_related()
+            .prefetch_related('prices', 'images')
+            .all()[:3]
+        )
+        cache.set('products_featured', featured_products, 60 * 10)
+
     return render(request, 'shop/index.html', {'products': featured_products})
 
 
 def about(request):
     """О компании"""
-    info = CompanyInfo.objects.first()
+    info = CompanyInfo.get_cached()
     return render(request, 'shop/about.html', {'info': info})
 
 
+@cache_page(60 * 10)  # Кеш на 10 минут
 def catalog(request):
-    """Каталог товаров"""
-    products = Product.objects.all()
-    for product in products:
-        product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
+    """Каталог товаров с оптимизацией запросов"""
+    products = cache.get('products_catalog')
+
+    if not products:
+        products = list(
+            Product.objects
+            .select_related()
+            .prefetch_related('prices', 'images')
+            .all()
+        )
+        cache.set('products_catalog', products, 60 * 10)
+
     return render(request, 'shop/catalog.html', {'products': products})
 
 
 def product_detail(request, pk):
-    """Детальная страница товара с калькулятором"""
-    product = get_object_or_404(Product, pk=pk)
-    prices = product.prices.all()
-    # Получаем ВСЕ активные глобальные опции
-    global_options = GlobalOption.objects.filter(is_active=True).order_by('category', 'order')
+    """Детальная страница товара с калькулятором - ОПТИМИЗИРОВАНО"""
 
-    product.formatted_price = f"{product.price:,} ₽".replace(',', ' ')
+    # Кешируем данные товара
+    cache_key = f'product_detail_{pk}'
+    cached_data = cache.get(cache_key)
 
-    for price in prices:
-        price.formatted_price = f"{price.price:,} ₽".replace(',', ' ')
+    if cached_data:
+        context = cached_data
+    else:
+        # Один оптимизированный запрос с prefetch
+        product = get_object_or_404(
+            Product.objects
+            .select_related()
+            .prefetch_related(
+                Prefetch('prices', queryset=ProductPrice.objects.order_by('order')),
+                Prefetch('images', queryset=ProductImage.objects.order_by('order'))
+            ),
+            pk=pk
+        )
 
-    return render(request, 'shop/product_detail.html', {
-        'product': product,
-        'prices': prices,
-        'global_options': global_options,
-        'global_options_count': global_options.count()
-    })
+        prices = product.prices.all()
+        options_by_category = get_grouped_options()
+
+        context = {
+            'product': product,
+            'prices': prices,
+            'options_by_category': options_by_category,
+        }
+
+        cache.set(cache_key, context, 60 * 15)  # 15 минут
+
+    return render(request, 'shop/product_detail.html', context)
 
 
+@cache_page(60 * 30)  # Кеш на 30 минут
 def works(request):
     """Галерея работ"""
-    photos = WorkPhoto.objects.order_by('-created_at')
+    photos = WorkPhoto.objects.all()[:50]  # Ограничение количества
     return render(request, 'shop/works.html', {'photos': photos})
 
 
 def contact(request):
     """Контакты"""
-    return render(request, 'shop/contact.html')
+    info = CompanyInfo.get_cached()
+    return render(request, 'shop/contact.html', {'info': info})
 
 
 def order(request):
-    """Форма заказа с предзаполненными данными из калькулятора"""
-    success = False
-
-    # Получаем данные из калькулятора через GET-параметры
+    """Оформление заказа - ОПТИМИЗИРОВАНО"""
     order_details = request.GET.get('details', '')
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
+
+        # ⚠️ ДОБАВЛЕНО: Отладочный вывод
+        if not form.is_valid():
+            print("=" * 50)
+            print("ОШИБКИ ВАЛИДАЦИИ ФОРМЫ:")
+            print(form.errors)
+            print("=" * 50)
+
         if form.is_valid():
-            # Сохраняем заказ с данными из калькулятора
-            order_request = OrderRequest.objects.create(
+            # Создаем заказ
+            OrderRequest.objects.create(
                 fio=form.cleaned_data['fio'],
                 phone=form.cleaned_data['phone'],
                 email=form.cleaned_data['email'],
-                message=order_details  # Используем данные из калькулятора
+                message=form.cleaned_data['message'],
+                order_details=order_details
             )
-            success = True
-            messages.success(request, 'Ваш заказ успешно отправлен! Мы свяжемся с вами в ближайшее время.')
-            # Редирект на страницу успеха
+
+            messages.success(request, 'Заказ успешно отправлен!')
             return redirect('order_success')
     else:
         form = OrderForm()
 
     return render(request, 'shop/order.html', {
         'form': form,
-        'success': success,
         'order_details': order_details
     })
 
@@ -93,10 +161,9 @@ def order_success(request):
 
 
 def additional_services(request):
-    """Страница дополнительных услуг"""
-    global_options = GlobalOption.objects.filter(is_active=True).order_by('category', 'order')
+    """Страница дополнительных услуг - ОПТИМИЗИРОВАНО"""
+    options_by_category = get_grouped_options()
 
     return render(request, 'shop/additional_services.html', {
-        'global_options': global_options,
-        'global_options_count': global_options.count()
+        'options_by_category': options_by_category
     })

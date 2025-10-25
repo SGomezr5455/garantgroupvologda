@@ -26,9 +26,8 @@ SECRET_KEY = 'django-insecure-ejjou40dg-%m$k^yap6m^9(paem_l6**7!8n6!62ygopf#!m*x
 DEBUG = True
 
 ALLOWED_HOSTS = ['garantgroup.onrender.com', 'localhost', '127.0.0.1', '192.168.0.4',
-    'sgomezr5455-banyana-45a5.twc1.net', '188.225.82.47',
-    'banyana.ru', 'www.banyana.ru', '*.timeweb.cloud', '*.twc1.net']
-
+                 'sgomezr5455-banyana-45a5.twc1.net', '188.225.82.47',
+                 'banyana.ru', 'www.banyana.ru', '*.timeweb.cloud', '*.twc1.net']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://banyana.ru',
@@ -44,7 +43,6 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +53,8 @@ INSTALLED_APPS = [
     'shop',  # ваше приложение
     'captcha',  # если нужна капча
 ]
+
+# Captcha настройки
 CAPTCHA_FONT_SIZE = 40
 CAPTCHA_LETTER_ROTATION = (-35, 35)
 CAPTCHA_BACKGROUND_COLOR = '#ffffff'
@@ -63,9 +63,9 @@ CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_arcs', 'captcha.helpers.noise_dots')
 CAPTCHA_TIMEOUT = 5  # минут
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.gzip.GZipMiddleware',  # ОПТИМИЗАЦИЯ: GZip сжатие
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -79,7 +79,7 @@ ROOT_URLCONF = 'banyana_fresh.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Шаблоны в корне как в artmonument
+        'DIRS': [BASE_DIR / 'templates'],  # Шаблоны в корне
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -96,6 +96,8 @@ WSGI_APPLICATION = 'banyana_fresh.wsgi.application'
 
 
 # Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -107,7 +109,6 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
-# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -120,18 +121,131 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'ru-ru'
+
 TIME_ZONE = 'Europe/Moscow'
+
 USE_I18N = True
+
 USE_TZ = True
 
 
-# Static files - КАК В ARTMONUMENT (РАБОТАЕТ!)
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']  # Статика в корне проекта
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Media files - КАК В ARTMONUMENT (РАБОТАЕТ!)
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ============================================
+# ОПТИМИЗАЦИЯ: КЕШИРОВАНИЕ
+# ============================================
+
+# Кеширование в памяти (для разработки и малых проектов)
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'banyana-cache',
+        'TIMEOUT': 300,  # 5 минут по умолчанию
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000,
+        }
+    }
+}
+
+# Для продакшена рекомендуется Redis:
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6379/1',
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         },
+#         'TIMEOUT': 300,
+#     }
+# }
+
+
+# ============================================
+# ОПТИМИЗАЦИЯ: БАЗА ДАННЫХ
+# ============================================
+
+# Настройки подключения к БД (оптимизация для SQLite)
+DATABASES['default']['OPTIONS'] = {
+    'timeout': 20,
+    'check_same_thread': False,
+}
+
+# Для продакшена PostgreSQL:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'banyana_db',
+#         'USER': 'banyana_user',
+#         'PASSWORD': 'your_password',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#         'CONN_MAX_AGE': 600,  # Переиспользование соединений
+#     }
+# }
+
+
+# ============================================
+# ОПТИМИЗАЦИЯ: ЗАГРУЗКА ФАЙЛОВ
+# ============================================
+
+# Максимальный размер загружаемого файла (10 МБ)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
+
+
+# ============================================
+# ЛОГИРОВАНИЕ (опционально)
+# ============================================
+
+import os
+
+# Создаем папку logs если её нет
+LOGS_DIR = BASE_DIR / 'logs'
+if not os.path.exists(LOGS_DIR):
+    os.makedirs(LOGS_DIR)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': LOGS_DIR / 'django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

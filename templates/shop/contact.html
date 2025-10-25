@@ -1,144 +1,165 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Контакты - Гарант Групп{% endblock %}
 
 {% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content">
+
+            <h1 class="hero-title">Свяжитесь с нами</h1>
+            <p class="hero-subtitle">Свяжитесь с нами удобным способом</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Cards -->
+<section class="section">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-card fade-in">
+                <div class="contact-icon">📧</div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-value">Vologdagarant@yandex.ru</p>
+                <a href="mailto:Vologdagarant@yandex.ru" class="btn btn-primary">
+                    <span>Написать письмо</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+
+            <div class="contact-card fade-in" style="animation-delay: 100ms;">
+                <div class="contact-icon">📱</div>
+                <h3 class="contact-title">Телефон</h3>
+                <p class="contact-value">+7 960 293 4660</p>
+                <a href="tel:+79602934660" class="btn btn-primary">
+                    <span>Позвонить</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+
+            <div class="contact-card fade-in" style="animation-delay: 200ms;">
+                <div class="contact-icon">💬</div>
+                <h3 class="contact-title">ВКонтакте</h3>
+                <p class="contact-value">Мы в VK</p>
+                <a href="https://vk.com/garantgroup" target="_blank" rel="noopener" class="btn btn-primary">
+                    <span>Перейти в VK</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Working Hours -->
+<section class="section" style="background: linear-gradient(135deg, #E8F5E9, #FFF3E0);">
+    <div class="container">
+        <div class="card scale-in" style="max-width: 900px; margin: 0 auto; text-align: center; padding: 3rem;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2E7D32, #FF6F00); border-radius: 50%; color: white; font-size: 2.5rem;">
+                ⏰
+            </div>
+            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #1A1A1A;">График работы</h2>
+            <p style="font-size: 1.5rem; color: #2E7D32; font-weight: 700; margin-bottom: 0.5rem;">Ежедневно с 9:00 до 21:00</p>
+            <p style="color: #757575; font-size: 1.125rem;">Без выходных</p>
+            <p style="color: #757575; font-size: 1.125rem; margin-top: 1rem;">Работаем по всей России</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form -->
 <section class="section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Контакты</h2>
-            <p class="section-subtitle">Свяжитесь с нами удобным способом</p>
+            <span class="section-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                </svg>
+                Обратная связь
+            </span>
+            <h2 class="section-title">Оставьте заявку и мы перезвоним</h2>
         </div>
 
-        <div class="contact-layout">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Email</h3>
-                        <p>Vologdagarant@yandex.ru</p>
-                        <a href="mailto:Vologdagarant@yandex.ru" class="contact-link">
-                            <i class="fas fa-paper-plane"></i>
-                            Написать письмо
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Телефон</h3>
-                        <p>+7 960 293 4660</p>
-                        <a href="tel:+79602934660" class="contact-link">
-                            <i class="fas fa-phone-alt"></i>
-                            Позвонить
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-vk"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Социальные сети</h3>
-                        <p>Мы в VK</p>
-                        <a href="https://vk.com/garant_stroy_karkas" target="_blank" class="btn-vk">
-                            <i class="fab fa-vk"></i>
-                            Перейти в VK
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Время работы</h3>
-                        <p>Ежедневно с 9:00 до 21:00</p>
-                        <p>Без выходных</p>
+        <div class="card scale-in" style="max-width: 700px; margin: 0 auto; padding: 3rem;">
+            <a href="{% url 'order' %}" class="btn btn-primary" style="width: 100%; font-size: 1.25rem; padding: 1.5rem;">
+                <span>Оставить заявку</span>
+                <span class="btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </span>
+                <div class="btn-shine"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Частые вопросы
+            </span>
+            <h2 class="section-title">Ответы на популярные вопросы</h2>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="faq-item fade-in">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Сколько времени занимает строительство?</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Средний срок строительства стандартной бани составляет 1-2 дня. Время может варьироваться в зависимости от сложности проекта и погодных условий.
                     </div>
                 </div>
             </div>
 
-            <div class="contact-map">
-                <div class="map-placeholder">
-                    <div class="map-content">
-                        <h3>Вологодская область</h3>
-                        <p>Работаем по всей России</p>
-                        <div class="map-features">
-                            <div class="map-feature">
-                                <i class="fas fa-truck"></i>
-                                <div>
-                                    <strong>Доставка</strong>
-                                    <span>По всей стране</span>
-                                </div>
-                            </div>
-                            <div class="map-feature">
-                                <i class="fas fa-tools"></i>
-                                <div>
-                                    <strong>Монтаж</strong>
-                                    <span>На вашем участке</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="faq-item fade-in" style="animation-delay: 100ms;">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Предоставляете ли вы гарантию?</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Да, мы предоставляем официальную гарантию 5 лет на все конструкции и выполненные работы.
                     </div>
-                </div>
-                
-                <div class="cta-card">
-                    <h3>Нужна консультация?</h3>
-                    <p>Оставьте заявку и мы перезвоним</p>
-                    <a href="/order/" class="btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Оставить заявку
-                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="faq-section">
-            <h3>Часто задаваемые вопросы</h3>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Какой срок строительства бани?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Средний срок строительства стандартной бани составляет 1-2 дня. Время может варьироваться в зависимости от сложности проекта и погодных условий.</p>
+            <div class="faq-item fade-in" style="animation-delay: 200ms;">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Осуществляете ли доставку в регионы?</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Да, мы осуществляем доставку и строительство по всей России. Стоимость доставки рассчитывается индивидуально.
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Предоставляете ли вы гарантию?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Да, мы предоставляем официальную гарантию 5 лет на все конструкции и выполненные работы.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Работаете ли вы в других регионах?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Да, мы осуществляем доставку и строительство по всей России. Стоимость доставки рассчитывается индивидуально.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Можно ли изменить стандартный проект?</h4>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Конечно! Мы разрабатываем индивидуальные проекты с учетом всех пожеланий клиента.</p>
+            </div>
+
+            <div class="faq-item fade-in" style="animation-delay: 300ms;">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Можно ли заказать индивидуальный проект?</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Конечно! Мы разрабатываем индивидуальные проекты с учетом всех пожеланий клиента.
                     </div>
                 </div>
             </div>
@@ -146,310 +167,20 @@
     </div>
 </section>
 
-<style>
-.contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 4rem;
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.contact-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    padding: 2rem;
-    background: var(--bg-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-fast);
-    border: 1px solid var(--border-light);
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-}
-
-.contact-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-    flex-shrink: 0;
-}
-
-.contact-details h3 {
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
-
-.contact-details p {
-    margin-bottom: 1rem;
-    color: var(--text-light);
-}
-
-.contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--primary);
-    border-radius: var(--radius-md);
-}
-
-.contact-link:hover {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-vk {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: #4c75a3;
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius-xl);
-    font-weight: 600;
-    transition: all var(--transition-fast);
-    box-shadow: var(--shadow-sm);
-}
-
-.btn-vk:hover {
-    background: #3b5f8a;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    color: white;
-}
-
-.contact-map {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.map-placeholder {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    border-radius: var(--radius-lg);
-    padding: 3rem;
-    text-align: center;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.map-content h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.map-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.map-features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.map-feature {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-align: left;
-}
-
-.map-feature i {
-    font-size: 1.5rem;
-    opacity: 0.9;
-}
-
-.map-feature strong {
-    display: block;
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-}
-
-.map-feature span {
-    opacity: 0.9;
-    font-size: 0.9rem;
-}
-
-.cta-card {
-    background: var(--bg-white);
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    text-align: center;
-}
-
-.cta-card h3 {
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-    font-size: 1.5rem;
-}
-
-.cta-card p {
-    margin-bottom: 2rem;
-    color: var(--text-light);
-}
-
-.faq-section {
-    padding-top: 4rem;
-    border-top: 1px solid var(--border-light);
-}
-
-.faq-section h3 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2rem;
-    color: var(--text-dark);
-}
-
-.faq-grid {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.faq-item {
-    background: var(--bg-white);
-    border-radius: var(--radius-lg);
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-    border: 1px solid var(--border-light);
-}
-
-.faq-question {
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: background var(--transition-fast);
-}
-
-.faq-question:hover {
-    background: var(--bg-light);
-}
-
-.faq-question h4 {
-    margin: 0;
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.faq-toggle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--primary);
-    transition: transform var(--transition-fast);
-}
-
-.faq-item.active .faq-toggle {
-    transform: rotate(45deg);
-}
-
-.faq-answer {
-    padding: 0 2rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: all var(--transition-fast);
-}
-
-.faq-item.active .faq-answer {
-    padding: 0 2rem 2rem;
-    max-height: 200px;
-}
-
-.faq-answer p {
-    margin: 0;
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .contact-card {
-        padding: 1.5rem;
-    }
-    
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-    
-    .map-placeholder {
-        padding: 2rem;
-        height: 250px;
-    }
-    
-    .map-content h3 {
-        font-size: 1.5rem;
-    }
-    
-    .map-features {
-        grid-template-columns: 1fr;
-    }
-    
-    .faq-question {
-        padding: 1rem 1.5rem;
-    }
-    
-    .faq-question h4 {
-        font-size: 1rem;
-    }
-}
-</style>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // FAQ functionality
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', function() {
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-            
-            // Toggle current item
-            item.classList.toggle('active');
-        });
+function toggleFAQ(button) {
+    const item = button.parentElement;
+    const isActive = item.classList.contains('active');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
     });
-});
+
+    // Toggle current FAQ
+    if (!isActive) {
+        item.classList.add('active');
+    }
+}
 </script>
 {% endblock %}

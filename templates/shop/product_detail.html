@@ -5,711 +5,1216 @@
 {% block title %}{{ product.title }} - Калькулятор - Banyana{% endblock %}
 
 {% block content %}
-<section class="calc-section">
-    <div class="calc-wrapper">
-        <nav class="breadcrumb">
-            <a href="{% url 'index' %}">Главная</a>
-            <span>›</span>
-            <a href="{% url 'catalog' %}">Каталог</a>
-            <span>›</span>
-            <span>{{ product.title }}</span>
-        </nav>
+<div class="product-page">
 
-        <!-- HERO СЕКЦИЯ -->
-        <div class="product-hero">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-bg-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="{% url 'index' %}" class="breadcrumb-link">Главная</a>
+                <span class="breadcrumb-divider"></span>
+                <a href="{% url 'catalog' %}" class="breadcrumb-link">Каталог</a>
+                <span class="breadcrumb-divider"></span>
+                <span class="breadcrumb-current">{{ product.title }}</span>
+            </nav>
             <div class="hero-content">
-                <h1 class="hero-title">🧮 {{ product.title }}</h1>
-                <p class="hero-subtitle">Настройте вашу баню под себя</p>
-            </div>
-            <div class="hero-image">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="hero-img">
-                {% else %}
-                    <div class="hero-placeholder">
-                        <i class="fas fa-spa"></i>
-                        <p>Фото бани</p>
-                    </div>
-                {% endif %}
+                <h1 class="hero-title">{{ product.title }}</h1>
+                <p class="hero-description">{{ product.description }}</p>
             </div>
         </div>
+    </div>
 
-        <div class="calculator-layout">
-            <!-- ЛЕВАЯ КОЛОНКА -->
-            <div class="calc-left">
-                <!-- Галерея -->
-                {% if product.gallery.all %}
-                <div class="mini-gallery">
-                    <h3>📸 Фотографии</h3>
-                    <div class="gallery-grid">
-                        {% for img in product.gallery.all %}
-                        <div class="gallery-item" data-img="{{ img.image.url }}">
-                            <img src="{{ img.image.url }}" alt="{{ img.alt_text }}">
+    <!-- Main Content -->
+    <div class="container">
+        <div class="product-layout">
+
+            <!-- Left Side - Gallery + Info -->
+            <div class="product-left">
+
+                <!-- Gallery Carousel - Как на картинке -->
+                <div class="gallery-carousel">
+                    {% if product.image %}
+                    <!-- Main Image with Left/Right Arrows -->
+                    <div class="carousel-wrapper">
+                        <button class="carousel-arrow carousel-arrow-left" id="carouselPrev">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+
+                        <div class="carousel-image-wrapper">
+                            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="carousel-main-image" id="carouselMainImage">
+                            <div class="carousel-zoom-hint">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                                Нажмите для увеличения
+                            </div>
                         </div>
-                        {% endfor %}
+
+                        <button class="carousel-arrow carousel-arrow-right" id="carouselNext">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+
+                        <!-- Hidden images data -->
+                        <div id="carouselImages" style="display:none;">
+                            <span data-img="{{ product.image.url }}"></span>
+                            {% for img in product.images.all %}
+                            <span data-img="{{ img.image.url }}"></span>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Image Counter -->
+                        <div class="carousel-counter">
+                            <span id="currentImageIndex">1</span> / <span id="totalImages">1</span>
+                        </div>
                     </div>
+                    {% else %}
+                    <div class="carousel-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <p>Изображение отсутствует</p>
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
 
-                <!-- Описание -->
-                <div class="description-box">
-                    <h3>📝 Описание</h3>
-                    <p>{{ product.description|linebreaks }}</p>
-                </div>
+                <!-- Size Selection -->
+                <div class="config-card animate-on-scroll">
+                    <div class="card-header">
+                        <h3 class="card-title">Выберите размер</h3>
+                        <span class="required-badge">Обязательно</span>
+                    </div>
 
-                <!-- РАЗМЕР -->
-                <div class="size-selector">
-                    <h3>📏 Размер бани</h3>
-                    <div class="size-options">
+                    <div class="size-grid">
                         {% for price in prices %}
-                        <label class="size-option">
+                        <label class="size-card">
                             <input type="radio" name="size" value="{{ price.price }}" data-name="{{ price.name }}" {% if forloop.first %}checked{% endif %}>
-                            <div class="size-content">
-                                <span class="size-icon">📐</span>
-                                <span class="size-label">{{ price.name }}</span>
-                                <span class="size-price">{{ price.formatted_price }}</span>
+                            <div class="size-card-inner">
+                                <div class="size-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        <path d="M3 9h18M9 21V9"/>
+                                    </svg>
+                                </div>
+                                <div class="size-info">
+                                    <span class="size-name">{{ price.name }}</span>
+                                    <span class="size-price">{{ price.price|floatformat:0 }} ₽</span>
+                                </div>
+                                <div class="size-check">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </div>
                             </div>
                         </label>
                         {% empty %}
-                        <p class="no-data">Размеры не указаны</p>
+                        <p class="empty-message">Нет доступных размеров</p>
                         {% endfor %}
                     </div>
                 </div>
 
-                <!-- ОПЦИИ ИЗ АДМИНКИ -->
-                <div class="options-selector">
-                    <h3>✨ Дополнительные опции</h3>
-                    <p class="options-desc">Выберите то, что нужно добавить к вашей бане</p>
+                <!-- Options by Category -->
+                {% if options_by_category %}
+                <div class="config-card animate-on-scroll">
+                    <div class="card-header">
+                        <h3 class="card-title">Персонализируйте вашу баню под свои нужды</h3>
+                        <span class="optional-badge">Необязательно</span>
+                    </div>
+                    <p class="card-subtitle">
+                        Выберите дополнительные опции из различных категорий, чтобы создать идеальную баню для ваших нужд
+                    </p>
 
-                    <div class="options-list">
-                        {% for option in global_options %}
-                        <div class="option-item">
-                            <label class="option-checkbox">
-                                <input type="checkbox" class="opt-check" data-price="{{ option.price }}" data-name="{{ option.name }}">
-                                <span class="check-box"></span>
-                            </label>
-                            <div class="option-info">
-                                <span class="option-name">
-                                    {% if option.category == 'architecture' %}🏛️
-                                    {% elif option.category == 'plumbing' %}🚿
-                                    {% elif option.category == 'electrical' %}💡
-                                    {% elif option.category == 'furniture' %}🪑
-                                    {% else %}✨
-                                    {% endif %}
-                                    {{ option.name }}
-                                </span>
-                                <span class="option-price">{{ option.formatted_price }}</span>
+                    {% for category_key, category_data in options_by_category.items %}
+                    <div class="category-accordion">
+                        <button class="accordion-trigger" onclick="toggleAccordion('{{ category_key }}')">
+                            <span class="accordion-title">{{ category_data.name }}</span>
+                            <span class="accordion-count">{{ category_data.options|length }}</span>
+                            <span class="accordion-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="accordion-content" id="accordion-{{ category_key }}">
+                            {% for option in category_data.options %}
+                            <div class="option-item">
+                                <label class="option-checkbox">
+                                    <input type="checkbox" class="opt-check" data-price="{{ option.price }}" data-name="{{ option.name }}">
+                                    <span class="checkbox-box">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                    </span>
+                                    <div class="option-text">
+                                        <span class="option-name">{{ option.name }}</span>
+                                        <span class="option-price">{{ option.formatted_price }}</span>
+                                    </div>
+                                </label>
+                                {% if option.image %}
+                                <button class="option-preview-btn" data-photo="{{ option.image.url }}" onclick="event.preventDefault();">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <polyline points="21 15 16 10 5 21"/>
+                                    </svg>
+                                </button>
+                                {% endif %}
                             </div>
-                            {% if option.image %}
-                            <button class="btn-photo" data-photo="{{ option.image.url }}"><i class="fas fa-image"></i></button>
-                            {% else %}
-                            <button class="btn-photo" style="opacity: 0.5; cursor: not-allowed;" disabled><i class="fas fa-image"></i></button>
-                            {% endif %}
+                            {% endfor %}
                         </div>
-                        {% empty %}
-                        <div class="no-options">
-                            <p>Дополнительные опции временно недоступны</p>
-                        </div>
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
+
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА -->
-            <div class="calc-right">
+            <!-- Right Side - Summary -->
+            <div class="product-right">
                 <div class="summary-sticky">
-                    <h3 class="summary-title">📊 Ваш заказ</h3>
+                    <div class="summary-header">
+                        <h3 class="summary-title">Ваша конфигурация</h3>
+                        <div class="summary-pulse"></div>
+                    </div>
 
-                    <div class="summary-items">
+                    <div class="summary-body">
                         <div class="summary-item">
-                            <span class="item-label">Баня:</span>
+                            <span class="item-label">Модель:</span>
                             <span class="item-value">{{ product.title }}</span>
                         </div>
+
                         <div class="summary-item">
                             <span class="item-label">Размер:</span>
-                            <span class="item-value" id="selectedSize">—</span>
+                            <span class="item-value" id="selectedSize">-</span>
                         </div>
+
                         <div class="summary-divider"></div>
-                        <div id="selectedOptions" class="options-list-summary"></div>
+
+                        <div id="selectedOptions" class="options-summary">
+                            <div class="summary-item" style="opacity:0.5;justify-content:center;">
+                                <span class="item-label">Опции не выбраны</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="summary-total">
                         <span class="total-label">Итого:</span>
-                        <span class="total-value" id="totalPrice">0 ₽</span>
+                        <span class="total-price" id="totalPrice">0 ₽</span>
                     </div>
 
-                    <button class="btn-order" id="btnOrder">
-                        🚀 Оформить заказ
+                    <button class="order-btn" id="btnOrder">
+                        <span class="btn-text">Оформить заказ</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </span>
+                        <div class="btn-shine"></div>
                     </button>
 
-                    <p class="summary-note">
-                        <i class="fas fa-info-circle"></i>
-                        Цены актуальны на {% now "d.m.Y" %}
-                    </p>
+                    <div class="summary-footer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span>Цены актуальны на {% now "d.m.Y" %}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- МОДАЛЬНОЕ ОКНО -->
-<div id="photoModal" class="photo-modal">
-    <span class="modal-close">&times;</span>
-    <div class="modal-content">
-        <img id="modalImg" class="modal-img">
+        </div>
     </div>
 </div>
 
-<div id="galleryModal" class="photo-modal">
-    <span class="modal-close-gallery">&times;</span>
+<!-- Modals -->
+<div class="modal-overlay" id="photoModal">
+    <button class="modal-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+    </button>
     <div class="modal-content">
-        <img id="galleryModalImg" class="modal-img">
+        <img id="modalImg" class="modal-image" alt="">
     </div>
 </div>
 
 <style>
-/* Общие стили */
 :root {
-    --primary: #2E8B57;
-    --primary-dark: #236e44;
-    --text-dark: #2C3E50;
-    --text-light: #7F8C8D;
+    --green-primary: #2E7D32;
+    --green-dark: #1B5E20;
+    --green-light: #4CAF50;
+    --green-ultra-light: #E8F5E9;
+
+    --orange-primary: #FF6F00;
+    --orange-dark: #E65100;
+    --orange-light: #FF8F00;
+    --orange-ultra-light: #FFF3E0;
+
+    --white: #FFFFFF;
+    --off-white: #FAFAFA;
+    --gray-50: #F5F5F5;
+    --gray-100: #EEEEEE;
+    --gray-200: #E0E0E0;
+    --gray-300: #BDBDBD;
+    --gray-700: #424242;
+    --gray-900: #1A1A1A;
+
+    --gradient-green: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+    --gradient-orange: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+    --gradient-mixed: linear-gradient(135deg, var(--green-primary), var(--orange-primary));
+
+    --shadow-green: 0 4px 20px rgba(46, 125, 50, 0.15);
+    --shadow-orange: 0 4px 20px rgba(255, 111, 0, 0.15);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.calc-section {
-    padding: 2rem 0;
-    background: linear-gradient(to bottom, #f8f9fa, #fff);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.product-page {
+    background: var(--off-white);
     min-height: 100vh;
 }
 
-.calc-wrapper {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 1rem;
+.hero-section {
+    position: relative;
+    background: var(--gradient-mixed);
+    padding: 6rem 0 4rem;
+    overflow: hidden;
 }
 
-.breadcrumb {
+.hero-bg-animation {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--white);
+    top: -200px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--orange-light);
+    bottom: -150px;
+    left: -50px;
+    animation-delay: 5s;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: var(--white);
+    top: 50%;
+    left: 50%;
+    animation-delay: 10s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.breadcrumb-nav {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin-bottom: 2rem;
-    font-size: 0.9rem;
-    color: #666;
+    animation: slideDown 0.6s ease-out;
 }
 
-.breadcrumb a {
-    color: var(--primary);
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.breadcrumb-link {
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-}
-
-/* Hero секция */
-.product-hero {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border-radius: 20px;
-    padding: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-    box-shadow: 0 15px 40px rgba(46, 139, 87, 0.3);
-    align-items: center;
-}
-
-.hero-content {
-    color: white;
-}
-
-.hero-title {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-}
-
-.hero-subtitle {
-    font-size: 1.3rem;
-    opacity: 0.9;
-}
-
-.hero-image {
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
     position: relative;
 }
 
-.hero-img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    border: 4px solid rgba(255,255,255,0.2);
+.breadcrumb-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--white);
+    transition: width 0.3s ease;
 }
 
-.hero-placeholder {
+.breadcrumb-link:hover {
+    color: var(--white);
+}
+
+.breadcrumb-link:hover::after {
     width: 100%;
-    height: 400px;
+}
+
+.breadcrumb-divider {
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+}
+
+.breadcrumb-current {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.hero-content {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    max-width: 900px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.8;
+    max-width: 100%;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 2.5rem;
+    margin-top: -3rem;
+    padding-bottom: 4rem;
+}
+
+/* ========== CAROUSEL GALLERY - КАК НА КАРТИНКЕ ========== */
+.gallery-carousel {
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    animation: scaleIn 0.6s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* КРУГЛЫЕ СТРЕЛКИ КАК НА КАРТИНКЕ */
+.carousel-arrow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: 50%;
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.carousel-arrow-left {
+    left: 1rem;
+}
+
+.carousel-arrow-right {
+    right: 1rem;
+}
+
+.carousel-arrow:hover {
+    background: var(--gradient-green);
+    border-color: var(--green-primary);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-green);
+}
+
+.carousel-arrow:hover svg {
+    color: var(--white);
+}
+
+.carousel-arrow:active {
+    transform: scale(0.95);
+}
+
+.carousel-image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.carousel-main-image {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.carousel-image-wrapper:hover .carousel-main-image {
+    transform: scale(1.05);
+}
+
+.carousel-zoom-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    color: var(--white);
+    font-size: 0.8125rem;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.carousel-image-wrapper:hover .carousel-zoom-hint {
+    opacity: 1;
+}
+
+.carousel-counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 5;
+}
+
+.carousel-placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.1);
+    height: 550px;
+    background: var(--gray-50);
     border-radius: 16px;
-    color: white;
+    color: var(--gray-300);
 }
 
-.hero-placeholder i {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    opacity: 0.7;
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: scrollFadeIn 0.6s ease-out forwards;
 }
 
-/* Layout */
-.calculator-layout {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 2rem;
+@keyframes scrollFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.calc-left,
-.calc-right {
+.config-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-100);
+    transition: var(--transition-smooth);
+}
+
+.config-card:hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    transform: translateY(-4px);
+}
+
+.card-header {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-/* Мини галерея */
-.mini-gallery {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.mini-gallery h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.5rem;
-}
-
-.gallery-item {
-    cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-}
-
-/* Описание */
-.description-box {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.description-box h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-}
-
-/* Размеры */
-.size-selector {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.size-selector h3 {
-    font-size: 1.4rem;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 1.5rem;
-    color: var(--text-dark);
 }
 
-.size-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gray-900);
 }
 
-.size-option {
-    cursor: pointer;
+.required-badge {
+    padding: 0.375rem 1rem;
+    background: var(--gradient-orange);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.size-option input {
+.optional-badge {
+    padding: 0.375rem 1rem;
+    background: var(--gray-100);
+    color: var(--gray-700);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-subtitle {
+    color: var(--gray-700);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.size-card input {
     display: none;
 }
 
-.size-content {
+.size-card-inner {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    background: #f8f9fa;
-    border: 3px solid transparent;
-    border-radius: 12px;
-    transition: all 0.3s ease;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--gray-50);
+    border: 2px solid var(--gray-200);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    overflow: hidden;
 }
 
-.size-option input:checked + .size-content {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    border-color: var(--primary);
-    transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
+.size-card-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-green);
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.size-card input:checked ~ .size-card-inner {
+    border-color: var(--green-primary);
+    box-shadow: var(--shadow-green);
+}
+
+.size-card input:checked ~ .size-card-inner::before {
+    opacity: 0.08;
+}
+
+.size-card-inner:hover {
+    border-color: var(--orange-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-orange);
 }
 
 .size-icon {
-    font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border-radius: 12px;
+    color: var(--green-primary);
+    transition: var(--transition-bounce);
 }
 
-.size-label {
+.size-card input:checked ~ .size-card-inner .size-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--orange-primary);
+}
+
+.size-info {
     flex: 1;
-    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.size-name {
+    display: block;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
 }
 
 .size-price {
-    font-weight: 700;
-    font-size: 1.1rem;
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--green-primary);
 }
 
-/* Опции */
-.options-selector {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.options-selector h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
-
-.options-desc {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
-}
-
-.options-list {
+.size-check {
+    position: relative;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-height: 500px;
-    overflow-y: auto;
-    padding-right: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    border-radius: 50%;
+    color: var(--white);
+    transition: var(--transition-bounce);
+    opacity: 0;
 }
 
-.options-list::-webkit-scrollbar {
-    width: 6px;
+.size-card input:checked ~ .size-card-inner .size-check {
+    opacity: 1;
+    background: var(--gradient-orange);
+    border-color: var(--orange-primary);
+    transform: scale(1.2) rotate(360deg);
 }
 
-.options-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+.category-accordion {
+    border: 2px solid var(--gray-100);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: var(--transition-smooth);
 }
 
-.options-list::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
+.category-accordion:hover {
+    border-color: var(--green-light);
+    box-shadow: var(--shadow-green);
+}
+
+.accordion-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: var(--gradient-mixed);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.accordion-trigger:hover {
+    background: var(--gradient-green);
+}
+
+.accordion-title {
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.accordion-count {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.accordion-icon {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.accordion-trigger.open .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-content.open {
+    max-height: 2000px;
 }
 
 .option-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    transition: all 0.3s ease;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--gray-100);
+    transition: var(--transition-smooth);
+}
+
+.option-item:last-child {
+    border-bottom: none;
 }
 
 .option-item:hover {
-    background: #e9ecef;
-    transform: translateX(5px);
+    background: var(--green-ultra-light);
+    transform: translateX(4px);
 }
 
 .option-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
     cursor: pointer;
-    flex-shrink: 0;
 }
 
 .option-checkbox input {
     display: none;
 }
 
-.check-box {
-    display: block;
+.checkbox-box {
+    position: relative;
     width: 28px;
     height: 28px;
-    border: 3px solid #ccc;
+    border: 2px solid var(--gray-300);
     border-radius: 8px;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.option-checkbox input:checked + .check-box {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.option-checkbox input:checked + .check-box::after {
-    content: "✓";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.option-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.option-name {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 0.95rem;
-}
-
-.option-price {
-    color: var(--primary);
-    font-weight: 700;
-}
-
-.btn-photo {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: linear-gradient(135deg, #FF6B35, #ff8c5a);
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition-bounce);
 }
 
-.btn-photo:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+.checkbox-box svg {
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.btn-photo:disabled {
-    background: #ccc;
+.option-checkbox input:checked ~ .checkbox-box {
+    background: var(--gradient-green);
+    border-color: var(--green-primary);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.option-checkbox input:checked ~ .checkbox-box svg {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    color: var(--white);
+}
+
+.option-text {
+    flex: 1;
+}
+
+.option-name {
+    display: block;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
+}
+
+.option-price {
+    display: block;
+    font-weight: 700;
+    color: var(--green-primary);
+}
+
+.option-preview-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-orange);
+    border: none;
+    border-radius: 12px;
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+}
+
+.option-preview-btn:hover {
+    transform: scale(1.15) rotate(8deg);
+    box-shadow: var(--shadow-orange);
+}
+
+.option-preview-btn:disabled {
+    opacity: 0.3;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
-}
-
-.view-all-link {
-    margin-top: 1rem;
-    text-align: center;
-}
-
-.btn-view-all {
-    display: inline-block;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-view-all:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.no-options {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-light);
-}
-
-/* Правая колонка - итог */
-.calc-right {
-    position: relative;
 }
 
 .summary-sticky {
     position: sticky;
     top: 2rem;
-    background: white;
+    background: var(--white);
+    border-radius: 24px;
     padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    border: 3px solid var(--primary);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 3px solid var(--green-primary);
+    width: 100%;
+    min-height: 600px;
+}
+
+.summary-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .summary-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 1.5rem;
-    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--gray-900);
 }
 
-.summary-items {
+.summary-pulse {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 12px;
+    height: 12px;
+    background: var(--orange-primary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+}
+
+.summary-body {
+    margin-bottom: 2rem;
+    min-height: 240px;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
 }
 
 .summary-item {
     display: flex;
     justify-content: space-between;
-    padding: 0.75rem;
-    background: #f8f9fa;
-    border-radius: 8px;
+    align-items: center;
+    padding: 1rem;
+    background: var(--gray-50);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    transition: var(--transition-smooth);
+}
+
+.summary-item:hover {
+    background: var(--green-ultra-light);
+    transform: translateX(4px);
 }
 
 .item-label {
+    color: var(--gray-700);
     font-weight: 600;
-    color: var(--text-light);
 }
 
 .item-value {
-    font-weight: 600;
-    color: var(--text-dark);
+    color: var(--gray-900);
+    font-weight: 700;
+    text-align: right;
 }
 
 .summary-divider {
     height: 2px;
-    background: #e9ecef;
-    margin: 0.5rem 0;
+    background: linear-gradient(90deg, var(--green-primary), var(--orange-primary));
+    margin: 1.5rem 0;
+    border-radius: 2px;
+    flex-shrink: 0;
 }
 
-.options-list-summary {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.options-summary {
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.options-summary::-webkit-scrollbar {
+    width: 4px;
+}
+
+.options-summary::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: 2px;
+}
+
+.options-summary::-webkit-scrollbar-thumb {
+    background: var(--green-primary);
+    border-radius: 2px;
 }
 
 .summary-total {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, #f8f9fa, #fff);
-    border-radius: 12px;
+    padding: 1.75rem;
+    background: var(--gradient-mixed);
+    border-radius: 16px;
     margin-bottom: 1.5rem;
 }
 
 .total-label {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-dark);
+    color: var(--white);
+    font-size: 1.125rem;
+    font-weight: 700;
 }
 
-.total-value {
+.total-price {
+    color: var(--white);
     font-size: 2.5rem;
     font-weight: 900;
-    color: var(--primary);
+    line-height: 1;
 }
 
-.btn-order {
+.order-btn {
+    position: relative;
     width: 100%;
-    padding: 1.25rem;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--gradient-orange);
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 800;
     border: none;
-    border-radius: 12px;
-    font-size: 1.3rem;
-    font-weight: 700;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-orange);
 }
 
-.btn-order:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(46, 139, 87, 0.4);
+.order-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(255, 111, 0, 0.3);
 }
 
-.summary-note {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    color: var(--text-light);
-    text-align: center;
-    line-height: 1.5;
+.btn-shine {
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 30%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    animation: shine 3s infinite;
 }
 
-/* Модальное окно */
-.photo-modal {
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 200%;
+    }
+}
+
+.btn-icon {
+    display: flex;
+    transition: var(--transition-smooth);
+}
+
+.order-btn:hover .btn-icon {
+    transform: translateX(8px);
+}
+
+.summary-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+    color: var(--gray-700);
+}
+
+.modal-overlay {
     display: none;
     position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(5px);
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease-out;
 }
 
-.modal-close,
-.modal-close-gallery {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-close {
     position: absolute;
-    top: 30px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
+    top: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-orange);
+    border: none;
+    border-radius: 50%;
+    color: var(--white);
     cursor: pointer;
-    z-index: 10001;
-    transition: opacity 0.3s ease;
+    transition: var(--transition-bounce);
+    z-index: 10000;
 }
 
-.modal-close:hover,
-.modal-close-gallery:hover {
-    opacity: 0.7;
+.modal-close:hover {
+    transform: scale(1.15) rotate(90deg);
+    box-shadow: var(--shadow-orange);
 }
 
 .modal-content {
-    position: relative;
-    width: 90%;
-    max-width: 900px;
-    margin: 5% auto;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: zoomIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.modal-img {
-    max-width: 100%;
-    max-height: 80vh;
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-image {
+    max-width: 90%;
+    max-height: 90%;
     object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border-radius: 24px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
 }
 
-/* Отзывчивость */
 @media (max-width: 1200px) {
-    .calculator-layout {
+    .product-layout {
         grid-template-columns: 1fr;
     }
 
@@ -720,28 +1225,99 @@
 }
 
 @media (max-width: 768px) {
-    .product-hero {
+    .size-grid {
         grid-template-columns: 1fr;
-        padding: 2rem;
     }
 
-    .hero-title {
-        font-size: 2rem;
+    .carousel-arrow {
+        width: 44px;
+        height: 44px;
     }
 
-    .hero-img {
-        height: 250px;
+    .carousel-arrow-left {
+        left: 0.5rem;
     }
 
-    .total-value {
-        font-size: 2rem;
+    .carousel-arrow-right {
+        right: 0.5rem;
     }
+}
+
+.empty-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray-700);
 }
 </style>
 
 <script>
+function toggleAccordion(key) {
+    const content = document.getElementById(`accordion-${key}`);
+    const trigger = event.currentTarget;
+
+    if (content.classList.contains('open')) {
+        content.classList.remove('open');
+        trigger.classList.remove('open');
+    } else {
+        content.classList.add('open');
+        trigger.classList.add('open');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Элементы
+
+    // Carousel Gallery Navigation
+    const carouselImages = document.querySelectorAll('#carouselImages span[data-img]');
+    const mainImage = document.getElementById('carouselMainImage');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const currentIndexEl = document.getElementById('currentImageIndex');
+    const totalImagesEl = document.getElementById('totalImages');
+
+    if (carouselImages.length > 0 && mainImage) {
+        let currentIndex = 0;
+        const totalImages = carouselImages.length;
+
+        totalImagesEl.textContent = totalImages;
+
+        function updateCarousel(index) {
+            const imgUrl = carouselImages[index].dataset.img;
+
+            mainImage.style.opacity = '0';
+            setTimeout(() => {
+                mainImage.src = imgUrl;
+                mainImage.style.opacity = '1';
+            }, 200);
+
+            currentIndex = index;
+            currentIndexEl.textContent = currentIndex + 1;
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const newIndex = currentIndex > 0 ? currentIndex - 1 : totalImages - 1;
+                updateCarousel(newIndex);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const newIndex = currentIndex < totalImages - 1 ? currentIndex + 1 : 0;
+                updateCarousel(newIndex);
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            }
+        });
+    }
+
+    // Calculator
     const sizeRadios = document.querySelectorAll('input[name="size"]');
     const optionCheckboxes = document.querySelectorAll('.opt-check');
     const totalPriceEl = document.getElementById('totalPrice');
@@ -749,93 +1325,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedOptionsEl = document.getElementById('selectedOptions');
     const btnOrder = document.getElementById('btnOrder');
 
-    // Модальное окно для фото опций
-    const photoModal = document.getElementById('photoModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalClose = photoModal.querySelector('.modal-close');
-
-    // Модальное окно для галереи
-    const galleryModal = document.getElementById('galleryModal');
-    const galleryModalImg = document.getElementById('galleryModalImg');
-    const galleryModalClose = document.querySelector('.modal-close-gallery');
-
-    // Кнопки фото
-    const photoButtons = document.querySelectorAll('.btn-photo');
-
-    // Открытие фото опции
-    photoButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if (this.disabled) return;
-            e.stopPropagation();
-            const photoUrl = this.dataset.photo;
-            modalImg.src = photoUrl;
-            photoModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    // Закрытие модального окна фото
-    modalClose.addEventListener('click', function() {
-        photoModal.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-
-    photoModal.addEventListener('click', function(e) {
-        if (e.target === photoModal) {
-            photoModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Открытие галереи
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const imgUrl = this.dataset.img;
-            galleryModalImg.src = imgUrl;
-            galleryModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    // Закрытие галереи
-    galleryModalClose.addEventListener('click', function() {
-        galleryModal.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-
-    galleryModal.addEventListener('click', function(e) {
-        if (e.target === galleryModal) {
-            galleryModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Закрытие по ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            photoModal.style.display = 'none';
-            galleryModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Расчет стоимости
     function calculate() {
         let total = 0;
         let selectedSize = null;
         let selectedOptions = [];
 
-        // Размер
         sizeRadios.forEach(radio => {
             if (radio.checked) {
                 total += parseFloat(radio.value);
                 selectedSize = radio.dataset.name;
+                selectedSizeEl.textContent = selectedSize;
             }
         });
 
-        selectedSizeEl.textContent = selectedSize || '—';
-
-        // Опции
         optionCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 total += parseFloat(checkbox.dataset.price);
@@ -843,24 +1345,31 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Обновляем список опций
         if (selectedOptions.length > 0) {
             selectedOptionsEl.innerHTML = selectedOptions.map(opt =>
                 `<div class="summary-item"><span class="item-label">✓</span><span class="item-value">${opt}</span></div>`
             ).join('');
         } else {
-            selectedOptionsEl.innerHTML = '<div class="summary-item" style="color:#999;justify-content:center;">Опции не выбраны</div>';
+            selectedOptionsEl.innerHTML = '<div class="summary-item" style="opacity:0.5;justify-content:center;"><span class="item-label">Опции не выбраны</span></div>';
         }
 
-        // Обновляем итог
         totalPriceEl.textContent = total.toLocaleString('ru-RU') + ' ₽';
     }
 
-    // Слушатели
-    sizeRadios.forEach(radio => radio.addEventListener('change', calculate));
-    optionCheckboxes.forEach(checkbox => checkbox.addEventListener('change', calculate));
+    sizeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            calculate();
+            radio.closest('.size-card-inner').style.animation = 'none';
+            setTimeout(() => {
+                radio.closest('.size-card-inner').style.animation = 'bounce 0.6s ease';
+            }, 10);
+        });
+    });
 
-    // Кнопка заказа
+    optionCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', calculate);
+    });
+
     btnOrder.addEventListener('click', function() {
         let selectedSize = null;
         let selectedOptions = [];
@@ -880,22 +1389,90 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        let orderMessage = `Баня: {{ product.title }}\n`;
-        orderMessage += `Размер: ${selectedSize || 'не выбран'}\n\n`;
-        orderMessage += `Дополнительные опции:\n`;
+        let orderMessage = `{{ product.title }}\n${selectedSize}`;
         if (selectedOptions.length > 0) {
-            selectedOptions.forEach(opt => orderMessage += `- ${opt}\n`);
+            selectedOptions.forEach(opt => {
+                orderMessage += `\n➕ ${opt}`;
+            });
         } else {
-            orderMessage += 'Не выбраны\n';
+            orderMessage += '\n(без дополнительных опций)';
         }
-        orderMessage += `\nИтоговая стоимость: ${total.toLocaleString('ru-RU')} ₽`;
+        orderMessage += `\n\n💰 Итого: ${total.toLocaleString('ru-RU')} ₽`;
 
-        // Переходим на страницу заказа с данными в URL
         window.location.href = `/order/?details=${encodeURIComponent(orderMessage)}`;
     });
 
-    // Начальный расчет
+    // Modal
+    const photoModal = document.getElementById('photoModal');
+    const modalImg = photoModal.querySelector('.modal-image');
+    const modalClose = photoModal.querySelector('.modal-close');
+
+    document.querySelectorAll('.option-preview-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (this.disabled) return;
+
+            modalImg.src = this.dataset.photo;
+            photoModal.classList.add('active');
+            photoModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    if (mainImage) {
+        mainImage.addEventListener('click', function() {
+            modalImg.src = this.src;
+            photoModal.classList.add('active');
+            photoModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    modalClose.addEventListener('click', () => {
+        photoModal.classList.remove('active');
+        photoModal.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+
+    photoModal.addEventListener('click', (e) => {
+        if (e.target === photoModal) {
+            photoModal.classList.remove('active');
+            photoModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            photoModal.classList.remove('active');
+            photoModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.animationDelay = `${index * 0.1}s`;
+                }, 100);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animateElements.forEach(el => observer.observe(el));
+
     calculate();
 });
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes bounce {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+`;
+document.head.appendChild(style);
 </script>
+
 {% endblock %}

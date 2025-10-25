@@ -1,118 +1,198 @@
+# shop/models.py
 from django.db import models
+from django.core.cache import cache
+from django.utils.functional import cached_property
+
 
 class Product(models.Model):
-    title = models.CharField('Название', max_length=200)
+    title = models.CharField('Название', max_length=200, db_index=True)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     description = models.TextField('Описание')
     image = models.ImageField('Главное изображение', upload_to='products/', blank=True, null=True)
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+        indexes = [
+            models.Index(fields=['title']),
+        ]
+
+    def __str__(self):
+        return self.title
+
+    @cached_property
+    def formatted_price(self):
+        """Кешированное форматирование цены"""
+        return f"{self.price:,} ₽".replace(',', ' ')
+
+    def save(self, *args, **kwargs):
+        """Очистка кеша при сохранении"""
+        super().save(*args, **kwargs)
+        cache.delete_many([
+            'products_all',
+            'products_featured',
+            f'product_{self.pk}',
+        ])
 
 
 class ProductPrice(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prices', verbose_name='Товар')
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='prices',
+        verbose_name='Товар'
+    )
     name = models.CharField('Название размера/услуги', max_length=200)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     description = models.TextField('Описание размера', blank=True)
-    order = models.PositiveIntegerField('Порядок', default=0)
+    order = models.PositiveIntegerField('Порядок', default=0, db_index=True)
 
     class Meta:
         verbose_name = 'Цена товара'
         verbose_name_plural = 'Цены товара'
         ordering = ['order', 'price']
+        indexes = [
+            models.Index(fields=['product', 'order']),
+        ]
 
     def __str__(self):
-        return f"{self.product.title} - {self.name}"
-
-    def formatted_price(self):
-        return f"{self.price:,} ₽".replace(',', ' ')
+        return f"{self.product.title} - {self.name} - {self.price} ₽"
 
 
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='gallery', verbose_name='Товар')
-    image = models.ImageField('Дополнительное изображение', upload_to='products/gallery/')
-    alt_text = models.CharField('Описание изображения', max_length=200, blank=True)
-    order = models.PositiveIntegerField('Порядок', default=0)
-
-    def __str__(self):
-        return f'{self.product.title} - Фото {self.order}'
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='images',
+        verbose_name='Товар'
+    )
+    image = models.ImageField('Изображение', upload_to='product_images/')
+    order = models.PositiveIntegerField('Порядок', default=0, db_index=True)
 
     class Meta:
-        verbose_name = 'Дополнительное фото товара'
-        verbose_name_plural = 'Дополнительные фото товара'
+        verbose_name = 'Изображение товара'
+        verbose_name_plural = 'Изображения товара'
         ordering = ['order']
-
-
-# НОВАЯ МОДЕЛЬ: Дополнительные опции для всех товаров
-class GlobalOption(models.Model):
-    name = models.CharField('Название опции', max_length=200)
-    price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
-    description = models.TextField('Описание опции', blank=True)
-    image = models.ImageField('Фото опции', upload_to='options/', blank=True, null=True)
-    category = models.CharField('Категория', max_length=100, default='general',
-                               choices=[
-                                   ('architecture', '🏛️ Архитектурные элементы'),
-                                   ('plumbing', '🚿 Сантехника'),
-                                   ('electrical', '💡 Электрика'),
-                                   ('furniture', '🪑 Мебель и интерьер'),
-                                   ('other', '✨ Другое')
-                               ])
-    order = models.PositiveIntegerField('Порядок отображения', default=0)
-    is_active = models.BooleanField('Активна', default=True)
+        indexes = [
+            models.Index(fields=['product', 'order']),
+        ]
 
     def __str__(self):
-        return f"{self.name} - {self.formatted_price()}"
+        return f"Фото для {self.product.title}"
 
+
+class GlobalOption(models.Model):
+    CATEGORY_CHOICES = [
+        ('exterior', '🏗️ Внешняя отделка и конструкция'),
+        ('electrical', '⚡ Электрика'),
+        ('doors_windows', '🚪 Двери и окна'),
+        ('lighting', '💡 Освещение'),
+        ('interior', '🎨 Внутренняя отделка'),
+        ('steam_furniture', '🔥 Мебель и оборудование парной'),
+        ('lounge_furniture', '🛋️ Мебель комнаты отдыха'),
+        ('heating', '🌡️ Отопление'),
+        ('washing', '🚿 Помывочная'),
+        ('additional', '✨ Дополнительно'),
+    ]
+
+    name = models.CharField('Название', max_length=200)
+    price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
+    category = models.CharField(
+        'Категория',
+        max_length=50,
+        choices=CATEGORY_CHOICES,
+        default='additional',
+        db_index=True
+    )
+    description = models.TextField('Описание', blank=True)
+    image = models.ImageField('Изображение', upload_to='global_options/', blank=True, null=True)
+    is_active = models.BooleanField('Активно', default=True, db_index=True)
+    order = models.PositiveIntegerField('Порядок сортировки', default=0, db_index=True)
+
+    class Meta:
+        verbose_name = 'Глобальная дополнительная услуга'
+        verbose_name_plural = 'Глобальные дополнительные услуги'
+        ordering = ['category', 'order', 'name']
+        indexes = [
+            models.Index(fields=['is_active', 'category', 'order']),
+        ]
+
+    def __str__(self):
+        return f"{self.get_category_display()} - {self.name}"
+
+    @cached_property
     def formatted_price(self):
+        """Кешированное форматирование цены"""
         return f"{self.price:,} ₽".replace(',', ' ')
 
-    class Meta:
-        verbose_name = 'Глобальная опция'
-        verbose_name_plural = 'Глобальные опции'
-        ordering = ['category', 'order', 'name']
+    def save(self, *args, **kwargs):
+        """Очистка кеша при сохранении"""
+        super().save(*args, **kwargs)
+        cache.delete('global_options_active')
 
 
 class WorkPhoto(models.Model):
-    title = models.CharField('Название работы', max_length=200, blank=True)
     image = models.ImageField('Фотография', upload_to='works/')
-    created_at = models.DateTimeField('Создано', auto_now_add=True)
-
-    def __str__(self):
-        return self.title or f'Фото #{self.pk}'
+    created_at = models.DateTimeField('Дата создания', auto_now_add=True, db_index=True)
 
     class Meta:
         verbose_name = 'Фотография работы'
-        verbose_name_plural = 'Галерея работ'
+        verbose_name_plural = 'Фотографии работ'
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['-created_at']),
+        ]
+
+    def __str__(self):
+        return f"Фото от {self.created_at.strftime('%d.%m.%Y %H:%M')}"
 
 
 class OrderRequest(models.Model):
-    fio = models.CharField('ФИО', max_length=200)
-    phone = models.CharField('Телефон', max_length=20)
-    email = models.EmailField('Email')
-    message = models.TextField('Сообщение')
-    created_at = models.DateTimeField('Дата создания', auto_now_add=True)
-
-    def __str__(self):
-        return f'Заказ от {self.fio} - {self.created_at.strftime("%d.%m.%Y")}'
+    fio = models.CharField('ФИО', max_length=200, db_index=True)
+    phone = models.CharField('Телефон', max_length=20, db_index=True)
+    email = models.EmailField('Email', db_index=True)
+    message = models.TextField('Сообщение', blank=True)
+    order_details = models.TextField('Детали заказа', blank=True)
+    created_at = models.DateTimeField('Дата создания', auto_now_add=True, db_index=True)
 
     class Meta:
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['-created_at']),
+            models.Index(fields=['phone', 'email']),
+        ]
+
+    def __str__(self):
+        return f"Заявка от {self.fio} - {self.created_at.strftime('%d.%m.%Y %H:%M')}"
 
 
 class CompanyInfo(models.Model):
-    title = models.CharField('Заголовок', max_length=200, default="О компании")
-    description = models.TextField('Описание')
-
-    def __str__(self):
-        return self.title
+    description = models.TextField('Описание компании')
+    phone = models.CharField('Телефон', max_length=20, blank=True)
+    email = models.EmailField('Email', blank=True)
+    address = models.CharField('Адрес', max_length=300, blank=True)
 
     class Meta:
         verbose_name = 'Информация о компании'
         verbose_name_plural = 'Информация о компании'
+
+    def __str__(self):
+        return "Информация о компании"
+
+    def save(self, *args, **kwargs):
+        if not self.pk and CompanyInfo.objects.exists():
+            raise ValueError('Можно создать только одну запись информации о компании')
+        super().save(*args, **kwargs)
+        cache.delete('company_info')
+
+    @classmethod
+    def get_cached(cls):
+        """Получить информацию о компании из кеша"""
+        info = cache.get('company_info')
+        if info is None:
+            info = cls.objects.first()
+            if info:
+                cache.set('company_info', info, 60 * 60 * 24)  # 24 часа
+        return info

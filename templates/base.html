@@ -4,73 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Гарант Групп{% endblock %}</title>
-    <meta name="description" content="Витрина и портфолио компании Гарант Групп">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Icon-font -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Styles -->
+    <title>{% block title %}Гарант Групп - Бани под ключ{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    {% block extra_css %}{% endblock %}
+    <meta name="description" content="Качественные деревянные бани под ключ. Профессиональное строительство бань в Вологодской области.">
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <div class="preloader-content">
-            <div class="logo-loader"><span>Гарант Групп</span></div>
-            <div class="loader-wave">
-                <div></div><div></div><div></div><div></div><div></div>
-            </div>
-        </div>
+        <div class="preloader-spinner"></div>
     </div>
 
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="header-content">
-                <a href="{% url 'index' %}" class="logo">
-                    <i class="fas fa-tree"></i><span>Гарант Групп</span>
-                </a>
+            <div class="header-inner">
+                <a href="{% url 'index' %}" class="logo">Гарант Групп</a>
 
-                <nav class="nav">
-                    <a href="{% url 'index' %}"     class="nav-link">Главная</a>
-                    <a href="{% url 'about' %}"     class="nav-link">О нас</a>
-                    <a href="{% url 'catalog' %}"   class="nav-link">Каталог</a>
-                    <a href="{% url 'works' %}"     class="nav-link">Наши работы</a>
-                    <a href="{% url 'contact' %}"   class="nav-link">Контакты</a>
-                    <a href="{% url 'order' %}"     class="nav-link nav-cta">
-                        <i class="fas fa-paper-plane"></i>Заказать
+                <nav class="nav" id="mainNav">
+                    <a href="{% url 'index' %}" class="nav-link">Главная</a>
+                    <a href="{% url 'catalog' %}" class="nav-link">Каталог</a>
+                    <a href="{% url 'about' %}" class="nav-link">О компании</a>
+                    <a href="{% url 'works' %}" class="nav-link">Наши работы</a>
+                    <a href="{% url 'contact' %}" class="nav-link">Контакты</a>
+                    <a href="{% url 'order' %}" class="btn btn-order-header">
+                        <span>Заказать</span>
+                        <span class="btn-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </span>
+                        <div class="btn-shine"></div>
                     </a>
                 </nav>
 
-                <!-- Mobile burger -->
-                <button class="mobile-menu-btn">
-                    <span></span><span></span><span></span>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <div class="mobile-menu-content">
-            <a href="{% url 'index' %}"   class="mobile-nav-link"><i class="fas fa-home"></i>Главная</a>
-            <a href="{% url 'about' %}"   class="mobile-nav-link"><i class="fas fa-building"></i>О нас</a>
-            <a href="{% url 'catalog' %}" class="mobile-nav-link"><i class="fas fa-th"></i>Каталог</a>
-            <a href="{% url 'works' %}"   class="mobile-nav-link"><i class="fas fa-images"></i>Работы</a>
-            <a href="{% url 'contact' %}" class="mobile-nav-link"><i class="fas fa-phone"></i>Контакты</a>
-            <a href="{% url 'order' %}"   class="mobile-nav-link mobile-nav-cta">
-                <i class="fas fa-paper-plane"></i>Заказать
-            </a>
-        </div>
-    </div>
-
-    <!-- Main -->
-    <main class="main">
+    <!-- Main Content -->
+    <main>
         {% block content %}{% endblock %}
     </main>
 
@@ -79,44 +57,37 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <a href="{% url 'index' %}" class="footer-logo">
-                        <i class="fas fa-tree"></i><span>Гарант Групп</span>
-                    </a>
-                    <p class="footer-description">
-                        Производим и устанавливаем качественные изделия из дерева. Работаем по всему региону.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://vk.com/garant_stroy_karkas" class="social-link"><i class="fab fa-vk"></i></a>
-                    </div>
+                    <h3>Гарант Групп</h3>
+                    <p>Качественные деревянные бани под ключ с гарантией и профессиональным подходом.</p>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Контакты</h4>
-                    <div class="contact-item"><i class="fas fa-envelope"></i><span>Vologdagarant@yandex.ru</span></div>
-                    <div class="contact-item"><i class="fas fa-phone"></i><span>+7 960 293-46-60</span></div>
-                    <div class="contact-item"><i class="fas fa-clock"></i><span>09:00-21:00</span></div>
+                    <h3>Навигация</h3>
+                    <a href="{% url 'index' %}">Главная</a><br>
+                    <a href="{% url 'catalog' %}">Каталог</a><br>
+                    <a href="{% url 'about' %}">О компании</a><br>
+                    <a href="{% url 'works' %}">Наши работы</a>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Навигация</h4>
-                    <a href="{% url 'catalog' %}">Каталог</a>
-                    <a href="{% url 'works' %}">Работы</a>
-                    <a href="{% url 'order' %}">Заказ</a>
-                    <a href="{% url 'about' %}">О нас</a>
+                    <h3>Контакты</h3>
+                    <p>Email: Vologdagarant@yandex.ru</p>
+                    <p>Телефон: +7 960 293 4660</p>
+                    <p>Работаем ежедневно с 9:00 до 21:00</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Мы в соцсетях</h3>
+                    <a href="https://vk.com/garantgroup" target="_blank" rel="noopener">ВКонтакте</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy;&nbsp;2025 Гарант Групп. Все права защищены.</p>
+                <p>&copy; {% now "Y" %} Гарант Групп. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back-to-top -->
-    <button class="back-to-top"><i class="fas fa-chevron-up"></i></button>
-
-    <!-- Scripts -->
     <script src="{% static 'js/main.js' %}"></script>
-    {% block extra_js %}{% endblock %}
 </body>
 </html>

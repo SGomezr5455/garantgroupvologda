@@ -4,421 +4,158 @@
 {% block title %}Оформление заказа - Banyana{% endblock %}
 
 {% block content %}
-<section class="section" style="padding: 2rem 0;">
-    <div class="container" style="max-width: 800px;">
-        <nav class="breadcrumb">
-            <a href="{% url 'index' %}">Главная</a>
-            <span>›</span>
-            <span>Оформление заказа</span>
-        </nav>
+<section class="section" style="margin-top: 72px; min-height: 80vh; padding: 4rem 0;">
+    <div class="container">
+        <div class="order-form-container scale-in">
+            <div class="order-icon">📝</div>
+            <h1 class="order-title">Оформление заказа</h1>
+            <p class="order-subtitle">Заполните форму, и мы свяжемся с вами в ближайшее время</p>
 
-        <div class="order-container">
-            <h1 class="order-title">🚀 Оформление заказа</h1>
-
-            {% if success %}
-            <div class="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3>Заказ успешно отправлен!</h3>
-                <p>Мы свяжемся с вами в ближайшее время.</p>
-                <a href="{% url 'catalog' %}" class="btn btn-primary">Вернуться в каталог</a>
-            </div>
-            {% else %}
-
-            <!-- ПЛАШКА С ДЕТАЛЯМИ ЗАКАЗА - ВСЕГДА ПОКАЗЫВАЕМ ЕСЛИ ЕСТЬ ДАННЫЕ -->
             {% if order_details %}
-            <div class="order-details-preview">
-                <h3>📋 Детали вашего заказа:</h3>
-                <pre class="order-details-text">{{ order_details }}</pre>
-                <p class="order-note">
-                    <i class="fas fa-info-circle"></i>
-                    Эти данные автоматически добавятся к вашему заказу
-                </p>
+            <div class="order-details-preview">{{ order_details }}</div>
+            {% endif %}
+
+            <!-- Сообщения об успехе/ошибке -->
+            {% if messages %}
+            <div style="margin-bottom: 2rem;">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" style="padding: 1rem; border-radius: 12px; margin-bottom: 1rem; {% if message.tags == 'success' %}background: var(--green-ultra-light); border: 2px solid var(--green-primary); color: var(--green-dark);{% elif message.tags == 'error' %}background: rgba(244, 67, 54, 0.1); border: 2px solid #f44336; color: #c62828;{% endif %}">
+                    {{ message }}
+                </div>
+                {% endfor %}
             </div>
             {% endif %}
 
-            <form method="post" class="order-form">
+            <form method="POST" class="order-form">
                 {% csrf_token %}
 
-                <div class="form-group">
-                    <label for="id_fio">ФИО *</label>
-                    {{ form.fio }}
-                    {% if form.fio.errors %}
-                        <div class="error">{{ form.fio.errors }}</div>
-                    {% endif %}
-                </div>
-
-                <div class="form-group">
-                    <label for="id_phone">Телефон *</label>
-                    {{ form.phone }}
-                    {% if form.phone.errors %}
-                        <div class="error">{{ form.phone.errors }}</div>
-                    {% endif %}
-                </div>
-
-                <div class="form-group">
-                    <label for="id_email">Email *</label>
-                    {{ form.email }}
-                    {% if form.email.errors %}
-                        <div class="error">{{ form.email.errors }}</div>
-                    {% endif %}
-                </div>
-
-                <div class="form-group">
-                    <label for="id_message">Дополнительный комментарий (необязательно)</label>
-                    {{ form.message }}
-                    <small class="form-text">Здесь вы можете добавить любые дополнительные пожелания или вопросы</small>
-                    {% if form.message.errors %}
-                        <div class="error">{{ form.message.errors }}</div>
-                    {% endif %}
-                </div>
-
-                <!-- КАПЧА -->
-                <div class="form-group captcha-group">
-                    <label for="id_captcha">Подтвердите, что вы не робот *</label>
-                    <div class="captcha-container">
-                        {{ form.captcha }}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="id_fio">ФИО *</label>
+                        <input type="text" name="fio" id="id_fio" class="form-control" placeholder="Введите ваше полное имя" value="{{ form.fio.value|default:'' }}" required>
+                        {% if form.fio.errors %}
+                        <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block;">{{ form.fio.errors.0 }}</span>
+                        {% endif %}
                     </div>
-                    {% if form.captcha.errors %}
-                        <div class="error">{{ form.captcha.errors }}</div>
-                    {% endif %}
-                    <small class="form-text">Введите символы с изображения для подтверждения заказа</small>
                 </div>
 
-                <button type="submit" class="btn btn-submit">
-                    📤 Отправить заказ
-                </button>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="id_phone">Телефон *</label>
+                        <input type="tel" name="phone" id="id_phone" class="form-control" placeholder="+7 (XXX) XXX-XX-XX" value="{{ form.phone.value|default:'' }}" required>
+                        {% if form.phone.errors %}
+                        <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block;">{{ form.phone.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="id_email">Email *</label>
+                        <input type="email" name="email" id="id_email" class="form-control" placeholder="example@mail.ru" value="{{ form.email.value|default:'' }}" required>
+                        {% if form.email.errors %}
+                        <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block;">{{ form.email.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="id_message">Дополнительный комментарий</label>
+                    <textarea name="message" id="id_message" class="form-control" rows="4" placeholder="Здесь вы можете добавить дополнительные пожелания или вопросы...">{{ form.message.value|default:'' }}</textarea>
+                    {% if form.message.errors %}
+                    <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block;">{{ form.message.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Проверочный код *</label>
+                    {{ form.captcha }}
+                    {% if form.captcha.errors %}
+                    <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block; font-weight: 600;">{{ form.captcha.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <span>Отправить заявку</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </span>
+                        <div class="btn-shine"></div>
+                    </button>
+                    <a href="{% url 'catalog' %}" class="btn btn-secondary btn-lg">
+                        <span>Вернуться в каталог</span>
+                    </a>
+                </div>
             </form>
-            {% endif %}
         </div>
     </div>
 </section>
 
 <style>
-.container { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
-.breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; color: #666; }
-.breadcrumb a { color: var(--primary); text-decoration: none; }
+.order-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    padding: 3rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-100);
+}
 
-.order-container {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+.order-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-mixed);
+    border-radius: 50%;
+    font-size: 3rem;
 }
 
 .order-title {
+    font-size: 2.5rem;
+    font-weight: 900;
     text-align: center;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #2C3E50;
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+}
+
+.order-subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--gray-600);
     margin-bottom: 2rem;
 }
 
 .order-details-preview {
-    background: linear-gradient(135deg, #f8f9fa, #fff);
-    border-left: 4px solid var(--primary);
+    background: var(--green-ultra-light);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin-bottom: 2rem;
-    position: relative;
-}
-
-.order-details-preview h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #2C3E50;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.order-details-text {
-    background: white;
-    padding: 1rem;
-    border-radius: 6px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.95rem;
-    line-height: 1.6;
     white-space: pre-wrap;
-    word-wrap: break-word;
-    color: #2C3E50;
-    border: 1px solid #e9ecef;
-    margin-bottom: 1rem;
-}
-
-.order-note {
-    background: #e7f3ff;
-    padding: 0.75rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: #0066cc;
-    border-left: 3px solid #0066cc;
-    margin: 0;
-}
-
-.order-note i {
-    margin-right: 0.5rem;
+    font-family: 'Courier New', monospace;
+    color: var(--gray-700);
+    line-height: 1.8;
+    border: 2px solid var(--green-primary);
 }
 
 .order-form {
-    display: flex;
-    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #2C3E50;
-}
-
-.form-group input,
-.form-group textarea {
-    padding: 12px;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.form-text {
-    font-size: 0.875rem;
-    color: #6c757d;
-    margin-top: 0.5rem;
-}
-
-/* Стили для капчи */
-.captcha-group {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 2px solid #e9ecef;
-}
-
-.captcha-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-}
-
-.captcha-container img {
-    border: 2px solid #dee2e6;
-    border-radius: 8px;
-    padding: 10px;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.captcha-container input {
-    padding: 12px;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    font-size: 1rem;
-    width: 200px;
-    max-width: 100%;
-}
-
-.captcha-container input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
-}
-
-/* Обновление капчи */
-.captcha-refresh {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
-}
-
-.captcha-refresh:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.error {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    background: #f8d7da;
-    border-radius: 4px;
-    border-left: 3px solid #dc3545;
-}
-
-.btn-submit {
-    padding: 16px 32px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
-    margin-top: 1rem;
-}
-
-.btn-submit:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
-}
-
-.btn-submit:disabled {
-    background: #6c757d;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-.success-message {
-    text-align: center;
-    padding: 3rem 2rem;
-}
-
-.success-message i {
-    font-size: 4rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.success-message h3 {
-    font-size: 1.8rem;
-    color: #2C3E50;
-    margin-bottom: 1rem;
-}
-
-.success-message p {
-    font-size: 1.1rem;
-    color: #7F8C8D;
-    margin-bottom: 2rem;
-}
-
-.btn-primary {
-    display: inline-block;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.3);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .order-container {
-        padding: 1.5rem;
-    }
-
-    .order-title {
-        font-size: 1.8rem;
-    }
-
-    .order-details-preview {
-        padding: 1rem;
-    }
-
-    .order-details-text {
-        font-size: 0.85rem;
-        padding: 0.75rem;
-    }
-
-    .captcha-container {
-        align-items: stretch;
-    }
-
-    .captcha-container input {
-        width: 100%;
-    }
+.btn-lg {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
 }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем обработчик для подтверждения отправки
-    const form = document.querySelector('.order-form');
-    const submitBtn = document.querySelector('.btn-submit');
-
-    if (form && submitBtn) {
-        form.addEventListener('submit', function() {
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = `
-                <i class="fas fa-spinner fa-spin"></i> Отправка...
-            `;
-            submitBtn.disabled = true;
-
-            // Восстанавливаем кнопку через 5 секунд на случай ошибки
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 5000);
-        });
-    }
-
-    // Функция для обновления капчи
-    function refreshCaptcha() {
-        const captchaImage = document.querySelector('.captcha-container img');
-        if (captchaImage) {
-            // Добавляем параметр для обхода кэша
-            const timestamp = new Date().getTime();
-            captchaImage.src = captchaImage.src.split('?')[0] + '?' + timestamp;
-        }
-    }
-
-    // Добавляем кнопку обновления капчи
-    const captchaContainer = document.querySelector('.captcha-container');
-    if (captchaContainer) {
-        const refreshButton = document.createElement('button');
-        refreshButton.type = 'button';
-        refreshButton.className = 'captcha-refresh';
-        refreshButton.innerHTML = '<i class="fas fa-redo"></i> Обновить капчу';
-        refreshButton.addEventListener('click', refreshCaptcha);
-        captchaContainer.appendChild(refreshButton);
-    }
-
-    // Плавное появление элементов
-    const elements = document.querySelectorAll('.order-details-preview, .form-group');
-    elements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-
-        setTimeout(() => {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, 100 * index);
-    });
-});
-</script>
 {% endblock %}
