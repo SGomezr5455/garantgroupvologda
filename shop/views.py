@@ -1,11 +1,8 @@
-# shop/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.cache import cache
 from django.db.models import Prefetch
-from django.views.decorators.cache import cache_page
 from collections import defaultdict
-
 from .models import (
     Product, ProductImage, ProductPrice, WorkPhoto,
     OrderRequest, CompanyInfo, GlobalOption
@@ -20,7 +17,6 @@ def get_grouped_options():
         return cached_data
 
     global_options = GlobalOption.objects.filter(is_active=True).select_related().order_by('category', 'order', 'name')
-
     options_by_category = defaultdict(lambda: {'name': '', 'options': []})
 
     for option in global_options:
@@ -34,7 +30,6 @@ def get_grouped_options():
     return result
 
 
-@cache_page(60 * 5)  # Кеш на 5 минут
 def index(request):
     """Главная страница"""
     featured_products = cache.get('products_featured')
@@ -44,7 +39,7 @@ def index(request):
             .prefetch_related('prices', 'images')
             .all()[:3]
         )
-        cache.set('products_featured', featured_products, 60 * 10)
+        cache.set('products_featured', featured_products, 60 * 5)  # 5 минут
 
     return render(request, 'shop/index.html', {'products': featured_products})
 
@@ -55,11 +50,9 @@ def about(request):
     return render(request, 'shop/about.html', {'info': info})
 
 
-@cache_page(60 * 10)  # Кеш на 10 минут
 def catalog(request):
     """Каталог товаров с оптимизацией запросов"""
     products = cache.get('products_catalog')
-
     if not products:
         products = list(
             Product.objects
@@ -67,14 +60,13 @@ def catalog(request):
             .prefetch_related('prices', 'images')
             .all()
         )
-        cache.set('products_catalog', products, 60 * 10)
+        cache.set('products_catalog', products, 60 * 5)  # 5 минут
 
     return render(request, 'shop/catalog.html', {'products': products})
 
 
 def product_detail(request, pk):
     """Детальная страница товара с калькулятором - ОПТИМИЗИРОВАНО"""
-
     # Кешируем данные товара
     cache_key = f'product_detail_{pk}'
     cached_data = cache.get(cache_key)
@@ -101,13 +93,11 @@ def product_detail(request, pk):
             'prices': prices,
             'options_by_category': options_by_category,
         }
-
-        cache.set(cache_key, context, 60 * 15)  # 15 минут
+        cache.set(cache_key, context, 60 * 10)  # 10 минут
 
     return render(request, 'shop/product_detail.html', context)
 
 
-@cache_page(60 * 30)  # Кеш на 30 минут
 def works(request):
     """Галерея работ"""
     photos = WorkPhoto.objects.all()[:50]  # Ограничение количества
@@ -143,7 +133,6 @@ def order(request):
                 message=form.cleaned_data['message'],
                 order_details=order_details
             )
-
             messages.success(request, 'Заказ успешно отправлен!')
             return redirect('order_success')
     else:
@@ -163,7 +152,6 @@ def order_success(request):
 def additional_services(request):
     """Страница дополнительных услуг - ОПТИМИЗИРОВАНО"""
     options_by_category = get_grouped_options()
-
     return render(request, 'shop/additional_services.html', {
         'options_by_category': options_by_category
     })

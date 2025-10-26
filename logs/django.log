@@ -95,3 +95,74 @@ WARNING 2025-10-26 14:48:41,358 log Not Found: /favicon.ico
 WARNING 2025-10-26 14:48:41,360 basehttp "GET /favicon.ico HTTP/1.1" 404 1281
 WARNING 2025-10-26 14:48:49,248 log Not Found: /favicon.ico
 WARNING 2025-10-26 14:48:49,249 basehttp "GET /favicon.ico HTTP/1.1" 404 1227
+WARNING 2025-10-26 22:14:44,520 log Not Found: /favicon.ico
+WARNING 2025-10-26 22:14:44,520 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+WARNING 2025-10-26 23:45:07,946 log Not Found: /favicon.ico
+WARNING 2025-10-26 23:45:07,947 basehttp "GET /favicon.ico HTTP/1.1" 404 1246
+WARNING 2025-10-26 23:56:29,241 log Not Found: /favicon.ico
+WARNING 2025-10-26 23:56:29,242 basehttp "GET /favicon.ico HTTP/1.1" 404 1262
+WARNING 2025-10-26 23:56:33,212 log Not Found: /favicon.ico
+WARNING 2025-10-26 23:56:33,213 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+ERROR 2025-10-27 00:17:38,227 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: shop_product.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\banya\banya\garantgroupvologda-main\garantgroupvologda-main\shop\views.py", line 37, in index
+    featured_products = list(
+        Product.objects.select_related()
+        .prefetch_related('prices', 'images')
+        .all()[:3]
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: shop_product.updated_at
+ERROR 2025-10-27 00:17:38,237 basehttp "GET / HTTP/1.1" 500 16752
+WARNING 2025-10-27 00:32:25,903 log Not Found: /favicon.ico
+WARNING 2025-10-27 00:32:25,903 basehttp "GET /favicon.ico HTTP/1.1" 404 1236

@@ -1,4 +1,3 @@
-# shop/models.py
 from django.db import models
 from django.core.cache import cache
 from django.utils.functional import cached_property
@@ -9,6 +8,7 @@ class Product(models.Model):
     price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     description = models.TextField('Описание')
     image = models.ImageField('Главное изображение', upload_to='products/', blank=True, null=True)
+    updated_at = models.DateTimeField('Дата обновления', auto_now=True)
 
     class Meta:
         verbose_name = 'Товар'
@@ -28,10 +28,13 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         """Очистка кеша при сохранении"""
         super().save(*args, **kwargs)
+        # Очистка всех связанных кешей
         cache.delete_many([
             'products_all',
             'products_featured',
+            'products_catalog',
             f'product_{self.pk}',
+            f'product_detail_{self.pk}',
         ])
 
 
@@ -58,6 +61,13 @@ class ProductPrice(models.Model):
     def __str__(self):
         return f"{self.product.title} - {self.name} - {self.price} ₽"
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # Очистка кеша продукта при изменении цены
+        cache.delete_many([
+            f'product_detail_{self.product.pk}',
+        ])
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(
@@ -79,6 +89,13 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Фото для {self.product.title}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # Очистка кеша продукта при добавлении изображения
+        cache.delete_many([
+            f'product_detail_{self.product.pk}',
+        ])
 
 
 class GlobalOption(models.Model):
@@ -129,6 +146,7 @@ class GlobalOption(models.Model):
         """Очистка кеша при сохранении"""
         super().save(*args, **kwargs)
         cache.delete('global_options_active')
+        cache.delete('global_options_grouped')
 
 
 class WorkPhoto(models.Model):
