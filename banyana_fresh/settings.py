@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['garantgroup.onrender.com', 'localhost', '127.0.0.1', '192.168.0.4',
                  'sgomezr5455-banyana-45a5.twc1.net', '188.225.82.47',
-                 'banyana.ru', 'www.banyana.ru', '*.timeweb.cloud', '*.twc1.net']
+                 'banyana.ru', 'www.banyana.ru', '*.timeweb.cloud', '*.twc1.net', 'sgomezr5455-garantgroupvologda-abc7.twc1.net']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://banyana.ru',
@@ -38,6 +38,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://sgomezr5455-banyana-45a5.twc1.net',
     'https://192.168.0.4',
     'https://garantgroup.onrender.com',
+    'https://sgomezr5455-garantgroupvologda-abc7.twc1.net',
 ]
 
 
