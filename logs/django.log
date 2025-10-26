@@ -63,3 +63,35 @@ WARNING 2025-10-25 18:56:40,795 log Not Found: /favicon.ico
 WARNING 2025-10-25 18:56:40,796 basehttp "GET /favicon.ico HTTP/1.1" 404 179
 WARNING 2025-10-25 18:56:49,987 log Not Found: /favicon.ico
 WARNING 2025-10-25 18:56:49,988 basehttp "GET /favicon.ico HTTP/1.1" 404 1298
+WARNING 2025-10-26 14:02:02,515 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:02:02,515 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-10-26 14:02:04,650 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:02:04,650 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-26 14:28:10,722 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:28:10,722 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-26 14:28:27,789 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:28:27,791 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-26 14:38:52,488 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:38:52,488 basehttp "GET /favicon.ico HTTP/1.1" 404 1253
+WARNING 2025-10-26 14:42:51,506 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:42:51,506 basehttp "GET /favicon.ico HTTP/1.1" 404 1247
+WARNING 2025-10-26 14:42:53,673 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:42:53,674 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-10-26 14:43:01,998 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:43:01,998 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-10-26 14:43:04,253 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:43:04,254 basehttp "GET /favicon.ico HTTP/1.1" 404 1248
+WARNING 2025-10-26 14:43:09,299 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:43:09,300 basehttp "GET /favicon.ico HTTP/1.1" 404 1247
+WARNING 2025-10-26 14:43:15,905 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:43:15,905 basehttp "GET /favicon.ico HTTP/1.1" 404 1211
+WARNING 2025-10-26 14:43:20,517 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:43:20,518 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+WARNING 2025-10-26 14:45:23,976 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:45:23,976 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-10-26 14:48:04,157 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:48:04,157 basehttp "GET /favicon.ico HTTP/1.1" 404 1213
+WARNING 2025-10-26 14:48:41,358 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:48:41,360 basehttp "GET /favicon.ico HTTP/1.1" 404 1281
+WARNING 2025-10-26 14:48:49,248 log Not Found: /favicon.ico
+WARNING 2025-10-26 14:48:49,249 basehttp "GET /favicon.ico HTTP/1.1" 404 1227
