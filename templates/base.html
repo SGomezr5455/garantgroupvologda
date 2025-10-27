@@ -1,3 +1,8 @@
+<!-- ==================================================================
+     ФАЙЛ: base.html
+     ОПИСАНИЕ: Базовый шаблон сайта с исправленным подключением стилей
+     ================================================================== -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
@@ -5,8 +10,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Гарант Групп - Бани под ключ{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta name="description" content="Качественные деревянные бани под ключ. Профессиональное строительство бань в Вологодской области.">
+
+    <!-- Основные стили сайта (должны быть первыми) -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Дополнительные стили для FAQ -->
+    <link rel="stylesheet" href="{% static 'css/faq-styles.css' %}">
+
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <!-- Preloader -->
@@ -88,6 +100,15 @@
         </div>
     </footer>
 
+    <!-- Основные скрипты сайта -->
     <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- Скрипт для исправления капчи -->
+    <script src="{% static 'js/captcha-fix.js' %}"></script>
+
+    <!-- Скрипт для FAQ -->
+    <script src="{% static 'js/faq-script.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

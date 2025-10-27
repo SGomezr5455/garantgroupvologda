@@ -1,3 +1,8 @@
+<!-- ==================================================================
+     ФАЙЛ: index.html
+     ОПИСАНИЕ: Главная страница с исправленными капчами во всех модальных окнах
+     ================================================================== -->
+
 {% extends 'base.html' %}
 {% load static %}
 
@@ -62,7 +67,7 @@
                             <a href="{% url 'product_detail' product.pk %}">
                                 <h3 class="card-title">{{ product.title }}</h3>
                             </a>
-                            <p class="card-price">{{ product.formatted_price }} ₽</p>
+                            <p class="card-price">{{ product.formatted_price }}</p>
                             <p class="card-description">{{ product.description|truncatechars:100 }}</p>
                             <a href="{% url 'product_detail' product.pk %}" class="btn btn-secondary card-button">Подробнее</a>
                         </div>
@@ -74,8 +79,6 @@
         {% endif %}
     </div>
 </section>
-<!-- ========== Конец секции с популярными товарами ========== -->
-
 
 <!-- ========== Секция с отзывами ========== -->
 <section class="section section-testimonials">
@@ -85,58 +88,56 @@
             <p class="section-subtitle">Мы гордимся своей работой и ценим доверие каждого.</p>
         </div>
 
-        <!-- Контейнер для карусели -->
         <div class="testimonial-carousel-wrapper">
             <div class="testimonial-carousel">
-                <!-- Отзывы (дублируются для бесконечной прокрутки) -->
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Долго выбирал, где заказать баню. Остановился на 'Гарант Групп' и не пожалел ни на секунду! Ребята — настоящие профессионалы. Все сделали в срок.</p>
                     <div class="testimonial-author">- Алексей, г. Вологда</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Мы заказали баню-бочку 'Квадро'. Это просто чудо! Компактная, но внутри очень просторная. Качество материалов на высоте, все сделано очень аккуратно.</p>
                     <div class="testimonial-author">- Семья Ивановых, Череповецкий район</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Как заядлый банщик, могу сказать — баня от 'Гарант Групп' сделана с душой. Дерево дышит, печь подобрали просто отличную. Рекомендую!</p>
                     <div class="testimonial-author">- Виктор Петрович, п. Сосновый бор</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Наконец-то сбылась мечта о собственной бане на даче. Спасибо команде за быструю установку и подробные консультации. Уже порекомендовали вас соседям!</p>
                     <div class="testimonial-author">- Ольга и Дмитрий, г. Сокол</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Заказывали баню с комнатой отдыха. Получился полноценный гостевой домик. Качество сборки и отделки на высшем уровне. Очень довольны результатом.</p>
                     <div class="testimonial-author">- Ирина, Вологодский район</div>
                 </div>
-                <!-- Дубликаты для плавности анимации -->
+                <!-- Дубликаты для плавности -->
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Долго выбирал, где заказать баню. Остановился на 'Гарант Групп' и не пожалел ни на секунду! Ребята — настоящие профессионалы. Все сделали в срок.</p>
                     <div class="testimonial-author">- Алексей, г. Вологда</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Мы заказали баню-бочку 'Квадро'. Это просто чудо! Компактная, но внутри очень просторная. Качество материалов на высоте, все сделано очень аккуратно.</p>
                     <div class="testimonial-author">- Семья Ивановых, Череповецкий район</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Как заядлый банщик, могу сказать — баня от 'Гарант Групп' сделана с душой. Дерево дышит, печь подобрали просто отличную. Рекомендую!</p>
                     <div class="testimonial-author">- Виктор Петрович, п. Сосновый бор</div>
                 </div>
-                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Наконец-то сбылась мечта о собственной бане на даче. Спасибо команде за быструю установку и подробные консультации. Уже порекомендовали вас соседям!</p>
                     <div class="testimonial-author">- Ольга и Дмитрий, г. Сокол</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-icon">“</div>
+                    <div class="testimonial-icon">"</div>
                     <p class="testimonial-text">Заказывали баню с комнатой отдыха. Получился полноценный гостевой домик. Качество сборки и отделки на высшем уровне. Очень довольны результатом.</p>
                     <div class="testimonial-author">- Ирина, Вологодский район</div>
                 </div>
@@ -149,36 +150,58 @@
     </div>
 </section>
 
-<!-- Модальное окно для отзыва -->
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ОТЗЫВА -->
 <div class="modal-overlay" id="reviewModalOverlay" style="display: none;">
     <div class="modal-content">
-        <button class="modal-close" id="closeReviewModal">&times;</button>
+        <button class="modal-close" id="closeReviewModal" type="button">&times;</button>
         <h3 class="modal-title">Оставить отзыв</h3>
         <p class="modal-subtitle">Поделитесь вашими впечатлениями о нашей работе</p>
-        <form id="reviewForm">
+
+        <form id="reviewForm" method="POST">
+            {% csrf_token %}
+
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ваше имя" required>
+                <label class="form-label">Ваше имя *</label>
+                <input type="text" name="name" class="form-control" placeholder="Введите ваше имя" required>
             </div>
+
             <div class="form-group">
-                <textarea class="form-control" rows="5" placeholder="Текст вашего отзыва..." required></textarea>
+                <label class="form-label">Ваш отзыв *</label>
+                <textarea name="review" class="form-control" rows="5" placeholder="Текст вашего отзыва..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary modal-submit">Отправить отзыв</button>
+
+            <!-- КАПЧА БЛОК -->
+            <div class="form-group captcha-group-modal">
+                <label class="form-label">Проверка безопасности *</label>
+
+                <div class="captcha-wrapper-modal">
+                    <div class="captcha-image-container-modal">
+                        {{ review_form.captcha }}
+                    </div>
+
+                    <button type="button" class="captcha-refresh-btn-modal" id="captcha-refresh-btn-review" title="Обновить капчу">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary modal-submit">
+                <span>Отправить отзыв</span>
+                <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </span>
+            </button>
         </form>
     </div>
 </div>
-<!-- ========== Уведомление об успехе ========== -->
-<div class="notification" id="successNotification" style="display: none;">
-    <div class="notification-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-    </div>
-    <div class="notification-content">
-        <p class="notification-title">Спасибо за ваш отзыв!</p>
-        <p class="notification-message">Он был успешно отправлен и появится на сайте после проверки модератором.</p>
-    </div>
-    <button class="notification-close" id="closeNotification">&times;</button>
-</div>
+
 <!-- ========== Секция "Кредит" ========== -->
-<!-- ========== Секция "Кредит" (Обновлено) ========== -->
 <section class="section section-credit">
     <div class="container">
         <div class="credit-card">
@@ -193,7 +216,7 @@
                     <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Сумма: от 3 тыс. до 2 млн рублей</div>
                     <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Норма одобрения 92%</div>
                 </div>
-                 <button class="btn btn-primary" id="openCreditModal">Получить консультацию</button>
+                <button class="btn btn-primary" id="openCreditModal">Получить консультацию</button>
             </div>
             <div class="credit-logos">
                 <p>Наши партнеры:</p>
@@ -205,40 +228,59 @@
     </div>
 </section>
 
-
-
-<!-- Модальное окно для заявки на кредит (Обновлено) -->
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЗАЯВКИ НА КРЕДИТ -->
 <div class="modal-overlay" id="creditModalOverlay" style="display: none;">
     <div class="modal-content">
-        <button class="modal-close" id="closeCreditModal">&times;</button>
+        <button class="modal-close" id="closeCreditModal" type="button">&times;</button>
         <h3 class="modal-title">Заявка на консультацию по кредиту</h3>
         <p class="modal-subtitle">Оставьте ваши данные, и наш специалист свяжется с вами для обсуждения деталей.</p>
+
         <form id="creditForm" method="POST" action="{% url 'credit_request' %}" novalidate>
             {% csrf_token %}
             <div id="credit-form-errors" class="form-errors" style="display:none;"></div>
 
             <div class="form-group">
-                <label for="{{ credit_form.fio.id_for_label }}">{{ credit_form.fio.label }}</label>
+                <label class="form-label" for="{{ credit_form.fio.id_for_label }}">{{ credit_form.fio.label }}</label>
                 {{ credit_form.fio }}
             </div>
+
             <div class="form-group">
-                <label for="{{ credit_form.phone.id_for_label }}">{{ credit_form.phone.label }}</label>
+                <label class="form-label" for="{{ credit_form.phone.id_for_label }}">{{ credit_form.phone.label }}</label>
                 {{ credit_form.phone }}
             </div>
-           <div class="form-group captcha-group">
-                <div class="captcha-wrapper">
-                 <label for="{{ credit_form.captcha.id_for_label }}">{{ credit_form.captcha.label }}</label>
-                 {{ credit_form.captcha }}
+
+            <!-- КАПЧА БЛОК -->
+            <div class="form-group captcha-group-modal">
+                <label class="form-label">Проверка безопасности *</label>
+
+                <div class="captcha-wrapper-modal">
+                    <div class="captcha-image-container-modal">
+                        {{ credit_form.captcha }}
+                    </div>
+
+                    <button type="button" class="captcha-refresh-btn-modal" id="captcha-refresh-btn-credit" title="Обновить капчу">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                    </button>
                 </div>
-                <svg class="captcha-refresh-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
             </div>
 
-            <button type="submit" class="btn btn-primary modal-submit">Отправить заявку</button>
+            <button type="submit" class="btn btn-primary modal-submit">
+                <span>Отправить заявку</span>
+                <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </span>
+            </button>
         </form>
     </div>
 </div>
 
-<!-- ========== Секция с Видео ========== -->
+<!-- ========== Остальные секции ========== -->
 <section class="section section-video">
     <div class="container">
         <div class="section-header">
@@ -256,7 +298,6 @@
     </div>
 </section>
 
-<!-- ========== Секция "Этапы работы" ========== -->
 <section class="section">
     <div class="container">
         <div class="section-header">
@@ -288,7 +329,6 @@
     </div>
 </section>
 
-<!-- ========== Секция "Наши преимущества" ========== -->
 <section class="section section-advantages">
     <div class="container">
         <div class="section-header">
@@ -327,5 +367,428 @@
         </div>
     </div>
 </section>
+
+<!-- СТИЛИ ДЛЯ МОДАЛЬНЫХ ОКОН -->
+<style>
+/* Общие стили модального окна */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    color: #ff6b00;
+    transform: rotate(90deg);
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modal-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+/* Стили формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #ff6b00;
+    box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Стили капчи */
+.captcha-group-modal {
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+}
+
+.captcha-wrapper-modal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.captcha-image-container-modal {
+    flex: 1;
+    min-width: 200px;
+}
+
+.captcha-image-container-modal img {
+    border-radius: 8px;
+    border: 2px solid #dee2e6;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.captcha-refresh-btn-modal {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.captcha-refresh-btn-modal:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
+}
+
+.captcha-refresh-btn-modal:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.captcha-refresh-btn-modal:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.captcha-refresh-btn-modal svg {
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.captcha-refresh-btn-modal.loading svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.modal-submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 30px 20px;
+    }
+
+    .modal-title {
+        font-size: 1.6rem;
+    }
+
+    .captcha-wrapper-modal {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .captcha-refresh-btn-modal {
+        align-self: center;
+    }
+}
+</style>
+
+<!-- JAVASCRIPT ДЛЯ МОДАЛЬНЫХ ОКОН И КАПЧИ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔧 Инициализация модальных окон с капчей');
+
+    // ===== УПРАВЛЕНИЕ МОДАЛЬНЫМИ ОКНАМИ =====
+
+    // Модальное окно отзывов
+    const reviewModal = document.getElementById('reviewModalOverlay');
+    const openReviewBtn = document.getElementById('openReviewModal');
+    const closeReviewBtn = document.getElementById('closeReviewModal');
+
+    if (openReviewBtn) {
+        openReviewBtn.addEventListener('click', function() {
+            reviewModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            console.log('✅ Модальное окно отзывов открыто');
+        });
+    }
+
+    if (closeReviewBtn) {
+        closeReviewBtn.addEventListener('click', function() {
+            reviewModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            console.log('✅ Модальное окно отзывов закрыто');
+        });
+    }
+
+    // Модальное окно кредита
+    const creditModal = document.getElementById('creditModalOverlay');
+    const openCreditBtn = document.getElementById('openCreditModal');
+    const closeCreditBtn = document.getElementById('closeCreditModal');
+
+    if (openCreditBtn) {
+        openCreditBtn.addEventListener('click', function() {
+            creditModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            console.log('✅ Модальное окно кредита открыто');
+        });
+    }
+
+    if (closeCreditBtn) {
+        closeCreditBtn.addEventListener('click', function() {
+            creditModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            console.log('✅ Модальное окно кредита закрыто');
+        });
+    }
+
+    // Закрытие по клику вне модального окна
+    [reviewModal, creditModal].forEach(modal => {
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (reviewModal && reviewModal.style.display === 'flex') {
+                reviewModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (creditModal && creditModal.style.display === 'flex') {
+                creditModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    // ===== ОБНОВЛЕНИЕ КАПЧИ В МОДАЛЬНОМ ОКНЕ ОТЗЫВОВ =====
+    const refreshBtnReview = document.getElementById('captcha-refresh-btn-review');
+
+    if (refreshBtnReview) {
+        console.log('✅ Кнопка обновления капчи отзывов найдена');
+
+        refreshBtnReview.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log('🖱️ Клик по кнопке обновления капчи отзывов');
+
+            refreshBtnReview.classList.add('loading');
+            refreshBtnReview.disabled = true;
+
+            refreshCaptcha('#reviewModalOverlay', refreshBtnReview);
+        });
+    }
+
+    // ===== ОБНОВЛЕНИЕ КАПЧИ В МОДАЛЬНОМ ОКНЕ КРЕДИТА =====
+    const refreshBtnCredit = document.getElementById('captcha-refresh-btn-credit');
+
+    if (refreshBtnCredit) {
+        console.log('✅ Кнопка обновления капчи кредита найдена');
+
+        refreshBtnCredit.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log('🖱️ Клик по кнопке обновления капчи кредита');
+
+            refreshBtnCredit.classList.add('loading');
+            refreshBtnCredit.disabled = true;
+
+            refreshCaptcha('#creditModalOverlay', refreshBtnCredit);
+        });
+    }
+
+    // ===== ФУНКЦИЯ ОБНОВЛЕНИЯ КАПЧИ =====
+    function refreshCaptcha(modalSelector, button) {
+        fetch('/captcha/refresh/', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сервера: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('📦 Получены новые данные капчи:', data);
+
+            // Поиск изображения капчи
+            let captchaImg = document.querySelector(`${modalSelector} .captcha img`);
+
+            if (!captchaImg) {
+                captchaImg = document.querySelector(`${modalSelector} .captcha-group-modal img`);
+            }
+
+            if (!captchaImg) {
+                const modalImages = document.querySelectorAll(`${modalSelector} img`);
+                for (let img of modalImages) {
+                    if (img.src.includes('captcha')) {
+                        captchaImg = img;
+                        break;
+                    }
+                }
+            }
+
+            if (captchaImg && data.image_url) {
+                const oldSrc = captchaImg.src;
+                const newSrc = data.image_url + '?' + new Date().getTime();
+                captchaImg.src = newSrc;
+                console.log('🎨 Изображение капчи обновлено');
+                console.log('   Старый src:', oldSrc);
+                console.log('   Новый src:', newSrc);
+
+                captchaImg.onload = function() {
+                    console.log('✅ Новое изображение загружено');
+                };
+            } else {
+                console.error('❌ Изображение капчи не найдено');
+            }
+
+            // Обновляем скрытое поле с хешем
+            let hashInput = document.querySelector(`${modalSelector} .captcha input[name$="_0"]`);
+            if (!hashInput) {
+                hashInput = document.querySelector(`${modalSelector} input[name$="_0"]`);
+            }
+
+            if (hashInput && data.key) {
+                hashInput.value = data.key;
+                console.log('🔑 Хеш капчи обновлён');
+            }
+
+            // Очищаем поле ввода
+            let captchaInput = document.querySelector(`${modalSelector} .captcha input[name$="_1"]`);
+            if (!captchaInput) {
+                captchaInput = document.querySelector(`${modalSelector} input[name$="_1"]`);
+            }
+
+            if (captchaInput) {
+                captchaInput.value = '';
+                captchaInput.focus();
+                console.log('🧹 Поле ввода очищено');
+            }
+
+            console.log('✅ Капча успешно обновлена');
+        })
+        .catch(error => {
+            console.error('❌ Ошибка при обновлении капчи:', error);
+            alert('Не удалось обновить капчу. Попробуйте еще раз.');
+        })
+        .finally(() => {
+            setTimeout(() => {
+                button.classList.remove('loading');
+                button.disabled = false;
+            }, 300);
+        });
+    }
+});
+</script>
 
 {% endblock %}

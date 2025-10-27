@@ -396,3 +396,75 @@ WARNING 2025-10-27 18:58:54,298 log Not Found: /favicon.ico
 WARNING 2025-10-27 18:58:54,298 basehttp "GET /favicon.ico HTTP/1.1" 404 1238
 WARNING 2025-10-27 19:10:45,652 log Not Found: /favicon.ico
 WARNING 2025-10-27 19:10:45,653 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-27 19:44:52,929 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 19:44:52,931 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1329
+WARNING 2025-10-27 20:15:30,091 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:15:30,092 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-10-27 20:16:07,303 log Not Found: /faq
+WARNING 2025-10-27 20:16:07,303 basehttp "GET /faq HTTP/1.1" 404 1313
+WARNING 2025-10-27 20:16:21,342 log Not Found: /faq-section-catalog
+WARNING 2025-10-27 20:16:21,342 basehttp "GET /faq-section-catalog HTTP/1.1" 404 1246
+WARNING 2025-10-27 20:18:53,688 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:18:53,688 basehttp "GET /favicon.ico HTTP/1.1" 404 1304
+WARNING 2025-10-27 20:21:58,797 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:04,859 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:05,293 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:22:05,294 basehttp "GET /favicon.ico HTTP/1.1" 404 1317
+WARNING 2025-10-27 20:22:06,181 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:07,576 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:09,284 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:10,109 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:10,792 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:13,709 basehttp "GET /static/js/faq-script.js HTTP/1.1" 404 1975
+WARNING 2025-10-27 20:22:28,408 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:22:28,408 basehttp "GET /favicon.ico HTTP/1.1" 404 1319
+WARNING 2025-10-27 20:22:54,132 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:22:54,133 basehttp "GET /favicon.ico HTTP/1.1" 404 1246
+WARNING 2025-10-27 20:22:56,194 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:22:56,195 basehttp "GET /favicon.ico HTTP/1.1" 404 1318
+WARNING 2025-10-27 20:23:27,097 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:23:27,098 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-10-27 20:25:16,051 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:25:16,051 basehttp "GET /favicon.ico HTTP/1.1" 404 1315
+WARNING 2025-10-27 20:26:01,067 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:26:01,067 basehttp "GET /favicon.ico HTTP/1.1" 404 1297
+WARNING 2025-10-27 20:32:19,262 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:32:19,262 basehttp "GET /favicon.ico HTTP/1.1" 404 1278
+WARNING 2025-10-27 20:34:04,656 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:34:04,656 basehttp "GET /favicon.ico HTTP/1.1" 404 1281
+WARNING 2025-10-27 20:34:37,462 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:34:37,462 basehttp "GET /favicon.ico HTTP/1.1" 404 1275
+WARNING 2025-10-27 20:34:51,271 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:34:51,272 basehttp "GET /favicon.ico HTTP/1.1" 404 1231
+WARNING 2025-10-27 20:35:03,631 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:35:03,632 basehttp "GET /favicon.ico HTTP/1.1" 404 1264
+WARNING 2025-10-27 20:35:15,945 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:35:15,946 basehttp "GET /favicon.ico HTTP/1.1" 404 1316
+WARNING 2025-10-27 20:41:33,979 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:41:33,980 basehttp "GET /favicon.ico HTTP/1.1" 404 1280
+WARNING 2025-10-27 20:42:25,420 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:42:25,421 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1290
+WARNING 2025-10-27 20:48:38,635 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:48:38,636 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-10-27 20:49:39,454 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:49:39,455 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1284
+WARNING 2025-10-27 20:52:11,305 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:52:11,305 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1332
+WARNING 2025-10-27 20:52:11,920 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:52:11,921 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+WARNING 2025-10-27 20:52:59,466 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:52:59,467 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1281
+WARNING 2025-10-27 20:53:05,365 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:53:05,366 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1359
+WARNING 2025-10-27 20:53:05,909 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:53:05,910 basehttp "GET /favicon.ico HTTP/1.1" 404 1279
+WARNING 2025-10-27 20:53:24,808 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:53:24,809 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1358
+WARNING 2025-10-27 20:53:26,793 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:53:26,793 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1305
+WARNING 2025-10-27 20:53:27,604 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:53:27,604 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-10-27 20:57:05,422 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 20:57:05,423 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1322
+WARNING 2025-10-27 20:57:05,936 log Not Found: /favicon.ico
+WARNING 2025-10-27 20:57:05,936 basehttp "GET /favicon.ico HTTP/1.1" 404 1230
