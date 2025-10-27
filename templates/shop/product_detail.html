@@ -138,7 +138,7 @@
                     <div class="category-accordion">
                         <button class="accordion-trigger" onclick="toggleAccordion('{{ category_key }}')">
                             <span class="accordion-title">{{ category_data.name }}</span>
-                            <span class="accordion-count">{{ category_data.options|length }}</span>
+
                             <span class="accordion-icon">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                     <polyline points="6 9 12 15 18 9"/>
@@ -252,9 +252,9 @@
 
 <style>
 :root {
-    --green-primary: #2E7D32;
-    --green-dark: #1B5E20;
-    --green-light: #4CAF50;
+    --green-primary: #7c6206;
+    --green-dark: #63410f;
+    --green-light: #553101;
     --green-ultra-light: #E8F5E9;
 
     --orange-primary: #FF6F00;
@@ -275,7 +275,7 @@
     --gradient-orange: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
     --gradient-mixed: linear-gradient(135deg, var(--green-primary), var(--orange-primary));
 
-    --shadow-green: 0 4px 20px rgba(46, 125, 50, 0.15);
+    --shadow-green: 0 4px 20px rgba(85, 46, 3, 0.15);
     --shadow-orange: 0 4px 20px rgba(255, 111, 0, 0.15);
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
 
@@ -296,7 +296,7 @@
 
 .hero-section {
     position: relative;
-    background: var(--gradient-mixed);
+    background: var(--gradient-warm);
     padding: 6rem 0 4rem;
     overflow: hidden;
 }
@@ -777,7 +777,7 @@
 }
 
 .category-accordion {
-    border: 2px solid var(--gray-100);
+    border: 2px solid var(--wood-light);
     border-radius: 16px;
     margin-bottom: 1rem;
     overflow: hidden;
@@ -795,7 +795,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 1.5rem;
-    background: var(--gradient-mixed);
+    background: var(--gradient-brown);
     color: var(--white);
     border: none;
     cursor: pointer;
@@ -803,7 +803,7 @@
 }
 
 .accordion-trigger:hover {
-    background: var(--gradient-green);
+    background: var(--gradient-warm);
 }
 
 .accordion-title {
@@ -939,6 +939,9 @@
     opacity: 0.3;
     cursor: not-allowed;
     transform: none;
+}
+.total-price {
+    font-variant-numeric: tabular-nums;
 }
 
 .summary-sticky {

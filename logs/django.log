@@ -166,3 +166,233 @@ django.db.utils.OperationalError: no such column: shop_product.updated_at
 ERROR 2025-10-27 00:17:38,237 basehttp "GET / HTTP/1.1" 500 16752
 WARNING 2025-10-27 00:32:25,903 log Not Found: /favicon.ico
 WARNING 2025-10-27 00:32:25,903 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-10-27 15:26:19,707 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:26:19,708 basehttp "GET /favicon.ico HTTP/1.1" 404 1211
+WARNING 2025-10-27 15:40:57,695 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:40:57,696 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-10-27 15:41:10,348 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:41:10,348 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-27 15:55:30,509 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:55:30,509 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+ERROR 2025-10-27 15:55:34,114 log Internal Server Error: /about/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\banya\banya\garantgroupvologda-main\garantgroupvologda-main\shop\views.py", line 50, in about
+    return render(request, 'shop/about.html', {'info': info})
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contacts' not found. 'contacts' is not a valid view function or pattern name.
+ERROR 2025-10-27 15:55:34,124 basehttp "GET /about/ HTTP/1.1" 500 18603
+WARNING 2025-10-27 15:55:42,970 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:55:42,970 basehttp "GET /favicon.ico HTTP/1.1" 404 1223
+ERROR 2025-10-27 15:55:43,896 log Internal Server Error: /about/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\banya\banya\garantgroupvologda-main\garantgroupvologda-main\shop\views.py", line 50, in about
+    return render(request, 'shop/about.html', {'info': info})
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contacts' not found. 'contacts' is not a valid view function or pattern name.
+ERROR 2025-10-27 15:55:43,902 basehttp "GET /about/ HTTP/1.1" 500 18510
+WARNING 2025-10-27 15:55:52,831 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:55:52,832 basehttp "GET /favicon.ico HTTP/1.1" 404 1283
+WARNING 2025-10-27 15:56:10,949 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:10,950 basehttp "GET /favicon.ico HTTP/1.1" 404 1215
+WARNING 2025-10-27 15:56:32,656 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:32,656 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-10-27 15:56:49,417 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:49,417 basehttp "GET /favicon.ico HTTP/1.1" 404 1300
+WARNING 2025-10-27 15:56:53,113 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:53,113 basehttp "GET /favicon.ico HTTP/1.1" 404 1244
+WARNING 2025-10-27 15:58:04,744 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:58:04,745 basehttp "GET /favicon.ico HTTP/1.1" 404 1219
+WARNING 2025-10-27 15:58:22,125 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 15:58:22,126 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1241
+WARNING 2025-10-27 15:58:38,237 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 15:58:38,238 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1267
+WARNING 2025-10-27 15:59:43,698 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:59:43,699 basehttp "GET /favicon.ico HTTP/1.1" 404 1227
+WARNING 2025-10-27 16:00:20,563 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:00:20,564 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+WARNING 2025-10-27 16:01:11,915 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:01:11,916 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1336
+WARNING 2025-10-27 16:01:54,675 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:01:54,675 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1269
+WARNING 2025-10-27 16:01:56,779 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:01:56,780 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-27 16:02:04,694 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:02:04,695 basehttp "GET /favicon.ico HTTP/1.1" 404 1269
+WARNING 2025-10-27 16:02:36,120 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:02:36,121 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1252
+WARNING 2025-10-27 16:03:18,857 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:03:18,857 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1328
+WARNING 2025-10-27 16:03:18,984 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:03:18,985 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-10-27 16:03:36,214 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:03:36,215 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1323
+WARNING 2025-10-27 16:03:36,321 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:03:36,322 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+WARNING 2025-10-27 16:06:03,469 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:06:03,470 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1323
+WARNING 2025-10-27 16:10:14,786 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:10:14,787 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1300
+WARNING 2025-10-27 16:11:46,917 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:11:46,919 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1303
+WARNING 2025-10-27 16:11:47,260 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:11:47,260 basehttp "GET /favicon.ico HTTP/1.1" 404 1225
+WARNING 2025-10-27 16:11:52,430 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:11:52,431 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1278
+WARNING 2025-10-27 16:11:52,558 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:11:52,558 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-27 16:16:41,023 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:16:41,024 basehttp "GET /favicon.ico HTTP/1.1" 404 1250
+WARNING 2025-10-27 16:16:42,763 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:16:42,764 basehttp "GET /favicon.ico HTTP/1.1" 404 1249
+WARNING 2025-10-27 16:29:33,928 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:29:33,929 basehttp "GET /favicon.ico HTTP/1.1" 404 1300
+WARNING 2025-10-27 16:33:32,450 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:33:32,451 basehttp "GET /favicon.ico HTTP/1.1" 404 1257
+WARNING 2025-10-27 16:51:56,028 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:51:56,028 basehttp "GET /favicon.ico HTTP/1.1" 404 1215
+WARNING 2025-10-27 16:52:54,799 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:52:54,799 basehttp "GET /favicon.ico HTTP/1.1" 404 1288
+WARNING 2025-10-27 16:59:47,624 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:59:47,625 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+WARNING 2025-10-27 17:04:09,909 log Not Found: /favicon.ico
+WARNING 2025-10-27 17:04:09,909 basehttp "GET /favicon.ico HTTP/1.1" 404 1263
+WARNING 2025-10-27 17:07:56,017 log Not Found: /favicon.ico
+WARNING 2025-10-27 17:07:56,018 basehttp "GET /favicon.ico HTTP/1.1" 404 1226
+WARNING 2025-10-27 18:35:28,478 basehttp "GET /static/images/logo-placeholder.png HTTP/1.1" 404 2008
+WARNING 2025-10-27 18:35:28,896 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:35:28,897 basehttp "GET /favicon.ico HTTP/1.1" 404 1290
+WARNING 2025-10-27 18:35:31,251 basehttp "GET /static/images/logo-placeholder.png HTTP/1.1" 404 2008
+WARNING 2025-10-27 18:35:31,627 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:35:31,628 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-10-27 18:35:51,576 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:35:51,576 basehttp "POST /credit-request/ HTTP/1.1" 400 253
+WARNING 2025-10-27 18:42:05,482 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:42:05,483 basehttp "GET /favicon.ico HTTP/1.1" 404 1321
+WARNING 2025-10-27 18:42:18,689 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:42:18,689 basehttp "POST /credit-request/ HTTP/1.1" 400 176
+WARNING 2025-10-27 18:42:18,698 log Gone: /captcha/image/144087855e2b075f4f48305059a1e8760b3a1fb4/
+WARNING 2025-10-27 18:42:18,699 basehttp "GET /captcha/image/144087855e2b075f4f48305059a1e8760b3a1fb4/?1761579738695 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:42:22,684 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:42:22,685 basehttp "GET /favicon.ico HTTP/1.1" 404 1317
+WARNING 2025-10-27 18:42:30,439 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:42:30,439 basehttp "POST /credit-request/ HTTP/1.1" 400 244
+WARNING 2025-10-27 18:42:30,443 log Gone: /captcha/image/2b53c818bef35489a2de1f34e66b92933119e113/
+WARNING 2025-10-27 18:42:30,443 basehttp "GET /captcha/image/2b53c818bef35489a2de1f34e66b92933119e113/?1761579750441 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:42:35,232 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:42:35,233 basehttp "GET /favicon.ico HTTP/1.1" 404 1239
+WARNING 2025-10-27 18:42:46,144 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:42:46,145 basehttp "POST /credit-request/ HTTP/1.1" 400 176
+WARNING 2025-10-27 18:42:46,149 log Gone: /captcha/image/826ec83384c734b7acc2bb859613d415c45fbf90/
+WARNING 2025-10-27 18:42:46,149 basehttp "GET /captcha/image/826ec83384c734b7acc2bb859613d415c45fbf90/?1761579766146 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:54:52,098 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:54:52,099 basehttp "GET /favicon.ico HTTP/1.1" 404 1248
+WARNING 2025-10-27 18:55:13,668 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:55:13,669 basehttp "POST /credit-request/ HTTP/1.1" 400 176
+WARNING 2025-10-27 18:55:13,675 log Gone: /captcha/image/3d70451d4b405b4ec8017ccab0ff54e78da3ab2d/
+WARNING 2025-10-27 18:55:13,676 basehttp "GET /captcha/image/3d70451d4b405b4ec8017ccab0ff54e78da3ab2d/?1761580513672 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:55:17,514 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:55:17,515 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-10-27 18:58:30,807 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:58:30,807 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-10-27 18:58:54,298 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:58:54,298 basehttp "GET /favicon.ico HTTP/1.1" 404 1238
+WARNING 2025-10-27 19:10:45,652 log Not Found: /favicon.ico
+WARNING 2025-10-27 19:10:45,653 basehttp "GET /favicon.ico HTTP/1.1" 404 1240

@@ -323,6 +323,155 @@ if (totalPriceElement) {
         totalPriceElement.classList.remove('updated');
     }, 300);
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const openModalBtn = document.getElementById('openReviewModal');
+    const closeModalBtn = document.getElementById('closeReviewModal');
+    const modalOverlay = document.getElementById('reviewModalOverlay');
+    const reviewForm = document.getElementById('reviewForm');
+
+    if (openModalBtn && modalOverlay) {
+        openModalBtn.addEventListener('click', () => {
+            modalOverlay.style.display = 'flex';
+        });
+    }
+
+    if (closeModalBtn && modalOverlay) {
+        closeModalBtn.addEventListener('click', () => {
+            modalOverlay.style.display = 'none';
+        });
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                modalOverlay.style.display = 'none';
+            }
+        });
+    }
+
+   if (reviewForm) {
+    reviewForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Отменяем стандартную отправку формы
+
+        // Скрываем модальное окно
+        modalOverlay.style.display = 'none';
+        reviewForm.reset(); // Очищаем поля формы
+
+        // Показываем кастомное уведомление
+        const notification = document.getElementById('successNotification');
+        if (notification) {
+            notification.style.display = 'flex';
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10); // Небольшая задержка для срабатывания анимации
+
+            // Автоматически скрыть уведомление через 5 секунд
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500); // Даем время анимации затухания
+            }, 5000);
+        }
+    });
+}
+
+// Добавляем обработчик для кнопки закрытия уведомления
+const closeNotificationBtn = document.getElementById('closeNotification');
+if (closeNotificationBtn) {
+    closeNotificationBtn.addEventListener('click', () => {
+        const notification = document.getElementById('successNotification');
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 500);
+    });
+}
+
+});
+// ========== ЛОГИКА ДЛЯ МОДАЛЬНОГО ОКНА КРЕДИТА ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const openCreditBtn = document.getElementById('openCreditModal');
+    const closeCreditBtn = document.getElementById('closeCreditModal');
+    const creditModalOverlay = document.getElementById('creditModalOverlay');
+    const creditForm = document.getElementById('creditForm');
+    const errorContainer = document.getElementById('credit-form-errors');
+
+    if (openCreditBtn) {
+        openCreditBtn.addEventListener('click', () => {
+            creditModalOverlay.style.display = 'flex';
+        });
+    }
+
+    const closeCreditModal = () => {
+        creditModalOverlay.style.display = 'none';
+        errorContainer.style.display = 'none';
+        errorContainer.innerHTML = '';
+    }
+
+    if (closeCreditBtn) {
+        closeCreditBtn.addEventListener('click', closeCreditModal);
+    }
+
+    if (creditModalOverlay) {
+        creditModalOverlay.addEventListener('click', (e) => {
+            if (e.target === creditModalOverlay) closeCreditModal();
+        });
+    }
+
+    if (creditForm) {
+        creditForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    closeCreditModal();
+                    // Показываем уже готовое уведомление об успехе
+                    const notification = document.getElementById('successNotification');
+                    notification.querySelector('.notification-title').textContent = 'Заявка отправлена!';
+                    notification.querySelector('.notification-message').textContent = 'Наш кредитный специалист скоро с вами свяжется.';
+                    notification.style.display = 'flex';
+                    setTimeout(() => notification.classList.add('show'), 10);
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                        setTimeout(() => notification.style.display = 'none', 500);
+                    }, 5000);
+                } else {
+                    // Показываем ошибки
+                    const errors = JSON.parse(data.errors);
+                    let errorHtml = '<ul>';
+                    for (const field in errors) {
+                        errors[field].forEach(error => {
+                            errorHtml += `<li>${error.message}</li>`;
+                        });
+                    }
+                    errorHtml += '</ul>';
+                    errorContainer.innerHTML = errorHtml;
+                    errorContainer.style.display = 'block';
+
+                    // Обновляем капчу
+                    const captchaImage = creditForm.querySelector('.captcha');
+                    if(captchaImage) captchaImage.src = captchaImage.src + '?' + new Date().getTime();
+                    creditForm.querySelector('input[name="captcha_1"]').value = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorContainer.innerHTML = 'Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.';
+                errorContainer.style.display = 'block';
+            });
+        });
+    }
+});
 
 // ========== RIPPLE ANIMATION CSS ==========
 const rippleStyles = document.createElement('style');

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Главная - Гарант Групп{% endblock %}
+{% block title %}Гарант Групп - Бани под ключ в Вологде{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- ========== HERO SECTION ========== -->
 <section class="hero">
     <div class="hero-bg">
         <div class="floating-shape shape-1"></div>
@@ -20,8 +20,8 @@
                     <span>Посмотреть каталог</span>
                     <span class="btn-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                            <polyline points="12 5 19 12 12 19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </span>
                     <div class="btn-shine"></div>
@@ -34,55 +34,298 @@
     </div>
 </section>
 
-<!-- Products Section -->
+<!-- ========== Секция с популярными товарами ========== -->
 <section class="section">
     <div class="container">
         <div class="section-header">
             <span class="section-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-                Рекомендуемые товары
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Лучший выбор</span>
             </span>
             <h2 class="section-title">Популярные позиции нашего каталога</h2>
         </div>
 
-        <div class="card-grid">
-            {% for product in products %}
-            <article class="card scale-in" style="animation-delay: {{ forloop.counter0|add:'0' }}00ms;">
-                <div class="card-image">
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}?t={{ product.updated_at.timestamp }}" alt="{{ product.title }}" loading="lazy">
-                    {% else %}
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f5f5f5;color:#bdbdbd;">
-                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
+        {% if featured_products %}
+            <div class="card-grid">
+                {% for product in featured_products %}
+                    <div class="card">
+                        <a href="{% url 'product_detail' product.pk %}" class="card-image-link">
+                            <div class="card-image">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                                {% else %}
+                                    <img src="{% static 'images/placeholder.png' %}" alt="Изображение отсутствует">
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class="card-content">
+                            <a href="{% url 'product_detail' product.pk %}">
+                                <h3 class="card-title">{{ product.title }}</h3>
+                            </a>
+                            <p class="card-price">{{ product.formatted_price }} ₽</p>
+                            <p class="card-description">{{ product.description|truncatechars:100 }}</p>
+                            <a href="{% url 'product_detail' product.pk %}" class="btn btn-secondary card-button">Подробнее</a>
+                        </div>
                     </div>
-                    {% endif %}
-                    <span class="card-badge">Хит продаж</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Популярные товары скоро появятся здесь.</p>
+        {% endif %}
+    </div>
+</section>
+<!-- ========== Конец секции с популярными товарами ========== -->
+
+
+<!-- ========== Секция с отзывами ========== -->
+<section class="section section-testimonials">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Что говорят наши клиенты</h2>
+            <p class="section-subtitle">Мы гордимся своей работой и ценим доверие каждого.</p>
+        </div>
+
+        <!-- Контейнер для карусели -->
+        <div class="testimonial-carousel-wrapper">
+            <div class="testimonial-carousel">
+                <!-- Отзывы (дублируются для бесконечной прокрутки) -->
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Долго выбирал, где заказать баню. Остановился на 'Гарант Групп' и не пожалел ни на секунду! Ребята — настоящие профессионалы. Все сделали в срок.</p>
+                    <div class="testimonial-author">- Алексей, г. Вологда</div>
                 </div>
-                <div class="card-content">
-                    <h3 class="card-title">
-                        <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a>
-                    </h3>
-                    <p class="card-price">{{ product.formatted_price }}</p>
-                    <p class="card-description">{{ product.description|truncatechars:100 }}</p>
-                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary card-button">
-                        <span>Подробнее</span>
-                        <span class="btn-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                                <polyline points="12 5 19 12 12 19"/>
-                            </svg>
-                        </span>
-                        <div class="btn-shine"></div>
-                    </a>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Мы заказали баню-бочку 'Квадро'. Это просто чудо! Компактная, но внутри очень просторная. Качество материалов на высоте, все сделано очень аккуратно.</p>
+                    <div class="testimonial-author">- Семья Ивановых, Череповецкий район</div>
                 </div>
-            </article>
-            {% endfor %}
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Как заядлый банщик, могу сказать — баня от 'Гарант Групп' сделана с душой. Дерево дышит, печь подобрали просто отличную. Рекомендую!</p>
+                    <div class="testimonial-author">- Виктор Петрович, п. Сосновый бор</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Наконец-то сбылась мечта о собственной бане на даче. Спасибо команде за быструю установку и подробные консультации. Уже порекомендовали вас соседям!</p>
+                    <div class="testimonial-author">- Ольга и Дмитрий, г. Сокол</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Заказывали баню с комнатой отдыха. Получился полноценный гостевой домик. Качество сборки и отделки на высшем уровне. Очень довольны результатом.</p>
+                    <div class="testimonial-author">- Ирина, Вологодский район</div>
+                </div>
+                <!-- Дубликаты для плавности анимации -->
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Долго выбирал, где заказать баню. Остановился на 'Гарант Групп' и не пожалел ни на секунду! Ребята — настоящие профессионалы. Все сделали в срок.</p>
+                    <div class="testimonial-author">- Алексей, г. Вологда</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Мы заказали баню-бочку 'Квадро'. Это просто чудо! Компактная, но внутри очень просторная. Качество материалов на высоте, все сделано очень аккуратно.</p>
+                    <div class="testimonial-author">- Семья Ивановых, Череповецкий район</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Как заядлый банщик, могу сказать — баня от 'Гарант Групп' сделана с душой. Дерево дышит, печь подобрали просто отличную. Рекомендую!</p>
+                    <div class="testimonial-author">- Виктор Петрович, п. Сосновый бор</div>
+                </div>
+                 <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Наконец-то сбылась мечта о собственной бане на даче. Спасибо команде за быструю установку и подробные консультации. Уже порекомендовали вас соседям!</p>
+                    <div class="testimonial-author">- Ольга и Дмитрий, г. Сокол</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">“</div>
+                    <p class="testimonial-text">Заказывали баню с комнатой отдыха. Получился полноценный гостевой домик. Качество сборки и отделки на высшем уровне. Очень довольны результатом.</p>
+                    <div class="testimonial-author">- Ирина, Вологодский район</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-footer">
+            <button class="btn btn-primary" id="openReviewModal">Оставить отзыв</button>
         </div>
     </div>
 </section>
+
+<!-- Модальное окно для отзыва -->
+<div class="modal-overlay" id="reviewModalOverlay" style="display: none;">
+    <div class="modal-content">
+        <button class="modal-close" id="closeReviewModal">&times;</button>
+        <h3 class="modal-title">Оставить отзыв</h3>
+        <p class="modal-subtitle">Поделитесь вашими впечатлениями о нашей работе</p>
+        <form id="reviewForm">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ваше имя" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="5" placeholder="Текст вашего отзыва..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary modal-submit">Отправить отзыв</button>
+        </form>
+    </div>
+</div>
+<!-- ========== Уведомление об успехе ========== -->
+<div class="notification" id="successNotification" style="display: none;">
+    <div class="notification-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    </div>
+    <div class="notification-content">
+        <p class="notification-title">Спасибо за ваш отзыв!</p>
+        <p class="notification-message">Он был успешно отправлен и появится на сайте после проверки модератором.</p>
+    </div>
+    <button class="notification-close" id="closeNotification">&times;</button>
+</div>
+<!-- ========== Секция "Кредит" ========== -->
+<!-- ========== Секция "Кредит" (Обновлено) ========== -->
+<section class="section section-credit">
+    <div class="container">
+        <div class="credit-card">
+            <div class="credit-content">
+                <h2 class="credit-title">Баня в кредит на выгодных условиях</h2>
+                <p class="credit-subtitle">Оформите баню мечты уже сегодня, а платите потом. Быстрое одобрение онлайн от наших банков-партнеров.</p>
+                <div class="credit-features">
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Срок кредита: от 6 мес. до 3 лет</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Быстрая обработка заявок</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Возраст: от 18 до 99 лет</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Оформление онлайн по всей России</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Сумма: от 3 тыс. до 2 млн рублей</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Норма одобрения 92%</div>
+                </div>
+                 <button class="btn btn-primary" id="openCreditModal">Получить консультацию</button>
+            </div>
+            <div class="credit-logos">
+                <p>Наши партнеры:</p>
+                <div class="partners-text">
+                    МТС Банк, ОТП Банк, Ренессанс Кредит, Совкомбанк, Альфа-Банк, ЛокоБанк, Кредит Европа Банк и другие.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Модальное окно для заявки на кредит (Обновлено) -->
+<div class="modal-overlay" id="creditModalOverlay" style="display: none;">
+    <div class="modal-content">
+        <button class="modal-close" id="closeCreditModal">&times;</button>
+        <h3 class="modal-title">Заявка на консультацию по кредиту</h3>
+        <p class="modal-subtitle">Оставьте ваши данные, и наш специалист свяжется с вами для обсуждения деталей.</p>
+        <form id="creditForm" method="POST" action="{% url 'credit_request' %}" novalidate>
+            {% csrf_token %}
+            <div id="credit-form-errors" class="form-errors" style="display:none;"></div>
+
+            <div class="form-group">
+                <label for="{{ credit_form.fio.id_for_label }}">{{ credit_form.fio.label }}</label>
+                {{ credit_form.fio }}
+            </div>
+            <div class="form-group">
+                <label for="{{ credit_form.phone.id_for_label }}">{{ credit_form.phone.label }}</label>
+                {{ credit_form.phone }}
+            </div>
+           <div class="form-group captcha-group">
+                <div class="captcha-wrapper">
+                 <label for="{{ credit_form.captcha.id_for_label }}">{{ credit_form.captcha.label }}</label>
+                 {{ credit_form.captcha }}
+                </div>
+                <svg class="captcha-refresh-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+            </div>
+
+            <button type="submit" class="btn btn-primary modal-submit">Отправить заявку</button>
+        </form>
+    </div>
+</div>
+
+<!-- ========== Секция с Видео ========== -->
+<section class="section section-video">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Живой обзор наших бань</h2>
+            <p class="section-subtitle">Посмотрите, как мы создаем уют и качество для вашего отдыха.</p>
+        </div>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Обзор бань от Гарант Групп"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ========== Секция "Этапы работы" ========== -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Всего 4 шага до вашей новой бани</h2>
+            <p class="section-subtitle">Прозрачный и понятный процесс от звонка до первого пара.</p>
+        </div>
+        <div class="stages-grid">
+            <div class="stage-item">
+                <div class="stage-number">1</div>
+                <h3 class="stage-title">Звонок и консультация</h3>
+                <p class="stage-description">Вы оставляете заявку или звоните нам. Мы подробно консультируем, помогаем выбрать проект и отвечаем на все вопросы.</p>
+            </div>
+            <div class="stage-item">
+                <div class="stage-number">2</div>
+                <h3 class="stage-title">Заключение договора</h3>
+                <p class="stage-description">Фиксируем в договоре стоимость, сроки и все детали вашей будущей бани. Никаких скрытых платежей.</p>
+            </div>
+            <div class="stage-item">
+                <div class="stage-number">3</div>
+                <h3 class="stage-title">Производство</h3>
+                <p class="stage-description">Изготавливаем домокомплект вашей бани на собственном производстве из качественных материалов.</p>
+            </div>
+            <div class="stage-item">
+                <div class="stage-number">4</div>
+                <h3 class="stage-title">Доставка и монтаж</h3>
+                <p class="stage-description">Привозим и устанавливаем баню на вашем участке. Монтаж занимает всего 1-2 дня, и вы можете начинать париться!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== Секция "Наши преимущества" ========== -->
+<section class="section section-advantages">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <p class="section-subtitle">Мы сочетаем традиции и технологии для создания идеальных бань.</p>
+        </div>
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22V9"></path></svg>
+                </div>
+                <h3 class="advantage-title">Гарантия качества</h3>
+                <p class="advantage-description">Работаем по договору и даем официальную гарантию на все наши постройки и материалы.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                </div>
+                <h3 class="advantage-title">Собственное производство</h3>
+                <p class="advantage-description">Полностью контролируем процесс от заготовки леса до сборки, что гарантирует высокое качество.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                </div>
+                <h3 class="advantage-title">Экологичные материалы</h3>
+                <p class="advantage-description">Используем только здоровую древесину из северных лесов, создавая по-настоящему "дышащие" бани.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3 class="advantage-title">Монтаж за 1-2 дня</h3>
+                <p class="advantage-description">Наша технология позволяет собрать готовую баню на вашем участке быстро и без строительного мусора.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

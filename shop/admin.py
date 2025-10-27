@@ -171,6 +171,18 @@ class OrderRequestAdmin(admin.ModelAdmin):
     has_details.boolean = True
     has_details.short_description = 'Есть детали'
 
+from .models import CreditRequest
+
+@admin.register(CreditRequest)
+class CreditRequestAdmin(admin.ModelAdmin):
+    list_display = ('fio', 'phone', 'created_at', 'status')
+    list_filter = ('status', 'created_at')
+    search_fields = ('fio', 'phone')
+    readonly_fields = ('fio', 'phone', 'created_at') # Запрещаем менять данные клиента
+
+    def get_queryset(self, request):
+        # Оптимизация запросов
+        return super().get_queryset(request)
 
 @admin.register(CompanyInfo)
 class CompanyInfoAdmin(admin.ModelAdmin):

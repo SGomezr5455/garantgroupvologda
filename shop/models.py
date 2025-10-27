@@ -38,6 +38,28 @@ class Product(models.Model):
         ])
 
 
+class CreditRequest(models.Model):
+    """Модель для хранения заявок на консультацию по кредиту."""
+    STATUS_CHOICES = [
+        ('new', 'Новая'),
+        ('in_progress', 'В работе'),
+        ('closed', 'Обработана'),
+    ]
+
+    fio = models.CharField('ФИО клиента', max_length=200)
+    phone = models.CharField('Телефон клиента', max_length=20)
+    status = models.CharField('Статус заявки', max_length=20, choices=STATUS_CHOICES, default='new')
+    created_at = models.DateTimeField('Дата создания', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Заявка на кредит'
+        verbose_name_plural = 'Заявки на кредит'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Заявка на кредит от {self.fio} ({self.created_at.strftime('%d.%m.%Y %H:%M')})"
+
+
 class ProductPrice(models.Model):
     product = models.ForeignKey(
         Product,

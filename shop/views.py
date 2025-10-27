@@ -29,6 +29,10 @@ def get_grouped_options():
     cache.set('global_options_grouped', result, 60 * 15)  # 15 минут
     return result
 
+# shop/views.py
+
+# ... другие импорты ...
+from .forms import OrderForm, CreditForm # <-- 1. Добавьте CreditForm сюда
 
 def index(request):
     """Главная страница"""
@@ -39,9 +43,19 @@ def index(request):
             .prefetch_related('prices', 'images')
             .all()[:3]
         )
-        cache.set('products_featured', featured_products, 60 * 5)  # 5 минут
+        cache.set('products_featured', featured_products, 60 * 5)
 
-    return render(request, 'shop/index.html', {'products': featured_products})
+    credit_form = CreditForm() # <-- 2. Добавьте эту строку
+
+    return render(request, 'shop/index.html', {
+        'featured_products': featured_products,
+        'credit_form': credit_form, # <-- И эту
+    })
+
+
+
+    # ИСПРАВЛЕНО:
+    return render(request, 'shop/index.html', {'featured_products': featured_products})
 
 
 def about(request):
@@ -147,6 +161,23 @@ def order(request):
 def order_success(request):
     """Страница успешного заказа"""
     return render(request, 'shop/order_success.html')
+from django.http import JsonResponse
+from .forms import CreditForm # Добавьте этот импорт вверху файла
+from .models import CreditRequest # И этот
+
+def credit_request_view(request):
+    if request.method == 'POST':
+        form = CreditForm(request.POST)
+        if form.is_valid():
+            CreditRequest.objects.create(
+                fio=form.cleaned_data['fio'],
+                phone=form.cleaned_data['phone']
+            )
+            return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
+        else:
+            # Возвращаем ошибки валидации в формате JSON
+            return JsonResponse({'success': False, 'errors': form.errors.as_json()}, status=400)
+    return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=405)
 
 
 def additional_services(request):
