@@ -86,3 +86,21 @@ class OrderForm(forms.Form):
         # Убираем все лишние символы, оставляем только цифры и +
         phone = ''.join(c for c in phone if c.isdigit() or c == '+')
         return phone
+
+class CreditForm(forms.Form):
+    """Форма для заявки на консультацию по кредиту."""
+    fio = forms.CharField(
+        label="Ваше ФИО *",
+        widget=forms.TextInput(attrs={'placeholder': 'Иванов Иван Иванович', 'class': 'form-control'})
+    )
+    phone = forms.CharField(
+        label="Ваш телефон *",
+        validators=[
+            RegexValidator(
+                regex=r'^\+?[78][\d\s\(\)\-]{9,15}$',
+                message='Введите корректный номер телефона'
+            )
+        ],
+        widget=forms.TextInput(attrs={'placeholder': '+7 (999) 123-45-67', 'class': 'form-control', 'type': 'tel'})
+    )
+    captcha = CaptchaField(label="Проверка *")

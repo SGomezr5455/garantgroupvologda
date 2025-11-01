@@ -1,5 +1,4 @@
-<!-- shop/product_detail.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}{{ product.title }} - Калькулятор - Banyana{% endblock %}
@@ -15,13 +14,6 @@
             <div class="floating-shape shape-3"></div>
         </div>
         <div class="container">
-            <nav class="breadcrumb-nav">
-                <a href="{% url 'index' %}" class="breadcrumb-link">Главная</a>
-                <span class="breadcrumb-divider"></span>
-                <a href="{% url 'catalog' %}" class="breadcrumb-link">Каталог</a>
-                <span class="breadcrumb-divider"></span>
-                <span class="breadcrumb-current">{{ product.title }}</span>
-            </nav>
             <div class="hero-content">
                 <h1 class="hero-title">{{ product.title }}</h1>
                 <p class="hero-description">{{ product.description }}</p>
@@ -252,8 +244,8 @@
 
 <style>
 :root {
-    --green-primary: #2E7D32;
-    --green-dark: #1B5E20;
+    --green-primary: #63513a;
+    --green-dark: #2c3d4e;
     --green-light: #4CAF50;
     --green-ultra-light: #E8F5E9;
 
@@ -365,7 +357,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     animation: slideDown 0.6s ease-out;
 }
 
@@ -1474,5 +1466,22 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 </script>
+
+  <style>
+    .thumbnails::-webkit-scrollbar { display: none; }
+    .size-card:hover, .option-item:hover { background: var(--wood-cream); border-color: var(--accent-terracotta); }
+    .category-toggle:hover { background: var(--accent-terracotta); color: var(--white); }
+    input[type="checkbox"], input[type="radio"] { accent-color: var(--accent-terracotta); }
+    .carousel-prev:hover, .carousel-next:hover { background: rgba(0,0,0,0.7); }
+    .thumb-img:hover { opacity: 1; transform: scale(1.05); }
+    .full-description { max-height: none !important; }
+    @media (max-width: 768px) {
+      .hero-image-carousel { flex: 1 1 100%; margin-top: 2rem; order: 0; }
+      .carousel-container { height: 400px; }
+      .thumbnails { gap: 0.5rem; justify-content: flex-start; }
+      .option-item img { width: 80px; height: 60px; margin-right: 1rem; float: none; display: block; margin-bottom: 0.5rem; }
+      .options-grid { grid-template-columns: 1fr; gap: 1rem; }
+    }
+  </style>
 
 {% endblock %}

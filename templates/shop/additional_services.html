@@ -4,63 +4,50 @@
 {% block title %}Дополнительные услуги - Гарант Групп{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-bg">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-    </div>
-    <div class="container">
-        <div class="hero-content">
-
-            <h1 class="hero-title">Дополнительные услуги</h1>
-            <p class="hero-subtitle">Полный спектр услуг для вашей бани</p>
-        </div>
-    </div>
-</section>
-
-<!-- Services Section -->
-<section class="section">
-    <div class="container">
-        <div class="card-grid">
-            {% for service in services %}
-            <article class="card fade-in" style="animation-delay: {{ forloop.counter0|add:'0' }}00ms;">
-                {% if service.image %}
-                <div class="card-image">
-                    <img src="{{ service.image.url }}" alt="{{ service.name }}" loading="lazy">
-                </div>
-                {% endif %}
-                <div class="card-content">
-                    <h3 class="card-title">{{ service.name }}</h3>
-                    <p class="card-price">{{ service.formatted_price }}</p>
-                    {% if service.description %}
-                    <p class="card-description">{{ service.description }}</p>
-                    {% endif %}
-                    <a href="{% url 'contact' %}" class="btn btn-primary card-button">
-                        <span>Заказать</span>
-                        <span class="btn-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                                <polyline points="12 5 19 12 12 19"/>
-                            </svg>
-                        </span>
-                        <div class="btn-shine"></div>
-                    </a>
-                </div>
-            </article>
-            {% empty %}
-            <div style="grid-column: 1/-1; text-align:center; padding:4rem; color:#757575;">
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin:0 auto 2rem; opacity:0.3;">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-                <h3 style="font-size:1.5rem; margin-bottom:0.5rem;">Услуги пока не добавлены</h3>
-                <p>Свяжитесь с нами для уточнения деталей</p>
+<div class="additional-services-page">
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-card">
+                <div class="hero-icon">🛠️</div>
+                <h1>Дополнительные услуги</h1>
+                <p>Полный спектр услуг для вашей бани: от доставки и фундамента до установки и обслуживания. Мы предлагаем комплексные решения, чтобы ваш проект был завершен без хлопот.</p>
             </div>
-            {% endfor %}
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Наши дополнительные услуги</h2>
+            <div class="services-grid">
+                {% for service in services %}
+                <div class="service-item">
+                    <div class="service-icon">{% if service.icon %}{{ service.icon }}{% else %}🔧{% endif %}</div>
+                    <h3>{{ service.name }}</h3>
+                    <div class="service-price">{{ service.formatted_price }}</div>
+                    {% if service.description %}
+                    <p>{{ service.description }}</p>
+                    {% endif %}
+                    <button class="order-btn">Заказать</button>
+                </div>
+                {% empty %}
+                <p>Услуги в разработке. Свяжитесь с нами для консультации.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <p>Для уточнения деталей и расчета стоимости обратитесь к нашим специалистам. Мы поможем выбрать оптимальный набор услуг под ваш проект.</p>
+                <a href="{% url 'contact' %}" class="contact-btn">Перейти к контактам</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
 {% endblock %}
