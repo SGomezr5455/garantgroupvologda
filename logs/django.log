@@ -166,3 +166,1963 @@ django.db.utils.OperationalError: no such column: shop_product.updated_at
 ERROR 2025-10-27 00:17:38,237 basehttp "GET / HTTP/1.1" 500 16752
 WARNING 2025-10-27 00:32:25,903 log Not Found: /favicon.ico
 WARNING 2025-10-27 00:32:25,903 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-10-27 15:26:19,707 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:26:19,708 basehttp "GET /favicon.ico HTTP/1.1" 404 1211
+WARNING 2025-10-27 15:40:57,695 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:40:57,696 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-10-27 15:41:10,348 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:41:10,348 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-27 15:55:30,509 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:55:30,509 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+ERROR 2025-10-27 15:55:34,114 log Internal Server Error: /about/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\banya\banya\garantgroupvologda-main\garantgroupvologda-main\shop\views.py", line 50, in about
+    return render(request, 'shop/about.html', {'info': info})
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contacts' not found. 'contacts' is not a valid view function or pattern name.
+ERROR 2025-10-27 15:55:34,124 basehttp "GET /about/ HTTP/1.1" 500 18603
+WARNING 2025-10-27 15:55:42,970 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:55:42,970 basehttp "GET /favicon.ico HTTP/1.1" 404 1223
+ERROR 2025-10-27 15:55:43,896 log Internal Server Error: /about/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\banya\banya\garantgroupvologda-main\garantgroupvologda-main\shop\views.py", line 50, in about
+    return render(request, 'shop/about.html', {'info': info})
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contacts' not found. 'contacts' is not a valid view function or pattern name.
+ERROR 2025-10-27 15:55:43,902 basehttp "GET /about/ HTTP/1.1" 500 18510
+WARNING 2025-10-27 15:55:52,831 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:55:52,832 basehttp "GET /favicon.ico HTTP/1.1" 404 1283
+WARNING 2025-10-27 15:56:10,949 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:10,950 basehttp "GET /favicon.ico HTTP/1.1" 404 1215
+WARNING 2025-10-27 15:56:32,656 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:32,656 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-10-27 15:56:49,417 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:49,417 basehttp "GET /favicon.ico HTTP/1.1" 404 1300
+WARNING 2025-10-27 15:56:53,113 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:56:53,113 basehttp "GET /favicon.ico HTTP/1.1" 404 1244
+WARNING 2025-10-27 15:58:04,744 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:58:04,745 basehttp "GET /favicon.ico HTTP/1.1" 404 1219
+WARNING 2025-10-27 15:58:22,125 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 15:58:22,126 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1241
+WARNING 2025-10-27 15:58:38,237 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 15:58:38,238 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1267
+WARNING 2025-10-27 15:59:43,698 log Not Found: /favicon.ico
+WARNING 2025-10-27 15:59:43,699 basehttp "GET /favicon.ico HTTP/1.1" 404 1227
+WARNING 2025-10-27 16:00:20,563 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:00:20,564 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+WARNING 2025-10-27 16:01:11,915 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:01:11,916 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1336
+WARNING 2025-10-27 16:01:54,675 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:01:54,675 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1269
+WARNING 2025-10-27 16:01:56,779 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:01:56,780 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-27 16:02:04,694 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:02:04,695 basehttp "GET /favicon.ico HTTP/1.1" 404 1269
+WARNING 2025-10-27 16:02:36,120 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:02:36,121 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1252
+WARNING 2025-10-27 16:03:18,857 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:03:18,857 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1328
+WARNING 2025-10-27 16:03:18,984 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:03:18,985 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-10-27 16:03:36,214 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:03:36,215 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1323
+WARNING 2025-10-27 16:03:36,321 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:03:36,322 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+WARNING 2025-10-27 16:06:03,469 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:06:03,470 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1323
+WARNING 2025-10-27 16:10:14,786 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:10:14,787 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1300
+WARNING 2025-10-27 16:11:46,917 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:11:46,919 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1303
+WARNING 2025-10-27 16:11:47,260 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:11:47,260 basehttp "GET /favicon.ico HTTP/1.1" 404 1225
+WARNING 2025-10-27 16:11:52,430 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-27 16:11:52,431 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1278
+WARNING 2025-10-27 16:11:52,558 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:11:52,558 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-10-27 16:16:41,023 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:16:41,024 basehttp "GET /favicon.ico HTTP/1.1" 404 1250
+WARNING 2025-10-27 16:16:42,763 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:16:42,764 basehttp "GET /favicon.ico HTTP/1.1" 404 1249
+WARNING 2025-10-27 16:29:33,928 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:29:33,929 basehttp "GET /favicon.ico HTTP/1.1" 404 1300
+WARNING 2025-10-27 16:33:32,450 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:33:32,451 basehttp "GET /favicon.ico HTTP/1.1" 404 1257
+WARNING 2025-10-27 16:51:56,028 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:51:56,028 basehttp "GET /favicon.ico HTTP/1.1" 404 1215
+WARNING 2025-10-27 16:52:54,799 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:52:54,799 basehttp "GET /favicon.ico HTTP/1.1" 404 1288
+WARNING 2025-10-27 16:59:47,624 log Not Found: /favicon.ico
+WARNING 2025-10-27 16:59:47,625 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+WARNING 2025-10-27 17:04:09,909 log Not Found: /favicon.ico
+WARNING 2025-10-27 17:04:09,909 basehttp "GET /favicon.ico HTTP/1.1" 404 1263
+WARNING 2025-10-27 17:07:56,017 log Not Found: /favicon.ico
+WARNING 2025-10-27 17:07:56,018 basehttp "GET /favicon.ico HTTP/1.1" 404 1226
+WARNING 2025-10-27 18:35:28,478 basehttp "GET /static/images/logo-placeholder.png HTTP/1.1" 404 2008
+WARNING 2025-10-27 18:35:28,896 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:35:28,897 basehttp "GET /favicon.ico HTTP/1.1" 404 1290
+WARNING 2025-10-27 18:35:31,251 basehttp "GET /static/images/logo-placeholder.png HTTP/1.1" 404 2008
+WARNING 2025-10-27 18:35:31,627 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:35:31,628 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-10-27 18:35:51,576 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:35:51,576 basehttp "POST /credit-request/ HTTP/1.1" 400 253
+WARNING 2025-10-27 18:42:05,482 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:42:05,483 basehttp "GET /favicon.ico HTTP/1.1" 404 1321
+WARNING 2025-10-27 18:42:18,689 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:42:18,689 basehttp "POST /credit-request/ HTTP/1.1" 400 176
+WARNING 2025-10-27 18:42:18,698 log Gone: /captcha/image/144087855e2b075f4f48305059a1e8760b3a1fb4/
+WARNING 2025-10-27 18:42:18,699 basehttp "GET /captcha/image/144087855e2b075f4f48305059a1e8760b3a1fb4/?1761579738695 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:42:22,684 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:42:22,685 basehttp "GET /favicon.ico HTTP/1.1" 404 1317
+WARNING 2025-10-27 18:42:30,439 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:42:30,439 basehttp "POST /credit-request/ HTTP/1.1" 400 244
+WARNING 2025-10-27 18:42:30,443 log Gone: /captcha/image/2b53c818bef35489a2de1f34e66b92933119e113/
+WARNING 2025-10-27 18:42:30,443 basehttp "GET /captcha/image/2b53c818bef35489a2de1f34e66b92933119e113/?1761579750441 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:42:35,232 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:42:35,233 basehttp "GET /favicon.ico HTTP/1.1" 404 1239
+WARNING 2025-10-27 18:42:46,144 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:42:46,145 basehttp "POST /credit-request/ HTTP/1.1" 400 176
+WARNING 2025-10-27 18:42:46,149 log Gone: /captcha/image/826ec83384c734b7acc2bb859613d415c45fbf90/
+WARNING 2025-10-27 18:42:46,149 basehttp "GET /captcha/image/826ec83384c734b7acc2bb859613d415c45fbf90/?1761579766146 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:54:52,098 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:54:52,099 basehttp "GET /favicon.ico HTTP/1.1" 404 1248
+WARNING 2025-10-27 18:55:13,668 log Bad Request: /credit-request/
+WARNING 2025-10-27 18:55:13,669 basehttp "POST /credit-request/ HTTP/1.1" 400 176
+WARNING 2025-10-27 18:55:13,675 log Gone: /captcha/image/3d70451d4b405b4ec8017ccab0ff54e78da3ab2d/
+WARNING 2025-10-27 18:55:13,676 basehttp "GET /captcha/image/3d70451d4b405b4ec8017ccab0ff54e78da3ab2d/?1761580513672 HTTP/1.1" 410 0
+WARNING 2025-10-27 18:55:17,514 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:55:17,515 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-10-27 18:58:30,807 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:58:30,807 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-10-27 18:58:54,298 log Not Found: /favicon.ico
+WARNING 2025-10-27 18:58:54,298 basehttp "GET /favicon.ico HTTP/1.1" 404 1238
+WARNING 2025-10-27 19:10:45,652 log Not Found: /favicon.ico
+WARNING 2025-10-27 19:10:45,653 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-29 16:06:43,744 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:06:43,745 basehttp "GET /favicon.ico HTTP/1.1" 404 1327
+WARNING 2025-10-29 16:06:47,205 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:06:47,205 basehttp "GET /favicon.ico HTTP/1.1" 404 1245
+WARNING 2025-10-29 16:17:48,235 basehttp "GET /static/images/team2.jpg HTTP/1.1" 404 1975
+WARNING 2025-10-29 16:17:48,235 basehttp "GET /static/images/team1.jpg HTTP/1.1" 404 1975
+WARNING 2025-10-29 16:18:20,143 basehttp "GET /static/images/team1.jpg HTTP/1.1" 404 1975
+WARNING 2025-10-29 16:18:20,148 basehttp "GET /static/images/team2.jpg HTTP/1.1" 404 1975
+WARNING 2025-10-29 16:20:39,084 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:20:39,085 basehttp "GET /favicon.ico HTTP/1.1" 404 1279
+WARNING 2025-10-29 16:25:23,955 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:25:23,956 basehttp "GET /favicon.ico HTTP/1.1" 404 1310
+WARNING 2025-10-29 16:34:23,140 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:34:23,140 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-29 16:36:20,028 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:36:20,029 basehttp "GET /favicon.ico HTTP/1.1" 404 1292
+WARNING 2025-10-29 16:58:21,985 log Not Found: /favicon.ico
+WARNING 2025-10-29 16:58:21,985 basehttp "GET /favicon.ico HTTP/1.1" 404 1281
+WARNING 2025-10-29 18:56:29,991 log Not Found: /favicon.ico
+WARNING 2025-10-29 18:56:29,992 basehttp "GET /favicon.ico HTTP/1.1" 404 1235
+WARNING 2025-10-29 18:58:52,723 log Not Found: /favicon.ico
+WARNING 2025-10-29 18:58:52,724 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-10-29 18:59:11,657 log Not Found: /favicon.ico
+WARNING 2025-10-29 18:59:11,657 basehttp "GET /favicon.ico HTTP/1.1" 404 1320
+WARNING 2025-10-29 18:59:19,711 log Not Found: /favicon.ico
+WARNING 2025-10-29 18:59:19,712 basehttp "GET /favicon.ico HTTP/1.1" 404 1280
+WARNING 2025-10-29 19:03:47,447 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:03:47,448 basehttp "GET /favicon.ico HTTP/1.1" 404 1283
+WARNING 2025-10-29 19:03:51,601 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:03:51,602 basehttp "GET /favicon.ico HTTP/1.1" 404 1250
+WARNING 2025-10-29 19:06:48,264 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:06:48,264 basehttp "GET /favicon.ico HTTP/1.1" 404 1231
+WARNING 2025-10-29 19:12:16,126 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:12:16,126 basehttp "GET /favicon.ico HTTP/1.1" 404 1234
+WARNING 2025-10-29 19:12:20,044 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:12:20,045 basehttp "GET /favicon.ico HTTP/1.1" 404 1249
+ERROR 2025-10-29 19:14:53,463 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\1001\100001\shop\views.py", line 50, in index
+    return render(request, 'shop/index.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'privacy' not found. 'privacy' is not a valid view function or pattern name.
+ERROR 2025-10-29 19:14:53,471 basehttp "GET / HTTP/1.1" 500 18702
+WARNING 2025-10-29 19:15:49,858 basehttp "GET /static/style.css HTTP/1.1" 404 1954
+WARNING 2025-10-29 19:15:49,869 basehttp "GET /static/main.js HTTP/1.1" 404 1948
+WARNING 2025-10-29 19:16:16,943 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:16:16,943 basehttp "GET /favicon.ico HTTP/1.1" 404 1294
+WARNING 2025-10-29 19:37:51,157 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:37:51,158 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-29 19:54:47,747 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:54:47,748 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-10-29 19:54:53,264 log Not Found: /favicon.ico
+WARNING 2025-10-29 19:54:53,264 basehttp "GET /favicon.ico HTTP/1.1" 404 1241
+WARNING 2025-10-29 20:04:05,263 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:04:05,264 basehttp "GET /favicon.ico HTTP/1.1" 404 1278
+WARNING 2025-10-29 20:05:14,400 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:05:14,401 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-10-29 20:05:20,422 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:05:20,422 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-10-29 20:20:00,760 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:20:00,761 basehttp "GET /favicon.ico HTTP/1.1" 404 1275
+WARNING 2025-10-29 20:20:45,149 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:20:45,150 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-29 20:20:47,487 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:20:47,487 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-10-29 20:23:22,779 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:23:22,780 basehttp "GET /favicon.ico HTTP/1.1" 404 1275
+WARNING 2025-10-29 20:35:26,480 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:35:26,480 basehttp "GET /favicon.ico HTTP/1.1" 404 1300
+ERROR 2025-10-29 20:37:30,024 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\1001\100001\shop\views.py", line 50, in index
+    return render(request, 'shop/index.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seva\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'creditrequest' not found. 'creditrequest' is not a valid view function or pattern name.
+ERROR 2025-10-29 20:37:30,032 basehttp "GET / HTTP/1.1" 500 19862
+WARNING 2025-10-29 20:38:50,513 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:39:48,549 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:42:20,590 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:43:12,846 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:43:16,623 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:43:43,153 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:45:21,975 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:45:33,032 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:45:33,033 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-10-29 20:47:15,254 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:47:15,729 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:47:15,730 basehttp "GET /favicon.ico HTTP/1.1" 404 1324
+WARNING 2025-10-29 20:47:19,445 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 20:47:20,063 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:47:20,064 basehttp "GET /favicon.ico HTTP/1.1" 404 1308
+WARNING 2025-10-29 20:47:25,750 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:47:25,750 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-10-29 20:47:27,567 log Not Found: /favicon.ico
+WARNING 2025-10-29 20:47:27,568 basehttp "GET /favicon.ico HTTP/1.1" 404 1253
+WARNING 2025-10-29 22:56:25,668 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 22:56:30,128 log Not Found: /favicon.ico
+WARNING 2025-10-29 22:56:30,128 basehttp "GET /favicon.ico HTTP/1.1" 404 1245
+WARNING 2025-10-29 22:56:55,519 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 22:57:16,003 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 22:57:23,728 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 22:58:23,988 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 22:59:23,062 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:03:38,825 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:04:18,831 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:04:19,499 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:04:19,499 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-10-29 23:08:44,641 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:11:45,334 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:11:45,334 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-10-29 23:12:29,232 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:12:29,233 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-10-29 23:12:32,115 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:12:32,116 basehttp "GET /favicon.ico HTTP/1.1" 404 1323
+WARNING 2025-10-29 23:14:54,420 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:15:12,886 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:15:12,887 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-10-29 23:19:50,534 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:19:50,535 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+WARNING 2025-10-29 23:23:20,616 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:23:28,337 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:23:28,337 basehttp "GET /favicon.ico HTTP/1.1" 404 1273
+WARNING 2025-10-29 23:25:26,357 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:25:26,358 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-10-29 23:25:48,459 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:25:48,459 basehttp "GET /favicon.ico HTTP/1.1" 404 1297
+WARNING 2025-10-29 23:27:50,280 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:28:05,075 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:28:05,075 basehttp "GET /favicon.ico HTTP/1.1" 404 1292
+WARNING 2025-10-29 23:28:30,476 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:31:02,205 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:31:02,206 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+WARNING 2025-10-29 23:33:46,697 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:33:46,698 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-29 23:34:14,987 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:34:14,988 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+WARNING 2025-10-29 23:37:07,793 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:37:07,794 basehttp "GET /favicon.ico HTTP/1.1" 404 1274
+WARNING 2025-10-29 23:39:12,146 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:41:25,977 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:44:29,585 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:44:29,585 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-29 23:44:34,905 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:44:34,906 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-10-29 23:44:49,310 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:44:53,847 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:44:53,847 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-10-29 23:46:43,798 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:46:43,799 basehttp "GET /favicon.ico HTTP/1.1" 404 1260
+WARNING 2025-10-29 23:49:15,176 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:49:15,176 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-29 23:51:26,877 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:51:26,878 basehttp "GET /favicon.ico HTTP/1.1" 404 1328
+WARNING 2025-10-29 23:54:09,065 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-29 23:55:34,438 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:55:34,439 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-10-29 23:56:31,903 log Not Found: /favicon.ico
+WARNING 2025-10-29 23:56:31,904 basehttp "GET /favicon.ico HTTP/1.1" 404 1249
+WARNING 2025-10-29 23:58:05,197 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 00:00:16,730 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 00:00:21,856 log Not Found: /favicon.ico
+WARNING 2025-10-30 00:00:21,857 basehttp "GET /favicon.ico HTTP/1.1" 404 1319
+WARNING 2025-10-30 00:01:37,676 log Not Found: /favicon.ico
+WARNING 2025-10-30 00:01:37,677 basehttp "GET /favicon.ico HTTP/1.1" 404 1275
+WARNING 2025-10-30 00:03:33,379 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 00:06:15,998 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 00:06:20,651 log Not Found: /favicon.ico
+WARNING 2025-10-30 00:06:20,652 basehttp "GET /favicon.ico HTTP/1.1" 404 1252
+WARNING 2025-10-30 00:09:22,051 log Not Found: /favicon.ico
+WARNING 2025-10-30 00:09:22,052 basehttp "GET /favicon.ico HTTP/1.1" 404 1309
+WARNING 2025-10-30 00:10:00,554 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 00:12:13,250 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 00:12:33,506 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:45:45,299 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:45:45,824 log Not Found: /favicon.ico
+WARNING 2025-10-30 17:45:45,824 basehttp "GET /favicon.ico HTTP/1.1" 404 1230
+WARNING 2025-10-30 17:46:00,580 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:49:14,486 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:56:06,381 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:56:09,834 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:56:11,638 log Not Found: /favicon.ico
+WARNING 2025-10-30 17:56:11,639 basehttp "GET /favicon.ico HTTP/1.1" 404 1287
+WARNING 2025-10-30 17:56:23,445 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 17:57:04,249 log Not Found: /favicon.ico
+WARNING 2025-10-30 17:57:04,249 basehttp "GET /favicon.ico HTTP/1.1" 404 1265
+WARNING 2025-10-30 17:57:17,018 log Not Found: /about/width="100%"
+WARNING 2025-10-30 17:57:17,018 basehttp "GET /about/width=%22100%%22 HTTP/1.1" 404 1326
+WARNING 2025-10-30 18:00:24,442 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 18:00:45,626 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 18:00:53,546 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 18:00:55,162 log Not Found: /favicon.ico
+WARNING 2025-10-30 18:00:55,162 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+WARNING 2025-10-30 18:01:02,605 log Not Found: /about/width="100%"
+WARNING 2025-10-30 18:01:02,606 basehttp "GET /about/width=%22100%%22 HTTP/1.1" 404 1261
+WARNING 2025-10-30 18:01:56,090 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 18:05:13,926 log Not Found: /favicon.ico
+WARNING 2025-10-30 18:05:13,926 basehttp "GET /favicon.ico HTTP/1.1" 404 1268
+WARNING 2025-10-30 21:28:33,647 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 21:28:34,797 log Not Found: /favicon.ico
+WARNING 2025-10-30 21:28:34,797 basehttp "GET /favicon.ico HTTP/1.1" 404 1270
+WARNING 2025-10-30 21:29:02,421 log Not Found: /about/width="100%"
+WARNING 2025-10-30 21:29:02,422 basehttp "GET /about/width=%22100%%22 HTTP/1.1" 404 1333
+WARNING 2025-10-30 21:31:11,713 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 21:32:30,903 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 23:00:33,069 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:00:33,070 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-10-30 23:00:34,523 basehttp "GET /static/images/hero-banya.jpg HTTP/1.1" 404 1990
+WARNING 2025-10-30 23:00:35,085 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:00:35,085 basehttp "GET /favicon.ico HTTP/1.1" 404 1304
+WARNING 2025-10-30 23:01:00,059 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:01:00,059 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-10-30 23:01:12,127 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:01:12,127 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-10-30 23:01:23,793 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:01:23,794 basehttp "GET /favicon.ico HTTP/1.1" 404 1247
+ERROR 2025-10-30 23:01:28,283 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 49, in index
+    return render(request, 'shop/index.html', {
+        'popular_products': popular_products,
+    })
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 49: 'else', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-10-30 23:01:28,293 basehttp "GET / HTTP/1.1" 500 22333
+WARNING 2025-10-30 23:01:28,491 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:01:28,492 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+ERROR 2025-10-30 23:01:45,479 log Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 49, in index
+    return render(request, 'shop/index.html', {
+        'popular_products': popular_products,
+    })
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 161: 'endblock', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR 2025-10-30 23:01:45,487 basehttp "GET / HTTP/1.1" 500 22596
+WARNING 2025-10-30 23:01:45,604 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:01:45,604 basehttp "GET /favicon.ico HTTP/1.1" 404 1323
+WARNING 2025-10-30 23:04:20,480 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:04:20,480 basehttp "GET /favicon.ico HTTP/1.1" 404 1312
+WARNING 2025-10-30 23:04:41,611 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:04:41,612 basehttp "GET /favicon.ico HTTP/1.1" 404 1308
+WARNING 2025-10-30 23:04:52,211 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:04:52,211 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-10-30 23:05:09,800 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:05:09,801 basehttp "GET /favicon.ico HTTP/1.1" 404 1321
+WARNING 2025-10-30 23:05:12,227 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:05:12,227 basehttp "GET /favicon.ico HTTP/1.1" 404 1304
+WARNING 2025-10-30 23:05:26,870 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:05:26,871 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-10-30 23:07:56,899 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:07:56,899 basehttp "GET /favicon.ico HTTP/1.1" 404 1231
+WARNING 2025-10-30 23:08:48,794 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:08:48,795 basehttp "GET /favicon.ico HTTP/1.1" 404 1304
+ERROR 2025-10-30 23:09:15,919 log Internal Server Error: /catalog/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 69, in catalog
+    return render(request, 'shop/catalog.html', {'products': products})
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 39: 'else', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR 2025-10-30 23:09:15,931 basehttp "GET /catalog/ HTTP/1.1" 500 23753
+ERROR 2025-10-30 23:09:24,451 log Internal Server Error: /catalog/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'empty'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 69, in catalog
+    return render(request, 'shop/catalog.html', {'products': products})
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 1540, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 67: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR 2025-10-30 23:09:24,486 basehttp "GET /catalog/ HTTP/1.1" 500 25551
+WARNING 2025-10-30 23:10:54,658 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:10:54,659 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-10-30 23:12:05,250 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:12:05,250 basehttp "GET /favicon.ico HTTP/1.1" 404 1274
+WARNING 2025-10-30 23:13:01,056 log Not Found: /favicon.ico
+WARNING 2025-10-30 23:13:01,056 basehttp "GET /favicon.ico HTTP/1.1" 404 1318
+WARNING 2025-10-30 23:15:20,961 log Not Found: /about/width="100%"
+WARNING 2025-10-30 23:15:20,962 basehttp "GET /about/width=%22100%%22 HTTP/1.1" 404 1251
+WARNING 2025-11-01 14:55:24,840 log Not Found: /favicon.ico
+WARNING 2025-11-01 14:55:24,841 basehttp "GET /favicon.ico HTTP/1.1" 404 1299
+WARNING 2025-11-01 15:00:09,518 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:00:09,519 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-11-01 15:00:17,319 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:00:17,320 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 15:00:23,180 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:00:23,181 basehttp "GET /favicon.ico HTTP/1.1" 404 1275
+WARNING 2025-11-01 15:01:15,855 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:01:15,855 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 15:02:00,977 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:02:00,977 basehttp "GET /favicon.ico HTTP/1.1" 404 1283
+WARNING 2025-11-01 15:02:14,331 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:02:14,331 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-11-01 15:02:23,122 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:02:23,122 basehttp "GET /favicon.ico HTTP/1.1" 404 1230
+WARNING 2025-11-01 15:03:00,270 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:03:00,270 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-11-01 15:03:03,038 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:03:03,039 basehttp "GET /favicon.ico HTTP/1.1" 404 1260
+WARNING 2025-11-01 15:03:22,644 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:03:22,645 basehttp "GET /favicon.ico HTTP/1.1" 404 1274
+WARNING 2025-11-01 15:03:39,096 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:03:39,097 basehttp "GET /favicon.ico HTTP/1.1" 404 1260
+WARNING 2025-11-01 15:36:32,352 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:36:32,352 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-11-01 15:36:42,415 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:36:42,416 basehttp "GET /favicon.ico HTTP/1.1" 404 1232
+WARNING 2025-11-01 15:36:47,346 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:36:47,347 basehttp "GET /favicon.ico HTTP/1.1" 404 1282
+WARNING 2025-11-01 15:37:10,409 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:37:10,410 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-11-01 15:37:26,874 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:37:26,875 basehttp "GET /favicon.ico HTTP/1.1" 404 1311
+WARNING 2025-11-01 15:37:33,059 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:37:33,059 basehttp "GET /favicon.ico HTTP/1.1" 404 1273
+WARNING 2025-11-01 15:38:01,607 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:01,608 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-11-01 15:38:09,855 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:09,856 basehttp "GET /favicon.ico HTTP/1.1" 404 1294
+WARNING 2025-11-01 15:38:16,918 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:16,919 basehttp "GET /favicon.ico HTTP/1.1" 404 1245
+WARNING 2025-11-01 15:38:21,320 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:21,320 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 15:38:32,136 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:32,137 basehttp "GET /favicon.ico HTTP/1.1" 404 1245
+WARNING 2025-11-01 15:38:45,547 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:45,548 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-11-01 15:38:50,782 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:50,783 basehttp "GET /favicon.ico HTTP/1.1" 404 1246
+WARNING 2025-11-01 15:38:59,295 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:38:59,295 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+WARNING 2025-11-01 15:39:06,919 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:39:06,920 basehttp "GET /favicon.ico HTTP/1.1" 404 1290
+WARNING 2025-11-01 15:39:09,840 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:39:09,840 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-11-01 15:39:33,505 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:39:33,505 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-11-01 15:39:38,288 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:39:38,289 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+WARNING 2025-11-01 15:40:07,755 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:07,756 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-11-01 15:40:20,159 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:20,159 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-11-01 15:40:32,125 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:32,141 basehttp "GET /favicon.ico HTTP/1.1" 404 1238
+WARNING 2025-11-01 15:40:35,945 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:35,945 basehttp "GET /favicon.ico HTTP/1.1" 404 1235
+WARNING 2025-11-01 15:40:39,388 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:39,389 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-11-01 15:40:43,495 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:43,495 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 15:40:48,149 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:40:48,153 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+WARNING 2025-11-01 15:41:18,321 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:41:18,322 basehttp "GET /favicon.ico HTTP/1.1" 404 1271
+WARNING 2025-11-01 15:41:28,785 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:41:28,785 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-11-01 15:41:34,591 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:41:34,592 basehttp "GET /favicon.ico HTTP/1.1" 404 1300
+WARNING 2025-11-01 15:41:44,547 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:41:44,548 basehttp "GET /favicon.ico HTTP/1.1" 404 1257
+WARNING 2025-11-01 15:42:04,701 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:42:04,701 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-11-01 15:42:36,162 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:42:36,162 basehttp "GET /favicon.ico HTTP/1.1" 404 1246
+WARNING 2025-11-01 15:43:01,902 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:01,902 basehttp "GET /favicon.ico HTTP/1.1" 404 1241
+WARNING 2025-11-01 15:43:10,409 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:10,410 basehttp "GET /favicon.ico HTTP/1.1" 404 1323
+WARNING 2025-11-01 15:43:20,606 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:20,607 basehttp "GET /favicon.ico HTTP/1.1" 404 1256
+WARNING 2025-11-01 15:43:26,497 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:26,497 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-11-01 15:43:31,740 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:31,741 basehttp "GET /favicon.ico HTTP/1.1" 404 1286
+WARNING 2025-11-01 15:43:47,289 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:47,290 basehttp "GET /favicon.ico HTTP/1.1" 404 1234
+WARNING 2025-11-01 15:43:59,734 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:43:59,736 basehttp "GET /favicon.ico HTTP/1.1" 404 1282
+WARNING 2025-11-01 15:44:31,502 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:44:31,502 basehttp "GET /favicon.ico HTTP/1.1" 404 1324
+ERROR 2025-11-01 15:44:34,377 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 377: 'endblock', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:44:34,395 basehttp "GET /product/3/ HTTP/1.1" 500 24651
+WARNING 2025-11-01 15:44:34,686 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:44:34,687 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+ERROR 2025-11-01 15:44:38,409 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 379: 'endblock', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:44:38,424 basehttp "GET /product/3/ HTTP/1.1" 500 24179
+WARNING 2025-11-01 15:44:38,586 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:44:38,587 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+ERROR 2025-11-01 15:44:43,403 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'empty'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 180: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:44:43,418 basehttp "GET /product/3/ HTTP/1.1" 500 24220
+WARNING 2025-11-01 15:44:43,630 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:44:43,631 basehttp "GET /favicon.ico HTTP/1.1" 404 1295
+WARNING 2025-11-01 15:44:47,188 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:44:47,191 basehttp "GET /favicon.ico HTTP/1.1" 404 1241
+WARNING 2025-11-01 15:44:53,428 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:44:53,434 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 15:45:21,362 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:45:21,377 basehttp "GET /favicon.ico HTTP/1.1" 404 1239
+WARNING 2025-11-01 15:45:36,856 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:45:36,856 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-11-01 15:45:48,336 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:45:48,337 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+ERROR 2025-11-01 15:45:54,479 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 134: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:45:54,510 basehttp "GET /product/3/ HTTP/1.1" 500 23992
+WARNING 2025-11-01 15:45:54,740 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:45:54,741 basehttp "GET /favicon.ico HTTP/1.1" 404 1288
+ERROR 2025-11-01 15:45:58,550 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 134: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:45:58,563 basehttp "GET /product/3/ HTTP/1.1" 500 23923
+WARNING 2025-11-01 15:45:58,754 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:45:58,757 basehttp "GET /favicon.ico HTTP/1.1" 404 1294
+ERROR 2025-11-01 15:46:08,997 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 134: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:46:09,038 basehttp "GET /product/3/ HTTP/1.1" 500 23870
+WARNING 2025-11-01 15:46:09,252 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:46:09,255 basehttp "GET /favicon.ico HTTP/1.1" 404 1321
+ERROR 2025-11-01 15:46:14,147 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 134: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:46:14,159 basehttp "GET /product/3/ HTTP/1.1" 500 23773
+WARNING 2025-11-01 15:46:14,314 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:46:14,316 basehttp "GET /favicon.ico HTTP/1.1" 404 1303
+ERROR 2025-11-01 15:46:25,741 log Internal Server Error: /product/3/
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\banya\group\100001\shop\views.py", line 97, in product_detail
+    return render(request, 'shop/product_detail.html', context)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gamer\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 134: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-11-01 15:46:25,759 basehttp "GET /product/3/ HTTP/1.1" 500 23767
+WARNING 2025-11-01 15:46:25,947 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:46:25,948 basehttp "GET /favicon.ico HTTP/1.1" 404 1253
+WARNING 2025-11-01 15:46:34,275 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:46:34,277 basehttp "GET /favicon.ico HTTP/1.1" 404 1264
+WARNING 2025-11-01 15:47:24,321 log Not Found: /favicon.ico
+WARNING 2025-11-01 15:47:24,341 basehttp "GET /favicon.ico HTTP/1.1" 404 1263
+WARNING 2025-11-01 15:47:39,761 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 15:47:39,762 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1273
+WARNING 2025-11-01 15:48:00,335 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 15:48:00,336 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1353
+WARNING 2025-11-01 16:31:10,312 log Not Found: /favicon.ico
+WARNING 2025-11-01 16:31:10,312 basehttp "GET /favicon.ico HTTP/1.1" 404 1328
+WARNING 2025-11-01 16:42:23,391 basehttp "GET /static/images/banya1.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:23,397 basehttp "GET /static/images/banya2.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:23,402 basehttp "GET /static/images/banya4.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:23,402 basehttp "GET /static/images/banya3.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:25,559 log Not Found: /favicon.ico
+WARNING 2025-11-01 16:42:25,559 basehttp "GET /favicon.ico HTTP/1.1" 404 1241
+WARNING 2025-11-01 16:42:44,422 basehttp "GET /static/images/banya1.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:44,423 basehttp "GET /static/images/banya2.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:44,433 basehttp "GET /static/images/banya3.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:42:44,437 basehttp "GET /static/images/banya4.jpg HTTP/1.1" 404 1978
+WARNING 2025-11-01 16:46:08,274 basehttp "GET /static/images/banya-ekonom.jpg HTTP/1.1" 404 1996
+WARNING 2025-11-01 16:46:08,278 basehttp "GET /static/images/banya-kvadro.jpg HTTP/1.1" 404 1996
+WARNING 2025-11-01 16:46:08,278 basehttp "GET /static/images/banya-premium.jpg HTTP/1.1" 404 1999
+WARNING 2025-11-01 16:46:08,278 basehttp "GET /static/images/banya-sauna.jpg HTTP/1.1" 404 1993
+WARNING 2025-11-01 16:47:29,576 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 16:47:29,577 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 16:47:32,726 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 16:47:32,727 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 16:47:32,775 log Not Found: /favicon.ico
+WARNING 2025-11-01 16:47:32,776 basehttp "GET /favicon.ico HTTP/1.1" 404 1256
+WARNING 2025-11-01 16:59:38,423 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 16:59:38,425 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 16:59:49,879 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 16:59:49,880 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 17:41:36,309 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:41:36,309 basehttp "GET /favicon.ico HTTP/1.1" 404 1299
+WARNING 2025-11-01 17:42:54,800 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:42:54,801 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-11-01 17:43:28,057 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:43:28,058 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-11-01 17:43:53,352 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:43:53,352 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-11-01 17:43:58,664 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:43:58,665 basehttp "GET /favicon.ico HTTP/1.1" 404 1294
+WARNING 2025-11-01 17:44:18,366 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:44:18,370 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-11-01 17:44:45,327 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:44:45,327 basehttp "GET /favicon.ico HTTP/1.1" 404 1235
+WARNING 2025-11-01 17:44:58,392 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:44:58,393 basehttp "GET /favicon.ico HTTP/1.1" 404 1250
+WARNING 2025-11-01 17:45:04,859 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:45:04,859 basehttp "GET /favicon.ico HTTP/1.1" 404 1297
+WARNING 2025-11-01 17:46:55,521 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:46:55,522 basehttp "GET /favicon.ico HTTP/1.1" 404 1297
+WARNING 2025-11-01 17:47:03,460 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:47:03,460 basehttp "GET /favicon.ico HTTP/1.1" 404 1299
+WARNING 2025-11-01 17:47:10,202 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:47:10,202 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-11-01 17:47:21,788 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:47:21,789 basehttp "GET /favicon.ico HTTP/1.1" 404 1284
+WARNING 2025-11-01 17:47:25,936 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:47:25,936 basehttp "GET /favicon.ico HTTP/1.1" 404 1271
+WARNING 2025-11-01 17:48:52,638 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:48:52,638 basehttp "GET /favicon.ico HTTP/1.1" 404 1313
+WARNING 2025-11-01 17:49:05,502 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:49:05,503 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+WARNING 2025-11-01 17:49:27,018 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:49:27,019 basehttp "GET /favicon.ico HTTP/1.1" 404 1274
+WARNING 2025-11-01 17:49:48,815 log Not Found: /favicon.ico
+WARNING 2025-11-01 17:49:48,816 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 18:52:08,639 log Not Found: /favicon.ico
+WARNING 2025-11-01 18:52:08,640 basehttp "GET /favicon.ico HTTP/1.1" 404 1238
+WARNING 2025-11-01 18:54:22,933 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 18:54:22,934 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1308
+WARNING 2025-11-01 18:55:05,603 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 18:55:05,604 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1318
+WARNING 2025-11-01 18:55:07,931 log Not Found: /favicon.ico
+WARNING 2025-11-01 18:55:07,932 basehttp "GET /favicon.ico HTTP/1.1" 404 1245
+WARNING 2025-11-01 18:55:15,042 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 18:55:15,043 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 18:58:32,433 log Not Found: /favicon.ico
+WARNING 2025-11-01 18:58:32,434 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-11-01 19:02:03,803 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:03,808 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+WARNING 2025-11-01 19:02:10,809 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:10,810 basehttp "GET /favicon.ico HTTP/1.1" 404 1308
+WARNING 2025-11-01 19:02:13,112 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:13,112 basehttp "GET /favicon.ico HTTP/1.1" 404 1306
+WARNING 2025-11-01 19:02:15,854 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:15,855 basehttp "GET /favicon.ico HTTP/1.1" 404 1282
+WARNING 2025-11-01 19:02:28,180 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:28,181 basehttp "GET /favicon.ico HTTP/1.1" 404 1277
+WARNING 2025-11-01 19:02:31,135 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:31,135 basehttp "GET /favicon.ico HTTP/1.1" 404 1312
+WARNING 2025-11-01 19:02:51,850 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:02:51,851 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 19:03:00,755 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:03:00,756 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 19:03:06,542 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:03:06,542 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+WARNING 2025-11-01 19:03:12,400 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:03:12,401 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-11-01 19:03:18,565 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:03:18,566 basehttp "GET /favicon.ico HTTP/1.1" 404 1315
+WARNING 2025-11-01 19:03:46,013 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:03:46,013 basehttp "GET /favicon.ico HTTP/1.1" 404 1253
+WARNING 2025-11-01 19:03:54,937 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:03:54,938 basehttp "GET /favicon.ico HTTP/1.1" 404 1283
+WARNING 2025-11-01 19:04:01,712 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:04:01,713 basehttp "GET /favicon.ico HTTP/1.1" 404 1315
+WARNING 2025-11-01 19:04:22,841 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:04:22,842 basehttp "GET /favicon.ico HTTP/1.1" 404 1295
+WARNING 2025-11-01 19:04:30,968 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:04:30,969 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 19:04:57,172 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:04:57,173 basehttp "GET /favicon.ico HTTP/1.1" 404 1299
+WARNING 2025-11-01 19:05:10,935 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 19:05:10,936 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 19:06:32,593 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:06:32,593 basehttp "GET /favicon.ico HTTP/1.1" 404 1273
+WARNING 2025-11-01 19:06:41,695 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:06:41,695 basehttp "GET /favicon.ico HTTP/1.1" 404 1254
+WARNING 2025-11-01 19:07:15,152 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:07:15,153 basehttp "GET /favicon.ico HTTP/1.1" 404 1310
+WARNING 2025-11-01 19:07:36,043 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:07:36,044 basehttp "GET /favicon.ico HTTP/1.1" 404 1295
+WARNING 2025-11-01 19:10:36,147 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:10:36,147 basehttp "GET /favicon.ico HTTP/1.1" 404 1244
+WARNING 2025-11-01 19:10:49,772 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:10:49,772 basehttp "GET /favicon.ico HTTP/1.1" 404 1239
+WARNING 2025-11-01 19:11:16,213 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:11:16,214 basehttp "GET /favicon.ico HTTP/1.1" 404 1328
+WARNING 2025-11-01 19:11:30,583 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 19:11:30,583 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1322
+WARNING 2025-11-01 19:12:26,785 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 19:12:26,789 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1333
+WARNING 2025-11-01 19:12:28,677 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:12:28,678 basehttp "GET /favicon.ico HTTP/1.1" 404 1281
+WARNING 2025-11-01 19:12:41,762 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:12:41,763 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 19:12:54,226 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:12:54,227 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-11-01 19:13:36,573 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 19:13:36,573 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1302
+WARNING 2025-11-01 19:14:07,334 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:14:07,335 basehttp "GET /favicon.ico HTTP/1.1" 404 1278
+WARNING 2025-11-01 19:14:14,051 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:14:14,051 basehttp "GET /favicon.ico HTTP/1.1" 404 1275
+WARNING 2025-11-01 19:15:23,170 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:15:23,170 basehttp "GET /favicon.ico HTTP/1.1" 404 1230
+WARNING 2025-11-01 19:15:54,614 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:15:54,614 basehttp "GET /favicon.ico HTTP/1.1" 404 1242
+WARNING 2025-11-01 19:16:02,146 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:16:02,146 basehttp "GET /favicon.ico HTTP/1.1" 404 1324
+WARNING 2025-11-01 19:17:02,770 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:17:02,771 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-11-01 19:17:11,057 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:17:11,057 basehttp "GET /favicon.ico HTTP/1.1" 404 1255
+WARNING 2025-11-01 19:17:16,240 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:17:16,240 basehttp "GET /favicon.ico HTTP/1.1" 404 1256
+WARNING 2025-11-01 19:17:24,871 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:17:24,871 basehttp "GET /favicon.ico HTTP/1.1" 404 1234
+WARNING 2025-11-01 19:17:47,871 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:17:47,871 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-11-01 19:17:53,260 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:17:53,260 basehttp "GET /favicon.ico HTTP/1.1" 404 1267
+WARNING 2025-11-01 19:18:02,422 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:18:02,423 basehttp "GET /favicon.ico HTTP/1.1" 404 1306
+WARNING 2025-11-01 19:18:06,459 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:18:06,460 basehttp "GET /favicon.ico HTTP/1.1" 404 1323
+WARNING 2025-11-01 19:18:13,981 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:18:13,981 basehttp "GET /favicon.ico HTTP/1.1" 404 1276
+WARNING 2025-11-01 19:18:21,675 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:18:21,675 basehttp "GET /favicon.ico HTTP/1.1" 404 1312
+WARNING 2025-11-01 19:23:04,064 log Method Not Allowed: /credit-request/
+WARNING 2025-11-01 19:23:04,064 basehttp "GET /credit-request/ HTTP/1.1" 405 56
+WARNING 2025-11-01 19:41:11,824 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:41:11,824 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+WARNING 2025-11-01 19:43:33,782 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:43:33,783 basehttp "GET /favicon.ico HTTP/1.1" 404 1272
+WARNING 2025-11-01 19:43:38,813 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:43:38,814 basehttp "GET /favicon.ico HTTP/1.1" 404 1282
+WARNING 2025-11-01 19:44:00,531 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:44:00,532 basehttp "GET /favicon.ico HTTP/1.1" 404 1290
+WARNING 2025-11-01 19:44:45,650 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:44:45,650 basehttp "GET /favicon.ico HTTP/1.1" 404 1264
+WARNING 2025-11-01 19:47:28,636 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:47:28,636 basehttp "GET /favicon.ico HTTP/1.1" 404 1246
+WARNING 2025-11-01 19:48:39,126 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:48:39,127 basehttp "GET /favicon.ico HTTP/1.1" 404 1266
+WARNING 2025-11-01 19:48:47,174 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:48:47,175 basehttp "GET /favicon.ico HTTP/1.1" 404 1240
+WARNING 2025-11-01 19:48:56,175 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:48:56,176 basehttp "GET /favicon.ico HTTP/1.1" 404 1297
+WARNING 2025-11-01 19:49:35,149 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:49:35,149 basehttp "GET /favicon.ico HTTP/1.1" 404 1311
+WARNING 2025-11-01 19:49:40,364 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:49:40,364 basehttp "GET /favicon.ico HTTP/1.1" 404 1280
+WARNING 2025-11-01 19:50:04,864 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:50:04,865 basehttp "GET /favicon.ico HTTP/1.1" 404 1311
+WARNING 2025-11-01 19:50:13,093 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:50:13,094 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-11-01 19:50:27,044 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:50:27,045 basehttp "GET /favicon.ico HTTP/1.1" 404 1261
+WARNING 2025-11-01 19:50:30,596 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:50:30,596 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-11-01 19:50:41,621 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:50:41,625 basehttp "GET /favicon.ico HTTP/1.1" 404 1267
+WARNING 2025-11-01 19:51:11,014 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:51:11,015 basehttp "GET /favicon.ico HTTP/1.1" 404 1305
+WARNING 2025-11-01 19:52:07,913 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:52:07,916 basehttp "GET /favicon.ico HTTP/1.1" 404 1242
+WARNING 2025-11-01 19:52:11,086 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:52:11,087 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-11-01 19:52:23,775 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:52:23,776 basehttp "GET /favicon.ico HTTP/1.1" 404 1244
+WARNING 2025-11-01 19:53:12,965 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:53:12,967 basehttp "GET /favicon.ico HTTP/1.1" 404 1252
+WARNING 2025-11-01 19:53:25,196 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:53:25,196 basehttp "GET /favicon.ico HTTP/1.1" 404 1295
+WARNING 2025-11-01 19:53:27,646 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:53:27,647 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-11-01 19:53:30,184 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:53:30,184 basehttp "GET /favicon.ico HTTP/1.1" 404 1235
+WARNING 2025-11-01 19:53:32,606 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:53:32,607 basehttp "GET /favicon.ico HTTP/1.1" 404 1306
+WARNING 2025-11-01 19:54:03,857 log Not Found: /favicon.ico
+WARNING 2025-11-01 19:54:03,858 basehttp "GET /favicon.ico HTTP/1.1" 404 1315
+WARNING 2025-11-01 19:58:24,078 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 19:58:24,078 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1277
+WARNING 2025-11-01 20:00:19,295 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:00:19,296 basehttp "GET /favicon.ico HTTP/1.1" 404 1245
+WARNING 2025-11-01 20:00:34,869 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:00:34,870 basehttp "GET /favicon.ico HTTP/1.1" 404 1232
+WARNING 2025-11-01 20:00:40,904 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:00:40,905 basehttp "GET /favicon.ico HTTP/1.1" 404 1279
+WARNING 2025-11-01 20:01:03,588 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:03,589 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-11-01 20:01:10,821 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:10,854 basehttp "GET /favicon.ico HTTP/1.1" 404 1262
+WARNING 2025-11-01 20:01:14,141 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:14,142 basehttp "GET /favicon.ico HTTP/1.1" 404 1244
+WARNING 2025-11-01 20:01:21,404 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:21,434 basehttp "GET /favicon.ico HTTP/1.1" 404 1258
+WARNING 2025-11-01 20:01:23,255 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:23,255 basehttp "GET /favicon.ico HTTP/1.1" 404 1248
+WARNING 2025-11-01 20:01:25,128 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:25,129 basehttp "GET /favicon.ico HTTP/1.1" 404 1242
+WARNING 2025-11-01 20:01:43,370 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:43,371 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-11-01 20:01:44,851 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:44,852 basehttp "GET /favicon.ico HTTP/1.1" 404 1264
+WARNING 2025-11-01 20:01:55,051 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:55,052 basehttp "GET /favicon.ico HTTP/1.1" 404 1278
+WARNING 2025-11-01 20:01:57,701 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:01:57,701 basehttp "GET /favicon.ico HTTP/1.1" 404 1310
+WARNING 2025-11-01 20:02:08,715 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:08,723 basehttp "GET /favicon.ico HTTP/1.1" 404 1294
+WARNING 2025-11-01 20:02:10,290 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:10,290 basehttp "GET /favicon.ico HTTP/1.1" 404 1315
+WARNING 2025-11-01 20:02:11,542 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:11,542 basehttp "GET /favicon.ico HTTP/1.1" 404 1292
+WARNING 2025-11-01 20:02:12,672 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:12,672 basehttp "GET /favicon.ico HTTP/1.1" 404 1290
+WARNING 2025-11-01 20:02:13,820 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:13,820 basehttp "GET /favicon.ico HTTP/1.1" 404 1243
+WARNING 2025-11-01 20:02:18,901 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:18,902 basehttp "GET /favicon.ico HTTP/1.1" 404 1308
+WARNING 2025-11-01 20:02:20,271 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:20,272 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-11-01 20:02:21,460 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:21,461 basehttp "GET /favicon.ico HTTP/1.1" 404 1293
+WARNING 2025-11-01 20:02:30,377 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:30,378 basehttp "GET /favicon.ico HTTP/1.1" 404 1229
+WARNING 2025-11-01 20:02:31,823 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:31,823 basehttp "GET /favicon.ico HTTP/1.1" 404 1237
+WARNING 2025-11-01 20:02:33,051 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:33,051 basehttp "GET /favicon.ico HTTP/1.1" 404 1231
+WARNING 2025-11-01 20:02:34,272 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:34,272 basehttp "GET /favicon.ico HTTP/1.1" 404 1281
+WARNING 2025-11-01 20:02:41,495 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:41,502 basehttp "GET /favicon.ico HTTP/1.1" 404 1307
+WARNING 2025-11-01 20:02:42,680 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:42,681 basehttp "GET /favicon.ico HTTP/1.1" 404 1302
+WARNING 2025-11-01 20:02:43,881 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:43,882 basehttp "GET /favicon.ico HTTP/1.1" 404 1319
+WARNING 2025-11-01 20:02:45,041 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:45,041 basehttp "GET /favicon.ico HTTP/1.1" 404 1308
+WARNING 2025-11-01 20:02:46,132 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:46,133 basehttp "GET /favicon.ico HTTP/1.1" 404 1260
+WARNING 2025-11-01 20:02:55,507 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:55,508 basehttp "GET /favicon.ico HTTP/1.1" 404 1246
+WARNING 2025-11-01 20:02:56,867 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:56,868 basehttp "GET /favicon.ico HTTP/1.1" 404 1278
+WARNING 2025-11-01 20:02:58,083 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:58,084 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 20:02:59,222 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:02:59,222 basehttp "GET /favicon.ico HTTP/1.1" 404 1292
+WARNING 2025-11-01 20:03:00,316 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:03:00,317 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+WARNING 2025-11-01 20:05:59,205 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:05:59,206 basehttp "GET /favicon.ico HTTP/1.1" 404 1303
+WARNING 2025-11-01 20:06:08,507 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:06:08,507 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+WARNING 2025-11-01 20:06:13,629 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:06:13,631 basehttp "GET /favicon.ico HTTP/1.1" 404 1296
+WARNING 2025-11-01 20:06:36,511 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:06:36,557 basehttp "GET /favicon.ico HTTP/1.1" 404 1230
+WARNING 2025-11-01 20:06:53,371 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:06:53,371 basehttp "GET /favicon.ico HTTP/1.1" 404 1288
+WARNING 2025-11-01 20:07:41,455 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 20:07:41,456 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1355
+WARNING 2025-11-01 20:07:44,866 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 20:07:44,867 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1284
+WARNING 2025-11-01 20:14:12,305 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 20:14:12,306 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1346
+WARNING 2025-11-01 20:14:14,367 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:14:14,367 basehttp "GET /favicon.ico HTTP/1.1" 404 1253
+WARNING 2025-11-01 20:14:26,358 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-01 20:14:26,359 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1340
+WARNING 2025-11-01 20:14:28,387 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:14:28,387 basehttp "GET /favicon.ico HTTP/1.1" 404 1241
+WARNING 2025-11-01 20:16:26,741 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:16:26,744 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-11-01 20:16:39,480 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:16:39,482 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 20:20:25,380 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:20:25,381 basehttp "GET /favicon.ico HTTP/1.1" 404 1309
+WARNING 2025-11-01 20:31:54,541 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:31:54,542 basehttp "GET /favicon.ico HTTP/1.1" 404 1285
+WARNING 2025-11-01 20:34:24,326 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:34:24,334 basehttp "GET /favicon.ico HTTP/1.1" 404 1322
+WARNING 2025-11-01 20:35:39,327 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:35:39,328 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-01 20:35:45,136 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:35:45,137 basehttp "GET /favicon.ico HTTP/1.1" 404 1324
+WARNING 2025-11-01 20:36:47,754 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:36:47,754 basehttp "GET /favicon.ico HTTP/1.1" 404 1295
+WARNING 2025-11-01 20:37:14,453 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:37:14,453 basehttp "GET /favicon.ico HTTP/1.1" 404 1282
+WARNING 2025-11-01 20:42:14,887 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:42:14,888 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-11-01 20:49:04,311 log Not Found: /favicon.ico
+WARNING 2025-11-01 20:49:04,312 basehttp "GET /favicon.ico HTTP/1.1" 404 1316
+WARNING 2025-11-06 14:06:29,193 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:06:29,193 basehttp "GET /favicon.ico HTTP/1.1" 404 1319
+WARNING 2025-11-06 14:06:30,283 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:06:30,284 basehttp "GET /favicon.ico HTTP/1.1" 404 1288
+WARNING 2025-11-06 14:51:11,483 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:51:11,483 basehttp "GET /favicon.ico HTTP/1.1" 404 1235
+WARNING 2025-11-06 14:51:31,403 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:51:31,404 basehttp "GET /favicon.ico HTTP/1.1" 404 1324
+WARNING 2025-11-06 14:52:21,576 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:52:21,576 basehttp "GET /favicon.ico HTTP/1.1" 404 1233
+WARNING 2025-11-06 14:52:51,378 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:52:51,378 basehttp "GET /favicon.ico HTTP/1.1" 404 1326
+WARNING 2025-11-06 14:52:57,136 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:52:57,137 basehttp "GET /favicon.ico HTTP/1.1" 404 1311
+WARNING 2025-11-06 14:53:27,847 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:53:27,848 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-11-06 14:53:40,077 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:53:40,078 basehttp "GET /favicon.ico HTTP/1.1" 404 1267
+WARNING 2025-11-06 14:53:46,969 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:53:46,970 basehttp "GET /favicon.ico HTTP/1.1" 404 1251
+WARNING 2025-11-06 14:56:15,106 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:56:15,107 basehttp "GET /favicon.ico HTTP/1.1" 404 1301
+WARNING 2025-11-06 14:56:21,576 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:56:21,577 basehttp "GET /favicon.ico HTTP/1.1" 404 1259
+WARNING 2025-11-06 14:56:28,242 log Not Found: /favicon.ico
+WARNING 2025-11-06 14:56:28,243 basehttp "GET /favicon.ico HTTP/1.1" 404 1283
+WARNING 2025-11-06 15:10:42,659 log Not Found: /favicon.ico
+WARNING 2025-11-06 15:10:42,660 basehttp "GET /favicon.ico HTTP/1.1" 404 1315
+WARNING 2025-11-06 15:26:13,590 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:26:22,574 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:27:16,165 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:27:26,711 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:27:31,013 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:27:45,751 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:53:37,478 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:54:10,792 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 15:54:21,815 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:05:43,938 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:05:47,756 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:06:16,226 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:09:17,137 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:09:34,147 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:09:37,806 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:22:39,733 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 16:22:44,252 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 23:18:26,198 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 23:19:00,590 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 23:19:47,705 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 23:20:07,818 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 23:20:10,305 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-06 23:21:41,043 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
