@@ -1,10 +1,9 @@
-# shop/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
 from django.db.models import Count
 from .models import (
     Product, ProductImage, ProductPrice, GlobalOption,
-    WorkPhoto, OrderRequest, CompanyInfo
+    WorkPhoto, OrderRequest, CompanyInfo, CreditRequest
 )
 
 
@@ -76,10 +75,19 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'image_preview', 'images_count', 'prices_count')
+    list_display = (
+    'title', 'price', 'is_featured', 'image_preview', 'images_count', 'prices_count')  # ← Добавлено is_featured
+    list_editable = ('is_featured',)  # ← НОВОЕ: можно редактировать прямо в списке
+    list_filter = ('is_featured',)  # ← НОВОЕ: фильтр по популярности
     search_fields = ('title', 'description')
     inlines = [ProductPriceInline, ProductImageInline]
     list_per_page = 50
+
+    fieldsets = (  # ← НОВОЕ: организация полей
+        ('Основная информация', {
+            'fields': ('title', 'price', 'description', 'image', 'is_featured')
+        }),
+    )
 
     def get_queryset(self, request):
         """Оптимизированный queryset с подсчетом связанных объектов"""
@@ -92,7 +100,7 @@ class ProductAdmin(admin.ModelAdmin):
     def image_preview(self, obj):
         if obj.image:
             return format_html(
-                '<img src="{}" style="max-height: 50px; border-radius: 4px;" loading="lazy"/>',
+                '<img src="{}" style="width: 60px; height: auto; border-radius: 4px;"/>',
                 obj.image.url
             )
         return '—'
@@ -110,7 +118,6 @@ class ProductAdmin(admin.ModelAdmin):
 
     prices_count.short_description = 'Размеры'
     prices_count.admin_order_field = '_prices_count'
-
 
 @admin.register(WorkPhoto)
 class WorkPhotoAdmin(admin.ModelAdmin):
@@ -171,23 +178,36 @@ class OrderRequestAdmin(admin.ModelAdmin):
     has_details.boolean = True
     has_details.short_description = 'Есть детали'
 
+from .models import CreditRequest
 
-@admin.register(CompanyInfo)
-class CompanyInfoAdmin(admin.ModelAdmin):
-    fieldsets = (
-        ('Основная информация', {
-            'fields': ('description',),
-            'classes': ('wide',)
-        }),
-        ('Контакты', {
-            'fields': ('phone', 'email', 'address')
-        }),
-    )
+@admin.register(CreditRequest)
+class CreditRequestAdmin(admin.ModelAdmin):
+    list_display = ('fio', 'phone', 'created_at', 'status')
+    list_filter = ('status', 'created_at')
+    search_fields = ('fio', 'phone')
+    readonly_fields = ('fio', 'phone', 'created_at') # Запрещаем менять данные клиента
 
-    def has_add_permission(self, request):
-        if CompanyInfo.objects.exists():
-            return False
-        return True
+    def get_queryset(self, request):
+        # Оптимизация запросов
+        return super().get_queryset(request)
 
-    def has_delete_permission(self, request, obj=None):
-        return False
+# CompanyInfo скрыт из админки по запросу клиента
+# @admin.register(CompanyInfo)
+# class CompanyInfoAdmin(admin.ModelAdmin):
+#     fieldsets = (
+#         ('Основная информация', {
+#             'fields': ('description',),
+#             'classes': ('wide',)
+#         }),
+#         ('Контакты', {
+#             'fields': ('phone', 'email', 'address')
+#         }),
+#     )
+#
+#     def has_add_permission(self, request):
+#         if CompanyInfo.objects.exists():
+#             return False
+#         return True
+#
+#     def has_delete_permission(self, request, obj=None):
+#         return False

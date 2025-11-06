@@ -2,19 +2,20 @@ from django.db import models
 from django.core.cache import cache
 from django.utils.functional import cached_property
 
-
 class Product(models.Model):
     title = models.CharField('Название', max_length=200, db_index=True)
     price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     description = models.TextField('Описание')
     image = models.ImageField('Главное изображение', upload_to='products/', blank=True, null=True)
     updated_at = models.DateTimeField('Дата обновления', auto_now=True)
+    is_featured = models.BooleanField('Популярная модель', default=False, db_index=True)  # ← НОВОЕ ПОЛЕ
 
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         indexes = [
             models.Index(fields=['title']),
+            models.Index(fields=['is_featured']),  # ← НОВЫЙ ИНДЕКС
         ]
 
     def __str__(self):
@@ -37,6 +38,27 @@ class Product(models.Model):
             f'product_detail_{self.pk}',
         ])
 
+
+class CreditRequest(models.Model):
+    """Модель для хранения заявок на консультацию по кредиту."""
+    STATUS_CHOICES = [
+        ('new', 'Новая'),
+        ('in_progress', 'В работе'),
+        ('closed', 'Обработана'),
+    ]
+
+    fio = models.CharField('ФИО клиента', max_length=200)
+    phone = models.CharField('Телефон клиента', max_length=20)
+    status = models.CharField('Статус заявки', max_length=20, choices=STATUS_CHOICES, default='new')
+    created_at = models.DateTimeField('Дата создания', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Заявка на кредит'
+        verbose_name_plural = 'Заявки на кредит'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Заявка на кредит от {self.fio} ({self.created_at.strftime('%d.%m.%Y %H:%M')})"
 
 class ProductPrice(models.Model):
     product = models.ForeignKey(
@@ -68,7 +90,6 @@ class ProductPrice(models.Model):
             f'product_detail_{self.product.pk}',
         ])
 
-
 class ProductImage(models.Model):
     product = models.ForeignKey(
         Product,
@@ -96,7 +117,6 @@ class ProductImage(models.Model):
         cache.delete_many([
             f'product_detail_{self.product.pk}',
         ])
-
 
 class GlobalOption(models.Model):
     CATEGORY_CHOICES = [
@@ -148,7 +168,6 @@ class GlobalOption(models.Model):
         cache.delete('global_options_active')
         cache.delete('global_options_grouped')
 
-
 class WorkPhoto(models.Model):
     image = models.ImageField('Фотография', upload_to='works/')
     created_at = models.DateTimeField('Дата создания', auto_now_add=True, db_index=True)
@@ -163,7 +182,6 @@ class WorkPhoto(models.Model):
 
     def __str__(self):
         return f"Фото от {self.created_at.strftime('%d.%m.%Y %H:%M')}"
-
 
 class OrderRequest(models.Model):
     fio = models.CharField('ФИО', max_length=200, db_index=True)
@@ -184,7 +202,6 @@ class OrderRequest(models.Model):
 
     def __str__(self):
         return f"Заявка от {self.fio} - {self.created_at.strftime('%d.%m.%Y %H:%M')}"
-
 
 class CompanyInfo(models.Model):
     description = models.TextField('Описание компании')

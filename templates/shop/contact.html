@@ -20,167 +20,256 @@
     </div>
 </section>
 
+<!-- Способы связи -->
+<section style="background: var(--white); padding: 3rem 0; border-bottom: 1px solid var(--wood-light);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 0.5rem;">+7 960 293 4660</div>
+          <div style="color: var(--gray-600);">Звоните с 9:00 до 21:00</div>
+        </div>
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 0.5rem;">Vologdagarant@yandex.ru</div>
+          <div style="color: var(--gray-600);">Email для заявок</div>
+        </div>
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 0.5rem;">Вологда</div>
+          <div style="color: var(--gray-600);">ул. Гагарина, 81</div>
+        </div>
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 0.5rem;">Ежедневно</div>
+          <div style="color: var(--gray-600);">9:00 — 21:00</div>
+        </div>
+      </div>
+    </div>
+</section>
+
 <!-- Contact Cards -->
 <section class="section">
     <div class="container">
-        <div class="contact-grid">
-            <div class="contact-card fade-in">
-                <div class="contact-icon">📧</div>
-                <h3 class="contact-title">Email</h3>
-                <p class="contact-value">Vologdagarant@yandex.ru</p>
-                <a href="mailto:Vologdagarant@yandex.ru" class="btn btn-primary">
-                    <span>Написать письмо</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
-
-            <div class="contact-card fade-in" style="animation-delay: 100ms;">
-                <div class="contact-icon">📱</div>
-                <h3 class="contact-title">Телефон</h3>
-                <p class="contact-value">+7 960 293 4660</p>
-                <a href="tel:+79602934660" class="btn btn-primary">
-                    <span>Позвонить</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
-
-            <div class="contact-card fade-in" style="animation-delay: 200ms;">
-                <div class="contact-icon">💬</div>
-                <h3 class="contact-title">ВКонтакте</h3>
-                <p class="contact-value">Мы в VK</p>
-                <a href="https://vk.com/garant_stroy_karkas" target="_blank" rel="noopener" class="btn btn-primary">
-                    <span>Перейти в VK</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--gray-800);">Как с нами связаться</h2>
+      <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Выберите удобный способ связи. Мы работаем ежедневно и всегда готовы ответить на ваши вопросы.</p>
+      
+      <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: center;">
+        <div class="contact-item card" style="padding: 2.5rem; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); border: 2px solid var(--wood-light); transition: transform 0.3s;">
+          <div class="icon" style="width: 80px; height: 80px; background: var(--accent-orange); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-900); font-size: 1.4rem;">Позвоните нам</h3>
+          <p style="color: var(--gray-700); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">Бесплатная консультация по телефону. Расскажем о проектах, рассчитаем стоимость, ответим на все вопросы. Звоните в любое время с 9:00 до 21:00.</p>
+          <a href="tel:{{ info.phone|default:'+79602934660' }}" style="color: var(--accent-orange); font-weight: 700; text-decoration: none; font-size: 1.3rem; display: block; margin-bottom: 0.5rem;">{{ info.phone|default:'+7 960 293 4660' }}</a>
+          <div style="color: var(--gray-600); font-size: 0.9rem;">Среднее время ответа: 1 минута</div>
         </div>
+        
+        <div class="contact-item card" style="padding: 2.5rem; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); border: 2px solid var(--wood-light); transition: transform 0.3s;">
+          <div class="icon" style="width: 80px; height: 80px; background: var(--accent-orange); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-900); font-size: 1.4rem;">Напишите письмо</h3>
+          <p style="color: var(--gray-700); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">Отправьте подробное описание проекта на почту. Приложите фото участка, чертежи — поможем с планировкой и сметой. Ответим в течение 2 часов.</p>
+          <a href="mailto:Vologdagarant@yandex.ru" style="color: var(--accent-orange); font-weight: 700; text-decoration: none; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">Vologdagarant@yandex.ru</a>
+          <div style="color: var(--gray-600); font-size: 0.9rem;">Ответим в течение 2 часов</div>
+        </div>
+        
+        <div class="contact-item card" style="padding: 2.5rem; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); border: 2px solid var(--wood-light); transition: transform 0.3s;">
+          <div class="icon" style="width: 80px; height: 80px; background: var(--accent-orange); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-900); font-size: 1.4rem;">Приезжайте к нам</h3>
+          <p style="color: var(--gray-700); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem;">Офис и склад в Вологде. Покажем образцы материалов, фото проектов, обсудим детали лично. Парковка бесплатная. Рекомендуем записаться заранее.</p>
+          <div style="color: var(--gray-900); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">{{ info.address|default:'г. Вологда, ул. Гагарина, 81' }}</div>
+          <div style="color: var(--gray-600); font-size: 0.9rem;">Работаем ежедневно: 9:00 — 21:00</div>
+        </div>
+      </div>
+      <style>
+        .contact-item:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px rgba(42, 31, 24, 0.15);
+        }
+      </style>
     </div>
-</section>
+  </section>
 
-<!-- Working Hours -->
-<section class="section" style="background: linear-gradient(135deg, #E8F5E9, #FFF3E0);">
+  <!-- БЛОК ЗАЯВКИ: Только кнопка на /order/ -->
+  <section class="section" style="background: var(--wood-cream);" data-animate="fade-up">
     <div class="container">
-        <div class="card scale-in" style="max-width: 900px; margin: 0 auto; text-align: center; padding: 3rem;">
-            <div style="width: 80px; height: 80px; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2E7D32, #FF6F00); border-radius: 50%; color: white; font-size: 2.5rem;">
-                ⏰
-            </div>
-            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #1A1A1A;">График работы</h2>
-            <p style="font-size: 1.5rem; color: #2E7D32; font-weight: 700; margin-bottom: 0.5rem;">Ежедневно с 9:00 до 21:00</p>
-            <p style="color: #757575; font-size: 1.125rem;">Без выходных</p>
-            <p style="color: #757575; font-size: 1.125rem; margin-top: 1rem;">Работаем по всей России</p>
-        </div>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--gray-800);">Оставить заявку</h2>
+      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <a href="{% url 'order' %}" class="btn btn-primary btn-terra" style="display: inline-block; padding: 1.5rem 3rem; font-size: 1.2rem; background: var(--accent-terracotta); color: var(--white); text-decoration: none; border-radius: var(--radius-md); transition: background 0.3s ease;">
+          <span>Перейти к заказу</span>
+          <div class="btn-shine"></div>
+        </a>
+        <p style="text-align: center; margin-top: 1rem; color: var(--gray-600); font-size: 0.9rem;">Заполните форму заказа для консультации, расчёта и подбора проекта. Мы перезвоним в течение часа.</p>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Contact Form -->
-<section class="section">
+  <!-- СОЦСЕТИ -->
+  <section class="section bg-wood-lightest" data-animate="fade-up">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title" style="margin-bottom: 2rem; color: var(--gray-800);">Мы в соцсетях</h2>
+      <p style="color: var(--gray-700); margin-bottom: 2rem;">Следите за новыми проектами, акциями и отзывами. Задавайте вопросы в комментариях — отвечаем оперативно.</p>
+      <a href="https://www.avito.ru" target="_blank" class="btn btn-secondary" style="padding: 1rem 2rem; background: var(--gray-200); color: var(--gray-800); text-decoration: none; border-radius: var(--radius-md); transition: background 0.3s ease;">Avito</a>
+    </div>
+  </section>
+
+
+  <!-- FAQ (скрывающийся) -->
+  <section class="section bg-wood-lightest" data-animate="fade-up">
     <div class="container">
-        <div class="section-header">
-            <span class="section-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-                </svg>
-                Обратная связь
-            </span>
-            <h2 class="section-title">Оставьте заявку и мы перезвоним</h2>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--gray-800);">Часто задаваемые вопросы</h2>
+      <div class="faq-grid" style="display: grid; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+        
+        <div class="faq-item-collapsible" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden;">
+          <button class="faq-question-contact" onclick="toggleFAQContact(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.1rem; font-weight: 600;">
+            <span>Сколько времени занимает обработка заявки?</span>
+            <svg width="20" height="20" class="faq-icon-contact" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer-contact" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div style="padding: 0 1.5rem 1.5rem; color: var(--gray-700); line-height: 1.6;">
+              Мы перезваниваем в течение 1 часа в рабочее время (9:00-21:00). Если заявка пришла ночью или поздно вечером, свяжемся утром следующего дня. Email-ответы — в течение 2 часов.
+            </div>
+          </div>
         </div>
 
-        <div class="card scale-in" style="max-width: 700px; margin: 0 auto; padding: 3rem;">
-            <a href="{% url 'order' %}" class="btn btn-primary" style="width: 100%; font-size: 1.25rem; padding: 1.5rem;">
-                <span>Оставить заявку</span>
-                <span class="btn-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </span>
-                <div class="btn-shine"></div>
-            </a>
+        <div class="faq-item-collapsible" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden;">
+          <button class="faq-question-contact" onclick="toggleFAQContact(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.1rem; font-weight: 600;">
+            <span>Можно ли приехать в офис для осмотра образцов?</span>
+            <svg width="20" height="20" class="faq-icon-contact" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer-contact" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div style="padding: 0 1.5rem 1.5rem; color: var(--gray-700); line-height: 1.6;">
+              Да, мы приглашаем клиентов для осмотра образцов дерева, печей и аксессуаров. Рекомендуем записаться по телефону заранее, чтобы менеджер был готов к консультации. Приезжайте в удобное время — парковка бесплатная.
+            </div>
+          </div>
         </div>
+
+        <div class="faq-item-collapsible" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden;">
+          <button class="faq-question-contact" onclick="toggleFAQContact(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.1rem; font-weight: 600;">
+            <span>Сколько стоит доставка?</span>
+            <svg width="20" height="20" class="faq-icon-contact" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer-contact" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div style="padding: 0 1.5rem 1.5rem; color: var(--gray-700); line-height: 1.6;">
+              Бесплатно в пределах 50 км от Вологды. Далее — от 30 руб/км (зависит от размера бани и типа транспорта). Для удаленных регионов Вологодской области рассчитываем индивидуально. Укажите ваш адрес для точного расчета.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item-collapsible" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden;">
+          <button class="faq-question-contact" onclick="toggleFAQContact(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.1rem; font-weight: 600;">
+            <span>Что нужно для оформления договора?</span>
+            <svg width="20" height="20" class="faq-icon-contact" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer-contact" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div style="padding: 0 1.5rem 1.5rem; color: var(--gray-700); line-height: 1.6;">
+              Для оформления договора достаточно паспорта и контактных данных. Если баня на участке, предоставьте адрес или план (для согласования доставки). Мы поможем с расчетом и договором на месте или онлайн. Оплата поэтапно: аванс 30%, остаток после монтажа.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item-collapsible" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden;">
+          <button class="faq-question-contact" onclick="toggleFAQContact(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.1rem; font-weight: 600;">
+            <span>Выезжаете ли вы на объект для замера?</span>
+            <svg width="20" height="20" class="faq-icon-contact" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer-contact" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div style="padding: 0 1.5rem 1.5rem; color: var(--gray-700); line-height: 1.6;">
+              Да, наши специалисты выезжают на объект для замера участка и подбора проекта (бесплатно в пределах Вологды и области). Укажите адрес и удобное время в заявке — организуем визит в течение 1-2 дней. Это помогает точно рассчитать фундамент и доставку.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item-collapsible" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden;">
+          <button class="faq-question-contact" onclick="toggleFAQContact(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.1rem; font-weight: 600;">
+            <span>Что делать при технических проблемах на сайте?</span>
+            <svg width="20" height="20" class="faq-icon-contact" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer-contact" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div style="padding: 0 1.5rem 1.5rem; color: var(--gray-700); line-height: 1.6;">
+              В случае технических проблем звоните напрямую: +7 960 293 4660. Мы также доступны в <a href="https://www.avito.ru/brands/i201908789/all/remont_i_stroitelstvo?iid=7506844076&page_from=from_item_messenger&sellerId=ce4a4fa7fed0a3d1c5295f7c8d05836d" target="_blank" style="color: var(--accent-orange); font-weight: 600;">Avito</a>. Для срочных вопросов оставьте сообщение в форме — ответим по SMS или звонку.
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- FAQ Section -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
-                    <line x1="12" y1="17" x2="12.01" y2="17"/>
-                </svg>
-                Частые вопросы
-            </span>
-            <h2 class="section-title">Ответы на популярные вопросы</h2>
-        </div>
-
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Сколько времени занимает строительство?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Средний срок строительства стандартной бани составляет 1-2 дня. Время может варьироваться в зависимости от сложности проекта и погодных условий.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in" style="animation-delay: 100ms;">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Предоставляете ли вы гарантию?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Да, мы предоставляем официальную гарантию 5 лет на все конструкции и выполненные работы.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in" style="animation-delay: 200ms;">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Осуществляете ли доставку в регионы?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Да, мы осуществляем доставку и строительство по всей России. Стоимость доставки рассчитывается индивидуально.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in" style="animation-delay: 300ms;">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Можно ли заказать индивидуальный проект?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Конечно! Мы разрабатываем индивидуальные проекты с учетом всех пожеланий клиента.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-function toggleFAQ(button) {
-    const item = button.parentElement;
-    const isActive = item.classList.contains('active');
-
-    // Close all other FAQs
-    document.querySelectorAll('.faq-item').forEach(faq => {
-        faq.classList.remove('active');
+  <script>
+  function toggleFAQContact(button) {
+    const faqItem = button.closest('.faq-item-collapsible');
+    const answer = faqItem.querySelector('.faq-answer-contact');
+    const icon = button.querySelector('.faq-icon-contact');
+    const content = answer.firstElementChild;
+    
+    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+    
+    document.querySelectorAll('.faq-answer-contact').forEach(item => {
+      item.style.maxHeight = '0';
     });
-
-    // Toggle current FAQ
-    if (!isActive) {
-        item.classList.add('active');
+    document.querySelectorAll('.faq-icon-contact').forEach(item => {
+      item.style.transform = 'rotate(0deg)';
+    });
+    document.querySelectorAll('.faq-question-contact').forEach(item => {
+      item.style.background = 'transparent';
+    });
+    
+    if (!isOpen) {
+      answer.style.maxHeight = content.scrollHeight + 'px';
+      icon.style.transform = 'rotate(180deg)';
+      button.style.background = 'var(--wood-light)';
     }
-}
-</script>
+  }
+  </script>
+
+  <!-- CTA -->
+  <section class="section bg-wood-cream" data-animate="fade-up">
+    <div class="container" style="text-align: center; padding: 4rem 0;">
+      <h2 style="margin-bottom: 2rem; color: var(--gray-800);">Готовы к проекту?</h2>
+      <a href="{% url 'catalog' %}" class="btn btn-primary btn-terra" style="padding: 1.5rem 3rem; font-size: 1.2rem; text-decoration: none;">
+        <span>Выбрать проект</span>
+        <div class="btn-shine"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- АНИМАЦИЯ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
+
+  <style>
+    .section-title { font-size: 2.5rem; font-weight: 700; }
+    .hero-section-contact { position: relative; overflow: hidden; }
+    .contact-grid, .faq-grid { gap: 2rem; }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-warm); transition: transform 0.3s ease; }
+    @media (max-width: 768px) {
+      .hero-section-contact h1 { font-size: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .faq-item { padding: 1rem; }
+    }
+  </style>
+
 {% endblock %}

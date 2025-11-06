@@ -1,4 +1,3 @@
-# urls.py
 from django.urls import path
 from . import views
 
@@ -12,4 +11,5 @@ urlpatterns = [
     path('order/', views.order, name='order'),
     path('order/success/', views.order_success, name='order_success'),
     path('additional-services/', views.additional_services, name='additional_services'),
+    path('credit-request/', views.credit_request_view, name='credit_request'),
 ]

@@ -18,40 +18,131 @@
             <p class="hero-subtitle">Примеры выполненных проектов</p>
         </div>
     </div>
-</section>
+  </section>
 
-<!-- Works Gallery -->
-<section class="section">
+  <!-- Статистика проектов -->
+  <section style="background: var(--white); padding: 3rem 0; border-bottom: 1px solid var(--wood-light);">
     <div class="container">
-        <div class="card-grid">
-            {% for photo in photos %}
-            <article class="work-card fade-in" style="animation-delay: {{ forloop.counter0|add:'0' }}00ms;">
-                <div class="work-image">
-                    {% if photo.image %}
-                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
-                    <div class="work-overlay">
-                        <h3 class="work-title">{{ photo.title }}</h3>
-                        {% if photo.description %}
-                        <p class="work-description">{{ photo.description }}</p>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                </div>
-            </article>
-            {% empty %}
-            <div style="grid-column: 1/-1; text-align:center; padding:4rem; color:#757575;">
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="margin:0 auto 2rem; opacity:0.3;">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                </svg>
-                <h3 style="font-size:1.5rem; margin-bottom:0.5rem;">Фото еще не добавлены</h3>
-                <p>Скоро здесь появятся примеры наших работ</p>
-            </div>
-            {% endfor %}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; text-align: center;">
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">500+</div>
+          <div style="color: var(--gray-600); font-size: 1.1rem;">Построенных бань</div>
         </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">10 лет</div>
+          <div style="color: var(--gray-600); font-size: 1.1rem;">На рынке</div>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">35 регионов</div>
+          <div style="color: var(--gray-600); font-size: 1.1rem;">География доставки</div>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">98%</div>
+          <div style="color: var(--gray-600); font-size: 1.1rem;">Довольных клиентов</div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+
+  <!-- Типы выполненных работ -->
+  <section class="section" style="background: var(--wood-cream); padding: 4rem 0;">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--gray-900);">Что мы делаем</h2>
+      <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">От небольших дачных бань до элитных банных комплексов. Каждый проект выполнен с любовью к своему делу.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div style="background: var(--white); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+          <div style="width: 70px; height: 70px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Компактные бани 2x3, 3x3</h4>
+          <p style="color: var(--gray-700); line-height: 1.6;">Идеальны для небольших участков. Быстрая установка, доступная цена.</p>
+        </div>
+
+        <div style="background: var(--white); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+          <div style="width: 70px; height: 70px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+          <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Стандартные бани 4x4, 4x5, 5x5</h4>
+          <p style="color: var(--gray-700); line-height: 1.6;">С комнатой отдыха и террасой. Оптимальный размер для семьи.</p>
+        </div>
+
+        <div style="background: var(--white); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+          <div style="width: 70px; height: 70px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Премиум-бани 5x6+</h4>
+          <p style="color: var(--gray-700); line-height: 1.6;">Банные комплексы с бассейном, купелью, барбекю-зоной.</p>
+        </div>
+
+        <div style="background: var(--white); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎨</div>
+          <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Индивидуальные проекты</h4>
+          <p style="color: var(--gray-700); line-height: 1.6;">По вашим чертежам и пожеланиям. Любая сложность.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОРТФОЛИО: Галерея из photos (WorkPhoto из админки) -->
+  <section class="section bg-wood-lightest" data-animate="fade-up">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 1.5rem; color: var(--gray-800);">Реализованные проекты</h2>
+      <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Фотографии наших работ — от начала строительства до финального результата. Каждая баня уникальна.</p>
+      {% if photos %}
+        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          {% for photo in photos %}
+            <div class="project-item card" style="border-radius: var(--radius-lg); background: var(--white); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform 0.3s ease; position: relative;">
+              {% if photo.image %}
+                <img src="{{ photo.image.url }}" alt="Фото проекта {{ forloop.counter }}" style="width: 100%; height: 250px; object-fit: cover; cursor: pointer; transition: transform 0.3s ease;" onclick="window.open('{{ photo.image.url }}', '_blank');">
+                <div class="overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(139, 69, 19, 0.7); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center; color: var(--white);">
+                  <span style="font-size: 1.2rem;">Увеличить</span>
+                </div>
+              {% else %}
+                <div style="width: 100%; height: 250px; background: var(--gray-200); display: flex; align-items: center; justify-content: center; color: var(--gray-500);">Фото отсутствует</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="text-align: center; color: var(--gray-600);">Фото проектов появятся после добавления в админ-панель (/admin/shop/workphoto/add/).</p>
+      {% endif %}
+      <style>
+        .project-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-warm); }
+        .project-item:hover .overlay { opacity: 1; }
+        .project-item img:hover { transform: scale(1.05); }
+      </style>
+    </div>
+  </section>
+
+  <!-- ПРОЦЕСС СТРОИТЕЛЬСТВА -->
+  <section class="section" style="background: var(--wood-cream);" data-animate="fade-up">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--gray-800);">Как мы работаем</h2>
+      <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+        <div class="process-step" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="step-icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">1</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Консультация и проект</h3>
+          <p style="color: var(--gray-700);">Обсуждаем пожелания, создаём 3D-проект. Бесплатная смета.</p>
+        </div>
+        <div class="process-step" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="step-icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">2</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Подготовка и фундамент</h3>
+          <p style="color: var(--gray-700);">Выбор участка, закладка фундамента. Материалы доставляем сами.</p>
+        </div>
+        <div class="process-step" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="step-icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">3</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Строительство и отделка</h3>
+          <p style="color: var(--gray-700);">Сборка каркаса, парная, коммуникации. Контроль качества на каждом этапе.</p>
+        </div>
+        <div class="process-step" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="step-icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">4</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Сдача и гарантия</h3>
+          <p style="color: var(--gray-700);">Финальная проверка, инструктаж. 5 лет гарантии, обслуживание.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <style>
 .work-card {

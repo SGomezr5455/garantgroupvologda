@@ -4,9 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Гарант Групп - Бани под ключ{% endblock %}</title>
+    <title>{% block title %}Гарант Групп - Бани под ключ в Вологде | Модульные бани с гарантией{% endblock %}</title>
+    
+    <meta name="description" content="{% block description %}Качественные модульные бани под ключ от производителя в Вологде. Гарантия 5 лет. Доставка по РФ. Установка за 1-2 дня. От 150 000 руб. ☎️ +7 960 293 4660{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}баня под ключ, модульные бани, бани Вологда, купить баню, деревянная баня, бани из бруса, баня цена, строительство бань{% endblock %}">
+    <meta name="author" content="Гарант Групп">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{% block canonical %}https://garantgroup.ru{% endblock %}">
+    
+    <meta property="og:title" content="{% block og_title %}Гарант Групп - Бани под ключ в Вологде{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Качественные модульные бани под ключ. Гарантия 5 лет, установка за 1-2 дня. От 150 000 руб.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'images/og-image.jpg' %}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://garantgroup.ru{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="Гарант Групп">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Гарант Групп - Бани под ключ{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Качественные модульные бани под ключ от производителя{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'images/og-image.jpg' %}{% endblock %}">
+    
+    <meta name="geo.region" content="RU-VLG">
+    <meta name="geo.placename" content="Вологда">
+    <meta name="geo.position" content="59.206333;39.828335">
+    <meta name="ICBM" content="59.206333, 39.828335">
+    
+    <meta name="theme-color" content="#B8835A">
+    <meta name="msapplication-TileColor" content="#B8835A">
+    
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}">
+    
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <meta name="description" content="Качественные деревянные бани под ключ. Профессиональное строительство бань в Вологодской области.">
+    
+    {% block structured_data %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Гарант Групп",
+      "description": "Производство и продажа модульных бань под ключ в Вологде и по РФ",
+      "url": "https://garantgroup.ru",
+      "logo": "https://garantgroup.ru{% static 'images/logo.png' %}",
+      "telephone": "+79602934660",
+      "email": "Vologdagarant@yandex.ru",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Гагарина, 81",
+        "addressLocality": "Вологда",
+        "addressRegion": "Вологодская область",
+        "postalCode": "160000",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "59.206333",
+        "longitude": "39.828335"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "priceRange": "150000-1000000 RUB",
+      "sameAs": [
+        "https://vk.com/garant_stroy_karkas"
+      ]
+    }
+    </script>
+    {% endblock %}
+    
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <!-- Preloader -->
@@ -55,10 +125,33 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <!-- Карта в футере -->
+            <div class="footer-map" style="margin-bottom: 3rem;">
+                <h3 style="color: var(--white); text-align: center; margin-bottom: 1.5rem; font-size: 1.8rem;">Наш адрес</h3>
+                <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=39.828335%2C59.206333&z=16&l=map&pt=39.828335,59.206333,pm2vvm2.1&lang=ru" width="100%" height="350" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <p style="text-align: center; color: rgba(255,255,255,0.9); margin-top: 1rem; font-size: 1.1rem;">г. Вологда, ул. Гагарина, 81 • Режим работы: ежедневно 9:00 — 21:00</p>
+            </div>
+
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Гарант Групп</h3>
                     <p>Качественные деревянные бани под ключ с гарантией и профессиональным подходом.</p>
+                    <p style="margin-top: 1rem; opacity: 0.9; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0012 0V2z"/></svg>
+                            10+ лет опыта
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            500+ построенных бань
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            98% довольных клиентов
+                        </span>
+                    </p>
                 </div>
 
                 <div class="footer-section">
@@ -66,28 +159,49 @@
                     <a href="{% url 'index' %}">Главная</a><br>
                     <a href="{% url 'catalog' %}">Каталог</a><br>
                     <a href="{% url 'about' %}">О компании</a><br>
-                    <a href="{% url 'works' %}">Наши работы</a>
+                    <a href="{% url 'works' %}">Наши работы</a><br>
+                    <a href="{% url 'contact' %}">Контакты</a><br>
+                    <a href="{% url 'additional_services' %}">Доп. услуги</a>
                 </div>
 
                 <div class="footer-section">
                     <h3>Контакты</h3>
-                    <p>Email: Vologdagarant@yandex.ru</p>
-                    <p>Телефон: +7 960 293 4660</p>
-                    <p>Работаем ежедневно с 9:00 до 21:00</p>
+                    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email: <a href="mailto:Vologdagarant@yandex.ru" style="color: var(--wood-cream);">Vologdagarant@yandex.ru</a></p>
+                    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Телефон: <a href="tel:+79602934660" style="color: var(--wood-cream);">+7 960 293 4660</a></p>
+                    <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Работаем ежедневно с 9:00 до 21:00</p>
+                    <p><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> г. Вологда, ул. Гагарина, 81</p>
                 </div>
 
                 <div class="footer-section">
                     <h3>Мы в соцсетях</h3>
-                    <a href="https://vk.com/garant_stroy_karkas" target="_blank" rel="noopener">ВКонтакте</a>
+                    <a href="https://vk.com/garant_stroy_karkas" target="_blank" rel="noopener" style="display: inline-block; margin-bottom: 0.5rem; transition: color 0.3s;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.09 12.68h-1.58c-.54 0-.71-.43-1.68-1.4-0.85-.83-1.23-.94-1.44-.94-0.29 0-.38.09-.38.52v1.27c0 .34-.11.54-1 .54-1.49 0-3.14-.9-4.3-2.58-1.75-2.31-2.23-4.05-2.23-4.41 0-.21.09-.4.52-.4h1.58c.39 0 .54.18.68.59.75 2.19 2 4.11 2.51 4.11.19 0 .29-.09.29-.58v-2.26c-.07-1.13-.66-1.23-.66-1.63 0-.17.13-.34.35-.34h2.47c.33 0 .45.18.45.56v3.05c0 .33.15.45.24.45.19 0 .36-.12.71-.47 1.07-1.21 1.84-3.06 1.84-3.06.1-.21.28-.4.67-.4h1.58c.47 0 .57.24.47.56-.16.79-1.94 3.44-1.94 3.44-.16.25-.21.37 0 .65.16.21.68.67 1.03 1.08.63.73 1.12 1.34 1.25 1.76.12.42-.07.64-.49.64z"/></svg>
+                        ВКонтакте
+                    </a><br>
+                    <a href="https://www.avito.ru/brands/i201908789/all/remont_i_stroitelstvo?iid=7506844076&page_from=from_item_messenger&sellerId=ce4a4fa7fed0a3d1c5295f7c8d05836d" target="_blank" rel="noopener" style="display: inline-block; margin-bottom: 0.5rem; transition: color 0.3s;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M20.47 2H3.53A1.53 1.53 0 002 3.53v16.94A1.53 1.53 0 003.53 22h16.94a1.53 1.53 0 001.53-1.53V3.53A1.53 1.53 0 0020.47 2zm-7.7 15.5h-1.54c-3.19 0-5.04-2.18-5.11-5.79h1.62c.06 2.58 1.19 3.67 2.09 3.67.82 0 1.19-.56 1.19-1.61V9.79h1.52v3.52c.66-.08 1.68-1.08 1.97-2.73h1.52c-.19 1.45-1.1 2.7-1.86 3.16.76.36 1.78 1.47 2.19 3.22h-1.67c-.34-1.22-1.2-2.17-2.33-2.17h-.59v2.17z"/></svg>
+                        Авито
+                    </a><br>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Способы оплаты</h4>
+                        <p style="opacity: 0.9; font-size: 0.9rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Наличные • Безналичный расчет • Карты • Рассрочка</p>
+                    </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; {% now "Y" %} Гарант Групп. Все права защищены.</p>
+                <p>&copy; {% now "Y" %} Гарант Групп. Все права защищены. • ИНН: [номер] • ОГРН: [номер]</p>
             </div>
         </div>
     </footer>
 
+
     <script src="{% static 'js/main.js' %}"></script>
+<a href="{% url 'order' %}" class="cta-fixed-button">
+        <span class="cta-text">Консультация/заказ</span>
+        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
 </body>
 </html>
