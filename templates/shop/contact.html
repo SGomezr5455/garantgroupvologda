@@ -23,164 +23,134 @@
 <!-- Contact Cards -->
 <section class="section">
     <div class="container">
-        <div class="contact-grid">
-            <div class="contact-card fade-in">
-                <div class="contact-icon">📧</div>
-                <h3 class="contact-title">Email</h3>
-                <p class="contact-value">Vologdagarant@yandex.ru</p>
-                <a href="mailto:Vologdagarant@yandex.ru" class="btn btn-primary">
-                    <span>Написать письмо</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
-
-            <div class="contact-card fade-in" style="animation-delay: 100ms;">
-                <div class="contact-icon">📱</div>
-                <h3 class="contact-title">Телефон</h3>
-                <p class="contact-value">+7 960 293 4660</p>
-                <a href="tel:+79602934660" class="btn btn-primary">
-                    <span>Позвонить</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
-
-            <div class="contact-card fade-in" style="animation-delay: 200ms;">
-                <div class="contact-icon">💬</div>
-                <h3 class="contact-title">ВКонтакте</h3>
-                <p class="contact-value">Мы в VK</p>
-                <a href="https://vk.com/garant_stroy_karkas" target="_blank" rel="noopener" class="btn btn-primary">
-                    <span>Перейти в VK</span>
-                    <div class="btn-shine"></div>
-                </a>
-            </div>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--gray-800);">Как с нами связаться</h2>
+      <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+        <div class="contact-item card" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">📞</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Телефон</h3>
+          <p style="color: var(--gray-700); font-size: 1.1rem;">Звоните нам для быстрой консультации по банях, ценам и срокам. Наши менеджеры работают ежедневно и готовы ответить на все вопросы.</p>
+          <a href="tel:{{ info.phone|default:'+79602934660' }}" style="color: var(--accent-terracotta); font-weight: 600; text-decoration: none;">{{ info.phone|default:'+7 960 293 4660' }}</a>
         </div>
+        <div class="contact-item card" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">📍</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Адрес</h3>
+          <p style="color: var(--gray-700);">Наш офис и склад материалов расположены в удобном месте для быстрой доставки по Московской области. Приезжайте для просмотра образцов.</p>
+          <p style="color: var(--gray-600); font-weight: 500;">{{ info.address|default:'г. Вологда' }}</p>
+        </div>
+        <div class="contact-item card" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">🕒</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Режим работы</h3>
+          <p style="color: var(--gray-700);">Мы доступны для звонков и заявок ежедневно, без выходных. Консультации и расчеты проектов — в удобное для вас время.</p>
+          <p style="color: var(--gray-600); font-weight: 500;">Ежедневно: 9:00 — 21:00</p>
+        </div>
+        <div class="contact-item card" style="padding: 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <div class="icon" style="width: 60px; height: 60px; background: var(--accent-terracotta); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem;">🚚</div>
+          <h3 style="margin-bottom: 1rem; color: var(--gray-800);">Доставка</h3>
+          <p style="color: var(--gray-700);">Работаем по всей Московской области. Доставка материалов и готовых бань от 1-2 дней, в зависимости от расстояния и объема заказа.</p>
+          <p style="color: var(--gray-600); font-weight: 500;">Бесплатная доставка при заказе от 300 000 руб.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Working Hours -->
-<section class="section" style="background: linear-gradient(135deg, #E8F5E9, #FFF3E0);">
+  <!-- БЛОК ЗАЯВКИ: Только кнопка на /order/ -->
+  <section class="section" style="background: var(--wood-cream);" data-animate="fade-up">
     <div class="container">
-        <div class="card scale-in" style="max-width: 900px; margin: 0 auto; text-align: center; padding: 3rem;">
-            <div style="width: 80px; height: 80px; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2E7D32, #FF6F00); border-radius: 50%; color: white; font-size: 2.5rem;">
-                ⏰
-            </div>
-            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #1A1A1A;">График работы</h2>
-            <p style="font-size: 1.5rem; color: #2E7D32; font-weight: 700; margin-bottom: 0.5rem;">Ежедневно с 9:00 до 21:00</p>
-            <p style="color: #757575; font-size: 1.125rem;">Без выходных</p>
-            <p style="color: #757575; font-size: 1.125rem; margin-top: 1rem;">Работаем по всей России</p>
-        </div>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--gray-800);">Оставить заявку</h2>
+      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <a href="{% url 'order' %}" class="btn btn-primary btn-terra" style="display: inline-block; padding: 1.5rem 3rem; font-size: 1.2rem; background: var(--accent-terracotta); color: var(--white); text-decoration: none; border-radius: var(--radius-md); transition: background 0.3s ease;">
+          <span>Перейти к заказу</span>
+          <div class="btn-shine"></div>
+        </a>
+        <p style="text-align: center; margin-top: 1rem; color: var(--gray-600); font-size: 0.9rem;">Заполните форму заказа для консультации, расчёта и подбора проекта. Мы перезвоним в течение часа.</p>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Contact Form -->
-<section class="section">
+  <!-- СОЦСЕТИ -->
+  <section class="section bg-wood-lightest" data-animate="fade-up">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title" style="margin-bottom: 2rem; color: var(--gray-800);">Мы в соцсетях</h2>
+      <p style="color: var(--gray-700); margin-bottom: 2rem;">Следите за новыми проектами, акциями и отзывами. Задавайте вопросы в комментариях — отвечаем оперативно.</p>
+      <a href="https://www.avito.ru" target="_blank" class="btn btn-secondary" style="padding: 1rem 2rem; background: var(--gray-200); color: var(--gray-800); text-decoration: none; border-radius: var(--radius-md); transition: background 0.3s ease;">Avito</a>
+    </div>
+  </section>
+
+
+  <!-- FAQ (из старого HTML) -->
+  <section class="section bg-wood-lightest" data-animate="fade-up">
     <div class="container">
-        <div class="section-header">
-            <span class="section-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-                </svg>
-                Обратная связь
-            </span>
-            <h2 class="section-title">Оставьте заявку и мы перезвоним</h2>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--gray-800);">Часто задаваемые вопросы</h2>
+      <div class="faq-grid" style="display: grid; gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+        <div class="faq-item" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--gray-800); margin-bottom: 0.5rem;">Сколько времени занимает обработка заявки?</h3>
+          <p style="color: var(--gray-600);">Мы перезваниваем в течение 1 часа в рабочее время (9:00-21:00). Если заявка пришла ночью или поздно вечером, свяжемся утром следующего дня. Email-ответы — в течение 2 часов.</p>
         </div>
-
-        <div class="card scale-in" style="max-width: 700px; margin: 0 auto; padding: 3rem;">
-            <a href="{% url 'order' %}" class="btn btn-primary" style="width: 100%; font-size: 1.25rem; padding: 1.5rem;">
-                <span>Оставить заявку</span>
-                <span class="btn-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </span>
-                <div class="btn-shine"></div>
-            </a>
+        <div class="faq-item" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--gray-800); margin-bottom: 0.5rem;">Можно ли приехать в офис для осмотра образцов?</h3>
+          <p style="color: var(--gray-600);">Да, мы приглашаем клиентов для осмотра образцов дерева, печей и аксессуаров. Рекомендуем записаться по телефону заранее, чтобы менеджер был готов к консультации. Приезжайте в удобное время — парковка бесплатная.</p>
         </div>
+        <div class="faq-item" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--gray-800); margin-bottom: 0.5rem;">Сколько стоит доставка?</h3>
+          <p style="color: var(--gray-600);">Базовая доставка — от 5000 руб. в пределах 50 км от МКАД. Для дальних районов МО цена зависит от расстояния и объема (грузовик/трейлер). Бесплатно при заказе от 300 000 руб. Укажите ваш адрес для точного расчета по телефону или в заявке.</p>
+        </div>
+        <div class="faq-item" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--gray-800); margin-bottom: 0.5rem;">Что нужно для оформления договора?</h3>
+          <p style="color: var(--gray-600);">Для оформления договора достаточно паспорта и контактных данных. Если баня на участке, предоставьте адрес или план (для согласования доставки). Мы поможем с расчетом и договором на месте или онлайн. Оплата поэтапно: аванс 30%, остаток после монтажа.</p>
+        </div>
+        <div class="faq-item" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--gray-800); margin-bottom: 0.5rem;">Выезжаете ли вы на объект для замера?</h3>
+          <p style="color: var(--gray-600);">Да, наши специалисты выезжают на объект для замера участка и подбора проекта (бесплатно в пределах МО). Укажите адрес и удобное время в заявке — организуем визит в течение 1-2 дней. Это помогает точно рассчитать фундамент и доставку.</p>
+        </div>
+        <div class="faq-item" style="background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--gray-800); margin-bottom: 0.5rem;">Что делать при технических проблемах на сайте?</h3>
+          <p style="color: var(--gray-600);">В случае технических проблем звоните напрямую: +7 . Мы также доступны в Avito (ссылка в контактах). Для срочных вопросов оставьте сообщение в форме — ответим по SMS или звонку.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- FAQ Section -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
-                    <line x1="12" y1="17" x2="12.01" y2="17"/>
-                </svg>
-                Частые вопросы
-            </span>
-            <h2 class="section-title">Ответы на популярные вопросы</h2>
-        </div>
-
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div class="faq-item fade-in">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Сколько времени занимает строительство?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Средний срок строительства стандартной бани составляет 1-2 дня. Время может варьироваться в зависимости от сложности проекта и погодных условий.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in" style="animation-delay: 100ms;">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Предоставляете ли вы гарантию?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Да, мы предоставляем официальную гарантию 5 лет на все конструкции и выполненные работы.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in" style="animation-delay: 200ms;">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Осуществляете ли доставку в регионы?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Да, мы осуществляем доставку и строительство по всей России. Стоимость доставки рассчитывается индивидуально.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item fade-in" style="animation-delay: 300ms;">
-                <button class="faq-question" onclick="toggleFAQ(this)">
-                    <span>Можно ли заказать индивидуальный проект?</span>
-                    <span class="faq-icon">▼</span>
-                </button>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Конечно! Мы разрабатываем индивидуальные проекты с учетом всех пожеланий клиента.
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- CTA -->
+  <section class="section bg-wood-cream" data-animate="fade-up">
+    <div class="container" style="text-align: center; padding: 4rem 0;">
+      <h2 style="margin-bottom: 2rem; color: var(--gray-800);">Готовы к проекту?</h2>
+      <a href="{% url 'catalog' %}" class="btn btn-primary btn-terra" style="padding: 1.5rem 3rem; font-size: 1.2rem; text-decoration: none;">
+        <span>Выбрать проект</span>
+        <div class="btn-shine"></div>
+      </a>
     </div>
-</section>
+  </section>
 
-<script>
-function toggleFAQ(button) {
-    const item = button.parentElement;
-    const isActive = item.classList.contains('active');
-
-    // Close all other FAQs
-    document.querySelectorAll('.faq-item').forEach(faq => {
-        faq.classList.remove('active');
+  <!-- АНИМАЦИЯ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
     });
+  </script>
 
-    // Toggle current FAQ
-    if (!isActive) {
-        item.classList.add('active');
+  <style>
+    .section-title { font-size: 2.5rem; font-weight: 700; }
+    .hero-section-contact { position: relative; overflow: hidden; }
+    .contact-grid, .faq-grid { gap: 2rem; }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-warm); transition: transform 0.3s ease; }
+    @media (max-width: 768px) {
+      .hero-section-contact h1 { font-size: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .faq-item { padding: 1rem; }
     }
-}
-</script>
+  </style>
+
 {% endblock %}

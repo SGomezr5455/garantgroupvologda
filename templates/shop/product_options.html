@@ -1,307 +1,75 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Дополнительные опции - {{ product.title }} - Banyana{% endblock %}
+{% block title %}Дополнительные опции - {{ product.title }} - Гарант Групп{% endblock %}
 
 {% block content %}
-<section class="section" style="padding: 2rem 0;">
-    <div class="container">
-        <!-- Хлебные крошки -->
-        <nav class="breadcrumb">
-            <a href="{% url 'index' %}">Главная</a>
-            <span>›</span>
-            <a href="{% url 'catalog' %}">Каталог</a>
-            <span>›</span>
-            <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a>
-            <span>›</span>
-            <span>Дополнительные опции</span>
-        </nav>
+<div class="options-page">
+    <!-- Герой-секция: Бreadcrumbs и заголовок -->
+    <section class="hero-options">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <a href="{% url 'index' %}">Главная</a> /
+                <a href="{% url 'catalog' %}">Каталог</a> /
+                <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a> /
+                <span>Дополнительные опции</span>
+            </nav>
+            <h1 class="page-title">Дополнительные опции</h1>
+            <p class="page-subtitle">Персонализируйте {{ product.title }} с помощью комплектующих и услуг. Каждая опция рассчитана индивидуально.</p>
+        </div>
+    </section>
 
-        <div class="options-container">
-            <h1 class="options-title">Дополнительные опции для товара "{{ product.title }}"</h1>
-            
+    <!-- Список опций: Grid-карточки -->
+    <section class="options-list-section">
+        <div class="container">
             {% if product.options.all %}
                 <div class="options-grid">
                     {% for option in product.options.all %}
-                    <div class="option-card">
-                        <!-- Галерея фотографий опции -->
-                        {% if option.images.exists %}
-                        <div class="option-gallery">
-                            <div class="option-main-image">
-                                <img src="{{ option.images.first.image.url }}" alt="{{ option.name }}" class="option-img" id="optionImg{{ option.id }}">
+                        <div class="option-card">
+                            <div class="option-gallery">
+                                {% if option.images.exists %}
+                                    {% if option.images.count > 1 %}
+                                        <!-- Carousel для множественных фото -->
+                                        <div class="carousel-container">
+                                            <div class="carousel" id="carousel-{{ option.id }}">
+                                                {% for img in option.images.all %}
+                                                    <img src="{{ img.image.url }}" alt="{{ option.name }}" class="carousel-img">
+                                                {% endfor %}
+                                            </div>
+                                            <button class="carousel-prev" onclick="moveCarousel('{{ option.id }}', -1)">‹</button>
+                                            <button class="carousel-next" onclick="moveCarousel('{{ option.id }}', 1)">›</button>
+                                        </div>
+                                    {% else %}
+                                        <!-- Одно фото -->
+                                        <img src="{{ option.images.first.image.url }}" alt="{{ option.name }}" class="option-img">
+                                    {% endif %}
+                                {% else %}
+                                    <div class="option-placeholder">Нет фото</div>
+                                {% endif %}
                             </div>
-                            {% if option.images.count > 1 %}
-                            <div class="option-thumbnails">
-                                {% for img in option.images.all %}
-                                <img src="{{ img.image.url }}" alt="{{ img.alt_text }}" 
-                                     class="option-thumb {% if forloop.first %}active{% endif %}"
-                                     onclick="changeOptionImage({{ option.id }}, '{{ img.image.url }}', this)">
-                                {% endfor %}
-                            </div>
-                            {% endif %}
-                        </div>
-                        {% else %}
-                        <div class="option-no-image">
-                            <i class="fas fa-image"></i>
-                            <p>Нет фото</p>
-                        </div>
-                        {% endif %}
-                        
-                        <!-- Информация об опции -->
-                        <div class="option-info">
                             <h3 class="option-name">{{ option.name }}</h3>
                             <div class="option-price">{{ option.formatted_price }}</div>
                             {% if option.description %}
-                            <p class="option-description">{{ option.description }}</p>
+                                <p class="option-description">{{ option.description|linebreaks }}</p>
                             {% endif %}
-                            <a href="{% url 'order' %}" class="btn btn-order">Заказать</a>
+                            <a href="{% url 'order' %}?product={{ product.id }}&option={{ option.id }}" class="btn-primary">Заказать опцию</a>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
             {% else %}
                 <div class="no-options">
-                    <i class="fas fa-info-circle"></i>
                     <h3>Дополнительные опции пока не добавлены</h3>
-                    <p>Вы можете заказать базовую версию товара</p>
-                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-back">Вернуться к товару</a>
+                    <p>Вы можете заказать базовую версию товара. Наши менеджеры помогут с персонализацией.</p>
+                    <a href="{% url 'product_detail' product.id %}" class="btn-secondary">Вернуться к товару</a>
                 </div>
             {% endif %}
-            
-            <div class="back-to-product">
-                <a href="{% url 'product_detail' product.pk %}" class="btn btn-outline">
-                    <i class="fas fa-arrow-left"></i> Вернуться к товару
-                </a>
+            <div class="back-link">
+                <a href="{% url 'product_detail' product.id %}">← Вернуться к товару</a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
-<style>
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-.breadcrumb { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; color: #666; }
-.breadcrumb a { color: var(--primary); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
 
-.options-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
 
-.options-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--text-dark);
-    text-align: center;
-}
-
-.options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.option-card {
-    border: 1px solid #e8e8e8;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.option-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.option-gallery {
-    position: relative;
-}
-
-.option-main-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    background: #f8f9fa;
-}
-
-.option-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.option-card:hover .option-img {
-    transform: scale(1.05);
-}
-
-.option-thumbnails {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: #f8f9fa;
-    overflow-x: auto;
-}
-
-.option-thumb {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    opacity: 0.6;
-    flex-shrink: 0;
-}
-
-.option-thumb:hover,
-.option-thumb.active {
-    border-color: var(--primary);
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.option-no-image {
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #f8f9fa;
-    color: #999;
-}
-
-.option-no-image i {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-}
-
-.option-info {
-    padding: 1.5rem;
-}
-
-.option-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
-
-.option-price {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.option-description {
-    color: var(--text-light);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.no-options {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: #666;
-}
-
-.no-options i {
-    font-size: 4rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.no-options h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.back-to-product {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e8e8e8;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.btn-order {
-    width: 100%;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
-}
-
-.btn-order:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(46, 139, 87, 0.4);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-}
-
-.btn-outline:hover {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-back {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-}
-
-/* Отзывчивость */
-@media (max-width: 768px) {
-    .options-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .options-title {
-        font-size: 1.5rem;
-    }
-    
-    .option-main-image {
-        height: 200px;
-    }
-}
-</style>
-
-<script>
-function changeOptionImage(optionId, src, thumbElement) {
-    // Обновляем главное изображение опции
-    const mainImg = document.getElementById('optionImg' + optionId);
-    if (mainImg) {
-        mainImg.src = src;
-    }
-    
-    // Обновляем активный thumbnail
-    const card = thumbElement.closest('.option-card');
-    card.querySelectorAll('.option-thumb').forEach(thumb => {
-        thumb.classList.remove('active');
-    });
-    thumbElement.classList.add('active');
-}
-</script>
 {% endblock %}

@@ -26,7 +26,7 @@
             </div>
             {% endif %}
 
-            <form method="POST" class="order-form">
+            <form method="POST" class="order-form" id="order-form">
                 {% csrf_token %}
 
                 <div class="form-row">
@@ -65,11 +65,25 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Проверочный код *</label>
-                    {{ form.captcha }}
+                <!-- CAPTCHA БЛОК -->
+                <div class="form-group captcha-group">
+                    <label class="form-label">Проверка безопасности *</label>
+
+                    <div class="captcha-wrapper">
+                        <div class="captcha-image-container">
+                            {{ form.captcha }}
+                        </div>
+
+                        <button type="button" class="captcha-refresh-btn" id="captcha-refresh-btn" title="Обновить капчу">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                        </button>
+                    </div>
+
                     {% if form.captcha.errors %}
-                    <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block; font-weight: 600;">{{ form.captcha.errors.0 }}</span>
+                    <span class="error-message" style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block; font-weight: 600;">{{ form.captcha.errors.0 }}</span>
                     {% endif %}
                 </div>
 
@@ -157,5 +171,266 @@
     padding: 1.25rem 2.5rem;
     font-size: 1.125rem;
 }
+
+/* ===== СТИЛИ ДЛЯ КАПЧИ ===== */
+.captcha-group {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+}
+
+.captcha-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.captcha-image-container {
+    flex: 1;
+    min-width: 200px;
+}
+
+.captcha-image-container img {
+    border-radius: 8px;
+    border: 2px solid #dee2e6;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.captcha-refresh-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.captcha-refresh-btn:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
+}
+
+.captcha-refresh-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.captcha-refresh-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.captcha-refresh-btn svg {
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+/* Анимация загрузки */
+.captcha-refresh-btn.loading svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .order-form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .order-title {
+        font-size: 2rem;
+    }
+
+    .captcha-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .captcha-refresh-btn {
+        align-self: center;
+    }
+}
 </style>
+
+<!-- ИСПРАВЛЕННЫЙ JAVASCRIPT ДЛЯ ОБНОВЛЕНИЯ КАПЧИ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔧 Инициализация Django Simple Captcha refresh v2');
+
+    const refreshBtn = document.getElementById('captcha-refresh-btn');
+
+    if (!refreshBtn) {
+        console.warn('⚠️ Кнопка обновления капчи не найдена');
+        return;
+    }
+
+    console.log('✅ Кнопка обновления найдена');
+
+    refreshBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log('🖱️ Клик по кнопке обновления капчи');
+
+        // Добавляем анимацию загрузки
+        refreshBtn.classList.add('loading');
+        refreshBtn.disabled = true;
+
+        // Получаем новую капчу через AJAX
+        fetch('/captcha/refresh/', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сервера: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('📦 Получены новые данные капчи:', data);
+
+            // МЕТОД 1: Поиск через .captcha (Django Simple Captcha)
+            let captchaImg = document.querySelector('.captcha img');
+
+            // МЕТОД 2: Поиск через .captcha-image-container
+            if (!captchaImg) {
+                captchaImg = document.querySelector('.captcha-image-container img');
+            }
+
+            // МЕТОД 3: Поиск через любой img в captcha-group
+            if (!captchaImg) {
+                captchaImg = document.querySelector('.captcha-group img');
+            }
+
+            // МЕТОД 4: Поиск по src содержащему captcha
+            if (!captchaImg) {
+                const allImages = document.querySelectorAll('img');
+                for (let img of allImages) {
+                    if (img.src.includes('captcha')) {
+                        captchaImg = img;
+                        break;
+                    }
+                }
+            }
+
+            if (captchaImg && data.image_url) {
+                const oldSrc = captchaImg.src;
+                const newSrc = data.image_url + '?' + new Date().getTime();
+                captchaImg.src = newSrc;
+                console.log('🎨 Изображение капчи обновлено');
+                console.log('   Старый src:', oldSrc);
+                console.log('   Новый src:', newSrc);
+
+                // Проверяем что изображение действительно загрузилось
+                captchaImg.onload = function() {
+                    console.log('✅ Новое изображение загружено успешно');
+                };
+                captchaImg.onerror = function() {
+                    console.error('❌ Ошибка загрузки нового изображения');
+                };
+            } else {
+                console.error('❌ Изображение капчи не найдено!');
+                console.log('Попытка найти все изображения на странице:');
+                const allImgs = document.querySelectorAll('img');
+                allImgs.forEach((img, index) => {
+                    console.log(`  ${index}: ${img.src.substring(0, 100)}`);
+                });
+            }
+
+            // Обновляем скрытое поле с хешем
+            let hashInput = document.querySelector('.captcha input[name$="_0"]');
+            if (!hashInput) {
+                hashInput = document.querySelector('input[name$="_0"]');
+            }
+
+            if (hashInput && data.key) {
+                hashInput.value = data.key;
+                console.log('🔑 Хеш капчи обновлён:', data.key);
+            } else {
+                console.warn('⚠️ Скрытое поле с хешем не найдено');
+            }
+
+            // Очищаем поле ввода
+            let captchaInput = document.querySelector('.captcha input[name$="_1"]');
+            if (!captchaInput) {
+                captchaInput = document.querySelector('input[name$="_1"]');
+            }
+
+            if (captchaInput) {
+                captchaInput.value = '';
+                captchaInput.focus();
+                console.log('🧹 Поле ввода очищено');
+            } else {
+                console.warn('⚠️ Поле ввода капчи не найдено');
+            }
+
+            // Убираем сообщение об ошибке
+            const errorMsg = document.querySelector('.captcha-group .error-message');
+            if (errorMsg) {
+                errorMsg.style.display = 'none';
+            }
+
+            console.log('✅ Капча успешно обновлена');
+        })
+        .catch(error => {
+            console.error('❌ Ошибка при обновлении капчи:', error);
+            alert('Не удалось обновить капчу. Попробуйте перезагрузить страницу.');
+        })
+        .finally(() => {
+            // Убираем анимацию загрузки
+            setTimeout(() => {
+                refreshBtn.classList.remove('loading');
+                refreshBtn.disabled = false;
+            }, 300);
+        });
+
+        return false;
+    });
+
+    console.log('✅ Обработчик обновления капчи установлен');
+
+    // Отладка: показываем структуру капчи
+    console.log('🔍 Проверка структуры капчи на странице:');
+    const captchaContainer = document.querySelector('.captcha');
+    if (captchaContainer) {
+        console.log('✅ Контейнер .captcha найден');
+        console.log('   HTML:', captchaContainer.innerHTML.substring(0, 200));
+    } else {
+        console.warn('⚠️ Контейнер .captcha НЕ найден');
+    }
+
+    const captchaImg = document.querySelector('.captcha img');
+    if (captchaImg) {
+        console.log('✅ Изображение капчи найдено');
+        console.log('   Текущий src:', captchaImg.src);
+    } else {
+        console.warn('⚠️ Изображение капчи НЕ найдено через .captcha img');
+        console.log('   Попытка поиска всех изображений:');
+        const allImgs = document.querySelectorAll('img');
+        allImgs.forEach((img, index) => {
+            if (img.src.includes('captcha')) {
+                console.log(`   ✅ Найдено изображение капчи #${index}:`, img.src);
+            }
+        });
+    }
+});
+</script>
 {% endblock %}
