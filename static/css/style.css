@@ -1332,6 +1332,12 @@ gap: 1rem;
 
 padding-left: 0;
 
+max-height: 80vh;
+
+overflow-y: auto;
+
+z-index: 999;
+
 }
 
 .nav.active {
@@ -2597,5 +2603,272 @@ img {
 @media (prefers-color-scheme: dark) {
     :root {
         color-scheme: light;
+    }
+}
+
+/* ====================================
+   УНИФИЦИРОВАННЫЕ ШРИФТЫ И СТИЛИ
+   ==================================== */
+
+/* Заголовки - единый стиль */
+h1, .hero-title, .section-title {
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+}
+
+h1, .hero-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h2, .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+h3, .card-title, .product-title {
+    font-size: clamp(1.3rem, 2vw, 1.5rem);
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.3;
+}
+
+h4 {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.4;
+}
+
+/* Подзаголовки */
+.hero-subtitle, .section-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+/* Основной текст */
+p, .card-text, .product-text {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+}
+
+/* Цены */
+.card-price, .product-price {
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
+    font-weight: 900;
+    color: var(--accent-orange);
+    line-height: 1.2;
+}
+
+/* Кнопки - единый стиль */
+.btn {
+    font-size: clamp(0.95rem, 1.2vw, 1rem);
+    font-weight: 700;
+    line-height: 1;
+    padding: clamp(0.875rem, 1.5vw, 1rem) clamp(1.5rem, 2vw, 2rem);
+    border-radius: var(--radius-lg);
+}
+
+/* Карточки - единый стиль */
+.card, .product-card, .advantage-card, .type-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+}
+
+/* Списки - единый стиль */
+ul li, ol li {
+    line-height: 1.7;
+    color: var(--gray-700);
+}
+
+/* Ссылки в тексте */
+a {
+    color: var(--accent-orange);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-terracotta);
+}
+
+/* Единый стиль для иконок */
+.icon-box, .advantage-icon, .stage-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+}
+
+/* Адаптация для мобильных - единый подход */
+@media (max-width: 768px) {
+    h1, .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    h2, .section-title {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    h4 {
+        font-size: 1.1rem;
+    }
+    
+    p, .card-text {
+        font-size: 1rem;
+    }
+    
+    .card-price, .product-price {
+        font-size: 1.4rem;
+    }
+}
+
+/* ====================================
+   УЛУЧШЕННАЯ МОБИЛЬНАЯ АДАПТИВНОСТЬ
+   ==================================== */
+
+/* Увеличение размеров тач-элементов для лучшего UX на мобильных */
+@media (max-width: 768px) {
+    /* Минимальный размер для тач-элементов (44x44px - Apple HIG) */
+    .btn,
+    button,
+    a.btn,
+    input[type="submit"],
+    input[type="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation; /* Оптимизация для тач-событий */
+    }
+
+    /* Улучшенные отступы для удобства на мобильных */
+    .section {
+        padding: 2.5rem 1rem;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Оптимизация форм для мобильных */
+    .form-control,
+    input,
+    select,
+    textarea {
+        font-size: 16px; /* Предотвращает зум на iOS при фокусе */
+        padding: 0.875rem 1rem;
+    }
+
+    /* Улучшение читаемости текста */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+
+    /* Оптимизация карточек */
+    .card,
+    .product-card,
+    .advantage-card {
+        margin-bottom: 1rem;
+    }
+
+    /* Убираем hover эффекты на мобильных */
+    @media (hover: none) {
+        .card:hover,
+        .product-card:hover,
+        .advantage-card:hover,
+        .btn:hover {
+            transform: none;
+        }
+    }
+
+    /* Sticky футер для мобильных */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex: 1;
+    }
+}
+
+/* Оптимизация для очень маленьких экранов (< 375px) */
+@media (max-width: 374px) {
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .product-card,
+    .advantage-card {
+        padding: 1.25rem !important;
+    }
+}
+
+/* Оптимизация для планшетов в портретной ориентации */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Улучшение производительности скроллинга на мобильных */
+@media (max-width: 768px) {
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Оптимизация анимаций для мобильных */
+    .card,
+    .btn,
+    .product-card {
+        will-change: auto; /* Экономия памяти на мобильных */
+    }
+
+    /* Отключение сложных анимаций на слабых устройствах */
+    @media (prefers-reduced-motion: reduce) {
+        .floating-shape {
+            animation: none;
+        }
+
+        .testimonial-carousel {
+            animation: none;
+        }
     }
 }
