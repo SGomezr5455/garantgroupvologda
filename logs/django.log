@@ -2590,3 +2590,42 @@ django.urls.exceptions.NoReverseMatch: 'shop' is not a registered namespace
 ERROR 2025-11-12 20:22:43,919 basehttp "GET /product/6/ HTTP/1.1" 500 24073
 WARNING 2025-11-12 20:22:43,959 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-11-12 20:22:43,959 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1357
+WARNING 2025-11-12 20:33:48,274 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1893
+WARNING 2025-11-12 20:33:56,844 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1893
+WARNING 2025-11-12 20:34:15,519 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:34:15,520 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1274
+WARNING 2025-11-12 20:34:21,703 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:34:21,704 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1309
+WARNING 2025-11-12 20:34:29,003 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:34:29,004 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1311
+WARNING 2025-11-12 20:35:04,925 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:35:04,926 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1230
+WARNING 2025-11-12 20:35:19,304 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:35:19,304 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1226
+WARNING 2025-11-12 20:35:30,101 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:35:30,101 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1299
+WARNING 2025-11-12 20:35:41,053 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:35:41,054 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1225
+WARNING 2025-11-12 20:35:44,137 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:35:44,138 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1288
+WARNING 2025-11-12 20:35:57,683 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:35:57,684 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1251
+WARNING 2025-11-12 20:36:11,408 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:36:11,409 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1282
+WARNING 2025-11-12 20:36:34,208 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:36:34,209 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1245
+WARNING 2025-11-12 20:36:37,729 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:36:37,729 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1264
+WARNING 2025-11-12 20:36:40,436 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:36:40,437 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1286
+WARNING 2025-11-12 20:39:27,686 log Not Found: /favicon.ico
+WARNING 2025-11-12 20:39:27,687 basehttp "GET /favicon.ico HTTP/1.1" 404 1289
+WARNING 2025-11-12 20:45:12,460 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1893
+WARNING 2025-11-12 20:45:28,590 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1893
+WARNING 2025-11-12 20:45:44,782 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:45:44,783 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1223
+WARNING 2025-11-12 20:45:48,625 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-12 20:45:48,626 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1264
+WARNING 2025-11-12 20:52:32,357 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1893
+WARNING 2025-11-12 20:52:47,674 log Not Found: /favicon.ico
+WARNING 2025-11-12 20:52:47,675 basehttp "GET /favicon.ico HTTP/1.1" 404 1257
