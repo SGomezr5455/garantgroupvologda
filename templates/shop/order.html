@@ -122,14 +122,6 @@
                         <div style="flex: 1; min-width: 250px;">
                             {{ form.captcha }}
                         </div>
-                        <button type="button" id="refresh-captcha-btn" class="btn-refresh-captcha" title="Обновить капчу">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="23 4 23 10 17 10"></polyline>
-                                <polyline points="1 20 1 14 7 14"></polyline>
-                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                            </svg>
-                            <span>Обновить</span>
-                        </button>
                     </div>
                     {% if form.captcha.errors %}
                     <span style="color: #c62828; font-size: 0.875rem; margin-top: 0.5rem; display: block; font-weight: 600;">{{ form.captcha.errors.0 }}</span>
@@ -273,55 +265,4 @@ select.form-control:focus {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const refreshBtn = document.getElementById('refresh-captcha-btn');
-    
-    if (refreshBtn) {
-        refreshBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const captchaImage = document.querySelector('.captcha img');
-            const captchaInput = document.querySelector('input[name="captcha_1"]');
-            const captchaHiddenInput = document.querySelector('input[name="captcha_0"]');
-            
-            if (captchaImage && captchaHiddenInput) {
-                // Анимация загрузки
-                captchaImage.style.transition = 'opacity 0.3s';
-                captchaImage.style.opacity = '0.5';
-                this.disabled = true;
-                
-                fetch('/captcha/refresh/', {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    captchaImage.src = data.image_url;
-                    captchaHiddenInput.value = data.key;
-                    
-                    if (captchaInput) {
-                        captchaInput.value = '';
-                        captchaInput.focus();
-                    }
-                    
-                    setTimeout(() => {
-                        captchaImage.style.opacity = '1';
-                        this.disabled = false;
-                    }, 100);
-                })
-                .catch(error => {
-                    console.error('Ошибка обновления капчи:', error);
-                    captchaImage.style.opacity = '1';
-                    this.disabled = false;
-                    alert('Не удалось обновить капчу. Попробуйте перезагрузить страницу.');
-                });
-            }
-        });
-    }
-});
-</script>
 {% endblock %}

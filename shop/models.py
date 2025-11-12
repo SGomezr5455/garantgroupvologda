@@ -8,7 +8,7 @@ class Product(models.Model):
     description = models.TextField('Описание')
     image = models.ImageField('Главное изображение', upload_to='products/', blank=True, null=True)
     updated_at = models.DateTimeField('Дата обновления', auto_now=True)
-    is_featured = models.BooleanField('Популярная модель', default=False, db_index=True)  # ← НОВОЕ ПОЛЕ
+    is_featured = models.BooleanField('Популярная модель', default=False, db_index=True)
 
     class Meta:
         verbose_name = 'Товар'
@@ -71,6 +71,13 @@ class ProductPrice(models.Model):
     price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     description = models.TextField('Описание размера', blank=True)
     order = models.PositiveIntegerField('Порядок', default=0, db_index=True)
+    
+    # Размеры бани
+    total_length = models.CharField('Общая длина (м)', max_length=50, blank=True, help_text='Например: 5 или 5.5')
+    steam_room_length = models.CharField('Длина парной (м)', max_length=50, blank=True, help_text='Например: 2.4 или 3')
+    rest_room = models.CharField('Комната отдыха (м)', max_length=50, blank=True, help_text='Например: 170/195 или 2.4')
+    height = models.CharField('Высота (м)', max_length=50, blank=True, help_text='Например: 2.4')
+    width = models.CharField('Ширина (м)', max_length=50, blank=True, help_text='Например: 5')
 
     class Meta:
         verbose_name = 'Цена товара'

@@ -51,8 +51,10 @@ class GlobalOptionAdmin(admin.ModelAdmin):
 class ProductPriceInline(admin.TabularInline):
     model = ProductPrice
     extra = 1
-    fields = ('name', 'price', 'description', 'order')
+    fields = ('name', 'price', 'total_length', 'steam_room_length', 'rest_room', 'height', 'width', 'description', 'order')
     ordering = ['order']
+    verbose_name = 'Размер бани'
+    verbose_name_plural = 'Размеры бани'
 
 
 class ProductImageInline(admin.TabularInline):

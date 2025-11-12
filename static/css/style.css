@@ -2365,7 +2365,7 @@ img[data-src].loaded {
 /* Адаптация для мобильных (вкладок) */
 @media (max-width: 768px) {
     .cta-fixed-button {
-        bottom: 1rem;
+        bottom: 4rem;
         right: 1rem;
         padding: 0.875rem 1.25rem 0.875rem 1rem;
         font-size: 0.875rem;

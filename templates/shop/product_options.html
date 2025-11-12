@@ -70,6 +70,247 @@
     </section>
 </div>
 
+<style>
+  .options-page {
+    min-height: 100vh;
+    background: var(--off-white);
+  }
 
+  .hero-options {
+    background: var(--gradient-accent);
+    padding: 4rem 0 3rem;
+    color: var(--white);
+  }
+
+  .breadcrumbs {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumbs a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--white);
+  }
+
+  .breadcrumbs span {
+    color: var(--white);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  .options-list-section {
+    padding: 4rem 0;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .option-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+  }
+
+  .option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .option-gallery {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .option-img,
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-container {
+    position: relative;
+    height: 100%;
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.3s ease;
+    height: 100%;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 10;
+  }
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+
+  .option-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-600);
+  }
+
+  .option-name {
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: 1.3rem;
+    color: var(--gray-900);
+  }
+
+  .option-price {
+    padding: 0 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-terracotta);
+  }
+
+  .option-description {
+    padding: 1rem 1.5rem;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+  .option-card .btn-primary {
+    margin: 0 1.5rem 1.5rem;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background: var(--accent-terracotta);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .option-card .btn-primary:hover {
+    background: var(--accent-orange);
+  }
+
+  .no-options {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .back-link {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .back-link a {
+    color: var(--accent-terracotta);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .hero-options {
+      padding: 3rem 0 2rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+    }
+
+    .options-list-section {
+      padding: 3rem 0;
+    }
+
+    .options-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .option-gallery {
+      height: 200px;
+    }
+
+    .option-name {
+      font-size: 1.2rem;
+      padding: 1.25rem 1.25rem 0.5rem;
+    }
+
+    .option-price {
+      font-size: 1.5rem;
+      padding: 0 1.25rem;
+    }
+
+    .option-description {
+      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .option-card .btn-primary {
+      margin: 0 1.25rem 1.25rem;
+      padding: 0.875rem;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-title {
+      font-size: 1.5rem;
+    }
+
+    .option-price {
+      font-size: 1.3rem;
+    }
+  }
+</style>
 
 {% endblock %}

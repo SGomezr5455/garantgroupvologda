@@ -54,6 +54,169 @@
     </section>
 </div>
 
+<style>
+  .additional-services-page {
+    min-height: 100vh;
+  }
 
+  .hero-section {
+    padding: 4rem 0;
+    background: var(--gradient-accent);
+  }
+
+  .hero-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  .services-section {
+    padding: 4rem 0;
+    background: var(--white);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .service-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border: 2px solid var(--wood-light);
+    transition: transform 0.3s ease;
+  }
+
+  .service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-terracotta);
+    margin: 1rem 0;
+  }
+
+  .contact-section {
+    padding: 4rem 0;
+    background: var(--wood-cream);
+  }
+
+  .contact-card {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: var(--accent-terracotta);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .contact-btn:hover {
+    background: var(--accent-orange);
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .hero-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .services-section {
+      padding: 3rem 0;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .service-item {
+      padding: 1.5rem;
+    }
+
+    .contact-section {
+      padding: 3rem 0;
+    }
+
+    .contact-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem !important;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-card h1 {
+      font-size: 1.75rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem !important;
+    }
+
+    .service-price {
+      font-size: 1.5rem;
+    }
+
+    .contact-btn {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+</style>
 
 {% endblock %}
