@@ -1,0 +1,1248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Гарант Групп - Бани под ключ{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero" style="background: var(--gradient-warm); position: relative;">
+    <div class="floating-shape" style="background: var(--accent-orange); opacity: 0.1;"></div>
+    <div class="floating-shape" style="background: var(--wood-beige); opacity: 0.2;"></div>
+    <div class="floating-shape" style="background: var(--accent-terracotta); opacity: 0.1;"></div>
+
+    <div class="container">
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title" style="color: var(--gray-900);">Модульные бани под ключ из Вологды</h1>
+            <p class="hero-subtitle" style="color: var(--gray-700); font-size: 1.3rem; max-width: 800px; margin: 0 auto 2rem;">Изготовим и соберём баню любой сложности за 1-2 недели. От компактных эконом-вариантов до просторных элитных моделей с комнатой отдыха, террасой и купелью. Собственное производство, официальная гарантия 5 лет, доставка по всей России.</p>
+            <div class="hero-buttons" style="gap: 1rem;">
+                <a href="{% url 'catalog' %}" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-terracotta)); color: white; border: none; padding: 1.2rem 2.5rem; border-radius: var(--radius-md); transition: transform 0.3s; font-size: 1.1rem;">
+                    Смотреть каталог <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                </a>
+                <a href="{% url 'order' %}" class="btn btn-secondary" style="background: var(--wood-brown); color: white; border: none; padding: 1.2rem 2.5rem; border-radius: var(--radius-md); transition: transform 0.3s; font-size: 1.1rem;">
+                    Бесплатная консультация <i class="fas fa-phone" style="margin-left: 0.5rem;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Статистика компании -->
+<section class="stats-section" style="background: var(--white); padding: 3rem 0; border-bottom: 1px solid var(--wood-light);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center;">
+            <div class="stat-item">
+                <div style="font-size: 3rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">10+</div>
+                <div style="color: var(--gray-600); font-size: 1.1rem;">Лет опыта</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 3rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">500+</div>
+                <div style="color: var(--gray-600); font-size: 1.1rem;">Построенных бань</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 3rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">98%</div>
+                <div style="color: var(--gray-600); font-size: 1.1rem;">Довольных клиентов</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 3rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 0.5rem;">5 лет</div>
+                <div style="color: var(--gray-600); font-size: 1.1rem;">Гарантия на все работы</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ПОПУЛЯРНЫЕ МОДЕЛИ (из админки) ========== -->
+{% if popular_products %}
+<section class="section products-preview" style="background: var(--wood-lightest); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 3rem;">Популярные модели</h2>
+
+        <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            {% for product in popular_products %}
+            <div class="product-card scale-in" style="background: white; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="{{ product.image.url|default:'/static/images/placeholder.jpg' }}"
+                     class="product-card-img"
+                     alt="{{ product.title }}"
+                     style="width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s;"
+                     data-src="{{ product.image.url|default:'/static/images/placeholder.jpg' }}">
+
+                <div class="card-content" style="padding: 1.5rem;">
+                    <h3 class="card-title" style="color: var(--gray-900); margin-bottom: 1rem;">{{ product.title }}</h3>
+                    <p class="card-text" style="color: var(--gray-600); margin-bottom: 1rem;">{{ product.description|truncatechars:120 }}</p>
+                    <p class="card-price" style="color: var(--accent-orange); font-weight: bold; font-size: 1.5rem; margin-bottom: 1rem;">{{ product.formatted_price }}</p>
+                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary" style="width: 100%; background: var(--accent-orange); color: white; padding: 0.75rem; border-radius: var(--radius-sm); text-align: center; transition: background 0.3s;">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'catalog' %}" class="btn btn-primary" style="background: var(--accent-orange); color: white; padding: 1rem 2rem; border-radius: var(--radius-md); margin-top: 20px;">
+                Смотреть весь каталог
+            </a>
+        </div>
+    </div>
+</section>
+{% else %}
+<section class="section products-preview" style="background: var(--wood-lightest); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 3rem;">Популярные модели</h2>
+        <div class="text-center">
+            <p style="color: var(--gray-600);">Каталог пока пуст</p>
+            <a href="{% url 'catalog' %}" class="btn btn-primary" style="background: var(--accent-orange); color: white; padding: 1rem 2rem;">Перейти в каталог</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!-- Видео наших работ -->
+<section class="section video-section" style="background: var(--wood-cream); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1rem;">Видео наших работ</h2>
+        <p style="text-align: center; color: var(--gray-600); margin-bottom: 3rem; font-size: 1.1rem;">Смотрите процесс изготовления и установки бань. Все этапы работ в деталях.</p>
+        
+        <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto;">
+            <!-- Видео 1 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239162&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Видео 2 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239168&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Видео 3 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239152&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Видео 4 (из плейлиста) -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239160&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239156&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239157&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="https://vk.com/garant_stroy_karkas" target="_blank" rel="noopener" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--accent-orange); color: var(--white); text-decoration: none; border-radius: var(--radius-md); font-weight: 600; transition: all 0.3s;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.09 12.68h-1.58c-.54 0-.71-.43-1.68-1.4-0.85-.83-1.23-.94-1.44-.94-0.29 0-.38.09-.38.52v1.27c0 .34-.11.54-1 .54-1.49 0-3.14-.9-4.3-2.58-1.75-2.31-2.23-4.05-2.23-4.41 0-.21.09-.4.52-.4h1.58c.39 0 .54.18.68.59.75 2.19 2 4.11 2.51 4.11.19 0 .29-.09.29-.58v-2.26c-.07-1.13-.66-1.23-.66-1.63 0-.17.13-.34.35-.34h2.47c.33 0 .45.18.45.56v3.05c0 .33.15.45.24.45.19 0 .36-.12.71-.47 1.07-1.21 1.84-3.06 1.84-3.06.1-.21.28-.4.67-.4h1.58c.47 0 .57.24.47.56-.16.79-1.94 3.44-1.94 3.44-.16.25-.21.37 0 .65.16.21.68.67 1.03 1.08.63.73 1.12 1.34 1.25 1.76.12.42-.07.64-.49.64z"/></svg>
+                Смотреть все видео на ВКонтакте
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Оптимизация видео для всех устройств - увеличенные размеры */
+    .video-section {
+        will-change: transform;
+    }
+    
+    .video-wrapper {
+        will-change: transform, box-shadow;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    .video-wrapper:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(183, 110, 72, 0.25);
+    }
+    
+    .video-wrapper iframe {
+        max-width: 100%;
+        display: block;
+    }
+    
+    /* Планшеты и маленькие ноутбуки */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .video-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1.5rem !important;
+        }
+        
+        .video-section {
+            padding: 3rem 0;
+        }
+    }
+    
+    /* Мобильные устройства */
+    @media (max-width: 768px) {
+        .video-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        }
+        
+        .video-section {
+            padding: 2.5rem 0;
+        }
+        
+        .video-section h2 {
+            font-size: 1.8rem;
+        }
+        
+        .video-section p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .video-wrapper:hover {
+            transform: none;
+        }
+        
+        .btn-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+    
+    /* Очень маленькие экраны */
+    @media (max-width: 480px) {
+        .video-section {
+            padding: 2rem 0;
+        }
+        
+        .video-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .video-section p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-secondary {
+            padding: 0.875rem 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .btn-secondary svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    
+    /* Большие экраны - 2 колонки для лучшего просмотра */
+    @media (min-width: 1400px) {
+        .video-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2.5rem !important;
+        }
+    }
+    
+    /* Улучшение производительности */
+    @media (prefers-reduced-motion: reduce) {
+        .video-wrapper {
+            transition: none;
+        }
+        
+        .video-wrapper:hover {
+            transform: none;
+        }
+    }
+</style>
+
+<!-- Отзывы (бесконечная карусель) -->
+<section class="section-testimonials" style="background: var(--wood-light); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1rem;">Отзывы наших клиентов</h2>
+        <p style="text-align: center; color: var(--gray-600); margin-bottom: 3rem; font-size: 1.1rem;">Более 500 довольных клиентов уже наслаждаются своими банями</p>
+        <div class="testimonial-carousel-wrapper" style="overflow: hidden; border-radius: var(--radius-xl);">
+            <div class="testimonial-carousel" style="display: flex; animation: scroll 60s linear infinite; width: max-content; gap: 2rem;">
+                <!-- Отзыв 1 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Заказывали баню 4x6 под ключ. Результат превзошёл все ожидания! Материалы отличного качества, бригада работала быстро и аккуратно. Особенно порадовала печь - жар держит великолепно. Рекомендую!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600); display: flex; flex-direction: column; gap: 0.25rem;">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Иван Петров</strong>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Вологда
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 2 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Очень довольны результатом! Выбирали долго, но не пожалели. Качественная древесина, профессиональная сборка за 2 дня. Менеджеры помогли с выбором всех дополнительных опций. Баня стоит уже год - никаких проблем!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Мария Королёва</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Череповец</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 3 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1" opacity="0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Спасибо за отличную работу! Баня получилась даже лучше, чем на фото в каталоге. Особенно понравилась отделка внутри - всё сделано с душой. Цена адекватная, сроки соблюдены. Будем рекомендовать друзьям!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Алексей Волков</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологодская обл.</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 4 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Доставили вовремя, установили за один день. Всё супер! Бригада профессиональная, убрали за собой. Баня прогревается быстро, пар лёгкий. Взяли дополнительно комнату отдыха - очень удобно. Цена-качество на высоте!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Светлана Новикова</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 5 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Лучшее соотношение цена-качество в регионе! Искали баню несколько месяцев, сравнивали разные компании. "Гарант Групп" оказались самыми адекватными и профессиональными. Баня радует каждые выходные. Спасибо большое!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Дмитрий Соколов</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 6 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Профессиональная команда! Всё подробно объяснили, помогли с выбором размера и комплектации. Отдельное спасибо за консультацию по фундаменту - сэкономили наши деньги и время. Монтаж занял всего день. Очень довольны!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Ольга Лебедева</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Грязовец</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 7 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1" opacity="0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Заказали баню премиум класса 6x4 с верандой. Очень красиво получилось! Качество материалов на высоте, все стыки идеальные. Использовали в рассрочку - очень удобно. Уже приглашали друзей попариться - все в восторге!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Андрей Морозов</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Сокол</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 8 -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Отличная компания! Работают быстро, качественно и честно. Никаких скрытых платежей, все прозрачно. Баня стоит второй год - без нареканий. Печь финская, греет отлично. Очень рады, что выбрали именно их!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Елена Крылова</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+
+                <!-- Дублируем для бесконечного скролла -->
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Заказывали баню 4x6 под ключ. Результат превзошёл все ожидания! Материалы отличного качества, бригада работала быстро и аккуратно. Особенно порадовала печь - жар держит великолепно. Рекомендую!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Иван Петров</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Очень довольны результатом! Выбирали долго, но не пожалели. Качественная древесина, профессиональная сборка за 2 дня. Менеджеры помогли с выбором всех дополнительных опций. Баня стоит уже год - никаких проблем!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Мария Королёва</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Череповец</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1" opacity="0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Спасибо за отличную работу! Баня получилась даже лучше, чем на фото в каталоге. Особенно понравилась отделка внутри - всё сделано с душой. Цена адекватная, сроки соблюдены. Будем рекомендовать друзьям!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Алексей Волков</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологодская обл.</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Доставили вовремя, установили за один день. Всё супер! Бригада профессиональная, убрали за собой. Баня прогревается быстро, пар лёгкий. Взяли дополнительно комнату отдыха - очень удобно. Цена-качество на высоте!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Светлана Новикова</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Лучшее соотношение цена-качество в регионе! Искали баню несколько месяцев, сравнивали разные компании. "Гарант Групп" оказались самыми адекватными и профессиональными. Баня радует каждые выходные. Спасибо большое!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Дмитрий Соколов</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Профессиональная команда! Всё подробно объяснили, помогли с выбором размера и комплектации. Отдельное спасибо за консультацию по фундаменту - сэкономили наши деньги и время. Монтаж занял всего день. Очень довольны!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Ольга Лебедева</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Грязовец</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1" opacity="0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Заказали баню премиум класса 6x4 с верандой. Очень красиво получилось! Качество материалов на высоте, все стыки идеальные. Использовали в рассрочку - очень удобно. Уже приглашали друзей попариться - все в восторге!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Андрей Морозов</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Сокол</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); min-width: 320px; max-width: 320px; flex-shrink: 0;">
+                    <div class="testimonial-stars" style="display: flex; gap: 4px; margin-bottom: 0.75rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="testimonial-quote" style="font-size: 3.5rem; color: var(--accent-orange); line-height: 0.8;">"</span>
+                    <p class="testimonial-text" style="color: var(--gray-700); margin: 0.5rem 0 1rem; line-height: 1.6;">Отличная компания! Работают быстро, качественно и честно. Никаких скрытых платежей, все прозрачно. Баня стоит второй год - без нареканий. Печь финская, греет отлично. Очень рады, что выбрали именно их!</p>
+                    <div class="testimonial-author" style="color: var(--gray-600);">
+                        <strong class="testimonial-name" style="color: var(--gray-900);">Елена Крылова</strong><br>
+                        <span class="testimonial-location" style="display: flex; align-items: center; gap: 0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-terracotta)" stroke="var(--accent-terracotta)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Видео отзывы клиентов -->
+<section class="section video-testimonials-section" style="background: var(--wood-cream); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1rem;">Видео отзывы</h2>
+        <p style="text-align: center; color: var(--gray-600); margin-bottom: 3rem; font-size: 1.1rem;">Наши клиенты делятся впечатлениями о работе с нами</p>
+        
+        <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto;">
+            <!-- Видео отзыв 1 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239159&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Видео отзыв 2 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239161&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Видео отзыв 3 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239135&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <!-- Видео отзыв 4 -->
+            <div class="video-wrapper" style="position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--wood-lightest); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe src="https://vk.com/video_ext.php?oid=-215297603&id=456239151&hd=2" width="100%" height="100%" style="position: absolute; top: 0; left: 0; border: 0;" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="https://vkvideo.ru/playlist/-215297603_1" target="_blank" rel="noopener" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--accent-orange); color: var(--white); text-decoration: none; border-radius: var(--radius-md); font-weight: 600; transition: all 0.3s;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.09 12.68h-1.58c-.54 0-.71-.43-1.68-1.4-0.85-.83-1.23-.94-1.44-.94-0.29 0-.38.09-.38.52v1.27c0 .34-.11.54-1 .54-1.49 0-3.14-.9-4.3-2.58-1.75-2.31-2.23-4.05-2.23-4.41 0-.21.09-.4.52-.4h1.58c.39 0 .54.18.68.59.75 2.19 2 4.11 2.51 4.11.19 0 .29-.09.29-.58v-2.26c-.07-1.13-.66-1.23-.66-1.63 0-.17.13-.34.35-.34h2.47c.33 0 .45.18.45.56v3.05c0 .33.15.45.24.45.19 0 .36-.12.71-.47 1.07-1.21 1.84-3.06 1.84-3.06.1-.21.28-.4.67-.4h1.58c.47 0 .57.24.47.56-.16.79-1.94 3.44-1.94 3.44-.16.25-.21.37 0 .65.16.21.68.67 1.03 1.08.63.73 1.12 1.34 1.25 1.76.12.42-.07.64-.49.64z"/></svg>
+                Посмотреть все видео отзывы
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .video-testimonials-section .video-wrapper:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(183, 110, 72, 0.25);
+    }
+    
+    @media (max-width: 768px) {
+        .video-testimonials-section .video-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+        }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .video-testimonials-section .video-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1.5rem !important;
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- НОВАЯ СЕКЦИЯ: Типы бань -->
+<section class="section types-section" style="background: var(--wood-cream); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1.5rem;">Какие бани мы строим</h2>
+        <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Мы специализируемся на модульных банях из качественной древесины. Каждая баня изготавливается на нашем производстве и доставляется на ваш участок в готовом виде.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="type-card" style="background: var(--white); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); transition: transform 0.3s; border: 2px solid var(--wood-light);">
+                <div class="icon-box" style="margin: 0 auto 1rem;">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem; font-size: 1.5rem;">Компактные бани (2x3, 3x3)</h3>
+                <p style="color: var(--gray-700); line-height: 1.7;">Идеальны для небольших участков. Включают парную, предбанник. Быстрая установка, доступная цена. От 150 000 руб.</p>
+            </div>
+
+            <div class="type-card" style="background: var(--white); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); transition: transform 0.3s; border: 2px solid var(--wood-light);">
+                <div class="icon-box" style="margin: 0 auto 1rem;">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="8" width="18" height="14" rx="2" ry="2"/>
+                        <path d="M9 2h6"/>
+                        <path d="M12 2v6"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem; font-size: 1.5rem;">Стандартные бани (4x4, 4x5)</h3>
+                <p style="color: var(--gray-700); line-height: 1.7;">Парная, помывочная, комната отдыха. Оптимальный размер для семьи. Возможность добавить террасу. От 250 000 руб.</p>
+            </div>
+
+            <div class="type-card" style="background: var(--white); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); transition: transform 0.3s; border: 2px solid var(--wood-light);">
+                <div class="icon-box" style="margin: 0 auto 1rem;">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15 8.5 22 9 16.5 14 18 21 12 17 6 21 7.5 14 2 9 9 8.5 12 2"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem; font-size: 1.5rem;">Премиум бани (5x6, 6x6+)</h3>
+                <p style="color: var(--gray-700); line-height: 1.7;">Просторная парная, душевая, комната отдыха, терраса, купель. Индивидуальный дизайн. От 450 000 руб.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- НОВАЯ СЕКЦИЯ: Материалы -->
+<section class="section materials-section" style="background: var(--white); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1.5rem;">Из чего строим</h2>
+        <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Используем только качественную древесину северных пород. Каждый материал проходит тщательную проверку и обработку.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 1px solid var(--wood-light);">
+                <div class="icon-box-sm" style="margin: 0 auto 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/>
+                        <path d="M8.5 2h7"/>
+                        <path d="M7 16h10"/>
+                    </svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem;">Профилированный брус</h4>
+                <p style="color: var(--gray-700);">Камерной сушки, 100x150 мм. Минимальная усадка, идеальная геометрия</p>
+            </div>
+
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 1px solid var(--wood-light);">
+                <div class="icon-box-sm" style="margin: 0 auto 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <path d="M3 9h18"/>
+                        <path d="M9 21V9"/>
+                    </svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem;">Вагонка липа/осина</h4>
+                <p style="color: var(--gray-700);">Для внутренней отделки парной. Сорт А/Экстра, без сучков</p>
+            </div>
+
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 1px solid var(--wood-light);">
+                <div class="icon-box-sm" style="margin: 0 auto 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                    </svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem;">Теплоизоляция</h4>
+                <p style="color: var(--gray-700);">Базальтовая вата 100 мм. Экологично, огнестойко, эффективно</p>
+            </div>
+
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 1px solid var(--wood-light);">
+                <div class="icon-box-sm" style="margin: 0 auto 1rem;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem;">Фундамент</h4>
+                <p style="color: var(--gray-700);">Винтовые сваи или ленточный фундамент. Расчет под ваш грунт</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Преимущества (2 grid по 4 элемента) -->
+<section class="section advantages-section" style="padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 3rem;">Почему выбирают нас</h2>
+
+        <div class="advantages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center; transition: transform 0.3s;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Качественная древесина</h3>
+                <p style="color: var(--gray-600);">Используем здоровую древесину из северных лесов — бани «дышат».</p>
+            </div>
+
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Официальная гарантия</h3>
+                <p style="color: var(--gray-600);">Работаем по договору и даём официальную гарантию на постройки и материалы.</p>
+            </div>
+
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="3" width="15" height="13"/>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                        <circle cx="5.5" cy="18.5" r="2.5"/>
+                        <circle cx="18.5" cy="18.5" r="2.5"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Быстрая установка</h3>
+                <p style="color: var(--gray-600);">Привозим и устанавливаем за 1–2 дня — и можно начинать париться!</p>
+            </div>
+
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Полный контроль</h3>
+                <p style="color: var(--gray-600);">Контролируем весь цикл — от заготовки леса до сборки на участке.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 3rem;">Наши гарантии</h2>
+
+        <div class="advantages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Чистая работа</h3>
+                <p style="color: var(--gray-600);">Собираем баню аккуратно и быстро, без строительного мусора.</p>
+            </div>
+
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Честная цена</h3>
+                <p style="color: var(--gray-600);">Фиксируем стоимость, сроки и все детали. Без скрытых платежей.</p>
+            </div>
+
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Своё производство</h3>
+                <p style="color: var(--gray-600);">Изготавливаем домокомплект на складе из качественной древесины.</p>
+            </div>
+
+            <div class="advantage-card slide-in-left" style="background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
+                <div class="icon-box" style="margin: 0 auto 1.5rem;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <h3 style="color: var(--gray-900); margin-bottom: 1rem;">Бесплатная консультация</h3>
+                <p style="color: var(--gray-600);">Оставляете заявку или звоните — поможем выбрать проект.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-credit">
+    <div class="container">
+        <div class="credit-card">
+            <div class="credit-content">
+                <h2 class="credit-title">Баня в кредит на выгодных условиях</h2>
+                <p class="credit-subtitle">Оформите баню мечты уже сегодня, а платите потом. Быстрое одобрение онлайн от наших банков-партнеров.</p>
+                <div class="credit-features">
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Срок кредита: от 6 мес. до 5 лет</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Быстрая обработка заявок</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Возраст: от 18 лет</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Оформление онлайн по всей России</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Сумма: от 3 тыс. до 2 млн рублей</div>
+                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Норма одобрения 92%</div>
+                </div>
+                <button class="btn btn-primary" id="openCreditModal" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-terracotta)); color: white; padding: 1rem 2rem; border: none; border-radius: var(--radius-md); font-size: 1.1rem; cursor: pointer; transition: transform 0.3s;">Получить консультацию</button>
+            </div>
+            <div class="credit-logos">
+                <p>Наши партнеры:</p>
+                <div class="partners-text">
+                    МТС Банк, ОТП Банк, Ренессанс Кредит, Совкомбанк, Альфа-Банк, ЛокоБанк, Кредит Европа Банк и другие.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЗАЯВКИ НА КРЕДИТ -->
+<div id="creditModalOverlay" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);">
+    <div style="background: white; margin: 5% auto; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); max-width: 500px; position: relative;">
+        <button id="closeCreditModal" type="button" style="position: absolute; right: 20px; top: 15px; background: none; border: none; font-size: 2rem; cursor: pointer; color: #666; transition: color 0.3s;">&times;</button>
+        <h3 style="color: var(--gray-900); margin: 0 0 0.5rem 0;">Заявка на консультацию по кредиту</h3>
+        <p style="color: var(--gray-600); margin: 0 0 2rem 0;">Оставьте ваши данные, и наш специалист свяжется с вами для обсуждения деталей.</p>
+
+        <form id="creditForm" method="POST" action="{% url 'credit_request' %}" novalidate style="display: flex; flex-direction: column; gap: 1.5rem;">
+            {% csrf_token %}
+            <div id="credit-form-errors" style="display:none; color: #d32f2f; margin-bottom: 1rem;"></div>
+
+            <div>
+                <label style="display: block; color: var(--gray-800); font-weight: 600; margin-bottom: 0.5rem;">{{ credit_form.fio.label }}</label>
+                {{ credit_form.fio }}
+            </div>
+
+            <div>
+                <label style="display: block; color: var(--gray-800); font-weight: 600; margin-bottom: 0.5rem;">{{ credit_form.phone.label }}</label>
+                {{ credit_form.phone }}
+            </div>
+
+            <div>
+                <label style="display: block; color: var(--gray-800); font-weight: 600; margin-bottom: 0.5rem;">{{ credit_form.captcha.label }}</label>
+                {{ credit_form.captcha }}
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-terracotta)); color: white; padding: 1rem; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s; width: 100%;">
+                Отправить заявку
+            </button>
+        </form>
+
+        <div id="creditFormSuccess" style="display: none; text-align: center; padding: 2rem;">
+            <div style="font-size: 4rem; color: #22c55e; margin-bottom: 1rem;">✓</div>
+            <h3 style="color: var(--gray-900); margin: 0 0 0.5rem 0;">Заявка отправлена!</h3>
+            <p style="color: var(--gray-600); margin: 0;">Мы свяжемся с вами в ближайшее время</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Этапы работы -->
+<section class="section process-section" style="background: var(--wood-lightest); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1.5rem;">Как мы работаем</h2>
+        <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Весь процесс занимает от 1 до 2 недель. Вы получаете готовую баню с гарантией и полной документацией.</p>
+
+        <div class="stages-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative;">
+            <div class="stage-item" style="text-align: center; padding: 2rem;">
+                <div class="stage-number" style="background: var(--accent-orange); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; font-weight: 900; box-shadow: var(--shadow-accent);">1</div>
+                <h3 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.3rem;">Консультация</h3>
+                <p style="color: var(--gray-600); line-height: 1.6;">Просматриваете каталог, выбираете проект. Менеджер консультирует, помогает с выбором комплектации и опций.</p>
+            </div>
+
+            <div class="stage-item" style="text-align: center; padding: 2rem;">
+                <div class="stage-number" style="background: var(--accent-orange); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; font-weight: 900; box-shadow: var(--shadow-accent);">2</div>
+                <h3 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.3rem;">Расчёт и договор</h3>
+                <p style="color: var(--gray-600); line-height: 1.6;">Составляем подробную смету, фиксируем сроки и условия в договоре. Предоплата 30%, остальное после монтажа.</p>
+            </div>
+
+            <div class="stage-item" style="text-align: center; padding: 2rem;">
+                <div class="stage-number" style="background: var(--accent-orange); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; font-weight: 900; box-shadow: var(--shadow-accent);">3</div>
+                <h3 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.3rem;">Производство</h3>
+                <p style="color: var(--gray-600); line-height: 1.6;">Изготавливаем домокомплект на производстве из отобранной древесины. Контроль качества на каждом этапе.</p>
+            </div>
+
+            <div class="stage-item" style="text-align: center; padding: 2rem;">
+                <div class="stage-number" style="background: var(--accent-orange); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; font-weight: 900; box-shadow: var(--shadow-accent);">4</div>
+                <h3 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.3rem;">Доставка и сборка</h3>
+                <p style="color: var(--gray-600); line-height: 1.6;">Привозим и собираем баню за 1-2 дня. Сдаем с актом выполненных работ и гарантией 5 лет.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- НОВАЯ СЕКЦИЯ: Гарантии и документы -->
+<section class="section certificates-section" style="background: var(--white); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1.5rem;">Гарантии и документы</h2>
+        <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Мы работаем официально, предоставляем полный пакет документов и несем ответственность за качество.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Официальный договор</h4>
+                <p style="color: var(--gray-700); line-height: 1.6;">С фиксированной стоимостью и сроками. Все условия прозрачны и понятны.</p>
+            </div>
+
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Гарантия 5 лет</h4>
+                <p style="color: var(--gray-700); line-height: 1.6;">На конструкцию, материалы и все выполненные работы. Гарантийный талон в комплекте.</p>
+            </div>
+
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Акт выполненных работ</h4>
+                <p style="color: var(--gray-700); line-height: 1.6;">После завершения монтажа. Подтверждает качество и полноту работ.</p>
+            </div>
+
+            <div style="background: var(--wood-lightest); padding: 2rem; border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--wood-light);">
+                <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: var(--accent-warm); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                </div>
+                <h4 style="color: var(--gray-900); margin-bottom: 0.75rem; font-size: 1.2rem;">Паспорт изделия</h4>
+                <p style="color: var(--gray-700); line-height: 1.6;">С характеристиками бани, рекомендациями по эксплуатации и обслуживанию.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ (с раскрывающимися ответами) -->
+<section class="section faq-extended-section" style="background: var(--wood-cream); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1.5rem;">Частые вопросы</h2>
+        <p style="text-align: center; color: var(--gray-600); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">Ответы на самые популярные вопросы о наших банях, процессе заказа и обслуживании.</p>
+        
+        <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 1.5rem;">
+            <div class="faq-item" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden; transition: var(--transition-smooth);">
+                <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.2rem; font-weight: 600; transition: background 0.3s;">
+                    <span>Нужно ли готовить фундамент заранее?</span>
+                    <svg width="24" height="24" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                    <div class="faq-answer-content" style="padding: 0 2rem 1.5rem; color: var(--gray-700); line-height: 1.7;">
+                        Да, фундамент должен быть готов до начала монтажа. Мы можем сделать его под ключ (винтовые сваи или ленточный) либо вы подготовите сами по нашим рекомендациям. Выезжаем на замер бесплатно.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden; transition: var(--transition-smooth);">
+                <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.2rem; font-weight: 600; transition: background 0.3s;">
+                    <span>Какая печь лучше для бани?</span>
+                    <svg width="24" height="24" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                    <div class="faq-answer-content" style="padding: 0 2rem 1.5rem; color: var(--gray-700); line-height: 1.7;">
+                        Зависит от объема парной. Для небольших бань (до 10 м³) подойдет печь 8-10 кВт. Для больших — 12-16 кВт. Мы предлагаем дровяные и электрические печи проверенных производителей (Harvia, Термофор, Везувий).
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden; transition: var(--transition-smooth);">
+                <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.2rem; font-weight: 600; transition: background 0.3s;">
+                    <span>Можно ли пользоваться баней зимой?</span>
+                    <svg width="24" height="24" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                    <div class="faq-answer-content" style="padding: 0 2rem 1.5rem; color: var(--gray-700); line-height: 1.7;">
+                        Да, все наши бани утеплены базальтовой ватой 100 мм и подходят для круглогодичного использования. Парная быстро прогревается даже в -30°C. Дополнительно можем установить систему обогрева комнаты отдыха.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden; transition: var(--transition-smooth);">
+                <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.2rem; font-weight: 600; transition: background 0.3s;">
+                    <span>Сколько стоит доставка?</span>
+                    <svg width="24" height="24" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                    <div class="faq-answer-content" style="padding: 0 2rem 1.5rem; color: var(--gray-700); line-height: 1.7;">
+                        Бесплатно в пределах 50 км от Вологды. Далее — от 30 руб/км (зависит от размера бани и типа транспорта). Для удаленных регионов РФ рассчитываем индивидуально. Звоните для точной цены.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden; transition: var(--transition-smooth);">
+                <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.2rem; font-weight: 600; transition: background 0.3s;">
+                    <span>Что входит в базовую комплектацию?</span>
+                    <svg width="24" height="24" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                    <div class="faq-answer-content" style="padding: 0 2rem 1.5rem; color: var(--gray-700); line-height: 1.7;">
+                        Конструкция из бруса, утепление, внешняя и внутренняя отделка, входная дверь, окна, электропроводка, светильники, вентиляция. Печь, полки, мебель — за доп. плату или под ключ.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" style="background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--wood-light); overflow: hidden; transition: var(--transition-smooth);">
+                <button class="faq-question" onclick="toggleFAQ(this)" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: transparent; border: none; cursor: pointer; text-align: left; color: var(--gray-900); font-size: 1.2rem; font-weight: 600; transition: background 0.3s;">
+                    <span>Можно ли сделать индивидуальный проект?</span>
+                    <svg width="24" height="24" class="faq-icon" style="transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                    <div class="faq-answer-content" style="padding: 0 2rem 1.5rem; color: var(--gray-700); line-height: 1.7;">
+                        Да, мы разрабатываем индивидуальные проекты под ваши пожелания: нестандартные размеры, планировки, дополнительные помещения (бильярдная, бассейн, спальня). Стоимость проекта — от 15 000 руб., входит в общую стоимость при заказе.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFAQ(button) {
+    const faqItem = button.closest('.faq-item');
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = button.querySelector('.faq-icon');
+    const content = answer.querySelector('.faq-answer-content');
+    
+    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+    
+    document.querySelectorAll('.faq-answer').forEach(item => {
+        item.style.maxHeight = '0';
+    });
+    document.querySelectorAll('.faq-icon').forEach(item => {
+        item.style.transform = 'rotate(0deg)';
+    });
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.style.background = 'transparent';
+    });
+    
+    if (!isOpen) {
+        answer.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+        button.style.background = 'var(--wood-light)';
+    }
+}
+</script>
+
+<!-- Карта -->
+<section class="map-section section" style="background: var(--wood-lightest); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--gray-900); text-align: center; margin-bottom: 1rem;">Где мы находимся</h2>
+        <p class="text-center mb-4" style="color: var(--gray-600); font-size: 1.1rem;">г. Вологда, ул. Гагарина, 81. Приезжайте на консультацию!</p>
+        <div class="map-container" style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); max-width: 100%;">
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.828335%2C59.206333&z=16&l=map&pt=39.828335,59.206333,pm2vvm2.1&lang=ru" width="100%" height="400" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- CTA секция -->
+<section class="cta section text-center" style="background: var(--wood-beige); color: var(--gray-900); padding: 4rem 0;">
+    <div class="container">
+        <h2 style="margin-bottom: 1rem;">Готовы заказать баню?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--gray-700);">Закажите баню под ключ прямо сейчас и получите консультацию специалиста бесплатно.</p>
+        <a href="{% url 'order' %}" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-terracotta)); color: white; padding: 1rem 2rem; border-radius: var(--radius-md); font-weight: bold; transition: transform 0.3s;">
+            Оставить заявку
+        </a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .testimonial-carousel:hover {
+        animation-play-state: paused;
+    }
+
+    .product-card:hover,
+    .advantage-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .video-container:hover {
+        transform: scale(1.02);
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.05);
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    #closeCreditModal:hover {
+        color: var(--accent-orange) !important;
+    }
+
+    .video-grid {
+        max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .products-grid,
+        .advantages-grid,
+        .stages-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .video-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Оптимизация загрузки видео с помощью Intersection Observer
+    document.addEventListener('DOMContentLoaded', function() {
+        if ('IntersectionObserver' in window) {
+            const videoWrappers = document.querySelectorAll('.video-wrapper iframe');
+            
+            const videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        if (iframe.dataset.src) {
+                            iframe.src = iframe.dataset.src;
+                            iframe.removeAttribute('data-src');
+                        }
+                        observer.unobserve(iframe);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+            
+            videoWrappers.forEach(iframe => {
+                videoObserver.observe(iframe);
+            });
+        }
+    });
+
+    const openBtn = document.getElementById('openCreditModal');
+    const modalOverlay = document.getElementById('creditModalOverlay');
+    const closeBtn = document.getElementById('closeCreditModal');
+    const form = document.getElementById('creditForm');
+    const successDiv = document.getElementById('creditFormSuccess');
+
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modalOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+            modalOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch("{% url 'credit_request' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {'X-Requested-With': 'XMLHttpRequest'}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                form.style.display = 'none';
+                successDiv.style.display = 'block';
+
+                setTimeout(() => {
+                    modalOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    form.style.display = 'flex';
+                    successDiv.style.display = 'none';
+                    form.reset();
+                }, 3000);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при отправке формы.');
+        });
+    });
+</script>
+{% endblock %}
