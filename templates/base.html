@@ -1,82 +1,219 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Гарант Групп - Бани под ключ в Вологде | Модульные бани с гарантией{% endblock %}</title>
-    <description>Бани, лучшие бани</description>
-    <meta name="description" content="{% block description %}Качественные модульные бани под ключ от производителя в Вологде. Гарантия 5 лет. Доставка по РФ. Установка за 1-2 дня. От 150 000 руб. ☎️ +7 960 293 4660{% endblock %}">
-    <meta name="keywords" content="{% block keywords %}баня под ключ, модульные бани, бани Вологда, купить баню, деревянная баня, бани из бруса, баня цена, строительство бань{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% load static %}
+
+    <title>{% block title %}Гарант Групп - Бани под ключ{% endblock %}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}Качественные модульные бани под ключ от производителя. Гарантия 5 лет. Доставка по РФ. От 158 000 руб.{% endblock %}">
+    <meta name="keywords" content="баня под ключ, модульные бани, бани из бруса, строительство бань, баня цена">
     <meta name="author" content="Гарант Групп">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{% block canonical %}https://garantgroup.ru{% endblock %}">
-    
-    <meta property="og:title" content="{% block og_title %}Гарант Групп - Бани под ключ в Вологде{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Качественные модульные бани под ключ. Гарантия 5 лет, установка за 1-2 дня. От 150 000 руб.{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{% static 'images/og-image.jpg' %}{% endblock %}">
-    <meta property="og:url" content="{% block og_url %}https://garantgroup.ru{% endblock %}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}Гарант Групп - Бани под ключ{% endblock %}">
+    <meta property="og:description" content="Качественные модульные бани под ключ. Гарантия 5 лет">
+    <meta property="og:image" content="{% static 'images/og-image.jpg' %}">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="ru_RU">
-    <meta property="og:site_name" content="Гарант Групп">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}Гарант Групп - Бани под ключ{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}Качественные модульные бани под ключ от производителя{% endblock %}">
-    <meta name="twitter:image" content="{% block twitter_image %}{% static 'images/og-image.jpg' %}{% endblock %}">
-    
-    <meta name="geo.region" content="RU-VLG">
-    <meta name="geo.placename" content="Вологда">
-    <meta name="geo.position" content="59.206333;39.828335">
-    <meta name="ICBM" content="59.206333, 39.828335">
-    
-    <meta name="theme-color" content="#B8835A">
-    <meta name="msapplication-TileColor" content="#B8835A">
-    
+
+    <!-- Favicon -->
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}">
-    
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
-    {% block structured_data %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Гарант Групп",
-      "description": "Производство и продажа модульных бань под ключ в Вологде и по РФ",
-      "url": "https://garantgroup.ru",
-      "logo": "https://garantgroup.ru{% static 'images/logo.png' %}",
-      "telephone": "+79602934660",
-      "email": "Vologdagarant@yandex.ru",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "ул. Гагарина, 81",
-        "addressLocality": "Вологда",
-        "addressRegion": "Вологодская область",
-        "postalCode": "160000",
-        "addressCountry": "RU"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "59.206333",
-        "longitude": "39.828335"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
-      "priceRange": "150000-1000000 RUB",
-      "sameAs": [
-        "https://vk.com/garant_stroy_karkas"
-      ]
-    }
-    </script>
-    {% endblock %}
-    
-    {% block extra_css %}{% endblock %}
+    <!-- НОВОЕ: CSS для центрирования всех hero-секций -->
+    <link rel="stylesheet" href="{% static 'css/hero_centering.css' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== КНОПКА "ЗАКАЗАТЬ" В ХЕАДЕР ========== */
+        .header-order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            background: linear-gradient(135deg, #B8835A 0%, #D4915A 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(224, 123, 57, 0.3);
+            text-decoration: none;
+            min-height: 44px;
+        }
+
+        .header-order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(224, 123, 57, 0.4);
+            background: linear-gradient(135deg, #D4915A 0%, #E69D61 100%);
+        }
+
+        /* ========== КРЕДИТНАЯ СЕКЦИЯ С КРАСИВОЙ РАМКОЙ ========== */
+        .credit-section {
+            background: linear-gradient(135deg, #EDE5DD 0%, #F5F1EB 100%);
+            border: 3px solid #D4915A;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem auto;
+            max-width: 650px;
+            box-shadow: 0 12px 40px rgba(212, 145, 90, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credit-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 250px;
+            height: 250px;
+            background: rgba(212, 145, 90, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .credit-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -30%;
+            width: 180px;
+            height: 180px;
+            background: rgba(184, 131, 90, 0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .credit-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .credit-section h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #2A1F18;
+            margin-bottom: 1rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .credit-section > p:first-of-type {
+            font-size: 1rem;
+            color: #5A4D3F;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .credit-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .credit-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+            color: #5A4D3F;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .credit-features li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: linear-gradient(135deg, #B8835A 0%, #D4915A 100%);
+            color: white;
+            border-radius: 50%;
+            flex-shrink: 0;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .credit-partners {
+            font-size: 0.85rem;
+            color: #736554;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 145, 90, 0.3);
+            text-align: center;
+        }
+
+        .credit-partners strong {
+            display: block;
+            color: #2A1F18;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .credit-btn {
+            display: block;
+            width: 100%;
+            padding: 1.1rem 2rem;
+            background: linear-gradient(135deg, #B8835A 0%, #D4915A 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 1.75rem;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 25px rgba(212, 145, 90, 0.3);
+            text-decoration: none;
+            min-height: 48px;
+        }
+
+        .credit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(212, 145, 90, 0.4);
+            background: linear-gradient(135deg, #D4915A 0%, #E69D61 100%);
+        }
+
+        @media (max-width: 768px) {
+            .header-order-btn {
+                padding: 0.65rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .credit-section {
+                margin: 2rem 1rem;
+                padding: 1.75rem;
+                border: 2px solid #D4915A;
+            }
+
+            .credit-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .credit-btn {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
     <!-- Preloader -->
@@ -85,35 +222,29 @@
     </div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="{% url 'index' %}" class="logo">Гарант Групп</a>
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="{% url 'index' %}" class="logo">Гарант Групп</a>
 
-                <nav class="nav" id="mainNav">
-                    <a href="{% url 'index' %}" class="nav-link">Главная</a>
-                    <a href="{% url 'catalog' %}" class="nav-link">Каталог</a>
-                    <a href="{% url 'about' %}" class="nav-link">О компании</a>
-                    <a href="{% url 'works' %}" class="nav-link">Наши работы</a>
-                    <a href="{% url 'contact' %}" class="nav-link">Контакты</a>
-                    <a href="{% url 'order' %}" class="btn btn-order-header">
-                        <span>Заказать</span>
-                        <span class="btn-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <line x1="5" y1="12" x2="19" y2="12"/>
-                                <polyline points="12 5 19 12 12 19"/>
-                            </svg>
-                        </span>
-                        <div class="btn-shine"></div>
-                    </a>
-                </nav>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <!-- Navigation -->
+            <nav class="nav" id="nav">
+                <a href="{% url 'index' %}" class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">Главная</a>
+                <a href="{% url 'catalog' %}" class="nav-link {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}">Каталог</a>
+                <a href="{% url 'works' %}" class="nav-link {% if request.resolver_match.url_name == 'works' %}active{% endif %}">Наши работы</a>
+                <a href="{% url 'contact' %}" class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Контакты</a>
+
+                <!-- Кнопка "Заказать" -->
+                <a href="{% url 'order' %}" class="header-order-btn">
+                    Заказать
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -122,143 +253,138 @@
         {% block content %}{% endblock %}
     </main>
 
+    <!-- Кредитная секция -->
+    <section style="padding: 0; background: transparent;">
+        <div class="container">
+            <div class="credit-section">
+                <div class="credit-content">
+                    <h2>Баня в кредит на выгодных условиях</h2>
+                    <p>Оформите баню мечты уже сегодня, а платите потом. Быстрое одобрение онлайн от наших банков-партнеров.</p>
+
+                    <ul class="credit-features">
+                        <li>Срок кредита: от 6 мес. до 5 лет</li>
+                        <li>Быстрая обработка заявок</li>
+                        <li>Возраст: от 18 лет</li>
+                        <li>Оформление онлайн по всей России</li>
+                        <li>Сумма: от 3 тыс. до 2 млн рублей</li>
+                        <li>Норма одобрения 92%</li>
+                    </ul>
+
+                    <a href="{% url 'contact' %}" class="credit-btn">
+                        Получить консультацию
+                    </a>
+
+                    <div class="credit-partners">
+                        <strong>Наши партнеры:</strong>
+                        МТС Банк, ОТП Банк, Ренессанс Кредит, Совкомбанк, Альфа-Банк, Люкобанк, Кредит Европа Банк и другие.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <!-- Карта в футере -->
-            <div class="footer-map" style="margin-bottom: 3rem;">
-                <h3 style="color: var(--white); text-align: center; margin-bottom: 1.5rem; font-size: 1.8rem;">Наш адрес</h3>
-                <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);">
-                    <iframe src="https://yandex.ru/map-widget/v1/?ll=39.828335%2C59.206333&z=16&l=map&pt=39.828335,59.206333,pm2vvm2.1&lang=ru" width="100%" height="350" frameborder="0" allowfullscreen loading="lazy"></iframe>
-                </div>
-                <p style="text-align: center; color: rgba(255,255,255,0.9); margin-top: 1rem; font-size: 1.1rem;">г. Вологда, ул. Гагарина, 81 • Режим работы: ежедневно 9:00 — 21:00</p>
-            </div>
-
-            <style>
-                @media (max-width: 768px) {
-                    .footer-map h3 {
-                        font-size: 1.5rem !important;
-                        margin-bottom: 1rem !important;
-                    }
-
-                    .footer-map iframe {
-                        height: 250px !important;
-                    }
-
-                    .footer-map p {
-                        font-size: 0.95rem !important;
-                        padding: 0 1rem;
-                    }
-
-                    .footer-content {
-                        grid-template-columns: 1fr !important;
-                        gap: 2rem !important;
-                    }
-
-                    .footer-section {
-                        text-align: center;
-                    }
-
-                    .footer-section h3 {
-                        font-size: 1.2rem !important;
-                        margin-bottom: 1rem !important;
-                    }
-
-                    .footer-section p,
-                    .footer-section a {
-                        font-size: 0.9rem !important;
-                    }
-
-                    .footer {
-                        padding: 2rem 1rem !important;
-                    }
-
-                    .footer-bottom {
-                        text-align: center;
-                        font-size: 0.85rem !important;
-                        padding: 1rem !important;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .footer-map iframe {
-                        height: 200px !important;
-                    }
-
-                    .footer-map h3 {
-                        font-size: 1.3rem !important;
-                    }
-                }
-            </style>
-
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Гарант Групп</h3>
-                    <p>Качественные деревянные бани под ключ с гарантией и профессиональным подходом.</p>
-                    <p style="margin-top: 1rem; opacity: 0.9; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0012 0V2z"/></svg>
-                            10+ лет опыта
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            500+ построенных бань
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent-orange)" stroke="var(--accent-orange)" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            98% довольных клиентов
-                        </span>
-                    </p>
+                    <p>Производство и строительство модульных бань под ключ с 2018 года</p>
+                    <p>ИП Иванов И.И.<br>ИНН: 1234567890</p>
                 </div>
 
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Навигация</h3>
-                    <a href="{% url 'index' %}">Главная</a><br>
-                    <a href="{% url 'catalog' %}">Каталог</a><br>
-                    <a href="{% url 'about' %}">О компании</a><br>
-                    <a href="{% url 'works' %}">Наши работы</a><br>
-                    <a href="{% url 'contact' %}">Контакты</a><br>
-                    <a href="{% url 'additional_services' %}">Доп. услуги</a>
+                    <p><a href="{% url 'index' %}">Главная</a></p>
+                    <p><a href="{% url 'catalog' %}">Каталог</a></p>
+                    <p><a href="{% url 'works' %}">Наши работы</a></p>
+                    <p><a href="{% url 'about' %}">О нас</a></p>
                 </div>
 
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Контакты</h3>
-                    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email: <a href="mailto:Vologdagarant@yandex.ru" style="color: var(--wood-cream);">Vologdagarant@yandex.ru</a></p>
-                    <p><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Телефон: <a href="tel:+79602934660" style="color: var(--wood-cream);">+7 960 293 4660</a></p>
-                    <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Работаем ежедневно с 9:00 до 21:00</p>
-                    <p><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> г. Вологда, ул. Гагарина, 81</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Мы в соцсетях</h3>
-                    <a href="https://vk.com/garant_stroy_karkas" target="_blank" rel="noopener" style="display: inline-block; margin-bottom: 0.5rem; transition: color 0.3s;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.09 12.68h-1.58c-.54 0-.71-.43-1.68-1.4-0.85-.83-1.23-.94-1.44-.94-0.29 0-.38.09-.38.52v1.27c0 .34-.11.54-1 .54-1.49 0-3.14-.9-4.3-2.58-1.75-2.31-2.23-4.05-2.23-4.41 0-.21.09-.4.52-.4h1.58c.39 0 .54.18.68.59.75 2.19 2 4.11 2.51 4.11.19 0 .29-.09.29-.58v-2.26c-.07-1.13-.66-1.23-.66-1.63 0-.17.13-.34.35-.34h2.47c.33 0 .45.18.45.56v3.05c0 .33.15.45.24.45.19 0 .36-.12.71-.47 1.07-1.21 1.84-3.06 1.84-3.06.1-.21.28-.4.67-.4h1.58c.47 0 .57.24.47.56-.16.79-1.94 3.44-1.94 3.44-.16.25-.21.37 0 .65.16.21.68.67 1.03 1.08.63.73 1.12 1.34 1.25 1.76.12.42-.07.64-.49.64z"/></svg>
-                        ВКонтакте
-                    </a><br>
-                    <a href="https://www.avito.ru/brands/i201908789/all/remont_i_stroitelstvo?iid=7506844076&page_from=from_item_messenger&sellerId=ce4a4fa7fed0a3d1c5295f7c8d05836d" target="_blank" rel="noopener" style="display: inline-block; margin-bottom: 0.5rem; transition: color 0.3s;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;"><path d="M20.47 2H3.53A1.53 1.53 0 002 3.53v16.94A1.53 1.53 0 003.53 22h16.94a1.53 1.53 0 001.53-1.53V3.53A1.53 1.53 0 0020.47 2zm-7.7 15.5h-1.54c-3.19 0-5.04-2.18-5.11-5.79h1.62c.06 2.58 1.19 3.67 2.09 3.67.82 0 1.19-.56 1.19-1.61V9.79h1.52v3.52c.66-.08 1.68-1.08 1.97-2.73h1.52c-.19 1.45-1.1 2.7-1.86 3.16.76.36 1.78 1.47 2.19 3.22h-1.67c-.34-1.22-1.2-2.17-2.33-2.17h-.59v2.17z"/></svg>
-                        Авито
-                    </a><br>
-                    <div style="margin-top: 1.5rem;">
-                        <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Способы оплаты</h4>
-                        <p style="opacity: 0.9; font-size: 0.9rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Наличные • Безналичный расчет • Карты • Рассрочка</p>
-                    </div>
+                    <p>📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                    <p>📍 г. Вологда, ул. Гагарина, 81</p>
+                    <p>Пн-Пт: 9:00 - 18:00<br>Сб-Вс: 10:00 - 16:00</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; {% now "Y" %} Гарант Групп. Все права защищены. • ИНН: [номер] • ОГРН: [номер]</p>
+                <p>&copy; 2025 Гарант Групп. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-
-    <script src="{% static 'js/main.js' %}"></script>
-<a href="{% url 'order' %}" class="cta-fixed-button">
-        <span class="cta-text">Консультация/заказ</span>
-        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12H19M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Наверх">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
-    </a>
+    </button>
+
+    <script>
+        // Header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const nav = document.getElementById('nav');
+
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    nav.classList.toggle('active');
+                });
+
+                const navLinks = nav.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenuBtn.classList.remove('active');
+                        nav.classList.remove('active');
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        mobileMenuBtn.classList.remove('active');
+                        nav.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.classList.add('loaded');
+            }
+        });
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
 </body>
 </html>

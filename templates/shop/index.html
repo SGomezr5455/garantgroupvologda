@@ -823,31 +823,35 @@
     </div>
 </section>
 
-<section class="section section-credit">
-    <div class="container">
-        <div class="credit-card">
-            <div class="credit-content">
-                <h2 class="credit-title">Баня в кредит на выгодных условиях</h2>
-                <p class="credit-subtitle">Оформите баню мечты уже сегодня, а платите потом. Быстрое одобрение онлайн от наших банков-партнеров.</p>
-                <div class="credit-features">
-                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Срок кредита: от 6 мес. до 5 лет</div>
-                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Быстрая обработка заявок</div>
-                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Возраст: от 18 лет</div>
-                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Оформление онлайн по всей России</div>
-                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Сумма: от 3 тыс. до 2 млн рублей</div>
-                    <div class="feature-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Норма одобрения 92%</div>
-                </div>
-                <button class="btn btn-primary" id="openCreditModal" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-terracotta)); color: white; padding: 1rem 2rem; border: none; border-radius: var(--radius-md); font-size: 1.1rem; cursor: pointer; transition: transform 0.3s;">Получить консультацию</button>
-            </div>
-            <div class="credit-logos">
-                <p>Наши партнеры:</p>
-                <div class="partners-text">
-                    МТС Банк, ОТП Банк, Ренессанс Кредит, Совкомбанк, Альфа-Банк, ЛокоБанк, Кредит Европа Банк и другие.
+<section class="credit-info-section" style="padding: 0; background: transparent;">
+        <div class="container">
+            <div class="credit-section">
+                <div class="credit-content">
+                    <h2>Баня в кредит на выгодных условиях</h2>
+                    <p>Оформите баню мечты уже сегодня, а платите потом. Быстрое одобрение онлайн от наших банков-партнеров.</p>
+
+                    <ul class="credit-features">
+                        <li>Срок кредита: от 6 мес. до 5 лет</li>
+                        <li>Быстрая обработка заявок</li>
+                        <li>Возраст: от 18 лет</li>
+                        <li>Оформление онлайн по всей России</li>
+                        <li>Сумма: от 3 тыс. до 2 млн рублей</li>
+                        <li>Норма одобрения 92%</li>
+                    </ul>
+
+                    <!-- КНОПКА "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ" -->
+                    <a href="{% url 'contact' %}" class="credit-btn">
+                        Получить консультацию
+                    </a>
+
+                    <div class="credit-partners">
+                        <strong>Наши партнеры:</strong>
+                        МТС Банк, ОТП Банк, Ренессанс Кредит, Совкомбанк, Альфа-Банк, Люкобанк, Кредит Европа Банк и другие.
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ЗАЯВКИ НА КРЕДИТ -->
 <div id="creditModalOverlay" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);">

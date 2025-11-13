@@ -2793,3 +2793,66 @@ WARNING 2025-11-12 23:39:07,775 log Not Found: /.well-known/appspecific/com.chro
 WARNING 2025-11-12 23:39:07,776 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1305
 WARNING 2025-11-12 23:39:21,044 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-11-12 23:39:21,046 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1270
+WARNING 2025-11-13 21:32:54,003 log Not Found: /favicon.ico
+WARNING 2025-11-13 21:32:54,004 basehttp "GET /favicon.ico HTTP/1.1" 404 1236
+WARNING 2025-11-13 21:32:56,559 log Not Found: /favicon.ico
+WARNING 2025-11-13 21:32:56,560 basehttp "GET /favicon.ico HTTP/1.1" 404 1328
+WARNING 2025-11-13 21:33:10,689 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:33:10,690 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1276
+WARNING 2025-11-13 21:33:13,598 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:33:13,599 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1337
+WARNING 2025-11-13 21:33:16,355 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:33:16,356 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1309
+WARNING 2025-11-13 21:34:25,097 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:34:25,098 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1344
+WARNING 2025-11-13 21:34:31,837 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:34:31,837 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1320
+WARNING 2025-11-13 21:37:56,091 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:37:56,091 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1353
+WARNING 2025-11-13 21:37:59,527 log Not Found: /favicon.ico
+WARNING 2025-11-13 21:37:59,527 basehttp "GET /favicon.ico HTTP/1.1" 404 1320
+WARNING 2025-11-13 21:38:02,440 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:38:02,440 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1294
+WARNING 2025-11-13 21:38:04,550 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:38:04,551 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1322
+WARNING 2025-11-13 21:38:10,921 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:38:10,922 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1286
+WARNING 2025-11-13 21:38:12,991 log Not Found: /favicon.ico
+WARNING 2025-11-13 21:38:12,992 basehttp "GET /favicon.ico HTTP/1.1" 404 1294
+WARNING 2025-11-13 21:38:22,748 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:38:22,749 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1311
+WARNING 2025-11-13 21:41:32,765 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:41:32,766 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1301
+WARNING 2025-11-13 21:41:34,733 log Not Found: /favicon.ico
+WARNING 2025-11-13 21:41:34,734 basehttp "GET /favicon.ico HTTP/1.1" 404 1273
+WARNING 2025-11-13 21:41:36,925 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 21:41:36,926 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1314
+WARNING 2025-11-13 22:01:10,834 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 22:01:10,835 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1291
+WARNING 2025-11-13 22:01:12,866 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 22:01:12,867 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1324
+WARNING 2025-11-13 22:03:10,876 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:03:38,731 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-13 22:03:38,731 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1341
+WARNING 2025-11-13 22:07:33,908 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:12:13,611 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:13:25,725 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:13:30,630 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:13:45,977 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:13:51,929 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:06,192 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:11,091 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:14,983 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:19,149 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:24,324 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:35,231 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:14:53,795 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:16:21,173 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:16:24,334 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:20:20,634 basehttp "GET /static/css/hero_centering.css HTTP/1.1" 404 1993
+WARNING 2025-11-13 22:20:21,975 basehttp "GET /static/favicon.ico HTTP/1.1" 404 1960
+WARNING 2025-11-13 22:20:34,425 basehttp "GET /static/css/hero_centering.css HTTP/1.1" 404 1993
+WARNING 2025-11-13 22:20:37,702 basehttp "GET /static/css/hero_centering.css HTTP/1.1" 404 1993
+WARNING 2025-11-13 22:20:41,984 basehttp "GET /static/css/hero_centering.css HTTP/1.1" 404 1993
+WARNING 2025-11-13 22:20:46,403 basehttp "GET /static/css/hero_centering.css HTTP/1.1" 404 1993
+WARNING 2025-11-13 22:20:49,497 basehttp "GET /static/css/hero_centering.css HTTP/1.1" 404 1993
